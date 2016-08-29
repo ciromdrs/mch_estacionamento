@@ -1,30 +1,24 @@
 ﻿MACHINE
-    Estacionamento
+    Estacionamento ( qtd_comuns , qtd_idosos , qtd_deficientes ) // quantidade de vagas comuns e reservadas para idosos ou deficientes
 
-ABSTRACT_VARIABLES
-    qtd_comuns , qtd_idosos , qtd_deficientes  // quantidade de vagas comuns e reservadas para idosos e deficientes
+CONSTRAINTS
+    qtd_comuns : NAT &
+    qtd_idosos : NAT &
+    qtd_deficientes : NAT
 
 SETS
     COMUNS ; IDOSOS ; DEFICIENTES // conjuntos que modelam as vagas comuns, de idosos e deficientes
 
 INVARIANT
     // Declaração dos tipos
-    qtd_comuns      : NAT &
-    qtd_idosos      : NAT &
-    qtd_deficientes : NAT &
+    //qtd_comuns      : NAT &
+    //qtd_idosos      : NAT &
+    //qtd_deficientes : NAT &
 
     // Restrições
     card ( COMUNS )   <= qtd_comuns &
     card ( IDOSOS )   <= qtd_idosos &
     card ( DEFICIENTES ) <= qtd_deficientes
-
-INITIALISATION
-    COMUNS          := {}               ||
-    IDOSOS          := {}               ||
-    DEFICIENTES     := {}               ||
-    qtd_comuns      := card ( COMUNS )  ||
-    qtd_idosos      := card ( IDOSOS )  ||
-    qtd_deficientes := card ( DEFICIENTES )
 
 OPERATIONS
     // Ocupação de vagas
