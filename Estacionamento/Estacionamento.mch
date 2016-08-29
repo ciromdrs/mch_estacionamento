@@ -1,66 +1,58 @@
 MACHINE
-    Estacionamento
-VARIABLES
-    qtd_comuns, qtd_idosos, qtd_deficientes,    # quantidade de vagas comuns e reservadas para idosos e deficientes
-    ocp_comuns, ocp_idosos, ocp_deficientes     # quantidade de vagas ocupadas
-INVARIANT
-    # Declaração dos tipos
-    qtd_comuns      : NAT &
-    qtd_idosos      : NAT &
-    qtd_deficientes : NAT &
-    ocp_comuns      : NAT &
-    ocp_idosos      : NAT &
-    ocp_deficientes : NAT &
+    Estacionamento (qtd_comuns, qtd_idosos, qtd_deficientes) // quantidade de vagas comuns e reservadas para idosos ou deficientes
     
-    # Restrições
-    ocp_comuns      <= qtd_comuns &
-    ocp_idosos      <= qtd_idosos &
-    ocp_deficientes <= qtd_deficientes
-
-INITIALISATION
-    qtd_comuns      := 0 ||
-    qtd_idosos      := 0 ||
-    qtd_deficientes := 0 ||
-    ocp_comuns      := 0 ||
-    ocp_idosos      := 0 ||
-    ocp_deficientes := 0
-
+CONSTRAINTS
+    qtd_comuns : NAT &
+    qtd_idosos : NAT &
+    qtd_deficientes : NAT
+    
+SETS
+    COMUNS; IDOSOS; DEFICIENTES  // conjuntos que modelam as vagas comuns, de idosos e deficientes
+    
+INVARIANT
+    // Declaração dos tipos
+    //qtd_comuns      : NAT &
+    //qtd_idosos      : NAT &
+    //qtd_deficientes : NAT &
+    
+    // Restrições
+    card(COMUNS)      <= qtd_comuns &
+    card(IDOSOS)      <= qtd_idosos &
+    card(DEFICIENTES) <= qtd_deficientes
+    
 OPERATIONS
-    # Ocupação de vagas
-    ocupar_comum ^=
-        PRE ocp_comuns < qtd_comuns
-        THEN ocp_comuns := ocp_comuns + 1
+    // Ocupação de vagas
+    ocupar_comum(vv) =
+        PRE card(COMUNS) < qtd_comuns
+        THEN COMUNS := COMUNS \/ {vv}
         END;
-    ocupar_deficiente ^=
-        PRE ocp_deficientes < qtd_deficientes
-        THEN ocp_deficientes := ocp_deficientes + 1
+    ocupar_deficiente(vv) =
+        PRE card(DEFICIENTES) < qtd_deficientes
+        THEN DEFICIENTES := DEFICIENTES \/ {vv}
         END;
-    ocupar_idoso ^=
-        PRE ocp_idosos < qtd_idosos
-        THEN ocp_idosos := ocp_idosos + 1
+    ocupar_idoso(vv) =
+        PRE card(IDOSOS) < qtd_idosos
+        THEN IDOSOS := IDOSOS \/ {vv}
         END;
         
-    # Liberação de vagas
-    liberar_comum ^=
-        PRE ocp_comuns > 0
-        THEN ocp_comuns := ocp_comuns - 1
-        END;
-    liberar_idoso ^=
-        PRE ocp_idosos > 0
-        THEN ocp_idosos := ocp_idosos - 1
-        END;
-    liberar_deficiente ^=
-        PRE ocp_deficientes > 0
-        THEN ocp_deficientes := ocp_deficientes - 1
-        END;
+    // Liberação de vagas
+    liberar_comum(vv) = 
+        COMUNS := COMUNS - {vv};
+        
+    liberar_idoso(vv) =
+        IDOSOS := IDOSOS - {vv};
+        
+    liberar_deficiente(vv) =
+        DEFICIENTES := DEFICIENTES - {vv};
     
-    # Exibição
-    qc, oc, qi, oi, qd, od <-- get_info_painel ^=
+    // Exibição
+    qc, oc, qi, oi, qd, od <-- get_info_painel =
+    BEGIN
         qc := qtd_comuns        ||
-        oc := ocp_comuns        ||
+        oc := card(COMUNS)      ||
         qi := qtd_idosos        ||
-        oi := ocp_idosos        ||
+        oi := card(IDOSOS)      ||
         qd := qtd_deficientes   ||
-        od := ocp_deficientes
-    
+        od := card(DEFICIENTES)
+    END
 END
