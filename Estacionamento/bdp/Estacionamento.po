@@ -1,0 +1,78 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(3) & _f(13) & WellDefinedness_get_info_painel.3,(_f(39) => _f(42));
+_f(1) & _f(2) & _f(3) & _f(13) & WellDefinedness_get_info_painel.2,(_f(39) => _f(41));
+_f(1) & _f(2) & _f(3) & _f(13) & WellDefinedness_get_info_painel.1,(_f(39) => _f(40));
+_f(1) & _f(2) & _f(3) & _f(13) & WellDefinedness_Precondition_ocupar_idoso.1,(_f(39) => _f(41));
+_f(1) & _f(2) & _f(3) & _f(13) & WellDefinedness_Precondition_ocupar_deficiente.1,(_f(39) => _f(42));
+_f(1) & _f(2) & _f(3) & _f(13) & WellDefinedness_Precondition_ocupar_comum.1,(_f(39) => _f(40));
+_f(1) & _f(2) & _f(3) & WellDefinednessInvariant.3,(_f(38) & _f(37) & _f(36) & _f(35) & _f(34) & _f(39) => _f(42));
+_f(1) & _f(2) & _f(3) & WellDefinednessInvariant.2,(_f(38) & _f(37) & _f(36) & _f(35) & _f(39) => _f(41));
+_f(1) & _f(2) & _f(3) & WellDefinednessInvariant.1,(_f(38) & _f(37) & _f(36) & _f(39) => _f(40));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(25) & liberar_deficiente.2,(_f(4) & _f(11) => _f(31));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(25) & liberar_deficiente.1,(_f(4) & _f(19) => _f(30));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(25) & liberar_idoso.2,(_f(4) & _f(9) => _f(29));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(25) & liberar_idoso.1,(_f(4) & _f(5) => _f(28));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(25) & liberar_comum.2,(_f(4) & _f(7) => _f(27));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(25) & liberar_comum.1,(_f(4) & _f(15) => _f(26));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(22) & ocupar_idoso.2,(_f(4) & _f(9) => _f(24));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(22) & ocupar_idoso.1,(_f(4) & _f(5) => _f(23));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(18) & ocupar_deficiente.2,(_f(4) & _f(11) => _f(21));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(18) & ocupar_deficiente.1,(_f(4) & _f(19) => _f(20));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(14) & ocupar_comum.2,(_f(4) & _f(7) => _f(17));
+_f(1) & _f(2) & _f(3) & _f(13) & _f(14) & ocupar_comum.1,(_f(4) & _f(15) => _f(16));
+_f(1) & _f(2) & _f(3) & Initialisation.4,(_f(4) & _f(11) => _f(12));
+_f(1) & _f(2) & _f(3) & Initialisation.3,(_f(4) & _f(9) => _f(10));
+_f(1) & _f(2) & _f(3) & Initialisation.2,(_f(4) & _f(7) => _f(8));
+_f(1) & _f(2) & _f(3) & Initialisation.1,(_f(4) & _f(5) => _f(6))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((max_comuns) : (NAT)) & ((max_idosos) : (NAT)) & ((max_deficientes) : (NAT));
+VAGA: FIN(INTEGER) & not(VAGA = {});
+"Invariant is preserved";
+"Check invariant IDOSOS : POW( VAGA)";
+{} : POW( VAGA);
+"Check invariant (card(COMUNS) <= max_comuns)";
+(card({}) <= max_comuns);
+"Check invariant (card(IDOSOS) <= max_idosos)";
+(card({}) <= max_idosos);
+"Check invariant (card(DEFICIENTES) <= max_deficientes)";
+(card({}) <= max_deficientes);
+IDOSOS : POW( VAGA) & DEFICIENTES : POW( VAGA) & COMUNS : POW( VAGA) & (card(COMUNS) <= max_comuns) & (card(IDOSOS) <= max_idosos) & (card(DEFICIENTES) <= max_deficientes);
+(card(COMUNS) +1 <= max_comuns) & ((vv) : (VAGA));
+"Check invariant COMUNS : POW( VAGA)";
+((COMUNS) \/ ({vv})) : POW( VAGA);
+(card(((COMUNS) \/ ({vv}))) <= max_comuns);
+(card(DEFICIENTES) +1 <= max_deficientes) & ((vv) : (VAGA));
+"Check invariant DEFICIENTES : POW( VAGA)";
+((DEFICIENTES) \/ ({vv})) : POW( VAGA);
+(card(((DEFICIENTES) \/ ({vv}))) <= max_deficientes);
+(card(IDOSOS) +1 <= max_idosos) & ((vv) : (VAGA));
+((IDOSOS) \/ ({vv})) : POW( VAGA);
+(card(((IDOSOS) \/ ({vv}))) <= max_idosos);
+((vv) : (VAGA));
+(COMUNS - {vv}) : POW( VAGA);
+(card((COMUNS - {vv})) <= max_comuns);
+(IDOSOS - {vv}) : POW( VAGA);
+(card((IDOSOS - {vv})) <= max_idosos);
+(DEFICIENTES - {vv}) : POW( VAGA);
+(card((DEFICIENTES - {vv})) <= max_deficientes);
+((max_idosos) : (NAT));
+((max_comuns) : (NAT));
+(card(IDOSOS) <= max_idosos);
+(card(COMUNS) <= max_comuns);
+COMUNS : POW( VAGA);
+DEFICIENTES : POW( VAGA);
+IDOSOS : POW( VAGA);
+"Well definedness";
+((COMUNS) : (FIN(COMUNS)));
+((IDOSOS) : (FIN(IDOSOS)));
+((DEFICIENTES) : (FIN(DEFICIENTES)));
+(card(COMUNS) +1 <= max_comuns);
+(card(DEFICIENTES) +1 <= max_deficientes);
+(card(IDOSOS) +1 <= max_idosos)
+END
+&
+THEORY EnumerateX
+END
