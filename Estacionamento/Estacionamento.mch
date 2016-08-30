@@ -1,7 +1,5 @@
 MACHINE
     Estacionamento (max_comuns, max_idosos, max_deficientes) // quantidade máxima de vagas
-                                                             // comuns e reservadas para idosos
-                                                             // ou deficientes
                                                              
 CONSTRAINTS
     max_comuns : NAT &
@@ -9,16 +7,22 @@ CONSTRAINTS
     max_deficientes : NAT
     
 SETS
-    VAGA // Tipo VAGA
+    VAGA; // Tipo VAGA
+    COR = {azul, amarela, verde, vermelha} // Cor da lâmpada que fica na vaga
     
 VARIABLES
-    IDOSOS, DEFICIENTES, COMUNS
+    IDOSOS, DEFICIENTES, COMUNS // Cojuntos que representam as vagas
 
 INVARIANT
     // Declaração dos tipos
     IDOSOS      <: VAGA &
     DEFICIENTES <: VAGA &
     COMUNS      <: VAGA &
+    
+    // Uma vaga só pode estar em um dos três conjuntos
+    IDOSOS /\ DEFICIENTES = {} &
+    IDOSOS /\ COMUNS      = {} &
+    DEFICIENTES /\ COMUNS = {} &
     
     // Restrições
     card(COMUNS)      <= max_comuns &
@@ -34,17 +38,28 @@ OPERATIONS
     // Ocupação de vagas
     ocupar_comum(vv) =
         PRE card(COMUNS) < max_comuns &
-            vv:VAGA
+            vv:VAGA                   &
+            vv /: COMUNS              &
+            vv /: IDOSOS              &
+            vv /: DEFICIENTES
         THEN COMUNS := COMUNS \/ {vv}
         END;
+        
     ocupar_deficiente(vv) =
         PRE card(DEFICIENTES) < max_deficientes &
-            vv:VAGA
+            vv:VAGA                   &
+            vv /: COMUNS              &
+            vv /: IDOSOS              &
+            vv /: DEFICIENTES
         THEN DEFICIENTES := DEFICIENTES \/ {vv}
         END;
+        
     ocupar_idoso(vv) =
         PRE card(IDOSOS) < max_idosos &
-            vv:VAGA
+            vv:VAGA                   &
+            vv /: COMUNS              &
+            vv /: IDOSOS              &
+            vv /: DEFICIENTES
         THEN IDOSOS := IDOSOS \/ {vv}
         END;
         
@@ -73,5 +88,16 @@ OPERATIONS
         oi := card(IDOSOS)      ||
         qd := max_deficientes   ||
         od := card(DEFICIENTES)
-    END
+    END/*;
+    
+    cc <-- get_cor_lampada(vv) =
+        CASE vv OF
+        EITHER 
+        OR
+        OR
+        ELSE
+        END
+        
+        cc <--
+    END*/
 END

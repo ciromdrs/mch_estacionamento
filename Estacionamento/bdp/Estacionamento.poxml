@@ -33,23 +33,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
@@ -57,6 +78,15 @@
 <Define name="lprp">
 <Set>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:1:1" typref="1611150874" value="VAGA"/>
+</Set>
+<Set>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:1" typref="3862030337" value="COR"/>
+<Enumerated_Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:1" typref="3913416450" value="azul"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:2" typref="3913416450" value="amarelo"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:3" typref="3913416450" value="verde"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:4" typref="3913416450" value="vermelho"/>
+</Enumerated_Values>
 </Set>
 </Define>
 <Define name="inprp"/>
@@ -135,23 +165,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -184,6 +235,18 @@
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:2:1" typref="3750478463" value="vv"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:5:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:5:2" typref="1611150874" value="DEFICIENTES"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -219,23 +282,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -268,6 +352,18 @@
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:2:1" typref="3750478463" value="vv"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:5:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:5:2" typref="1611150874" value="DEFICIENTES"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -303,23 +399,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -352,6 +469,18 @@
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:2:1" typref="3750478463" value="vv"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:5:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:5:2" typref="1611150874" value="DEFICIENTES"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -387,23 +516,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -463,23 +613,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -539,23 +710,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -615,23 +807,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -729,23 +942,44 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:1" typref="1611150874" value="COMUNS"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:3:2" typref="1611150874" value="VAGA"/>
 </Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Exp_Comparison op="&lt;=" initialTag="(card(DEFICIENTES) &lt;= max_deficientes)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:2" typref="2701647786" value="max_deficientes"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Nary_Pred>
@@ -802,6 +1036,15 @@
 <Set>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:1:1" typref="1611150874" value="VAGA"/>
 </Set>
+<Set>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:1" typref="3862030337" value="COR"/>
+<Enumerated_Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:1" typref="3913416450" value="azul"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:2" typref="3913416450" value="amarelo"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:3" typref="3913416450" value="verde"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:3:2:2:4" typref="3913416450" value="vermelho"/>
+</Enumerated_Values>
+</Set>
 </Hypothesis>
 <Goal>
 <Tag goalTag="Well definedness">
@@ -853,12 +1096,60 @@
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (DEFICIENTES))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:2" typref="1611150874" value="DEFICIENTES"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="3817003670"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="=" initialTag="((((IDOSOS) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="3817003670"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="=" initialTag="((((DEFICIENTES) /\ (COMUNS))) = ({}))">
+<Binary_Exp op="/\" typref="1611150874">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:2" typref="1611150874" value="COMUNS"/>
+</Binary_Exp>
+<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:2" typref="3817003670"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 <Unary_Exp op="FIN">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -867,18 +1158,18 @@
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op="&lt;=" initialTag="(card(COMUNS) &lt;= max_comuns)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:1:1" typref="1611150874" value="COMUNS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:1:1" typref="1611150874" value="COMUNS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:4:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:7:2" typref="2701647786" value="max_comuns"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 <Unary_Exp op="FIN">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
@@ -887,22 +1178,28 @@
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op="&lt;=" initialTag="(card(IDOSOS) &lt;= max_idosos)">
 <Unary_Exp op="card" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:1:1" typref="1611150874" value="IDOSOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:1:1" typref="1611150874" value="IDOSOS"/>
 </Unary_Exp>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:5:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:8:2" typref="2701647786" value="max_idosos"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 <Unary_Exp op="FIN">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:6:1:1" typref="1611150874" value="DEFICIENTES"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:5:1:9:1:1" typref="1611150874" value="DEFICIENTES"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
 <Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
@@ -1000,6 +1297,42 @@
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:2:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
@@ -1031,6 +1364,18 @@
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:2:1" typref="3750478463" value="vv"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:5:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:1:2:1:5:2" typref="1611150874" value="DEFICIENTES"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -1087,6 +1432,42 @@
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:2:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
@@ -1118,6 +1499,18 @@
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:2:1" typref="3750478463" value="vv"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:5:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:2:2:1:5:2" typref="1611150874" value="DEFICIENTES"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -1174,6 +1567,42 @@
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:2:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
 </Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
@@ -1205,6 +1634,18 @@
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:2:1" typref="3750478463" value="vv"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:2:2" typref="1611150874" value="VAGA"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:3:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:3:2" typref="1611150874" value="COMUNS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:4:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:4:2" typref="1611150874" value="IDOSOS"/>
+</Exp_Comparison>
+<Exp_Comparison op="/:">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:5:1" typref="3750478463" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:3:2:1:5:2" typref="1611150874" value="DEFICIENTES"/>
 </Exp_Comparison>
 </Nary_Pred>
 </Hypothesis>
@@ -1477,13 +1918,21 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:3:1:1" value="VAGA"/>
 </Unary_Exp>
 </Type>
+<Type id="3862030337">
+<Unary_Exp op="POW">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:4:1:1" value="COR"/>
+</Unary_Exp>
+</Type>
+<Type id="3913416450">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:5:1" value="COR"/>
+</Type>
 <Type id="3817003670">
 <Unary_Exp op="POW">
-<Generic_Type tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:4:1:1"/>
+<Generic_Type tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:6:1:1"/>
 </Unary_Exp>
 </Type>
 <Type id="3750478463">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:5:1" value="VAGA"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:8:7:1" value="VAGA"/>
 </Type>
 </TypeInfos>
 </Proof_Obligations>

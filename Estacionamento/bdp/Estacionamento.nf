@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Estacionamento))==(btrue);
   Abstract_List_Invariant(Machine(Estacionamento))==(btrue);
   Context_List_Invariant(Machine(Estacionamento))==(btrue);
-  List_Invariant(Machine(Estacionamento))==(IDOSOS <: VAGA & DEFICIENTES <: VAGA & COMUNS <: VAGA & card(COMUNS)<=max_comuns & card(IDOSOS)<=max_idosos & card(DEFICIENTES)<=max_deficientes)
+  List_Invariant(Machine(Estacionamento))==(IDOSOS <: VAGA & DEFICIENTES <: VAGA & COMUNS <: VAGA & IDOSOS/\DEFICIENTES = {} & IDOSOS/\COMUNS = {} & DEFICIENTES/\COMUNS = {} & card(COMUNS)<=max_comuns & card(IDOSOS)<=max_idosos & card(DEFICIENTES)<=max_deficientes)
 END
 &
 THEORY ListAssertionsX IS
@@ -130,9 +130,9 @@ END
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Estacionamento),ocupar_comum)==(card(COMUNS)<max_comuns & vv: VAGA);
-  List_Precondition(Machine(Estacionamento),ocupar_deficiente)==(card(DEFICIENTES)<max_deficientes & vv: VAGA);
-  List_Precondition(Machine(Estacionamento),ocupar_idoso)==(card(IDOSOS)<max_idosos & vv: VAGA);
+  List_Precondition(Machine(Estacionamento),ocupar_comum)==(card(COMUNS)<max_comuns & vv: VAGA & vv/:COMUNS & vv/:IDOSOS & vv/:DEFICIENTES);
+  List_Precondition(Machine(Estacionamento),ocupar_deficiente)==(card(DEFICIENTES)<max_deficientes & vv: VAGA & vv/:COMUNS & vv/:IDOSOS & vv/:DEFICIENTES);
+  List_Precondition(Machine(Estacionamento),ocupar_idoso)==(card(IDOSOS)<max_idosos & vv: VAGA & vv/:COMUNS & vv/:IDOSOS & vv/:DEFICIENTES);
   List_Precondition(Machine(Estacionamento),liberar_comum)==(vv: VAGA);
   List_Precondition(Machine(Estacionamento),liberar_idoso)==(vv: VAGA);
   List_Precondition(Machine(Estacionamento),liberar_deficiente)==(vv: VAGA);
@@ -144,9 +144,9 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Estacionamento),liberar_deficiente)==(vv: VAGA | DEFICIENTES:=DEFICIENTES-{vv});
   Expanded_List_Substitution(Machine(Estacionamento),liberar_idoso)==(vv: VAGA | IDOSOS:=IDOSOS-{vv});
   Expanded_List_Substitution(Machine(Estacionamento),liberar_comum)==(vv: VAGA | COMUNS:=COMUNS-{vv});
-  Expanded_List_Substitution(Machine(Estacionamento),ocupar_idoso)==(card(IDOSOS)<max_idosos & vv: VAGA | IDOSOS:=IDOSOS\/{vv});
-  Expanded_List_Substitution(Machine(Estacionamento),ocupar_deficiente)==(card(DEFICIENTES)<max_deficientes & vv: VAGA | DEFICIENTES:=DEFICIENTES\/{vv});
-  Expanded_List_Substitution(Machine(Estacionamento),ocupar_comum)==(card(COMUNS)<max_comuns & vv: VAGA | COMUNS:=COMUNS\/{vv});
+  Expanded_List_Substitution(Machine(Estacionamento),ocupar_idoso)==(card(IDOSOS)<max_idosos & vv: VAGA & vv/:COMUNS & vv/:IDOSOS & vv/:DEFICIENTES | IDOSOS:=IDOSOS\/{vv});
+  Expanded_List_Substitution(Machine(Estacionamento),ocupar_deficiente)==(card(DEFICIENTES)<max_deficientes & vv: VAGA & vv/:COMUNS & vv/:IDOSOS & vv/:DEFICIENTES | DEFICIENTES:=DEFICIENTES\/{vv});
+  Expanded_List_Substitution(Machine(Estacionamento),ocupar_comum)==(card(COMUNS)<max_comuns & vv: VAGA & vv/:COMUNS & vv/:IDOSOS & vv/:DEFICIENTES | COMUNS:=COMUNS\/{vv});
   List_Substitution(Machine(Estacionamento),ocupar_comum)==(COMUNS:=COMUNS\/{vv});
   List_Substitution(Machine(Estacionamento),ocupar_deficiente)==(DEFICIENTES:=DEFICIENTES\/{vv});
   List_Substitution(Machine(Estacionamento),ocupar_idoso)==(IDOSOS:=IDOSOS\/{vv});
@@ -171,9 +171,10 @@ THEORY ListSetsX IS
   Inherited_List_Enumerated(Machine(Estacionamento))==(?);
   Inherited_List_Defered(Machine(Estacionamento))==(?);
   Inherited_List_Sets(Machine(Estacionamento))==(?);
-  List_Enumerated(Machine(Estacionamento))==(?);
+  List_Enumerated(Machine(Estacionamento))==(COR);
   List_Defered(Machine(Estacionamento))==(VAGA);
-  List_Sets(Machine(Estacionamento))==(VAGA)
+  List_Sets(Machine(Estacionamento))==(VAGA,COR);
+  Set_Definition(Machine(Estacionamento),COR)==({azul,amarelo,verde,vermelho})
 END
 &
 THEORY ListHiddenConstantsX IS
@@ -187,7 +188,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Estacionamento))==(btrue);
   Context_List_Properties(Machine(Estacionamento))==(btrue);
   Inherited_List_Properties(Machine(Estacionamento))==(btrue);
-  List_Properties(Machine(Estacionamento))==(VAGA: FIN(INTEGER) & not(VAGA = {}))
+  List_Properties(Machine(Estacionamento))==(VAGA: FIN(INTEGER) & not(VAGA = {}) & COR: FIN(INTEGER) & not(COR = {}))
 END
 &
 THEORY ListSeenInfoX END
@@ -203,7 +204,7 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Estacionamento)) == (VAGA | ? | COMUNS,DEFICIENTES,IDOSOS | ? | ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar_comum,liberar_idoso,liberar_deficiente,get_info_painel | ? | ? | max_comuns,max_idosos,max_deficientes | Estacionamento);
+  List_Of_Ids(Machine(Estacionamento)) == (VAGA,COR,azul,amarelo,verde,vermelho | ? | COMUNS,DEFICIENTES,IDOSOS | ? | ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar_comum,liberar_idoso,liberar_deficiente,get_info_painel | ? | ? | max_comuns,max_idosos,max_deficientes | Estacionamento);
   List_Of_HiddenCst_Ids(Machine(Estacionamento)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Estacionamento)) == (?);
   List_Of_VisibleVar_Ids(Machine(Estacionamento)) == (? | ?);
@@ -215,7 +216,11 @@ THEORY ParametersEnvX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Machine(Estacionamento)) == (Type(VAGA) == Cst(SetOf(atype(VAGA,"[VAGA","]VAGA"))))
+  Sets(Machine(Estacionamento)) == (Type(VAGA) == Cst(SetOf(atype(VAGA,"[VAGA","]VAGA")));Type(COR) == Cst(SetOf(etype(COR,0,3))))
+END
+&
+THEORY ConstantsEnvX IS
+  Constants(Machine(Estacionamento)) == (Type(azul) == Cst(etype(COR,0,3));Type(amarelo) == Cst(etype(COR,0,3));Type(verde) == Cst(etype(COR,0,3));Type(vermelho) == Cst(etype(COR,0,3)))
 END
 &
 THEORY VariablesEnvX IS
