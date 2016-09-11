@@ -7,95 +7,92 @@ CONSTRAINTS
     max_deficientes : NAT
 
 SETS
-    VAGA ; // Tipo VAGA
-    COR = { azul , amarelo , verde , vermelho }
+    VAGA ;                                 // Tipo VAGA
+    STATUS_VAGA = { livre , ocupada } ;    // status da vaga
+    COR = { azul , amarela , verde , vermelha } // Cor da lâmpada que fica na vaga
 
 ABSTRACT_VARIABLES
-    IDOSOS , DEFICIENTES , COMUNS // Cojuntos que representam as vagas
+    idosos , deficientes , comuns , // Cojuntos que representam as vagas
+    status // relação que mapeia de VAGA para STATUS_VAGA
 
 INVARIANT
     // Declaração dos tipos
-    IDOSOS      <: VAGA &
-    DEFICIENTES <: VAGA &
-    COMUNS      <: VAGA &
+    idosos      <: VAGA &
+    deficientes <: VAGA &
+    comuns      <: VAGA &
 
-    // Uma vaga só pode estar em um dos dois conjuntos
-    IDOSOS /\ DEFICIENTES = {} &
-    IDOSOS /\ COMUNS      = {} &
-    DEFICIENTES /\ COMUNS = {} &
+
+    // Uma vaga só pode estar em um dos três conjuntos
+    idosos /\ deficientes = {} &
+    idosos /\ comuns      = {} &
+    deficientes /\ comuns = {} &
 
     // Restrições
-    card ( COMUNS )   <= max_comuns &
-    card ( IDOSOS )   <= max_idosos &
-    card ( DEFICIENTES ) <= max_deficientes
+    card ( comuns )   <= max_comuns      &
+    card ( idosos )   <= max_idosos      &
+    card ( deficientes ) <= max_deficientes &
 
+    // Relações
+    status : VAGA --> STATUS_VAGA
 INITIALISATION
-    IDOSOS      := {} ||
-    DEFICIENTES := {} ||
-    COMUNS      := {}
+    idosos      := {} ||
+    deficientes := {} ||
+    comuns      := {} ||
+
+    status      := VAGA * { livre }
 
 OPERATIONS
     // Ocupação de vagas
     ocupar_comum ( vv ) =
-        PRE card ( COMUNS ) < max_comuns &
-            vv : VAGA                 &
-            vv /: COMUNS              &
-            vv /: IDOSOS              &
-            vv /: DEFICIENTES
-        THEN COMUNS := COMUNS \/ { vv }
+        PRE card ( comuns ) < max_comuns & // Não é card(comuns)
+            vv : comuns               &
+            status ( vv ) = livre
+        THEN status ( vv ) := ocupada
         END ;
+
     ocupar_deficiente ( vv ) =
-        PRE card ( DEFICIENTES ) < max_deficientes &
-            vv : VAGA                 &
-            vv /: COMUNS              &
-            vv /: IDOSOS              &
-            vv /: DEFICIENTES
-        THEN DEFICIENTES := DEFICIENTES \/ { vv }
+        PRE card ( deficientes ) < max_deficientes &
+            vv : deficientes                    &
+            status ( vv ) = livre
+        THEN status ( vv ) := ocupada
         END ;
+
     ocupar_idoso ( vv ) =
-        PRE card ( IDOSOS ) < max_idosos &
-            vv : VAGA                 &
-            vv /: COMUNS              &
-            vv /: IDOSOS              &
-            vv /: DEFICIENTES
-        THEN IDOSOS := IDOSOS \/ { vv }
+        PRE card ( idosos ) < max_idosos &
+            vv : idosos               &
+            status ( vv ) = livre
+        THEN status ( vv ) := ocupada
         END ;
 
     // Liberação de vagas
-    liberar_comum ( vv ) =
+    liberar ( vv ) =
         PRE vv : VAGA
-        THEN COMUNS := COMUNS - { vv }
+        THEN status ( vv ) := livre
         END ;
 
-    liberar_idoso ( vv ) =
+    cc <-- get_cor_lampada ( vv ) =
         PRE vv : VAGA
-        THEN IDOSOS := IDOSOS - { vv }
-        END ;
-
-    liberar_deficiente ( vv ) =
-        PRE vv : VAGA
-        THEN DEFICIENTES := DEFICIENTES - { vv }
-        END ;
+        THEN IF status ( vv ) = ocupada THEN
+                cc := vermelha
+            ELSE IF vv : idosos      THEN
+                cc := amarela
+            ELSE IF vv : deficientes THEN
+                cc := azul
+            ELSE // vv : comum
+                cc := verde
+            END
+            END
+        END
+    END
 
     // Exibição
-    qc , oc , qi , oi , qd , od <-- get_info_painel =
+    /*qc, oc, qi, oi, qd, od <-- get_info_painel =
     BEGIN
         qc := max_comuns        ||
-        oc := card ( COMUNS )   ||
+        oc := card(comuns)      ||
         qi := max_idosos        ||
-        oi := card ( IDOSOS )   ||
+        oi := card(idosos)      ||
         qd := max_deficientes   ||
-        od := card ( DEFICIENTES )
-    END /*;
-    
-    cc <-- get_cor_lampada(vv) =
-        CASE vv OF
-        EITHER 
-        OR
-        OR
-        ELSE
-        END
-        
-        cc <--
-    END*/
+        od := card(deficientes)
+    END;*/
 END
