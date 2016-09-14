@@ -93,55 +93,79 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Estacionamento))==(ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar,get_cor_lampada);
-  List_Operations(Machine(Estacionamento))==(ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar,get_cor_lampada)
+  Internal_List_Operations(Machine(Estacionamento))==(criar_comum,criar_idoso,criar_deficiente,ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar,get_cor_lampada,get_info_painel);
+  List_Operations(Machine(Estacionamento))==(criar_comum,criar_idoso,criar_deficiente,ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar,get_cor_lampada,get_info_painel)
 END
 &
 THEORY ListInputX IS
+  List_Input(Machine(Estacionamento),criar_comum)==(vv);
+  List_Input(Machine(Estacionamento),criar_idoso)==(vv);
+  List_Input(Machine(Estacionamento),criar_deficiente)==(vv);
   List_Input(Machine(Estacionamento),ocupar_comum)==(vv);
   List_Input(Machine(Estacionamento),ocupar_deficiente)==(vv);
   List_Input(Machine(Estacionamento),ocupar_idoso)==(vv);
   List_Input(Machine(Estacionamento),liberar)==(vv);
-  List_Input(Machine(Estacionamento),get_cor_lampada)==(vv)
+  List_Input(Machine(Estacionamento),get_cor_lampada)==(vv);
+  List_Input(Machine(Estacionamento),get_info_painel)==(?)
 END
 &
 THEORY ListOutputX IS
+  List_Output(Machine(Estacionamento),criar_comum)==(?);
+  List_Output(Machine(Estacionamento),criar_idoso)==(?);
+  List_Output(Machine(Estacionamento),criar_deficiente)==(?);
   List_Output(Machine(Estacionamento),ocupar_comum)==(?);
   List_Output(Machine(Estacionamento),ocupar_deficiente)==(?);
   List_Output(Machine(Estacionamento),ocupar_idoso)==(?);
   List_Output(Machine(Estacionamento),liberar)==(?);
-  List_Output(Machine(Estacionamento),get_cor_lampada)==(cc)
+  List_Output(Machine(Estacionamento),get_cor_lampada)==(cc);
+  List_Output(Machine(Estacionamento),get_info_painel)==(qc,oc,qi,oi,qd,od)
 END
 &
 THEORY ListHeaderX IS
+  List_Header(Machine(Estacionamento),criar_comum)==(criar_comum(vv));
+  List_Header(Machine(Estacionamento),criar_idoso)==(criar_idoso(vv));
+  List_Header(Machine(Estacionamento),criar_deficiente)==(criar_deficiente(vv));
   List_Header(Machine(Estacionamento),ocupar_comum)==(ocupar_comum(vv));
   List_Header(Machine(Estacionamento),ocupar_deficiente)==(ocupar_deficiente(vv));
   List_Header(Machine(Estacionamento),ocupar_idoso)==(ocupar_idoso(vv));
   List_Header(Machine(Estacionamento),liberar)==(liberar(vv));
-  List_Header(Machine(Estacionamento),get_cor_lampada)==(cc <-- get_cor_lampada(vv))
+  List_Header(Machine(Estacionamento),get_cor_lampada)==(cc <-- get_cor_lampada(vv));
+  List_Header(Machine(Estacionamento),get_info_painel)==(qc,oc,qi,oi,qd,od <-- get_info_painel)
 END
 &
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(Estacionamento),ocupar_comum)==(card(comuns)<max_comuns & vv: comuns & status(vv) = livre);
-  List_Precondition(Machine(Estacionamento),ocupar_deficiente)==(card(deficientes)<max_deficientes & vv: deficientes & status(vv) = livre);
-  List_Precondition(Machine(Estacionamento),ocupar_idoso)==(card(idosos)<max_idosos & vv: idosos & status(vv) = livre);
+  List_Precondition(Machine(Estacionamento),criar_comum)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(comuns)<max_comuns);
+  List_Precondition(Machine(Estacionamento),criar_idoso)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(idosos)<max_idosos);
+  List_Precondition(Machine(Estacionamento),criar_deficiente)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(deficientes)<max_deficientes);
+  List_Precondition(Machine(Estacionamento),ocupar_comum)==(vv: comuns & status(vv) = livre);
+  List_Precondition(Machine(Estacionamento),ocupar_deficiente)==(vv: deficientes & status(vv) = livre);
+  List_Precondition(Machine(Estacionamento),ocupar_idoso)==(vv: idosos & status(vv) = livre);
   List_Precondition(Machine(Estacionamento),liberar)==(vv: VAGA);
-  List_Precondition(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA)
+  List_Precondition(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA);
+  List_Precondition(Machine(Estacionamento),get_info_painel)==(oc: NAT)
 END
 &
 THEORY ListSubstitutionX IS
+  Expanded_List_Substitution(Machine(Estacionamento),get_info_painel)==(oc: NAT | qc,oc,qi,oi,qd,od:=card(comuns),card(comuns<|status|>{ocupada}),card(idosos),card(idosos<|status|>{ocupada}),card(deficientes),card(deficientes<|status|>{ocupada}));
   Expanded_List_Substitution(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA | status(vv) = ocupada ==> cc:=vermelha [] not(status(vv) = ocupada) ==> (vv: idosos ==> cc:=amarela [] not(vv: idosos) ==> (vv: deficientes ==> cc:=azul [] not(vv: deficientes) ==> cc:=verde)));
   Expanded_List_Substitution(Machine(Estacionamento),liberar)==(vv: VAGA | status:=status<+{vv|->livre});
-  Expanded_List_Substitution(Machine(Estacionamento),ocupar_idoso)==(card(idosos)<max_idosos & vv: idosos & status(vv) = livre | status:=status<+{vv|->ocupada});
-  Expanded_List_Substitution(Machine(Estacionamento),ocupar_deficiente)==(card(deficientes)<max_deficientes & vv: deficientes & status(vv) = livre | status:=status<+{vv|->ocupada});
-  Expanded_List_Substitution(Machine(Estacionamento),ocupar_comum)==(card(comuns)<max_comuns & vv: comuns & status(vv) = livre | status:=status<+{vv|->ocupada});
+  Expanded_List_Substitution(Machine(Estacionamento),ocupar_idoso)==(vv: idosos & status(vv) = livre | status:=status<+{vv|->ocupada});
+  Expanded_List_Substitution(Machine(Estacionamento),ocupar_deficiente)==(vv: deficientes & status(vv) = livre | status:=status<+{vv|->ocupada});
+  Expanded_List_Substitution(Machine(Estacionamento),ocupar_comum)==(vv: comuns & status(vv) = livre | status:=status<+{vv|->ocupada});
+  Expanded_List_Substitution(Machine(Estacionamento),criar_deficiente)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(deficientes)<max_deficientes | deficientes,status:=deficientes\/{vv},status<+{vv|->livre});
+  Expanded_List_Substitution(Machine(Estacionamento),criar_idoso)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(idosos)<max_idosos | idosos,status:=idosos\/{vv},status<+{vv|->livre});
+  Expanded_List_Substitution(Machine(Estacionamento),criar_comum)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(comuns)<max_comuns | comuns,status:=comuns\/{vv},status<+{vv|->livre});
+  List_Substitution(Machine(Estacionamento),criar_comum)==(comuns:=comuns\/{vv} || status(vv):=livre);
+  List_Substitution(Machine(Estacionamento),criar_idoso)==(idosos:=idosos\/{vv} || status(vv):=livre);
+  List_Substitution(Machine(Estacionamento),criar_deficiente)==(deficientes:=deficientes\/{vv} || status(vv):=livre);
   List_Substitution(Machine(Estacionamento),ocupar_comum)==(status(vv):=ocupada);
   List_Substitution(Machine(Estacionamento),ocupar_deficiente)==(status(vv):=ocupada);
   List_Substitution(Machine(Estacionamento),ocupar_idoso)==(status(vv):=ocupada);
   List_Substitution(Machine(Estacionamento),liberar)==(status(vv):=livre);
-  List_Substitution(Machine(Estacionamento),get_cor_lampada)==(IF status(vv) = ocupada THEN cc:=vermelha ELSE IF vv: idosos THEN cc:=amarela ELSE IF vv: deficientes THEN cc:=azul ELSE cc:=verde END END END)
+  List_Substitution(Machine(Estacionamento),get_cor_lampada)==(IF status(vv) = ocupada THEN cc:=vermelha ELSE IF vv: idosos THEN cc:=amarela ELSE IF vv: deficientes THEN cc:=azul ELSE cc:=verde END END END);
+  List_Substitution(Machine(Estacionamento),get_info_painel)==(qc:=card(comuns) || oc:=card(comuns<|status|>{ocupada}) || qi:=card(idosos) || oi:=card(idosos<|status|>{ocupada}) || qd:=card(deficientes) || od:=card(deficientes<|status|>{ocupada}))
 END
 &
 THEORY ListConstantsX IS
@@ -183,15 +207,19 @@ END
 THEORY ListSeenInfoX END
 &
 THEORY ListANYVarX IS
+  List_ANY_Var(Machine(Estacionamento),criar_comum)==(?);
+  List_ANY_Var(Machine(Estacionamento),criar_idoso)==(?);
+  List_ANY_Var(Machine(Estacionamento),criar_deficiente)==(?);
   List_ANY_Var(Machine(Estacionamento),ocupar_comum)==(?);
   List_ANY_Var(Machine(Estacionamento),ocupar_deficiente)==(?);
   List_ANY_Var(Machine(Estacionamento),ocupar_idoso)==(?);
   List_ANY_Var(Machine(Estacionamento),liberar)==(?);
-  List_ANY_Var(Machine(Estacionamento),get_cor_lampada)==(?)
+  List_ANY_Var(Machine(Estacionamento),get_cor_lampada)==(?);
+  List_ANY_Var(Machine(Estacionamento),get_info_painel)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Estacionamento)) == (VAGA,STATUS_VAGA,COR,livre,ocupada,azul,amarela,verde,vermelha | ? | status,comuns,deficientes,idosos | ? | ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar,get_cor_lampada | ? | ? | max_comuns,max_idosos,max_deficientes | Estacionamento);
+  List_Of_Ids(Machine(Estacionamento)) == (VAGA,STATUS_VAGA,COR,livre,ocupada,azul,amarela,verde,vermelha | ? | status,comuns,deficientes,idosos | ? | criar_comum,criar_idoso,criar_deficiente,ocupar_comum,ocupar_deficiente,ocupar_idoso,liberar,get_cor_lampada,get_info_painel | ? | ? | max_comuns,max_idosos,max_deficientes | Estacionamento);
   List_Of_HiddenCst_Ids(Machine(Estacionamento)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Estacionamento)) == (?);
   List_Of_VisibleVar_Ids(Machine(Estacionamento)) == (? | ?);
@@ -215,8 +243,8 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Estacionamento)) == (Type(get_cor_lampada) == Cst(etype(COR,?,?),atype(VAGA,?,?));Type(liberar) == Cst(No_type,atype(VAGA,?,?));Type(ocupar_idoso) == Cst(No_type,atype(VAGA,?,?));Type(ocupar_deficiente) == Cst(No_type,atype(VAGA,?,?));Type(ocupar_comum) == Cst(No_type,atype(VAGA,?,?)));
-  Observers(Machine(Estacionamento)) == (Type(get_cor_lampada) == Cst(etype(COR,?,?),atype(VAGA,?,?)))
+  Operations(Machine(Estacionamento)) == (Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_cor_lampada) == Cst(etype(COR,?,?),atype(VAGA,?,?));Type(liberar) == Cst(No_type,atype(VAGA,?,?));Type(ocupar_idoso) == Cst(No_type,atype(VAGA,?,?));Type(ocupar_deficiente) == Cst(No_type,atype(VAGA,?,?));Type(ocupar_comum) == Cst(No_type,atype(VAGA,?,?));Type(criar_deficiente) == Cst(No_type,atype(VAGA,?,?));Type(criar_idoso) == Cst(No_type,atype(VAGA,?,?));Type(criar_comum) == Cst(No_type,atype(VAGA,?,?)));
+  Observers(Machine(Estacionamento)) == (Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_cor_lampada) == Cst(etype(COR,?,?),atype(VAGA,?,?)))
 END
 &
 THEORY TCIntRdX IS

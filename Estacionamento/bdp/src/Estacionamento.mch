@@ -42,24 +42,55 @@ INITIALISATION
     status      := VAGA * { livre }
 
 OPERATIONS
+    // Criação de vagas
+    criar_comum ( vv ) =
+        PRE vv : VAGA         &
+            vv /: comuns      &
+            vv /: idosos      &
+            vv /: deficientes &
+            card ( comuns ) < max_comuns
+        THEN
+            comuns := comuns \/ { vv } ||
+            status ( vv ) := livre
+        END ;
+
+    criar_idoso ( vv ) =
+        PRE vv : VAGA         &
+            vv /: comuns      &
+            vv /: idosos      &
+            vv /: deficientes &
+            card ( idosos ) < max_idosos
+        THEN
+            idosos := idosos \/ { vv } ||
+            status ( vv ) := livre
+        END ;
+
+    criar_deficiente ( vv ) =
+        PRE vv : VAGA         &
+            vv /: comuns      &
+            vv /: idosos      &
+            vv /: deficientes &
+            card ( deficientes ) < max_deficientes
+        THEN
+            deficientes := deficientes \/ { vv } ||
+            status ( vv ) := livre
+        END ;
+
     // Ocupação de vagas
     ocupar_comum ( vv ) =
-        PRE card ( comuns ) < max_comuns & // Não é card(comuns)
-            vv : comuns               &
+        PRE vv : comuns        &
             status ( vv ) = livre
         THEN status ( vv ) := ocupada
         END ;
 
     ocupar_deficiente ( vv ) =
-        PRE card ( deficientes ) < max_deficientes &
-            vv : deficientes                    &
+        PRE vv : deficientes   &
             status ( vv ) = livre
         THEN status ( vv ) := ocupada
         END ;
 
     ocupar_idoso ( vv ) =
-        PRE card ( idosos ) < max_idosos &
-            vv : idosos               &
+        PRE vv : idosos        &
             status ( vv ) = livre
         THEN status ( vv ) := ocupada
         END ;
@@ -83,16 +114,24 @@ OPERATIONS
             END
             END
         END
-    END
+    END ;
 
     // Exibição
-    /*qc, oc, qi, oi, qd, od <-- get_info_painel =
-    BEGIN
-        qc := max_comuns        ||
-        oc := card(comuns)      ||
-        qi := max_idosos        ||
-        oi := card(idosos)      ||
-        qd := max_deficientes   ||
-        od := card(deficientes)
-    END;*/
+
+    /* qc: Quantidade de vagas Comuns
+       oc: quantidade de vagas Ocupadas Comuns
+       as demais são análogas para deficientes e idosos.
+    */
+    qc , oc , qi , oi , qd , od <-- get_info_painel =
+    PRE oc : NAT
+    THEN
+        qc := card ( comuns )                          ||
+        oc := card ( comuns <| status |> { ocupada } ) ||
+
+        qi := card ( idosos )                          ||
+        oi := card ( idosos <| status |> { ocupada } ) ||
+
+        qd := card ( deficientes )                     ||
+        od := card ( deficientes <| status |> { ocupada } )
+    END
 END
