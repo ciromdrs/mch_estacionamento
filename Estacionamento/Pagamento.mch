@@ -1,0 +1,4 @@
+MACHINE
+    Pagamento
+
+END

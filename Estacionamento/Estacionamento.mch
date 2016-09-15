@@ -105,24 +105,51 @@ OPERATIONS
     
     // Consultas
     cc <-- get_cor_lampada(vv) =
-        PRE vv : VAGA 
-        THEN cc := cor(vv)
-    END;
+        PRE vv : VAGA &
+            vv : dom(cor) THEN
+            cc := cor(vv)
+        END;
     
     /* qc: Quantidade de vagas Comuns
        oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 
-    PRE oc : NAT
-    THEN
-        qc := card(comuns)                             ||
-        oc := card(comuns <| status |> {ocupada})      ||
+        PRE oc : NAT THEN
+            qc := card(comuns)                             ||
+            oc := card(comuns <| status |> {ocupada})      ||
+            
+            qi := card(idosos)                             ||
+            oi := card(idosos <| status |> {ocupada})      ||
+            
+            qd := card(deficientes)                        ||
+            od := card(deficientes <| status |> {ocupada})
+        END;
+    
+    vv <-- indicar_comum = 
+        PRE card(comuns <| status |> {livre}) > 0 THEN
+            ANY uu
+            WHERE uu : comuns &
+                  status(uu) = livre THEN
+                      vv := uu
+            END
+        END;
         
-        qi := card(idosos)                             ||
-        oi := card(idosos <| status |> {ocupada})      ||
+    vv <-- indicar_idoso = 
+        PRE card(idosos <| status |> {livre}) > 0 THEN
+            ANY uu
+            WHERE uu : idosos &
+                  status(uu) = livre THEN
+                      vv := uu
+            END
+        END;
         
-        qd := card(deficientes)                        ||
-        od := card(deficientes <| status |> {ocupada})
-    END
+    vv <-- indicar_deficiente = 
+        PRE card(deficientes <| status |> {livre}) > 0 THEN
+            ANY uu
+            WHERE uu : deficientes &
+                  status(uu) = livre THEN
+                      vv := uu
+            END
+        END
 END
