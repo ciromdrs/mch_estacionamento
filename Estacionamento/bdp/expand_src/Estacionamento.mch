@@ -16,6 +16,7 @@ ABSTRACT_VARIABLES
     status , // relação que mapeia de VAGA para STATUS_VAGA
     cor // relação que mapeia de VAGA para CORES
 
+
 INVARIANT
     // Declaração dos tipos
     idosos      <: VAGA &
@@ -33,8 +34,8 @@ INVARIANT
     card ( deficientes ) <= max_deficientes &
 
     // Relações
-    status : VAGA --> STATUS_VAGA &
-    cor    : VAGA --> CORES
+    status  : VAGA   --> STATUS_VAGA &
+    cor     : VAGA   --> CORES
 
 INITIALISATION
     idosos      := {} ||
@@ -105,7 +106,8 @@ OPERATIONS
 
     // Consultas
     cc <-- get_cor_lampada ( vv ) =
-        PRE vv : VAGA THEN
+        PRE vv : VAGA &
+            vv : dom ( cor ) THEN
             cc := cor ( vv )
         END ;
 

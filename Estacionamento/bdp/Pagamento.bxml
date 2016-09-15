@@ -1,0 +1,102 @@
+<Machine name='Pagamento' type='abstraction'>
+<Parameters>
+<Id value='preco' typref='2701647786'/>
+<Id value='lim' typref='2701647786'/>
+</Parameters>
+<Constraints>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='preco' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='lim' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Constraints>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<Operations>
+<Operation name='calcular_preco'>
+<Output_Parameters>
+<Id value='pp' typref='2701647786'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='ini' typref='2701647786'/>
+<Id value='fim' typref='2701647786'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='pp' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='ini' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='fim' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op='&gt;='>
+<Id value='fim' typref='2701647786'/>
+<Id value='ini' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&gt;'>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='fim' typref='2701647786'/>
+<Id value='ini' typref='2701647786'/>
+</Binary_Exp>
+<Id value='lim' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Assignement_Sub>
+<Variables>
+<Id value='pp' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='fim' typref='2701647786'/>
+<Binary_Exp op='*' typref='2701647786'>
+<Id value='ini' typref='2701647786'/>
+<Id value='preco' typref='2701647786'/>
+</Binary_Exp>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='pp' typref='2701647786'/>
+</Variables>
+<Values>
+<Integer_Literal value='0' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

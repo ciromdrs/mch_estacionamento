@@ -4,8 +4,14 @@
     <project decomp_dir="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\expand_src" old_decomp_dir="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\src">
         <!-- Definition directory list -->
         <!-- Component file list -->
+        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Controle" suffix="mch" user="Saul">
+            <component name="Controle" type="specification" />
+        </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento" suffix="mch" user="Saul">
             <component name="Estacionamento" type="specification" />
+        </component_file>
+        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Pagamento" suffix="mch" user="Saul">
+            <component name="Pagamento" type="specification" />
         </component_file>
     </project>
 </db_xml>

@@ -502,10 +502,18 @@
 <Id value='vv' typref='3750478463'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='vv' typref='3750478463'/>
 <Id value='VAGA' typref='1611150874'/>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='vv' typref='3750478463'/>
+<Unary_Exp op='dom' typref='1611150874'>
+<Id value='cor' typref='3567837205'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>

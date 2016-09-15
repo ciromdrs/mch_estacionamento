@@ -1,0 +1,26 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(3) & _f(9) & _f(10) & adiantar.1,(_f(4) & _f(5) => _f(11));
+_f(1) & _f(2) & _f(3) & Initialisation.2,(_f(4) & _f(7) => _f(8));
+_f(1) & _f(2) & _f(3) & Initialisation.1,(_f(4) & _f(5) => _f(6))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+((preco_minuto) : (NAT)) & ((lim_gratuito) : (NAT));
+TICKET: FIN(INTEGER) & not(TICKET = {});
+"Invariant is preserved";
+"Check invariant ((hora) : (NAT))";
+((0) : (NAT));
+"Check invariant ((chegada) : (((TICKET) --> (NAT))))";
+(((TICKET * {0})) : (((TICKET) --> (NAT))));
+((hora) : (NAT)) & chegada : TICKET +-> NAT & dom(chegada) = TICKET & ((chegada) : (((TICKET) --> (NAT))));
+((mm) : ((NAT-{0})));
+(((hora + mm)) : (NAT));
+((uu) : (TICKET));
+not(uu : dom(chegada));
+((preco_minuto) : (NAT));
+((hora) : (NAT))
+END
+&
+THEORY EnumerateX
+END

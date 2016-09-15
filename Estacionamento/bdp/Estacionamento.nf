@@ -144,7 +144,7 @@ THEORY ListPreconditionX IS
   List_Precondition(Machine(Estacionamento),criar_deficiente)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(deficientes)<max_deficientes);
   List_Precondition(Machine(Estacionamento),ocupar)==(vv: VAGA & status(vv) = livre & (vv: comuns or vv: deficientes or vv: idosos));
   List_Precondition(Machine(Estacionamento),liberar)==(vv: VAGA);
-  List_Precondition(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA);
+  List_Precondition(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA & vv: dom(cor));
   List_Precondition(Machine(Estacionamento),get_info_painel)==(oc: NAT);
   List_Precondition(Machine(Estacionamento),indicar_comum)==(card(comuns<|status|>{livre})>0);
   List_Precondition(Machine(Estacionamento),indicar_idoso)==(card(idosos<|status|>{livre})>0);
@@ -156,7 +156,7 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Estacionamento),indicar_idoso)==(card(idosos<|status|>{livre})>0 | @uu.(uu: idosos & status(uu) = livre ==> vv:=uu));
   Expanded_List_Substitution(Machine(Estacionamento),indicar_comum)==(card(comuns<|status|>{livre})>0 | @uu.(uu: comuns & status(uu) = livre ==> vv:=uu));
   Expanded_List_Substitution(Machine(Estacionamento),get_info_painel)==(oc: NAT | qc,oc,qi,oi,qd,od:=card(comuns),card(comuns<|status|>{ocupada}),card(idosos),card(idosos<|status|>{ocupada}),card(deficientes),card(deficientes<|status|>{ocupada}));
-  Expanded_List_Substitution(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA | cc:=cor(vv));
+  Expanded_List_Substitution(Machine(Estacionamento),get_cor_lampada)==(vv: VAGA & vv: dom(cor) | cc:=cor(vv));
   Expanded_List_Substitution(Machine(Estacionamento),liberar)==(vv: VAGA | status:=status<+{vv|->livre} || (vv: idosos ==> cor:=cor<+{vv|->azul} [] not(vv: idosos) ==> (vv: deficientes ==> cor:=cor<+{vv|->amarela} [] not(vv: deficientes) ==> cor:=cor<+{vv|->verde})));
   Expanded_List_Substitution(Machine(Estacionamento),ocupar)==(vv: VAGA & status(vv) = livre & (vv: comuns or vv: deficientes or vv: idosos) | status,cor:=status<+{vv|->ocupada},cor<+{vv|->vermelha});
   Expanded_List_Substitution(Machine(Estacionamento),criar_deficiente)==(vv: VAGA & vv/:comuns & vv/:idosos & vv/:deficientes & card(deficientes)<max_deficientes | deficientes,cor:=deficientes\/{vv},cor<+{vv|->amarela});
