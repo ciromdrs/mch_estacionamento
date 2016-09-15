@@ -9,18 +9,18 @@ CONSTRAINTS
 SETS
     VAGA ;                                 // Tipo VAGA
     STATUS_VAGA = { livre , ocupada } ;    // status da vaga
-    COR = { azul , amarela , verde , vermelha } // Cor da lâmpada que fica na vaga
+    CORES = { azul , amarela , verde , vermelha } // Cor da lâmpada que fica na vaga
 
 ABSTRACT_VARIABLES
     idosos , deficientes , comuns , // Cojuntos que representam as vagas
-    status // relação que mapeia de VAGA para STATUS_VAGA
+    status , // relação que mapeia de VAGA para STATUS_VAGA
+    cor // relação que mapeia de VAGA para CORES
 
 INVARIANT
     // Declaração dos tipos
     idosos      <: VAGA &
     deficientes <: VAGA &
     comuns      <: VAGA &
-
 
     // Uma vaga só pode estar em um dos três conjuntos
     idosos /\ deficientes = {} &
@@ -33,13 +33,16 @@ INVARIANT
     card ( deficientes ) <= max_deficientes &
 
     // Relações
-    status : VAGA --> STATUS_VAGA
+    status : VAGA --> STATUS_VAGA &
+    cor    : VAGA --> CORES
+
 INITIALISATION
     idosos      := {} ||
     deficientes := {} ||
     comuns      := {} ||
 
-    status      := VAGA * { livre }
+    status      := VAGA * { livre } ||
+    cor         := VAGA * { verde }
 
 OPERATIONS
     // Criação de vagas
@@ -50,8 +53,7 @@ OPERATIONS
             vv /: deficientes &
             card ( comuns ) < max_comuns
         THEN
-            comuns := comuns \/ { vv } ||
-            status ( vv ) := livre
+            comuns := comuns \/ { vv }
         END ;
 
     criar_idoso ( vv ) =
@@ -61,8 +63,8 @@ OPERATIONS
             vv /: deficientes &
             card ( idosos ) < max_idosos
         THEN
-            idosos := idosos \/ { vv } ||
-            status ( vv ) := livre
+            idosos  := idosos \/ { vv } ||
+            cor ( vv ) := azul
         END ;
 
     criar_deficiente ( vv ) =
@@ -73,50 +75,50 @@ OPERATIONS
             card ( deficientes ) < max_deficientes
         THEN
             deficientes := deficientes \/ { vv } ||
-            status ( vv ) := livre
+            cor ( vv )  := amarela
         END ;
 
     // Ocupação de vagas
     ocupar_comum ( vv ) =
         PRE vv : comuns        &
             status ( vv ) = livre
-        THEN status ( vv ) := ocupada
+        THEN status ( vv ) := ocupada ||
+             cor ( vv ) := vermelha
         END ;
 
     ocupar_deficiente ( vv ) =
         PRE vv : deficientes   &
             status ( vv ) = livre
-        THEN status ( vv ) := ocupada
+        THEN status ( vv ) := ocupada ||
+             cor ( vv ) := vermelha
         END ;
 
     ocupar_idoso ( vv ) =
         PRE vv : idosos        &
             status ( vv ) = livre
-        THEN status ( vv ) := ocupada
+        THEN status ( vv ) := ocupada ||
+             cor ( vv ) := vermelha
         END ;
 
     // Liberação de vagas
     liberar ( vv ) =
         PRE vv : VAGA
-        THEN status ( vv ) := livre
+        THEN status ( vv ) := livre ||
+            IF vv : idosos THEN
+                cor ( vv ) := azul
+            ELSE IF vv : deficientes THEN
+                cor ( vv ) := amarela
+            ELSE // vv : comum
+                cor ( vv ) := verde
+            END
+            END
         END ;
 
+    // Consultas
     cc <-- get_cor_lampada ( vv ) =
         PRE vv : VAGA
-        THEN IF status ( vv ) = ocupada THEN
-                cc := vermelha
-            ELSE IF vv : idosos      THEN
-                cc := amarela
-            ELSE IF vv : deficientes THEN
-                cc := azul
-            ELSE // vv : comum
-                cc := verde
-            END
-            END
-        END
+        THEN cc := cor ( vv )
     END ;
-
-    // Exibição
 
     /* qc: Quantidade de vagas Comuns
        oc: quantidade de vagas Ocupadas Comuns
