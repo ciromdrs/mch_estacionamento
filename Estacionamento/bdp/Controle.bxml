@@ -1,38 +1,59 @@
 <Machine name='Controle' type='abstraction'>
 <Parameters>
-<Id value='preco_minuto' typref='2701647786'/>
-<Id value='lim_gratuito' typref='2701647786'/>
+<Id value='preco' typref='2701647786'/>
+<Id value='lim' typref='2701647786'/>
+<Id value='max_comuns' typref='2701647786'/>
+<Id value='max_idosos' typref='2701647786'/>
+<Id value='max_deficientes' typref='2701647786'/>
 </Parameters>
 <Constraints>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='preco_minuto' typref='2701647786'/>
+<Id value='preco' typref='2701647786'/>
 <Id value='NAT' typref='3603043417'/>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
-<Id value='lim_gratuito' typref='2701647786'/>
+<Id value='lim' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='max_comuns' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='max_idosos' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='max_deficientes' typref='2701647786'/>
 <Id value='NAT' typref='3603043417'/>
 </Exp_Comparison>
 </Nary_Pred>
 </Constraints>
-<Includes>
+<Extends>
 <Referenced_Machine>
-<Name>Pagamento</Name>
+<Name>Estacionamento</Name>
 <Parameters>
-<Id value='preco_minuto' typref='2701647786'/>
-<Id value='lim_gratuito' typref='2701647786'/>
+<Id value='max_comuns' typref='2701647786'/>
+<Id value='max_idosos' typref='2701647786'/>
+<Id value='max_deficientes' typref='2701647786'/>
 </Parameters>
 </Referenced_Machine>
-</Includes>
-<Promotes>
-<Promoted_Operation>calcular_preco</Promoted_Operation>
-</Promotes>
+</Extends>
 <Sets>
+<Set>
+<Id value='SIM_NAO' typref='1592569103'/>
+<Enumerated_Values>
+<Id value='sim' typref='3116095348'/>
+<Id value='nao' typref='3116095348'/>
+</Enumerated_Values>
+</Set>
 <Set>
 <Id value='TICKET' typref='678303745'/>
 </Set>
 </Sets>
 <Abstract_Variables>
+<Id value='pagou' typref='3215535036'/>
 <Id value='chegada' typref='3994939398'/>
 <Id value='hora' typref='2701647786'/>
 </Abstract_Variables>
@@ -49,6 +70,13 @@
 <Id value='NAT' typref='3603043417'/>
 </Binary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='pagou' typref='3215535036'/>
+<Binary_Exp op='--&gt;' typref='3310327325'>
+<Id value='TICKET' typref='678303745'/>
+<Id value='SIM_NAO' typref='1592569103'/>
+</Binary_Exp>
+</Exp_Comparison>
 </Nary_Pred>
 </Invariant>
 <Initialisation>
@@ -59,6 +87,19 @@
 </Variables>
 <Values>
 <Integer_Literal value='0' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='pagou' typref='3215535036'/>
+</Variables>
+<Values>
+<Binary_Exp op='*' typref='3215535036'>
+<Id value='TICKET' typref='678303745'/>
+<Nary_Exp op='{' typref='1592569103'>
+<Id value='nao' typref='3116095348'/>
+</Nary_Exp>
+</Binary_Exp>
 </Values>
 </Assignement_Sub>
 <Assignement_Sub>
@@ -82,10 +123,19 @@
 <Id value='mm' typref='2701647786'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='mm' typref='2701647786'/>
 <Id value='NAT1' typref='3603043417'/>
 </Exp_Comparison>
+<Exp_Comparison op='&lt;'>
+<Binary_Exp op='+' typref='2701647786'>
+<Id value='hora' typref='2701647786'/>
+<Id value='mm' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='1000000' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>
@@ -137,6 +187,162 @@
 </ANY_Sub>
 </Body>
 </Operation>
+<Operation name='pagar_ticket'>
+<Output_Parameters>
+<Id value='troco' typref='2701647786'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='ticket' typref='734628952'/>
+<Id value='dinheiro' typref='2701647786'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='troco' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='dinheiro' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='ticket' typref='734628952'/>
+<Unary_Exp op='dom' typref='678303745'>
+<Id value='chegada' typref='3994939398'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&lt;='>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='hora' typref='2701647786'/>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='chegada' typref='3994939398'/>
+<Id value='ticket' typref='734628952'/>
+</Binary_Exp>
+</Binary_Exp>
+<Id value='lim' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='troco' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='dinheiro' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Binary_Exp op='(' typref='3116095348'>
+<Id value='pagou' typref='3215535036'/>
+<Id value='ticket' typref='734628952'/>
+</Binary_Exp>
+</Variables>
+<Values>
+<Id value='sim' typref='3116095348'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Then>
+<Else>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='&gt;='>
+<Binary_Exp op='-' typref='2701647786'>
+<Binary_Exp op='*' typref='2701647786'>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='hora' typref='2701647786'/>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='chegada' typref='3994939398'/>
+<Id value='ticket' typref='734628952'/>
+</Binary_Exp>
+</Binary_Exp>
+<Id value='preco' typref='2701647786'/>
+</Binary_Exp>
+<Id value='dinheiro' typref='2701647786'/>
+</Binary_Exp>
+<Integer_Literal value='0' typref='2701647786'/>
+</Exp_Comparison>
+</Condition>
+<Then>
+<Nary_Sub op='||'>
+<Assignement_Sub>
+<Variables>
+<Id value='troco' typref='2701647786'/>
+</Variables>
+<Values>
+<Binary_Exp op='-' typref='2701647786'>
+<Binary_Exp op='*' typref='2701647786'>
+<Binary_Exp op='-' typref='2701647786'>
+<Id value='hora' typref='2701647786'/>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='chegada' typref='3994939398'/>
+<Id value='ticket' typref='734628952'/>
+</Binary_Exp>
+</Binary_Exp>
+<Id value='preco' typref='2701647786'/>
+</Binary_Exp>
+<Id value='dinheiro' typref='2701647786'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Binary_Exp op='(' typref='3116095348'>
+<Id value='pagou' typref='3215535036'/>
+<Id value='ticket' typref='734628952'/>
+</Binary_Exp>
+</Variables>
+<Values>
+<Id value='sim' typref='3116095348'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
+</Then>
+<Else>
+<Assignement_Sub>
+<Variables>
+<Id value='troco' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='dinheiro' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
+</Else>
+</If_Sub>
+</Else>
+</If_Sub>
+</Body>
+</Operation>
+<Operation name='abrir_cancela'>
+<Input_Parameters>
+<Id value='tt' typref='734628952'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='tt' typref='734628952'/>
+<Id value='TICKET' typref='678303745'/>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Binary_Exp op='(' typref='3116095348'>
+<Id value='pagou' typref='3215535036'/>
+<Id value='tt' typref='734628952'/>
+</Binary_Exp>
+<Id value='sim' typref='3116095348'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Skip/>
+</Body>
+</Operation>
 </Operations>
 <TypeInfos>
 <Type id='2701647786'>
@@ -147,9 +353,25 @@
 <Id value='INTEGER'/>
 </Unary_Exp>
 </Type>
+<Type id='1592569103'>
+<Unary_Exp op='POW'>
+<Id value='SIM_NAO'/>
+</Unary_Exp>
+</Type>
+<Type id='3116095348'>
+<Id value='SIM_NAO'/>
+</Type>
 <Type id='678303745'>
 <Unary_Exp op='POW'>
 <Id value='TICKET'/>
+</Unary_Exp>
+</Type>
+<Type id='3215535036'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='TICKET'/>
+<Id value='SIM_NAO'/>
+</Binary_Exp>
 </Unary_Exp>
 </Type>
 <Type id='3994939398'>
@@ -166,6 +388,16 @@
 <Binary_Exp op='*'>
 <Id value='TICKET'/>
 <Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3310327325'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='TICKET'/>
+<Id value='SIM_NAO'/>
 </Binary_Exp>
 </Unary_Exp>
 </Unary_Exp>

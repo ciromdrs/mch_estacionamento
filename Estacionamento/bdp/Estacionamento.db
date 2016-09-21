@@ -10,8 +10,5 @@
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento" suffix="mch" user="Saul">
             <component name="Estacionamento" type="specification" />
         </component_file>
-        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Pagamento" suffix="mch" user="Saul">
-            <component name="Pagamento" type="specification" />
-        </component_file>
     </project>
 </db_xml>

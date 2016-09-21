@@ -1,26 +1,74 @@
 THEORY ProofList IS
-_f(1) & _f(2) & _f(3) & _f(9) & _f(10) & adiantar.1,(_f(4) & _f(5) => _f(11));
-_f(1) & _f(2) & _f(3) & Initialisation.2,(_f(4) & _f(7) => _f(8));
-_f(1) & _f(2) & _f(3) & Initialisation.1,(_f(4) & _f(5) => _f(6))
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & WellDefinedness_Precondition_abrir_cancela.2,(_f(50) & _f(48) => _f(52));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & WellDefinedness_Precondition_abrir_cancela.1,(_f(50) & _f(48) => _f(51));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & _f(29) & WellDefinedness_pagar_ticket.3,(_f(33) & _f(31) & _f(48) => _f(49));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & _f(29) & WellDefinedness_pagar_ticket.2,(_f(33) & _f(48) => _f(49));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & _f(29) & WellDefinedness_pagar_ticket.1,(_f(48) => _f(49));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & _f(29) & pagar_ticket.2,(_f(33) & _f(31) & _f(17) & _f(22) => _f(34));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & _f(29) & pagar_ticket.1,(_f(30) & _f(17) & _f(22) => _f(34));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & _f(24) & _f(25) & adiantar.1,(_f(17) & _f(18) => _f(26));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & Initialisation.3,(_f(6) & _f(6) & _f(6) & _f(7) & _f(7) & _f(7) & _f(8) & _f(9) & _f(10) & _f(11) & _f(12) & _f(13) & _f(14) & _f(15) & _f(16) & _f(17) & _f(22) => _f(23));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & Initialisation.2,(_f(6) & _f(6) & _f(6) & _f(7) & _f(7) & _f(7) & _f(8) & _f(9) & _f(10) & _f(11) & _f(12) & _f(13) & _f(14) & _f(15) & _f(16) & _f(17) & _f(20) => _f(21));
+_f(1) & _f(2) & _f(3) & _f(4) & _f(5) & Initialisation.1,(_f(6) & _f(6) & _f(6) & _f(7) & _f(7) & _f(7) & _f(8) & _f(9) & _f(10) & _f(11) & _f(12) & _f(13) & _f(14) & _f(15) & _f(16) & _f(17) & _f(18) => _f(19))
 END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-((preco_minuto) : (NAT)) & ((lim_gratuito) : (NAT));
-TICKET: FIN(INTEGER) & not(TICKET = {});
+((preco) : (NAT)) & ((lim) : (NAT)) & ((max_comuns) : (NAT)) & ((max_idosos) : (NAT)) & ((max_deficientes) : (NAT));
+((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) & not(((1..2)*{SIM_NAO}) = {}) & TICKET: FIN(INTEGER) & not(TICKET = {});
+VAGA: FIN(INTEGER) & not(VAGA = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {});
+idosos : POW( VAGA) & deficientes : POW( VAGA) & comuns : POW( VAGA) & ((((idosos) /\ (deficientes))) = ({})) & ((((idosos) /\ (comuns))) = ({})) & ((((deficientes) /\ (comuns))) = ({})) & (card(comuns) <= max_comuns) & (card(idosos) <= max_idosos) & (card(deficientes) <= max_deficientes) & status : VAGA +-> ((1..2)*{STATUS_VAGA}) & dom(status) = VAGA & ((status) : (((VAGA) --> (((1..2)*{STATUS_VAGA}))))) & cor : VAGA +-> ((1..4)*{CORES}) & dom(cor) = VAGA & ((cor) : (((VAGA) --> (((1..4)*{CORES})))));
+{} : POW( VAGA);
+(((({}) /\ ({}))) = ({}));
+(card({}) <= max_comuns);
+(card({}) <= max_idosos);
+(card({}) <= max_deficientes);
+(VAGA * {(1|->STATUS_VAGA)}) : VAGA +-> ((1..2)*{STATUS_VAGA});
+dom((VAGA * {(1|->STATUS_VAGA)})) = VAGA;
+(((VAGA * {(1|->STATUS_VAGA)})) : (((VAGA) --> (((1..2)*{STATUS_VAGA})))));
+(VAGA * {(3|->CORES)}) : VAGA +-> ((1..4)*{CORES});
+dom((VAGA * {(3|->CORES)})) = VAGA;
+(((VAGA * {(3|->CORES)})) : (((VAGA) --> (((1..4)*{CORES})))));
 "Invariant is preserved";
 "Check invariant ((hora) : (NAT))";
 ((0) : (NAT));
 "Check invariant ((chegada) : (((TICKET) --> (NAT))))";
 (((TICKET * {0})) : (((TICKET) --> (NAT))));
-((hora) : (NAT)) & chegada : TICKET +-> NAT & dom(chegada) = TICKET & ((chegada) : (((TICKET) --> (NAT))));
-((mm) : ((NAT-{0})));
+"Check invariant ((pagou) : (((TICKET) --> (SIM_NAO))))";
+(((TICKET * {(2|->SIM_NAO)})) : (((TICKET) --> (((1..2)*{SIM_NAO})))));
+((hora) : (NAT)) & chegada : TICKET +-> NAT & dom(chegada) = TICKET & ((chegada) : (((TICKET) --> (NAT)))) & pagou : TICKET +-> ((1..2)*{SIM_NAO}) & dom(pagou) = TICKET & ((pagou) : (((TICKET) --> (((1..2)*{SIM_NAO})))));
+((mm) : ((NAT-{0}))) & ((hora + mm) +1 <= 1000000);
 (((hora + mm)) : (NAT));
 ((uu) : (TICKET));
 not(uu : dom(chegada));
-((preco_minuto) : (NAT));
-((hora) : (NAT))
+((troco) : (NAT)) & ((dinheiro) : (NAT)) & ((ticket) : (dom(chegada)));
+((hora - (chegada )(ticket)) <= lim);
+(0 <= (((hora - (chegada )(ticket)) * preco) - dinheiro));
+not((0 <= (((hora - (chegada )(ticket)) * preco) - dinheiro)));
+not(((hora - (chegada )(ticket)) <= lim));
+((((pagou) <+ ({((ticket) |-> ((1|->SIM_NAO)))}))) : (((TICKET) --> (((1..2)*{SIM_NAO})))));
+((tt) : (TICKET)) & (((pagou )(tt)) = ((1|->SIM_NAO)));
+((max_idosos) : (NAT));
+((max_comuns) : (NAT));
+((lim) : (NAT));
+((preco) : (NAT));
+((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) & not(((1..2)*{SIM_NAO}) = {});
+chegada : TICKET +-> NAT;
+dom(chegada) = TICKET;
+((chegada) : (((TICKET) --> (NAT))));
+((hora) : (NAT));
+((mm) : ((NAT-{0})));
+((dinheiro) : (NAT));
+((troco) : (NAT));
+"Well definedness";
+((chegada) : (((dom(chegada)) +-> (ran(chegada)))));
+((tt) : (TICKET));
+((tt) : (dom(pagou)));
+((pagou) : (((dom(pagou)) +-> (ran(pagou)))))
 END
 &
-THEORY EnumerateX
+THEORY EnumerateX IS
+CORES == {azul,amarela,verde,vermelha};
+SIM_NAO == {sim,nao};
+STATUS_VAGA == {livre,ocupada}
 END

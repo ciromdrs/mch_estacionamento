@@ -1,7 +1,7 @@
 ﻿THEORY BalanceX IS
-  Estacionamento,55,0,0,44,0,0,0;
+  Estacionamento,54,0,0,48,0,0,0;
   Initialisation,7,0,0,7,0,0,0;
-  WellDefinednessInvariant,3,0,0,2,0,0,0;
+  WellDefinednessInvariant,3,0,0,3,0,0,0;
   WellDefinedness_Precondition_criar_comum,1,0,0,0,0,0,0;
   WellDefinedness_Precondition_criar_deficiente,1,0,0,0,0,0,0;
   WellDefinedness_Precondition_criar_idoso,1,0,0,0,0,0,0;
@@ -9,7 +9,7 @@
   WellDefinedness_Precondition_indicar_deficiente,1,0,0,1,0,0,0;
   WellDefinedness_Precondition_indicar_idoso,1,0,0,1,0,0,0;
   WellDefinedness_Precondition_ocupar,2,0,0,2,0,0,0;
-  WellDefinedness_get_cor_lampada,2,0,0,1,0,0,0;
+  WellDefinedness_get_cor_lampada,1,0,0,1,0,0,0;
   WellDefinedness_get_info_painel,6,0,0,3,0,0,0;
   WellDefinedness_indicar_comum,2,0,0,2,0,0,0;
   WellDefinedness_indicar_deficiente,2,0,0,2,0,0,0;
@@ -17,7 +17,7 @@
   criar_comum,5,0,0,5,0,0,0;
   criar_deficiente,5,0,0,5,0,0,0;
   criar_idoso,5,0,0,5,0,0,0;
-  liberar,6,0,0,3,0,0,0;
+  liberar,6,0,0,6,0,0,0;
   ocupar,2,0,0,2,0,0,0
 END
 &
@@ -38,20 +38,19 @@ THEORY ProofState IS
   Proved(0);
   Unproved;
   Proved(0);
-  Unproved;
   Proved(0);
   Proved(0);
   Unproved;
   Unproved;
   Unproved;
   Proved(0);
-  Unproved;
   Proved(0);
-  Unproved;
   Proved(0);
-  Unproved;
   Proved(0);
-  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -96,7 +95,6 @@ THEORY MethodList IS
   pr;
   ?;
   pr;
-  ?;
   pr;
   pr;
   ?;
@@ -109,7 +107,7 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
-  ?;
+  pr;
   pr;
   pr;
   pr;
@@ -154,20 +152,19 @@ THEORY PassList IS
   Force(0),?;
   Force(0),(?;0;1;2;3);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
   Force(0),?;
-  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
   Force(0),?;
   Force(0),?;
   Force(0),?;

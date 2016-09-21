@@ -1,6 +1,6 @@
 digraph {
 Controle [ label=" Controle " shape= box ]
 Estacionamento [ label=" Estacionamento " shape= box ]
-Pagamento [ label=" Pagamento " shape= box ]
 
+"Controle" -> "Estacionamento" []
 }

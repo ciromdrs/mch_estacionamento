@@ -106,8 +106,8 @@ OPERATIONS
 
     // Consultas
     cc <-- get_cor_lampada ( vv ) =
-        PRE vv : VAGA &
-            vv : dom ( cor ) THEN
+        PRE vv : dom ( cor )
+        THEN
             cc := cor ( vv )
         END ;
 
