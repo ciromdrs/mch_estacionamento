@@ -1,32 +1,33 @@
 MACHINE
-    Estacionamento (qtd_max) // quantidade máxima de vagas
+    Estacionamento
 
 SEES TiposComuns
 
-CONSTRAINTS
-    qtd_max : TIPOS --> NAT
-    
+INCLUDES QtdMax
+
 VARIABLES
     vagas,  // todas as vagas
-    status, // relação que mapeia de VAGAS para STATUS_VAGA
-    cor,    // relação que mapeia de VAGAS para CORES
-    tipo    // relação que napeia de VAGAS para TIPOS
+    status, // status da vaga
+    cor,    // cor da vaga
+    tipo    // tipo da vaga
 
 
 INVARIANT
-    // Declaração dos tipos
-    vagas <: VAGAS      &
-    vagas  : FIN(vagas) &
-    
-    // Restrições
-    card(tipo |> {comum})      <= max(comum)      &
-    card(tipo |> {idoso})      <= max(idoso)      &
-    card(tipo |> {deficiente}) <= max(deficiente) &
+    // Tipos
+    vagas   <: VAGAS                 &
+    vagas    : FIN(vagas)            &
+    status   : VAGAS --> STATUS_VAGA &
+    cor      : VAGAS --> CORES       &
+    tipo     : VAGAS --> TIPOS       &
+    qtd_max  : TIPOS --> NAT         &
 
-    // Relações
-    status  : VAGAS --> STATUS_VAGA &
-    cor     : VAGAS --> CORES       &
-    tipo    : VAGAS --> TIPOS
+    // Restrições
+    card(tipo |> {comum})      <= qtd_max(comum)      &
+    card(tipo |> {idoso})      <= qtd_max(idoso)      &
+    card(tipo |> {deficiente}) <= qtd_max(deficiente) &
+    card(tipo) = card({comum} <| qtd_max) +
+                 card({idoso} <| qtd_max) +
+                 card({deficiente} <| qtd_max)              
     
 INITIALISATION
     vagas       := {} ||
@@ -35,7 +36,7 @@ INITIALISATION
     tipo        := {}
     
 OPERATIONS
-    // Criação
+    // Criação de vagas
     criar(vv, tt) =
         PRE tt : TIPOS         &
             vv : VAGAS         &
@@ -48,7 +49,14 @@ OPERATIONS
             status(vv) := livre
         END;
     
-    // Ocupação e liberação
+    exluir(vv) =
+        PRE vv : vagas &
+            status(vv) = livre
+        THEN
+            vagas := vagas - {vv}
+        END;
+    
+    // Ocupação e liberação de vagas
     ocupar(vv) =
         PRE vv : vagas         &
             status(vv) = livre
@@ -102,9 +110,11 @@ OPERATIONS
         END;
     
     vv <-- indicar(tt) = 
-        PRE card(dom(tipo |> tt) <| status |> {livre}) > 0 THEN
+        PRE vv : VAGAS &
+            tt : TIPOS &
+            card(dom(tipo |> {tt}) <| status |> {livre}) > 0 THEN
             ANY uu
-            WHERE uu : dom(dom(tipo |> tt) <| status |> {livre}) THEN
+            WHERE uu : dom(dom(tipo |> {tt}) <| status |> {livre}) THEN
                 vv := uu
             END
         END

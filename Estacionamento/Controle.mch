@@ -4,17 +4,14 @@ MACHINE
 
 SEES TiposComuns
 
-EXTENDS Estacionamento({idoso |-> 5, comum |-> 5, deficiente |-> 5})
+EXTENDS Estacionamento
 
 CONSTANTS
-    preco, lim, max_comuns, max_idosos, max_deficientes
-
+    preco, lim
+    
 PROPERTIES
     preco           : NAT &
-    lim             : NAT &
-    max_comuns      : NAT &
-    max_idosos      : NAT &
-    max_deficientes : NAT
+    lim             : NAT
 SETS
     SIM_NAO = {sim, nao};
     TICKET // tipo TICKET

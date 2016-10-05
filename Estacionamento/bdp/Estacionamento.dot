@@ -1,9 +1,11 @@
 digraph {
 Controle_r [ label=" Controle\nControle_r " shape= box ]
 Estacionamento [ label=" Estacionamento " shape= box ]
+QtdMax [ label=" QtdMax " shape= box ]
 TiposComuns [ label=" TiposComuns " shape= box ]
 
 "Controle_r" -> "TiposComuns" [style= dotted ]
 "Controle_r" -> "Estacionamento" []
 "Estacionamento" -> "TiposComuns" [style= dotted ]
+"QtdMax" -> "TiposComuns" [style= dotted ]
 }
