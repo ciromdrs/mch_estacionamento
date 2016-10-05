@@ -7,8 +7,14 @@
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Controle" suffix="mch" user="Saul">
             <component name="Controle" type="specification" />
         </component_file>
+        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Controle_r" suffix="ref" user="Saul">
+            <component name="Controle_r" type="refinement" />
+        </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento" suffix="mch" user="Saul">
             <component name="Estacionamento" type="specification" />
+        </component_file>
+        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="TiposComuns" suffix="mch" user="Saul">
+            <component name="TiposComuns" type="specification" />
         </component_file>
     </project>
 </db_xml>

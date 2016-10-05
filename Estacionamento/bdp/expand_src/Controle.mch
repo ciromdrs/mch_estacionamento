@@ -1,10 +1,15 @@
 ﻿MACHINE
-    Controle ( preco , lim , // preco = preço por minuto, lim = limite gratuito em minutos
-        max_comuns , max_idosos , max_deficientes )
+    Controle /*(preco, lim, // preco = preço por minuto, lim = limite gratuito em minutos
+        max_comuns, max_idosos, max_deficientes)*/
 
-EXTENDS Estacionamento ( max_comuns , max_idosos , max_deficientes )
+SEES TiposComuns
 
-CONSTRAINTS
+EXTENDS Estacionamento ( { idoso |-> 5 , comum |-> 5 , deficiente |-> 5 } )
+
+CONCRETE_CONSTANTS
+    preco , lim , max_comuns , max_idosos , max_deficientes
+
+PROPERTIES
     preco           : NAT &
     lim             : NAT &
     max_comuns      : NAT &
@@ -27,7 +32,7 @@ INVARIANT
 INITIALISATION
     hora    := 0              ||
     pagou   := TICKET * { nao } ||
-    chegada := TICKET * { 0 }
+    chegada := {}
 
 OPERATIONS
     adiantar ( mm ) =
@@ -39,7 +44,7 @@ OPERATIONS
     tt <-- pegar_ticket =
         ANY uu
         WHERE uu : TICKET & uu /: dom ( chegada ) THEN
-            tt := uu
+            tt := uu || chegada ( tt ) := hora || pagou ( tt ) := nao
         END ;
 
     troco <-- pagar_ticket ( ticket , dinheiro ) =
@@ -67,7 +72,8 @@ OPERATIONS
         END ;
 
     abrir_cancela ( tt ) =
-        PRE tt : TICKET &
+        PRE tt : TICKET     &
+            tt : dom ( pagou ) &
             pagou ( tt ) = sim THEN
             skip // Abre a cancela física
         END

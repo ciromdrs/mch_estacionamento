@@ -1,7 +1,7 @@
 ﻿THEORY BalanceX IS
-  Estacionamento,54,0,0,48,0,0,0;
+  Estacionamento,54,0,0,45,0,0,0;
   Initialisation,7,0,0,7,0,0,0;
-  WellDefinednessInvariant,3,0,0,3,0,0,0;
+  WellDefinednessInvariant,3,0,0,0,0,0,0;
   WellDefinedness_Precondition_criar_comum,1,0,0,0,0,0,0;
   WellDefinedness_Precondition_criar_deficiente,1,0,0,0,0,0,0;
   WellDefinedness_Precondition_criar_idoso,1,0,0,0,0,0,0;
@@ -43,9 +43,9 @@ THEORY ProofState IS
   Unproved;
   Unproved;
   Unproved;
-  Proved(0);
-  Proved(0);
-  Proved(0);
+  Unproved;
+  Unproved;
+  Unproved;
   Proved(0);
   Proved(0);
   Proved(0);
@@ -100,9 +100,9 @@ THEORY MethodList IS
   ?;
   ?;
   ?;
-  pr;
-  pr;
-  pr;
+  ?;
+  ?;
+  ?;
   pr;
   pr;
   pr;
@@ -157,9 +157,9 @@ THEORY PassList IS
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),?;

@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Estacionamento))==(btrue);
   Abstract_List_Invariant(Machine(Estacionamento))==(btrue);
   Context_List_Invariant(Machine(Estacionamento))==(btrue);
-  List_Invariant(Machine(Estacionamento))==(idosos <: VAGA & deficientes <: VAGA & comuns <: VAGA & idosos/\deficientes = {} & idosos/\comuns = {} & deficientes/\comuns = {} & card(comuns)<=max_comuns & card(idosos)<=max_idosos & card(deficientes)<=max_deficientes & status: VAGA --> STATUS_VAGA & cor: VAGA --> CORES)
+  List_Invariant(Machine(Estacionamento))==(idosos <: VAGA & deficientes <: VAGA & comuns <: VAGA & comuns: FIN(comuns) & idosos: FIN(idosos) & deficientes: FIN(deficientes) & idosos/\deficientes = {} & idosos/\comuns = {} & deficientes/\comuns = {} & card(comuns)<=max_comuns & card(idosos)<=max_idosos & card(deficientes)<=max_deficientes & status: VAGA --> STATUS_VAGA & cor: VAGA --> CORES)
 END
 &
 THEORY ListAssertionsX IS

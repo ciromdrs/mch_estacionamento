@@ -1,107 +1,72 @@
 MACHINE
-    Estacionamento (max_comuns, max_idosos, max_deficientes) // quantidade máxima de vagas
-                                                             
+    Estacionamento (qtd_max) // quantidade máxima de vagas
+
+SEES TiposComuns
+
 CONSTRAINTS
-    max_comuns : NAT &
-    max_idosos : NAT &
-    max_deficientes : NAT
-    
-SETS
-    VAGA; // Tipo VAGA
-    STATUS_VAGA = {livre, ocupada}; // status da vaga
-    CORES = {azul, amarela, verde, vermelha} // Cor da lâmpada que fica na vaga
+    qtd_max : TIPOS --> NAT
     
 VARIABLES
-    idosos, deficientes, comuns, // Cojuntos que representam as vagas
-    status, // relação que mapeia de VAGA para STATUS_VAGA
-    cor // relação que mapeia de VAGA para CORES
+    vagas,  // todas as vagas
+    status, // relação que mapeia de VAGAS para STATUS_VAGA
+    cor,    // relação que mapeia de VAGAS para CORES
+    tipo    // relação que napeia de VAGAS para TIPOS
 
 
 INVARIANT
     // Declaração dos tipos
-    idosos      <: VAGA &
-    deficientes <: VAGA &
-    comuns      <: VAGA &
-    
-    // Uma vaga só pode estar em um dos três conjuntos
-    idosos /\ deficientes = {} &
-    idosos /\ comuns      = {} &
-    deficientes /\ comuns = {} &
+    vagas <: VAGAS      &
+    vagas  : FIN(vagas) &
     
     // Restrições
-    card(comuns)      <= max_comuns      &
-    card(idosos)      <= max_idosos      &
-    card(deficientes) <= max_deficientes &
+    card(tipo |> {comum})      <= max(comum)      &
+    card(tipo |> {idoso})      <= max(idoso)      &
+    card(tipo |> {deficiente}) <= max(deficiente) &
 
     // Relações
-    status  : VAGA   --> STATUS_VAGA &
-    cor     : VAGA   --> CORES
+    status  : VAGAS --> STATUS_VAGA &
+    cor     : VAGAS --> CORES       &
+    tipo    : VAGAS --> TIPOS
     
 INITIALISATION
-    idosos      := {} ||
-    deficientes := {} ||
-    comuns      := {} ||
-    
-    status      := VAGA * {livre} ||
-    cor         := VAGA * {verde}
+    vagas       := {} ||
+    status      := {} ||
+    cor         := {} ||
+    tipo        := {}
     
 OPERATIONS
-    // Criação de vagas
-    criar_comum(vv) =
-        PRE vv : VAGA         &
-            vv /: comuns      &
-            vv /: idosos      &
-            vv /: deficientes &
-            card(comuns) < max_comuns
-        THEN
-            comuns := comuns \/ {vv} ||
-            cor(vv) := verde
-        END;
-        
-    criar_idoso(vv) =
-        PRE vv : VAGA         &
-            vv /: comuns      &
-            vv /: idosos      &
-            vv /: deficientes &
-            card(idosos) < max_idosos
-        THEN
-            idosos  := idosos \/ {vv} ||
-            cor(vv) := azul
-        END;
-        
-    criar_deficiente(vv) =
-        PRE vv : VAGA         &
-            vv /: comuns      &
-            vv /: idosos      &
-            vv /: deficientes &
-            card(deficientes) < max_deficientes
-        THEN
-            deficientes := deficientes \/ {vv} ||
-            cor(vv)     := amarela
+    // Criação
+    criar(vv, tt) =
+        PRE tt : TIPOS         &
+            vv : VAGAS         &
+            vv /: dom(tipo)    &
+            card(tipo |> {tt}) < qtd_max(tt)
+        THEN            
+            vagas      := vagas \/ vv ||
+            tipo(vv)   := tt          ||
+            cor(vv)    := verde       ||
+            status(vv) := livre
         END;
     
     // Ocupação e liberação
     ocupar(vv) =
-        PRE vv : VAGA          &
-            status(vv) = livre &
-            (vv : comuns       or
-            vv : deficientes   or
-            vv : idosos)
+        PRE vv : vagas         &
+            status(vv) = livre
         THEN status(vv) := ocupada ||
              cor(vv)    := vermelha
         END;
         
     liberar(vv) = 
-        PRE vv:VAGA
+        PRE vv : vagas
         THEN status(vv) := livre ||
-            IF vv : idosos THEN
+            CASE tipo(vv) OF EITHER idoso THEN
                 cor(vv) := azul
-            ELSE IF vv : deficientes THEN
+            OR deficiente THEN
                 cor(vv) := amarela
-            ELSE // vv : comum
+            OR comum THEN
                 cor(vv) := verde
             END
-            END
+            END // por que esse outro END é necessário?
         END;
     
     // Consultas
@@ -111,46 +76,36 @@ OPERATIONS
             cc := cor(vv)
         END;
     
+    cc <-- get_tipo_lampada(vv) =
+        PRE vv : dom(tipo)
+        THEN
+            cc := tipo(vv)
+        END;
+    
     /* qc: Quantidade de vagas Comuns
        oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 
-        PRE oc : NAT THEN
-            qc := card(comuns)                             ||
-            oc := card(comuns <| status |> {ocupada})      ||
+        PRE qc : NAT & oc : NAT &
+            qi : NAT & oi : NAT &
+            qd : NAT & od : NAT
+        THEN
+            qc := card(tipo |> {comum})                             ||
+            oc := card(dom(tipo |> {comum}) <| status |> {ocupada}) ||
             
-            qi := card(idosos)                             ||
-            oi := card(idosos <| status |> {ocupada})      ||
+            qi := card(tipo |> {idoso})                             ||
+            oi := card(dom(tipo |> {idoso}) <| status |> {ocupada}) ||
             
-            qd := card(deficientes)                        ||
-            od := card(deficientes <| status |> {ocupada})
+            qd := card(tipo |> {deficiente})                        ||
+            od := card(dom(tipo |> {deficiente}) <| status |> {ocupada})
         END;
     
-    vv <-- indicar_comum = 
-        PRE card(comuns <| status |> {livre}) > 0 THEN
+    vv <-- indicar(tt) = 
+        PRE card(dom(tipo |> tt) <| status |> {livre}) > 0 THEN
             ANY uu
-            WHERE uu : comuns &
-                  status(uu) = livre THEN
-                      vv := uu
-            END
-        END;
-        
-    vv <-- indicar_idoso = 
-        PRE card(idosos <| status |> {livre}) > 0 THEN
-            ANY uu
-            WHERE uu : idosos &
-                  status(uu) = livre THEN
-                      vv := uu
-            END
-        END;
-        
-    vv <-- indicar_deficiente = 
-        PRE card(deficientes <| status |> {livre}) > 0 THEN
-            ANY uu
-            WHERE uu : deficientes &
-                  status(uu) = livre THEN
-                      vv := uu
+            WHERE uu : dom(dom(tipo |> tt) <| status |> {livre}) THEN
+                vv := uu
             END
         END
 END

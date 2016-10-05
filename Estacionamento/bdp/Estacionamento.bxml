@@ -62,6 +62,24 @@
 <Id value='comuns' typref='1611150874'/>
 <Id value='VAGA' typref='1611150874'/>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='comuns' typref='1611150874'/>
+<Unary_Exp op='FIN' typref='17697983'>
+<Id value='comuns' typref='1611150874'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='idosos' typref='1611150874'/>
+<Unary_Exp op='FIN' typref='17697983'>
+<Id value='idosos' typref='1611150874'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='deficientes' typref='1611150874'/>
+<Unary_Exp op='FIN' typref='17697983'>
+<Id value='deficientes' typref='1611150874'/>
+</Unary_Exp>
+</Exp_Comparison>
 <Exp_Comparison op='='>
 <Binary_Exp op='/\' typref='1611150874'>
 <Id value='idosos' typref='1611150874'/>
@@ -831,6 +849,13 @@
 <Id value='VAGA'/>
 <Id value='CORES'/>
 </Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='17697983'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Id value='VAGA'/>
+</Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id='3817003670'>

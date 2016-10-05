@@ -1,0 +1,22 @@
+REFINEMENT Controle_r
+REFINES Controle
+
+SEES TiposComuns
+    
+VARIABLES
+    vagasR1,  // todas as vagas
+    statusR1, // relação que mapeia de VAGAS para STATUS_VAGA
+    corR1,    // relação que mapeia de VAGAS para CORES
+    tipoR1
+
+INVARIANT
+    vagasR1  <: 1..MAX_INT &
+    statusR1 : vagasR1 >->
+    
+INITIALISATION
+    vagasR1  := {}
+    statusR1
+    corR1
+    tipoR1
+    
+END
