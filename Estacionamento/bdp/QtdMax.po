@@ -1,0 +1,23 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(5) & _f(6) & set_qtd_max.1,(_f(3) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) => _f(4))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+VAGAS: FIN(INTEGER) & not(VAGAS = {}) & ((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) & not(((1..3)*{TIPOS}) = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {}) & ((MAX_INT) : ((NAT-{0}))) & ((MAX_INT) = (1000000));
+"Invariant is preserved";
+(({}) : (((((1..3)*{TIPOS})) --> (NAT))));
+qtd_max : ((1..3)*{TIPOS}) +-> NAT & dom(qtd_max) = ((1..3)*{TIPOS}) & ((qtd_max) : (((((1..3)*{TIPOS})) --> (NAT))));
+((dom(qtd_max)) = ({})) & ((max_idosos) : (NAT)) & ((max_comuns) : (NAT)) & ((max_deficientes) : (NAT));
+(({(((1|->TIPOS)) |-> (max_idosos))}\/{(((3|->TIPOS)) |-> (max_comuns))}\/{(((2|->TIPOS)) |-> (max_deficientes))}) : (((((1..3)*{TIPOS})) --> (NAT))));
+((max_comuns) : (NAT));
+((max_idosos) : (NAT));
+((dom(qtd_max)) = ({}))
+END
+&
+THEORY EnumerateX IS
+CORES == {azul,amarela,verde,vermelha};
+STATUS_VAGA == {livre,ocupada};
+TIPOS == {idoso,deficiente,comum}
+END

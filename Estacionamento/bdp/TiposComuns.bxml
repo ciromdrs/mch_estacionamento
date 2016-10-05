@@ -1,0 +1,89 @@
+<Machine name='TiposComuns' type='abstraction'>
+<Sets>
+<Set>
+<Id value='VAGAS' typref='2839686121'/>
+</Set>
+<Set>
+<Id value='TIPOS' typref='1761623770'/>
+<Enumerated_Values>
+<Id value='idoso' typref='2864770153'/>
+<Id value='deficiente' typref='2864770153'/>
+<Id value='comum' typref='2864770153'/>
+</Enumerated_Values>
+</Set>
+<Set>
+<Id value='STATUS_VAGA' typref='3682769197'/>
+<Enumerated_Values>
+<Id value='livre' typref='936744150'/>
+<Id value='ocupada' typref='936744150'/>
+</Enumerated_Values>
+</Set>
+<Set>
+<Id value='CORES' typref='2336136399'/>
+<Enumerated_Values>
+<Id value='azul' typref='1622327860'/>
+<Id value='amarela' typref='1622327860'/>
+<Id value='verde' typref='1622327860'/>
+<Id value='vermelha' typref='1622327860'/>
+</Enumerated_Values>
+</Set>
+</Sets>
+<Concrete_Constants>
+<Id value='MAX_INT' typref='2701647786'/>
+</Concrete_Constants>
+<Properties>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='MAX_INT' typref='2701647786'/>
+<Id value='NAT1' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Id value='MAX_INT' typref='2701647786'/>
+<Integer_Literal value='1000000' typref='2701647786'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Properties>
+<Initialisation>
+<Skip/>
+</Initialisation>
+<TypeInfos>
+<Type id='2839686121'>
+<Unary_Exp op='POW'>
+<Id value='VAGAS'/>
+</Unary_Exp>
+</Type>
+<Type id='1761623770'>
+<Unary_Exp op='POW'>
+<Id value='TIPOS'/>
+</Unary_Exp>
+</Type>
+<Type id='2864770153'>
+<Id value='TIPOS'/>
+</Type>
+<Type id='3682769197'>
+<Unary_Exp op='POW'>
+<Id value='STATUS_VAGA'/>
+</Unary_Exp>
+</Type>
+<Type id='936744150'>
+<Id value='STATUS_VAGA'/>
+</Type>
+<Type id='2336136399'>
+<Unary_Exp op='POW'>
+<Id value='CORES'/>
+</Unary_Exp>
+</Type>
+<Type id='1622327860'>
+<Id value='CORES'/>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+</TypeInfos>
+
+</Machine>

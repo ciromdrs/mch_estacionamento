@@ -1,0 +1,131 @@
+<Machine name='QtdMax' type='abstraction'>
+<Sees>
+<Referenced_Machine>
+<Name>TiposComuns</Name>
+</Referenced_Machine>
+</Sees>
+<Abstract_Variables>
+<Id value='qtd_max' typref='3857687249'/>
+</Abstract_Variables>
+<Invariant>
+<Exp_Comparison op=':'>
+<Id value='qtd_max' typref='3857687249'/>
+<Binary_Exp op='--&gt;' typref='3434258930'>
+<Id value='TIPOS' typref='1761623770'/>
+<Id value='NAT' typref='3603043417'/>
+</Binary_Exp>
+</Exp_Comparison>
+</Invariant>
+<Initialisation>
+<Assignement_Sub>
+<Variables>
+<Id value='qtd_max' typref='3857687249'/>
+</Variables>
+<Values>
+<EmptySet typref='3817003670'/>
+</Values>
+</Assignement_Sub>
+</Initialisation>
+<Operations>
+<Operation name='set_qtd_max'>
+<Input_Parameters>
+<Id value='max_idosos' typref='2701647786'/>
+<Id value='max_deficientes' typref='2701647786'/>
+<Id value='max_comuns' typref='2701647786'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op='='>
+<Unary_Exp op='dom' typref='1761623770'>
+<Id value='qtd_max' typref='3857687249'/>
+</Unary_Exp>
+<EmptySet typref='3817003670'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='max_idosos' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='max_comuns' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='max_deficientes' typref='2701647786'/>
+<Id value='NAT' typref='3603043417'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<Assignement_Sub>
+<Variables>
+<Id value='qtd_max' typref='3857687249'/>
+</Variables>
+<Values>
+<Nary_Exp op='{' typref='3857687249'>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='idoso' typref='2864770153'/>
+<Id value='max_idosos' typref='2701647786'/>
+</Binary_Exp>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='comum' typref='2864770153'/>
+<Id value='max_comuns' typref='2701647786'/>
+</Binary_Exp>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='deficiente' typref='2864770153'/>
+<Id value='max_deficientes' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
+</Values>
+</Assignement_Sub>
+</Body>
+</Operation>
+</Operations>
+<TypeInfos>
+<Type id='3857687249'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='TIPOS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='3434258930'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='TIPOS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Unary_Exp>
+</Type>
+<Type id='1761623770'>
+<Unary_Exp op='POW'>
+<Id value='TIPOS'/>
+</Unary_Exp>
+</Type>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='2382376882'>
+<Binary_Exp op='*'>
+<Id value='TIPOS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Type>
+<Type id='2864770153'>
+<Id value='TIPOS'/>
+</Type>
+</TypeInfos>
+
+</Machine>

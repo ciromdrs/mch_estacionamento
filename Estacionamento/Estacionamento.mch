@@ -6,7 +6,6 @@ SEES TiposComuns
 INCLUDES QtdMax
 
 VARIABLES
-    vagas,  // todas as vagas
     status, // status da vaga
     cor,    // cor da vaga
     tipo    // tipo da vaga
@@ -14,58 +13,52 @@ VARIABLES
 
 INVARIANT
     // Tipos
-    vagas   <: VAGAS                 &
-    vagas    : FIN(vagas)            &
     status   : VAGAS --> STATUS_VAGA &
     cor      : VAGAS --> CORES       &
     tipo     : VAGAS --> TIPOS       &
-    qtd_max  : TIPOS --> NAT         &
 
     // Restrições
     card(tipo |> {comum})      <= qtd_max(comum)      &
     card(tipo |> {idoso})      <= qtd_max(idoso)      &
-    card(tipo |> {deficiente}) <= qtd_max(deficiente) &
-    card(tipo) = card({comum} <| qtd_max) +
-                 card({idoso} <| qtd_max) +
-                 card({deficiente} <| qtd_max)              
+    card(tipo |> {deficiente}) <= qtd_max(deficiente)
     
 INITIALISATION
-    vagas       := {} ||
     status      := {} ||
     cor         := {} ||
     tipo        := {}
     
 OPERATIONS
-    // Criação de vagas
+    // Controle de vagas
     criar(vv, tt) =
         PRE tt : TIPOS         &
             vv : VAGAS         &
             vv /: dom(tipo)    &
             card(tipo |> {tt}) < qtd_max(tt)
         THEN            
-            vagas      := vagas \/ vv ||
             tipo(vv)   := tt          ||
             cor(vv)    := verde       ||
             status(vv) := livre
         END;
     
     exluir(vv) =
-        PRE vv : vagas &
+        PRE vv : VAGAS &
             status(vv) = livre
         THEN
-            vagas := vagas - {vv}
+            tipo   := {vv} <<| tipo ||
+            cor    := {vv} <<| cor  ||
+            status := {vv} <<| status
         END;
     
     // Ocupação e liberação de vagas
     ocupar(vv) =
-        PRE vv : vagas         &
+        PRE vv : VAGAS         &
             status(vv) = livre
         THEN status(vv) := ocupada ||
              cor(vv)    := vermelha
         END;
         
     liberar(vv) = 
-        PRE vv : vagas
+        PRE vv : VAGAS
         THEN status(vv) := livre ||
             CASE tipo(vv) OF EITHER idoso THEN
                 cor(vv) := azul
@@ -74,7 +67,7 @@ OPERATIONS
             OR comum THEN
                 cor(vv) := verde
             END
-            END // por que esse outro END é necessário?
+            END
         END;
     
     // Consultas

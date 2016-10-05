@@ -1,12 +1,12 @@
 <Machine name='Controle' type='abstraction'>
+<Sees>
+<Referenced_Machine>
+<Name>TiposComuns</Name>
+</Referenced_Machine>
+</Sees>
 <Extends>
 <Referenced_Machine>
 <Name>Estacionamento</Name>
-<Parameters>
-<Id value='max_comuns' typref='2701647786'/>
-<Id value='max_idosos' typref='2701647786'/>
-<Id value='max_deficientes' typref='2701647786'/>
-</Parameters>
 </Referenced_Machine>
 </Extends>
 <Sets>
@@ -24,9 +24,6 @@
 <Concrete_Constants>
 <Id value='preco' typref='2701647786'/>
 <Id value='lim' typref='2701647786'/>
-<Id value='max_comuns' typref='2701647786'/>
-<Id value='max_idosos' typref='2701647786'/>
-<Id value='max_deficientes' typref='2701647786'/>
 </Concrete_Constants>
 <Abstract_Variables>
 <Id value='pagou' typref='3215535036'/>
@@ -41,18 +38,6 @@
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='lim' typref='2701647786'/>
-<Id value='NAT' typref='3603043417'/>
-</Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='max_comuns' typref='2701647786'/>
-<Id value='NAT' typref='3603043417'/>
-</Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='max_idosos' typref='2701647786'/>
-<Id value='NAT' typref='3603043417'/>
-</Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='max_deficientes' typref='2701647786'/>
 <Id value='NAT' typref='3603043417'/>
 </Exp_Comparison>
 </Nary_Pred>
@@ -370,9 +355,6 @@
 </Operation>
 </Operations>
 <TypeInfos>
-<Type id='2701647786'>
-<Id value='INTEGER'/>
-</Type>
 <Type id='1592569103'>
 <Unary_Exp op='POW'>
 <Id value='SIM_NAO'/>
@@ -385,6 +367,9 @@
 <Unary_Exp op='POW'>
 <Id value='TICKET'/>
 </Unary_Exp>
+</Type>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
 </Type>
 <Type id='3215535036'>
 <Unary_Exp op='POW'>

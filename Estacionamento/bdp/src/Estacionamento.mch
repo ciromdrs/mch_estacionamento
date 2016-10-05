@@ -1,63 +1,64 @@
 ﻿MACHINE
-    Estacionamento ( qtd_max ) // quantidade máxima de vagas
+    Estacionamento
 
 SEES TiposComuns
 
-CONSTRAINTS
-    qtd_max : TIPOS --> NAT
+INCLUDES QtdMax
 
 ABSTRACT_VARIABLES
-    vagas , // todas as vagas
-    status , // relação que mapeia de VAGAS para STATUS_VAGA
-    cor ,   // relação que mapeia de VAGAS para CORES
-    tipo    // relação que napeia de VAGAS para TIPOS
+    status , // status da vaga
+    cor ,   // cor da vaga
+    tipo    // tipo da vaga
 
 
 INVARIANT
-    // Declaração dos tipos
-    vagas <: VAGAS      &
-    vagas  : FIN ( vagas ) &
+    // Tipos
+    status   : VAGAS --> STATUS_VAGA &
+    cor      : VAGAS --> CORES       &
+    tipo     : VAGAS --> TIPOS       &
 
     // Restrições
-    card ( tipo |> { comum } ) <= max ( comum )   &
-    card ( tipo |> { idoso } ) <= max ( idoso )   &
-    card ( tipo |> { deficiente } ) <= max ( deficiente ) &
-
-    // Relações
-    status  : VAGAS --> STATUS_VAGA &
-    cor     : VAGAS --> CORES       &
-    tipo    : VAGAS --> TIPOS
+    card ( tipo |> { comum } ) <= qtd_max ( comum )   &
+    card ( tipo |> { idoso } ) <= qtd_max ( idoso )   &
+    card ( tipo |> { deficiente } ) <= qtd_max ( deficiente )
 
 INITIALISATION
-    vagas       := {} ||
     status      := {} ||
     cor         := {} ||
     tipo        := {}
 
 OPERATIONS
-    // Criação
+    // Criação de vagas
     criar ( vv , tt ) =
         PRE tt : TIPOS         &
             vv : VAGAS         &
             vv /: dom ( tipo ) &
             card ( tipo |> { tt } ) < qtd_max ( tt )
         THEN
-            vagas      := vagas \/ vv ||
             tipo ( vv ) := tt         ||
             cor ( vv ) := verde       ||
             status ( vv ) := livre
         END ;
 
-    // Ocupação e liberação
+    exluir ( vv ) =
+        PRE vv : VAGAS &
+            status ( vv ) = livre
+        THEN
+            tipo   := { vv } <<| tipo ||
+            cor    := { vv } <<| cor ||
+            status := { vv } <<| status
+        END ;
+
+    // Ocupação e liberação de vagas
     ocupar ( vv ) =
-        PRE vv : vagas         &
+        PRE vv : VAGAS         &
             status ( vv ) = livre
         THEN status ( vv ) := ocupada ||
              cor ( vv ) := vermelha
         END ;
 
     liberar ( vv ) =
-        PRE vv : vagas
+        PRE vv : VAGAS
         THEN status ( vv ) := livre ||
             CASE tipo ( vv ) OF EITHER idoso THEN
                 cor ( vv ) := azul
@@ -66,7 +67,7 @@ OPERATIONS
             OR comum THEN
                 cor ( vv ) := verde
             END
-            END // por que esse outro END é necessário?
+            END
         END ;
 
     // Consultas
@@ -102,9 +103,11 @@ OPERATIONS
         END ;
 
     vv <-- indicar ( tt ) =
-        PRE card ( dom ( tipo |> tt ) <| status |> { livre } ) > 0 THEN
+        PRE vv : VAGAS &
+            tt : TIPOS &
+            card ( dom ( tipo |> { tt } ) <| status |> { livre } ) > 0 THEN
             ANY uu
-            WHERE uu : dom ( dom ( tipo |> tt ) <| status |> { livre } ) THEN
+            WHERE uu : dom ( dom ( tipo |> { tt } ) <| status |> { livre } ) THEN
                 vv := uu
             END
         END
