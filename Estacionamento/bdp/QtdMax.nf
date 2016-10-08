@@ -37,9 +37,9 @@ THEORY ListVariablesX IS
   External_Context_List_Variables(Machine(QtdMax))==(?);
   Context_List_Variables(Machine(QtdMax))==(?);
   Abstract_List_Variables(Machine(QtdMax))==(?);
-  Local_List_Variables(Machine(QtdMax))==(qtd_max);
-  List_Variables(Machine(QtdMax))==(qtd_max);
-  External_List_Variables(Machine(QtdMax))==(qtd_max)
+  Local_List_Variables(Machine(QtdMax))==(ini,qtd_max);
+  List_Variables(Machine(QtdMax))==(ini,qtd_max);
+  External_List_Variables(Machine(QtdMax))==(ini,qtd_max)
 END
 &
 THEORY ListVisibleVariablesX IS
@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(QtdMax))==(btrue);
   Abstract_List_Invariant(Machine(QtdMax))==(btrue);
   Context_List_Invariant(Machine(QtdMax))==(btrue);
-  List_Invariant(Machine(QtdMax))==(qtd_max: TIPOS --> NAT)
+  List_Invariant(Machine(QtdMax))==(qtd_max: TIPOS --> NAT & ini: BOOL)
 END
 &
 THEORY ListAssertionsX IS
@@ -76,9 +76,9 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Machine(QtdMax))==(qtd_max:={});
+  Expanded_List_Initialisation(Machine(QtdMax))==(qtd_max,ini:=TIPOS*{0},FALSE);
   Context_List_Initialisation(Machine(QtdMax))==(skip);
-  List_Initialisation(Machine(QtdMax))==(qtd_max:={})
+  List_Initialisation(Machine(QtdMax))==(qtd_max:=TIPOS*{0} || ini:=FALSE)
 END
 &
 THEORY ListParametersX IS
@@ -95,31 +95,31 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(QtdMax))==(set_qtd_max);
-  List_Operations(Machine(QtdMax))==(set_qtd_max)
+  Internal_List_Operations(Machine(QtdMax))==(init);
+  List_Operations(Machine(QtdMax))==(init)
 END
 &
 THEORY ListInputX IS
-  List_Input(Machine(QtdMax),set_qtd_max)==(max_idosos,max_deficientes,max_comuns)
+  List_Input(Machine(QtdMax),init)==(max_idosos,max_deficientes,max_comuns)
 END
 &
 THEORY ListOutputX IS
-  List_Output(Machine(QtdMax),set_qtd_max)==(?)
+  List_Output(Machine(QtdMax),init)==(?)
 END
 &
 THEORY ListHeaderX IS
-  List_Header(Machine(QtdMax),set_qtd_max)==(set_qtd_max(max_idosos,max_deficientes,max_comuns))
+  List_Header(Machine(QtdMax),init)==(init(max_idosos,max_deficientes,max_comuns))
 END
 &
 THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
-  List_Precondition(Machine(QtdMax),set_qtd_max)==(dom(qtd_max) = {} & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT)
+  List_Precondition(Machine(QtdMax),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(QtdMax),set_qtd_max)==(dom(qtd_max) = {} & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT | qtd_max:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes});
-  List_Substitution(Machine(QtdMax),set_qtd_max)==(qtd_max:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes})
+  Expanded_List_Substitution(Machine(QtdMax),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT | qtd_max,ini:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes},TRUE);
+  List_Substitution(Machine(QtdMax),init)==(qtd_max:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes} || ini:=TRUE)
 END
 &
 THEORY ListConstantsX IS
@@ -129,10 +129,10 @@ THEORY ListConstantsX IS
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Machine(QtdMax),CORES)==({azul,amarela,verde,vermelha});
-  Context_List_Enumerated(Machine(QtdMax))==(TIPOS,STATUS_VAGA,CORES);
+  Set_Definition(Machine(QtdMax),SIM_NAO)==({sim,nao});
+  Context_List_Enumerated(Machine(QtdMax))==(TIPOS,STATUS_VAGA,CORES,SIM_NAO);
   Context_List_Defered(Machine(QtdMax))==(VAGAS);
-  Context_List_Sets(Machine(QtdMax))==(VAGAS,TIPOS,STATUS_VAGA,CORES);
+  Context_List_Sets(Machine(QtdMax))==(VAGAS,TIPOS,STATUS_VAGA,CORES,SIM_NAO);
   List_Valuable_Sets(Machine(QtdMax))==(?);
   Inherited_List_Enumerated(Machine(QtdMax))==(?);
   Inherited_List_Defered(Machine(QtdMax))==(?);
@@ -140,6 +140,7 @@ THEORY ListSetsX IS
   List_Enumerated(Machine(QtdMax))==(?);
   List_Defered(Machine(QtdMax))==(?);
   List_Sets(Machine(QtdMax))==(?);
+  Set_Definition(Machine(QtdMax),CORES)==({azul,amarela,verde,vermelha});
   Set_Definition(Machine(QtdMax),STATUS_VAGA)==({livre,ocupada});
   Set_Definition(Machine(QtdMax),TIPOS)==({idoso,deficiente,comum})
 END
@@ -153,7 +154,7 @@ END
 &
 THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(QtdMax))==(btrue);
-  Context_List_Properties(Machine(QtdMax))==(MAX_INT: NAT1 & MAX_INT = 1000000 & VAGAS: FIN(INTEGER) & not(VAGAS = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS_VAGA: FIN(INTEGER) & not(STATUS_VAGA = {}) & CORES: FIN(INTEGER) & not(CORES = {}));
+  Context_List_Properties(Machine(QtdMax))==(MAX_INT: NAT1 & MAX_INT = 1000000 & VAGAS: FIN(INTEGER) & not(VAGAS = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS_VAGA: FIN(INTEGER) & not(STATUS_VAGA = {}) & CORES: FIN(INTEGER) & not(CORES = {}) & SIM_NAO: FIN(INTEGER) & not(SIM_NAO = {}));
   Inherited_List_Properties(Machine(QtdMax))==(btrue);
   List_Properties(Machine(QtdMax))==(btrue)
 END
@@ -170,16 +171,16 @@ THEORY ListSeenInfoX IS
 END
 &
 THEORY ListANYVarX IS
-  List_ANY_Var(Machine(QtdMax),set_qtd_max)==(?)
+  List_ANY_Var(Machine(QtdMax),init)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(QtdMax)) == (? | ? | qtd_max | ? | set_qtd_max | ? | seen(Machine(TiposComuns)) | ? | QtdMax);
+  List_Of_Ids(Machine(QtdMax)) == (? | ? | ini,qtd_max | ? | init | ? | seen(Machine(TiposComuns)) | ? | QtdMax);
   List_Of_HiddenCst_Ids(Machine(QtdMax)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(QtdMax)) == (?);
   List_Of_VisibleVar_Ids(Machine(QtdMax)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(QtdMax)) == (?: ?);
-  List_Of_Ids(Machine(TiposComuns)) == (MAX_INT,VAGAS,TIPOS,STATUS_VAGA,CORES,idoso,deficiente,comum,livre,ocupada,azul,amarela,verde,vermelha | ? | ? | ? | ? | ? | ? | ? | TiposComuns);
+  List_Of_Ids(Machine(TiposComuns)) == (MAX_INT,VAGAS,TIPOS,STATUS_VAGA,CORES,SIM_NAO,idoso,deficiente,comum,livre,ocupada,azul,amarela,verde,vermelha,sim,nao | ? | ? | ? | ? | ? | ? | ? | TiposComuns);
   List_Of_HiddenCst_Ids(Machine(TiposComuns)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(TiposComuns)) == (MAX_INT);
   List_Of_VisibleVar_Ids(Machine(TiposComuns)) == (? | ?);
@@ -187,11 +188,11 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(QtdMax)) == (Type(qtd_max) == Mvl(SetOf(etype(TIPOS,0,2)*btype(INTEGER,0,MAXINT))))
+  Variables(Machine(QtdMax)) == (Type(ini) == Mvl(btype(BOOL,?,?));Type(qtd_max) == Mvl(SetOf(etype(TIPOS,0,2)*btype(INTEGER,0,MAXINT))))
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(QtdMax)) == (Type(set_qtd_max) == Cst(No_type,btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)))
+  Operations(Machine(QtdMax)) == (Type(init) == Cst(No_type,btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)))
 END
 &
 THEORY TCIntRdX IS

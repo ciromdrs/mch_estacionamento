@@ -45,6 +45,13 @@
 <Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:1:4:2:4" typref="1622327860" value="vermelha"/>
 </Enumerated_Values>
 </Set>
+<Set>
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:1:5:1" typref="1592569103" value="SIM_NAO"/>
+<Enumerated_Values>
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:1:5:2:1" typref="3116095348" value="sim"/>
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:1:5:2:2" typref="3116095348" value="nao"/>
+</Enumerated_Values>
+</Set>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
 <Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:3:1:1:1" typref="2701647786" value="MAX_INT"/>
@@ -58,13 +65,19 @@
 </Define>
 <Define name="seext"/>
 <Define name="inv">
-<Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1" initialTag="qtd_max" typref="3857687249" value="qtd_max"/>
-<Binary_Exp op="--&gt;" initialTag="((TIPOS) --&gt; (NAT))" typref="3434258930">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:1" typref="1761623770" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:2" typref="3603043417" value="NAT"/>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((qtd_max) : (((TIPOS) --&gt; (NAT))))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:1" typref="3857687249" value="qtd_max"/>
+<Binary_Exp op="--&gt;" typref="3434258930">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:1" typref="1761623770" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:2" typref="3603043417" value="NAT"/>
 </Binary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((ini) : (BOOL))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:1" typref="2043437594" value="ini"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:2" typref="4282494527" value="BOOL"/>
+</Exp_Comparison>
+</Nary_Pred>
 </Define>
 <Define name="ass"/>
 <Define name="lprp"/>
@@ -85,26 +98,47 @@
 <Goal>
 <Sub_Calculus>
 <Nary_Sub op=";">
+<Nary_Sub op="||">
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:1:1" typref="3857687249" value="qtd_max"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:1:1:1" typref="3857687249" value="qtd_max"/>
 </Variables>
 <Values>
-<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:2:1" typref="3817003670"/>
+<Binary_Exp op="*" typref="3857687249">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:1:2:1:1" typref="1761623770" value="TIPOS"/>
+<Nary_Exp op="{" typref="3603043417">
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:1:2:1:2:1" typref="2701647786" value="0"/>
+</Nary_Exp>
+</Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:2:1:1" typref="2043437594" value="ini"/>
+</Variables>
+<Values>
+<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:4:1:2:2:1" typref="2043437594" value="FALSE"/>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
 </Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1" initialTag="qtd_max" typref="3857687249" value="qtd_max"/>
-<Binary_Exp op="--&gt;" initialTag="((TIPOS) --&gt; (NAT))" typref="3434258930">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:1" typref="1761623770" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:2" typref="3603043417" value="NAT"/>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((qtd_max) : (((TIPOS) --&gt; (NAT))))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:1" typref="3857687249" value="qtd_max"/>
+<Binary_Exp op="--&gt;" typref="3434258930">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:1" typref="1761623770" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:2" typref="3603043417" value="NAT"/>
 </Binary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((ini) : (BOOL))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:1" typref="2043437594" value="ini"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:2" typref="4282494527" value="BOOL"/>
+</Exp_Comparison>
+</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -113,7 +147,7 @@
 </Proof_Obligation>
 <Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
-<Tag>set_qtd_max</Tag>
+<Tag>init</Tag>
 <Tag>INVARIANT</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -127,10 +161,8 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="=">
-<Unary_Exp op="dom" typref="1761623770">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:1:1" typref="3857687249" value="qtd_max"/>
-</Unary_Exp>
-<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:2" typref="3817003670"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:1" typref="2043437594" value="ini"/>
+<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:2" typref="2043437594" value="FALSE"/>
 </Exp_Comparison>
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:2:1" typref="2701647786" value="max_idosos"/>
@@ -148,38 +180,54 @@
 </Hypothesis>
 <Goal>
 <Sub_Calculus>
+<Nary_Sub op="||">
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:1" typref="3857687249" value="qtd_max"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:1:1" typref="3857687249" value="qtd_max"/>
 </Variables>
 <Values>
 <Nary_Exp op="{" typref="3857687249">
 <Binary_Exp op="|-&gt;" typref="2382376882">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:1:1" typref="2864770153" value="idoso"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:1:2" typref="2701647786" value="max_idosos"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:2:1:1:1" typref="2864770153" value="idoso"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:2:1:1:2" typref="2701647786" value="max_idosos"/>
 </Binary_Exp>
 <Binary_Exp op="|-&gt;" typref="2382376882">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:2:1" typref="2864770153" value="comum"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:2:2" typref="2701647786" value="max_comuns"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:2:1:2:1" typref="2864770153" value="comum"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:2:1:2:2" typref="2701647786" value="max_comuns"/>
 </Binary_Exp>
 <Binary_Exp op="|-&gt;" typref="2382376882">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:3:1" typref="2864770153" value="deficiente"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:3:2" typref="2701647786" value="max_deficientes"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:2:1:3:1" typref="2864770153" value="deficiente"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:1:2:1:3:2" typref="2701647786" value="max_deficientes"/>
 </Binary_Exp>
 </Nary_Exp>
 </Values>
 </Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:1:1" typref="2043437594" value="ini"/>
+</Variables>
+<Values>
+<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:3:1:2:2:1" typref="2043437594" value="TRUE"/>
+</Values>
+</Simple_Assignement_Sub>
+</Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
 <Tag goalTag="Invariant is preserved">
 <Nary_Pred op="&amp;">
-<Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1" initialTag="qtd_max" typref="3857687249" value="qtd_max"/>
-<Binary_Exp op="--&gt;" initialTag="((TIPOS) --&gt; (NAT))" typref="3434258930">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:1" typref="1761623770" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:2" typref="3603043417" value="NAT"/>
+<Nary_Pred op="&amp;">
+<Exp_Comparison op=":" initialTag="((qtd_max) : (((TIPOS) --&gt; (NAT))))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:1" typref="3857687249" value="qtd_max"/>
+<Binary_Exp op="--&gt;" typref="3434258930">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:1" typref="1761623770" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:2" typref="3603043417" value="NAT"/>
 </Binary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=":" initialTag="((ini) : (BOOL))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:1" typref="2043437594" value="ini"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:2:2" typref="4282494527" value="BOOL"/>
+</Exp_Comparison>
+</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Binary_Pred>
@@ -218,6 +266,7 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
@@ -225,6 +274,22 @@
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 </Binary_Pred>
+<Binary_Pred op="=&gt;">
+<Exp_Comparison op=":" initialTag="((qtd_max) : (((TIPOS) --&gt; (NAT))))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:1" typref="3857687249" value="qtd_max"/>
+<Binary_Exp op="--&gt;" typref="3434258930">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:1" typref="1761623770" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:3:1:1:2:2" typref="3603043417" value="NAT"/>
+</Binary_Exp>
+</Exp_Comparison>
+<Nary_Pred op="&amp;">
+<Binary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Binary_Pred>
+</Nary_Pred>
+</Binary_Pred>
+</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -257,15 +322,22 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
+</Binary_Pred>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
 </Proof_Obligation>
 <Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
-<Tag>WellDefinedness_Precondition_set_qtd_max</Tag>
+<Tag>WellDefinedness_Precondition_init</Tag>
 <Tag>INVARIANT</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -286,10 +358,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op="=">
-<Unary_Exp op="dom" typref="1761623770">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:1:1" typref="3857687249" value="qtd_max"/>
-</Unary_Exp>
-<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:2" typref="3817003670"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:1" typref="2043437594" value="ini"/>
+<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:2" typref="2043437594" value="FALSE"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Binary_Pred op="&amp;">
@@ -329,7 +399,7 @@
 </Proof_Obligation>
 <Proof_Obligation>
 <Comment>Operations dans une machine abstraite</Comment>
-<Tag>WellDefinedness_set_qtd_max</Tag>
+<Tag>WellDefinedness_init</Tag>
 <Tag>INVARIANT</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -343,10 +413,8 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op="=">
-<Unary_Exp op="dom" typref="1761623770">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:1:1" typref="3857687249" value="qtd_max"/>
-</Unary_Exp>
-<EmptySet tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:2" typref="3817003670"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:1" typref="2043437594" value="ini"/>
+<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:1:2" typref="2043437594" value="FALSE"/>
 </Exp_Comparison>
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:5:1:2:1:2:1" typref="2701647786" value="max_idosos"/>
@@ -365,6 +433,7 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
@@ -378,6 +447,9 @@
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+</Nary_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -391,42 +463,45 @@
 </Binary_Exp>
 </Unary_Exp>
 </Type>
+<Type id="2043437594">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:2:1" value="BOOL"/>
+</Type>
 <Type id="3434258930">
 <Unary_Exp op="POW">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:2:1:1:1:1" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:2:1:1:1:2" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:3:1:1:1:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:3:1:1:1:2" value="INTEGER"/>
 </Binary_Exp>
 </Unary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="1761623770">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:3:1:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:4:1:1" value="TIPOS"/>
 </Unary_Exp>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:4:1:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:5:1:1" value="INTEGER"/>
 </Unary_Exp>
 </Type>
-<Type id="3817003670">
+<Type id="4282494527">
 <Unary_Exp op="POW">
-<Generic_Type tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:5:1:1"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:6:1:1" value="BOOL"/>
 </Unary_Exp>
 </Type>
 <Type id="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:6:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:7:1" value="INTEGER"/>
 </Type>
 <Type id="2382376882">
 <Binary_Exp op="*">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:7:1:1" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:7:1:2" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:8:1:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:8:1:2" value="INTEGER"/>
 </Binary_Exp>
 </Type>
 <Type id="2864770153">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:8:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\QtdMax.bxml:1:6:9:1" value="TIPOS"/>
 </Type>
 <Type id="2839686121">
 <Unary_Exp op="POW">
@@ -457,12 +532,20 @@
 <Type id="1622327860">
 <Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:7:1" value="CORES"/>
 </Type>
+<Type id="1592569103">
+<Unary_Exp op="POW">
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:8:1:1" value="SIM_NAO"/>
+</Unary_Exp>
+</Type>
+<Type id="3116095348">
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:9:1" value="SIM_NAO"/>
+</Type>
 <Type id="2701647786">
-<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:8:1" value="INTEGER"/>
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:10:1" value="INTEGER"/>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:9:1:1" value="INTEGER"/>
+<Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:5:11:1:1" value="INTEGER"/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

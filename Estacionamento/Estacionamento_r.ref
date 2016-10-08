@@ -1,0 +1,48 @@
+REFINEMENT Estacionamento_r
+REFINES Estacionamento
+
+SEES TiposComuns
+
+VARIABLES
+    cv,  // Contador de Vagas
+    ids, // Identificadores das vagas
+    tipo2,
+    cor2,
+    status2
+    
+INVARIANT
+    // Restrições sobre o tamanho dos arrays
+    cv : NAT          &
+    cv = card(tipo)   &
+    cv = card(cor)    &
+    cv = card(status) &
+    
+    tipo2   : 1..MAX_INT --> TIPOS       &
+    cor2    : 1..MAX_INT --> CORES       &
+    status2 : 1..MAX_INT --> STATUS_VAGA &
+    ids     : 1..MAX_INT --> NAT
+
+INITIALISATION
+    cv := 0;
+    tipo2   := % tt . (tt : 1..MAX_INT | comum);
+    cor2    := % tt . (tt : 1..MAX_INT | verde);
+    status2 := % tt . (tt : 1..MAX_INT | livre);
+
+OPERATIONS
+    // Controle de vagas
+    criar(vv, tt) =
+        BEGIN
+            cv := cv + 1;
+            ids(cv) := max(ids) + 1;
+            tipo2(cv)   := tt;
+            cor2(cv)    := verde;
+            status2(cv) := livre;
+        END;
+    
+    ocupar(vv) =
+        BEGIN
+            
+        END;
+    
+
+END
