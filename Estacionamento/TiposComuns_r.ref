@@ -1,0 +1,10 @@
+/* TiposComuns_r
+ * Author: Saul
+ * Creation date: 06/10/2016
+ */
+
+REFINEMENT TiposComuns_r
+REFINES TiposComuns
+
+
+ END

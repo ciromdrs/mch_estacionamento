@@ -11,13 +11,6 @@
 </Extends>
 <Sets>
 <Set>
-<Id value='SIM_NAO' typref='1592569103'/>
-<Enumerated_Values>
-<Id value='sim' typref='3116095348'/>
-<Id value='nao' typref='3116095348'/>
-</Enumerated_Values>
-</Set>
-<Set>
 <Id value='TICKET' typref='678303745'/>
 </Set>
 </Sets>
@@ -113,7 +106,7 @@
 <Id value='hora' typref='2701647786'/>
 <Id value='mm' typref='2701647786'/>
 </Binary_Exp>
-<Integer_Literal value='1000000' typref='2701647786'/>
+<Id value='MAXINT' typref='2701647786'/>
 </Exp_Comparison>
 </Nary_Pred>
 </Precondition>
@@ -355,14 +348,6 @@
 </Operation>
 </Operations>
 <TypeInfos>
-<Type id='1592569103'>
-<Unary_Exp op='POW'>
-<Id value='SIM_NAO'/>
-</Unary_Exp>
-</Type>
-<Type id='3116095348'>
-<Id value='SIM_NAO'/>
-</Type>
 <Type id='678303745'>
 <Unary_Exp op='POW'>
 <Id value='TICKET'/>
@@ -411,6 +396,14 @@
 </Binary_Exp>
 </Unary_Exp>
 </Unary_Exp>
+</Type>
+<Type id='1592569103'>
+<Unary_Exp op='POW'>
+<Id value='SIM_NAO'/>
+</Unary_Exp>
+</Type>
+<Type id='3116095348'>
+<Id value='SIM_NAO'/>
 </Type>
 <Type id='3817003670'>
 <Unary_Exp op='POW'>

@@ -27,6 +27,13 @@
 <Id value='vermelha' typref='1622327860'/>
 </Enumerated_Values>
 </Set>
+<Set>
+<Id value='SIM_NAO' typref='1592569103'/>
+<Enumerated_Values>
+<Id value='sim' typref='3116095348'/>
+<Id value='nao' typref='3116095348'/>
+</Enumerated_Values>
+</Set>
 </Sets>
 <Concrete_Constants>
 <Id value='MAX_INT' typref='2701647786'/>
@@ -75,6 +82,14 @@
 </Type>
 <Type id='1622327860'>
 <Id value='CORES'/>
+</Type>
+<Type id='1592569103'>
+<Unary_Exp op='POW'>
+<Id value='SIM_NAO'/>
+</Unary_Exp>
+</Type>
+<Type id='3116095348'>
+<Id value='SIM_NAO'/>
 </Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>

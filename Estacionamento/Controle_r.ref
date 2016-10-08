@@ -4,14 +4,13 @@ REFINES Controle
 SEES TiposComuns
     
 VARIABLES
-    vagasR1,  // todas as vagas
-    statusR1, // relação que mapeia de VAGAS para STATUS_VAGA
-    corR1,    // relação que mapeia de VAGAS para CORES
-    tipoR1
+    status_r, // relação que mapeia de VAGAS para STATUS_VAGA
+    cor_r,    // relação que mapeia de VAGAS para CORES
+    tipo_r
 
 INVARIANT
-    vagasR1  <: 1..MAX_INT &
-    statusR1 : vagasR1 >->
+    vagas_r  <: 1..MAX_INT &
+    status_r : vagasR1 >->
     
 INITIALISATION
     vagasR1  := {}
