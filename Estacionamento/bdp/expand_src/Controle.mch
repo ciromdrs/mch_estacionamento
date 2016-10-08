@@ -13,7 +13,8 @@ PROPERTIES
     preco           : NAT &
     lim             : NAT
 SETS
-    TICKET
+    SIM_NAO = { sim , nao } ;
+    TICKET // tipo TICKET
 
 ABSTRACT_VARIABLES
     pagou ,  // relação de pagamento de tickets
@@ -33,7 +34,7 @@ INITIALISATION
 OPERATIONS
     adiantar ( mm ) =
         PRE mm : NAT1 &
-            hora + mm < MAXINT THEN
+            hora + mm < 1000000 THEN
             hora := hora + mm
         END ;
 

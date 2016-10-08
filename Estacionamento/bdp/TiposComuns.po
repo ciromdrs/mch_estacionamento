@@ -3,14 +3,13 @@ END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-VAGAS: FIN(INTEGER) & not(VAGAS = {}) & ((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) & not(((1..3)*{TIPOS}) = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {}) & ((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) & not(((1..2)*{SIM_NAO}) = {}) & ((MAX_INT) : ((NAT-{0}))) & ((MAX_INT) = (1000000));
+VAGAS: FIN(INTEGER) & not(VAGAS = {}) & ((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) & not(((1..3)*{TIPOS}) = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {}) & ((MAX_INT) : ((NAT-{0}))) & ((MAX_INT) = (1000000));
 VAGAS: FIN(INTEGER) & not(VAGAS = {});
 ((MAX_INT) : ((NAT-{0})))
 END
 &
 THEORY EnumerateX IS
 CORES == {azul,amarela,verde,vermelha};
-SIM_NAO == {sim,nao};
 STATUS_VAGA == {livre,ocupada};
 TIPOS == {idoso,deficiente,comum}
 END

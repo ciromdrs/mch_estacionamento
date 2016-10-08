@@ -4,8 +4,6 @@ MACHINE
 SEES TiposComuns
 
 INCLUDES QtdMax
-    
-PROMOTES init
 
 VARIABLES
     status, // status da vaga
@@ -37,8 +35,8 @@ OPERATIONS
             vv /: dom(tipo)    &
             card(tipo |> {tt}) < qtd_max(tt)
         THEN            
-            tipo(vv)   := tt    ||
-            cor(vv)    := verde ||
+            tipo(vv)   := tt          ||
+            cor(vv)    := verde       ||
             status(vv) := livre
         END;
     
@@ -53,15 +51,14 @@ OPERATIONS
     
     // Ocupação e liberação de vagas
     ocupar(vv) =
-        PRE vv : dom(status) &
+        PRE vv : VAGAS         &
             status(vv) = livre
         THEN status(vv) := ocupada ||
              cor(vv)    := vermelha
         END;
         
     liberar(vv) = 
-        PRE vv : dom(status) &
-            status(vv) = ocupada
+        PRE vv : VAGAS
         THEN status(vv) := livre ||
             CASE tipo(vv) OF EITHER idoso THEN
                 cor(vv) := azul
@@ -75,15 +72,13 @@ OPERATIONS
     
     // Consultas
     cc <-- get_cor_lampada(vv) =
-        PRE vv : dom(cor) &
-            cc : CORES
+        PRE vv : dom(cor)
         THEN
             cc := cor(vv)
         END;
     
-    cc <-- get_tipo_vaga(vv) =
-        PRE vv : dom(tipo) &
-            cc : TIPOS
+    cc <-- get_tipo_lampada(vv) =
+        PRE vv : dom(tipo)
         THEN
             cc := tipo(vv)
         END;
@@ -93,7 +88,10 @@ OPERATIONS
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 
-        BEGIN
+        PRE qc : NAT & oc : NAT &
+            qi : NAT & oi : NAT &
+            qd : NAT & od : NAT
+        THEN
             qc := card(tipo |> {comum})                             ||
             oc := card(dom(tipo |> {comum}) <| status |> {ocupada}) ||
             

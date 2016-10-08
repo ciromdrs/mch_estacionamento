@@ -9,9 +9,6 @@
 <Name>TiposComuns</Name>
 </Referenced_Machine>
 </Sees>
-<Promotes>
-<Promoted_Operation>init</Promoted_Operation>
-</Promotes>
 <Abstract_Variables>
 <Id value='status' typref='431152820'/>
 <Id value='cor' typref='1376823510'/>
@@ -259,9 +256,7 @@
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='status' typref='431152820'/>
-</Unary_Exp>
+<Id value='VAGAS' typref='2839686121'/>
 </Exp_Comparison>
 <Exp_Comparison op='='>
 <Binary_Exp op='(' typref='936744150'>
@@ -306,9 +301,7 @@
 <Precondition>
 <Exp_Comparison op=':'>
 <Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='status' typref='431152820'/>
-</Unary_Exp>
+<Id value='VAGAS' typref='2839686121'/>
 </Exp_Comparison>
 </Precondition>
 <Body>
@@ -399,18 +392,12 @@
 <Id value='vv' typref='3239067290'/>
 </Input_Parameters>
 <Precondition>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='vv' typref='3239067290'/>
 <Unary_Exp op='dom' typref='2839686121'>
 <Id value='cor' typref='1376823510'/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='cc' typref='1622327860'/>
-<Id value='CORES' typref='2336136399'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>
@@ -426,7 +413,7 @@
 </Assignement_Sub>
 </Body>
 </Operation>
-<Operation name='get_tipo_vaga'>
+<Operation name='get_tipo_lampada'>
 <Output_Parameters>
 <Id value='cc' typref='2864770153'/>
 </Output_Parameters>
@@ -434,18 +421,12 @@
 <Id value='vv' typref='3239067290'/>
 </Input_Parameters>
 <Precondition>
-<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='vv' typref='3239067290'/>
 <Unary_Exp op='dom' typref='2839686121'>
 <Id value='tipo' typref='2416948321'/>
 </Unary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='cc' typref='2864770153'/>
-<Id value='TIPOS' typref='1761623770'/>
-</Exp_Comparison>
-</Nary_Pred>
 </Precondition>
 <Body>
 <Assignement_Sub>

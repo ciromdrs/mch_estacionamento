@@ -1,14 +1,14 @@
 <Proof_Obligations>
-<Define merge="=" name="B definitions">
+<Define name="B definitions">
 <Nary_Pred op="&amp;" translate="((NAT) = (((0) .. (2147483647)))) &amp; ((INT) = (((-2147483647) .. (2147483647))))">
-<Exp_Comparison op="=">
+<Exp_Comparison op="=" translate="((NAT) = (((0) .. (2147483647))))">
 <Id value="NAT"/>
 <Binary_Exp op="..">
 <Integer_Literal value="0"/>
 <Id value="MAXINT"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op="=">
+<Exp_Comparison op="=" translate="((INT) = (((-2147483647) .. (2147483647))))">
 <Id value="INT"/>
 <Binary_Exp op="..">
 <Id value="MININT"/>
@@ -17,12 +17,12 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define merge="=" name="ctx"/>
-<Define merge="=" name="seext"/>
-<Define merge="=" name="inv"/>
-<Define merge="=" name="ass"/>
-<Define merge="=" name="lprp">
-<Set>
+<Define name="ctx"/>
+<Define name="seext"/>
+<Define name="inv"/>
+<Define name="ass"/>
+<Define name="lprp">
+<Set translate="VAGAS: FIN(INTEGER) &amp; not(VAGAS = {})">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:1:1" typref="2839686121" value="VAGAS"/>
 </Set>
 <Set translate="((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) &amp; not(((1..3)*{TIPOS}) = {})">
@@ -49,13 +49,6 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:4" typref="1622327860" value="vermelha"/>
 </Enumerated_Values>
 </Set>
-<Set translate="((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) &amp; not(((1..2)*{SIM_NAO}) = {})">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:1" typref="1592569103" value="SIM_NAO"/>
-<Enumerated_Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:1" typref="3116095348" value="sim"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:2" typref="3116095348" value="nao"/>
-</Enumerated_Values>
-</Set>
 <Nary_Pred op="&amp;" translate="((MAX_INT) : ((NAT-{0}))) &amp; ((MAX_INT) = (1000000))">
 <Exp_Comparison op=":" translate="((MAX_INT) : ((NAT-{0})))">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:1:1" typref="2701647786" value="MAX_INT"/>
@@ -67,10 +60,10 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define merge="=" name="inprp"/>
-<Define merge="=" name="inext"/>
-<Define merge="=" name="cst"/>
-<Proof_Obligation merge="=">
+<Define name="inprp"/>
+<Define name="inext"/>
+<Define name="cst"/>
+<Proof_Obligation>
 <Comment>Initialisation dans une machine abstraite</Comment>
 <Tag>Initialisation</Tag>
 <Tag>Invariant</Tag>
@@ -85,10 +78,10 @@
 <Nary_Pred op="&amp;"/>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessConstraints</Tag>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessProperties</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -121,13 +114,6 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:4" typref="1622327860" value="vermelha"/>
 </Enumerated_Values>
 </Set>
-<Set>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:1" typref="1592569103" value="SIM_NAO"/>
-<Enumerated_Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:1" typref="3116095348" value="sim"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:2" typref="3116095348" value="nao"/>
-</Enumerated_Values>
-</Set>
 </Hypothesis>
 <Local_Hyp num="1">
 <Exp_Comparison op=":">
@@ -136,7 +122,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessInvariant</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -146,7 +132,7 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessAssertions</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -157,7 +143,7 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation>
 <Tag>WellDefinednessInitialisation</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -167,7 +153,7 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 </Proof_Obligation>
-<TypeInfos merge="=">
+<TypeInfos>
 <Type id="2839686121">
 <Unary_Exp op="POW">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:1:1:1" value="VAGAS"/>
@@ -197,20 +183,12 @@
 <Type id="1622327860">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:7:1" value="CORES"/>
 </Type>
-<Type id="1592569103">
-<Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1:1" value="SIM_NAO"/>
-</Unary_Exp>
-</Type>
-<Type id="3116095348">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:9:1" value="SIM_NAO"/>
-</Type>
 <Type id="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:10:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1" value="INTEGER"/>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:11:1:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:9:1:1" value="INTEGER"/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

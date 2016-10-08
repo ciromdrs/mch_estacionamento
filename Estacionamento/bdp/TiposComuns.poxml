@@ -49,13 +49,6 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:4" typref="1622327860" value="vermelha"/>
 </Enumerated_Values>
 </Set>
-<Set>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:1" typref="1592569103" value="SIM_NAO"/>
-<Enumerated_Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:1" typref="3116095348" value="sim"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:2" typref="3116095348" value="nao"/>
-</Enumerated_Values>
-</Set>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:1:1" typref="2701647786" value="MAX_INT"/>
@@ -134,13 +127,6 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:2" typref="1622327860" value="amarela"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:3" typref="1622327860" value="verde"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:4" typref="1622327860" value="vermelha"/>
-</Enumerated_Values>
-</Set>
-<Set>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:1" typref="1592569103" value="SIM_NAO"/>
-<Enumerated_Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:1" typref="3116095348" value="sim"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:5:2:2" typref="3116095348" value="nao"/>
 </Enumerated_Values>
 </Set>
 </Hypothesis>
@@ -247,20 +233,12 @@
 <Type id="1622327860">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:7:1" value="CORES"/>
 </Type>
-<Type id="1592569103">
-<Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1:1" value="SIM_NAO"/>
-</Unary_Exp>
-</Type>
-<Type id="3116095348">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:9:1" value="SIM_NAO"/>
-</Type>
 <Type id="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:10:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1" value="INTEGER"/>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:11:1:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:9:1:1" value="INTEGER"/>
 </Unary_Exp>
 </Type>
 </TypeInfos>

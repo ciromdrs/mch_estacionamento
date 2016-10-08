@@ -13,14 +13,8 @@
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento" suffix="mch" user="Saul">
             <component name="Estacionamento" type="specification" />
         </component_file>
-        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento_r" suffix="ref" user="Saul">
-            <component name="Estacionamento_r" type="refinement" />
-        </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="QtdMax" suffix="mch" user="Saul">
             <component name="QtdMax" type="specification" />
-        </component_file>
-        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="QtdMax_r" suffix="ref" user="Saul">
-            <component name="QtdMax_r" type="refinement" />
         </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="TiposComuns" suffix="mch" user="Saul">
             <component name="TiposComuns" type="specification" />

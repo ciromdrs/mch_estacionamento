@@ -5,8 +5,6 @@ SEES TiposComuns
 
 INCLUDES QtdMax
 
-PROMOTES init
-
 ABSTRACT_VARIABLES
     status , // status da vaga
     cor ,   // cor da vaga
@@ -30,7 +28,7 @@ INITIALISATION
     tipo        := {}
 
 OPERATIONS
-    // Controle de vagas
+    // Criação de vagas
     criar ( vv , tt ) =
         PRE tt : TIPOS         &
             vv : VAGAS         &
@@ -53,14 +51,14 @@ OPERATIONS
 
     // Ocupação e liberação de vagas
     ocupar ( vv ) =
-        PRE vv : dom ( status ) &
+        PRE vv : VAGAS         &
             status ( vv ) = livre
         THEN status ( vv ) := ocupada ||
              cor ( vv ) := vermelha
         END ;
 
     liberar ( vv ) =
-        PRE vv : dom ( status )
+        PRE vv : VAGAS
         THEN status ( vv ) := livre ||
             CASE tipo ( vv ) OF EITHER idoso THEN
                 cor ( vv ) := azul
@@ -74,15 +72,13 @@ OPERATIONS
 
     // Consultas
     cc <-- get_cor_lampada ( vv ) =
-        PRE vv : dom ( cor ) &
-            cc : CORES
+        PRE vv : dom ( cor )
         THEN
             cc := cor ( vv )
         END ;
 
-    cc <-- get_tipo_vaga ( vv ) =
-        PRE vv : dom ( tipo ) &
-            cc : TIPOS
+    cc <-- get_tipo_lampada ( vv ) =
+        PRE vv : dom ( tipo )
         THEN
             cc := tipo ( vv )
         END ;

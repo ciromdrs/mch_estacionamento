@@ -1,38 +1,40 @@
 MACHINE
-    Controle
+    Controle/*(preco, lim, // preco = preço por minuto, lim = limite gratuito em minutos
+        max_comuns, max_idosos, max_deficientes)*/
 
 SEES TiposComuns
 
 EXTENDS Estacionamento
+
+CONSTANTS
+    preco, lim
     
+PROPERTIES
+    preco           : NAT &
+    lim             : NAT
 SETS
-    TICKET
+    SIM_NAO = {sim, nao};
+    TICKET // tipo TICKET
 
 VARIABLES
     pagou,   // relação de pagamento de tickets
     chegada, // relação de chegada dos veículos
-    hora,    // hora atual, medida em minutos
-    preco,   // preço por minuto
-    lim      // limite gratuito
+    hora     // hora atual, medida em minutos
 
 INVARIANT 
-    hora    : NAT                &
-    chegada : TICKET --> NAT     &
-    pagou   : TICKET --> SIM_NAO &
-    preco   : NAT                &
-    lim     : NAT
+    hora    : NAT            &
+    chegada : TICKET --> NAT &
+    pagou   : TICKET --> SIM_NAO
     
 INITIALISATION
     hora    := 0              ||
     pagou   := TICKET * {nao} ||
-    chegada := {}             ||
-    preco   := 1              ||
-    lim     := 15
+    chegada := {}
 
 OPERATIONS
     adiantar(mm) = 
         PRE mm : NAT1 &
-            hora + mm < MAXINT THEN
+            hora + mm < 1000000 THEN
             hora := hora + mm
         END;
     
