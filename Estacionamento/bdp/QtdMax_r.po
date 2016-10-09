@@ -1,0 +1,66 @@
+THEORY ProofList IS
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.12,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(19) & _f(26) => _f(30));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.11,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(19) & _f(26) => _f(34));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.10,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(19) & _f(26) => _f(28));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.9,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(19) & _f(26) => _f(33));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.8,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(26) => _f(30));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.7,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(26) => _f(32));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.6,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(26) => _f(28));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.5,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(20) & _f(26) => _f(31));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.4,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(26) => _f(30));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.3,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(26) => _f(29));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.2,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(26) => _f(28));
+_f(1) & _f(2) & _f(12) & WellDefinednessInvariant.1,(_f(25) & _f(24) & _f(21) & _f(22) & _f(23) & _f(26) => _f(27));
+_f(1) & _f(2) & _f(12) & _f(13) & _f(14) & init.4,(_f(3) & _f(10) => _f(18));
+_f(1) & _f(2) & _f(12) & _f(13) & _f(14) & init.3,(_f(3) & _f(8) => _f(17));
+_f(1) & _f(2) & _f(12) & _f(13) & _f(14) & init.2,(_f(3) & _f(6) => _f(16));
+_f(1) & _f(2) & _f(12) & _f(13) & _f(14) & init.1,(_f(3) & _f(4) => _f(15));
+_f(1) & _f(2) & Initialisation.4,(_f(3) & _f(10) => _f(11));
+_f(1) & _f(2) & Initialisation.3,(_f(3) & _f(8) => _f(9));
+_f(1) & _f(2) & Initialisation.2,(_f(3) & _f(6) => _f(7));
+_f(1) & _f(2) & Initialisation.1,(_f(3) & _f(4) => _f(5))
+END
+&
+THEORY Formulas IS
+((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
+VAGAS: FIN(INTEGER) & not(VAGAS = {}) & ((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) & not(((1..3)*{TIPOS}) = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {}) & ((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) & not(((1..2)*{SIM_NAO}) = {}) & ((MAX_INT) : ((NAT-{0}))) & ((MAX_INT) = (1000000));
+"Refinement is correct";
+"Check invariant ((qtd_max_r$1) : (((((1) .. (3))) --> (NAT))))";
+((((((((qtd_max_r$1) <+ ({((1) |-> (0))}))) <+ ({((2) |-> (0))}))) <+ ({((3) |-> (0))}))) : (((((1) .. (3))) --> (NAT))));
+"Check invariant (((qtd_max_r$1 )(1)) = ((qtd_max )(comum)))";
+(((((((((qtd_max_r$1) <+ ({((1) |-> (0))}))) <+ ({((2) |-> (0))}))) <+ ({((3) |-> (0))})) )(1)) = (((((1..3)*{TIPOS}) * {0}) )((3|->TIPOS))));
+"Check invariant (((qtd_max_r$1 )(2)) = ((qtd_max )(idoso)))";
+(((((((((qtd_max_r$1) <+ ({((1) |-> (0))}))) <+ ({((2) |-> (0))}))) <+ ({((3) |-> (0))})) )(2)) = (((((1..3)*{TIPOS}) * {0}) )((1|->TIPOS))));
+"Check invariant (((qtd_max_r$1 )(3)) = ((qtd_max )(deficiente)))";
+(((((((((qtd_max_r$1) <+ ({((1) |-> (0))}))) <+ ({((2) |-> (0))}))) <+ ({((3) |-> (0))})) )(3)) = (((((1..3)*{TIPOS}) * {0}) )((2|->TIPOS))));
+qtd_max : ((1..3)*{TIPOS}) +-> NAT & dom(qtd_max) = ((1..3)*{TIPOS}) & ((qtd_max) : (((((1..3)*{TIPOS})) --> (NAT)))) & ((ini) : (BOOL));
+((ini_r$1) : (BOOL)) & ((ini_r$1) = (ini)) & qtd_max_r$1 : ((1) .. (3)) +-> NAT & dom(qtd_max_r$1) = ((1) .. (3)) & ((qtd_max_r$1) : (((((1) .. (3))) --> (NAT)))) & (((qtd_max_r$1 )(1)) = ((qtd_max )((3|->TIPOS)))) & (((qtd_max_r$1 )(2)) = ((qtd_max )((1|->TIPOS)))) & (((qtd_max_r$1 )(3)) = ((qtd_max )((2|->TIPOS))));
+((ini) = (FALSE)) & ((max_idosos) : (NAT)) & ((max_comuns) : (NAT)) & ((max_deficientes) : (NAT));
+((((((((qtd_max_r$1) <+ ({((1) |-> (max_comuns))}))) <+ ({((2) |-> (max_idosos))}))) <+ ({((3) |-> (max_deficientes))}))) : (((((1) .. (3))) --> (NAT))));
+(((((((((qtd_max_r$1) <+ ({((1) |-> (max_comuns))}))) <+ ({((2) |-> (max_idosos))}))) <+ ({((3) |-> (max_deficientes))})) )(1)) = (({(((1|->TIPOS)) |-> (max_idosos))}\/{(((3|->TIPOS)) |-> (max_comuns))}\/{(((2|->TIPOS)) |-> (max_deficientes))} )((3|->TIPOS))));
+(((((((((qtd_max_r$1) <+ ({((1) |-> (max_comuns))}))) <+ ({((2) |-> (max_idosos))}))) <+ ({((3) |-> (max_deficientes))})) )(2)) = (({(((1|->TIPOS)) |-> (max_idosos))}\/{(((3|->TIPOS)) |-> (max_comuns))}\/{(((2|->TIPOS)) |-> (max_deficientes))} )((1|->TIPOS))));
+(((((((((qtd_max_r$1) <+ ({((1) |-> (max_comuns))}))) <+ ({((2) |-> (max_idosos))}))) <+ ({((3) |-> (max_deficientes))})) )(3)) = (({(((1|->TIPOS)) |-> (max_idosos))}\/{(((3|->TIPOS)) |-> (max_comuns))}\/{(((2|->TIPOS)) |-> (max_deficientes))} )((2|->TIPOS))));
+(((qtd_max_r$1 )(2)) = ((qtd_max )((1|->TIPOS))));
+(((qtd_max_r$1 )(1)) = ((qtd_max )((3|->TIPOS))));
+qtd_max_r$1 : ((1) .. (3)) +-> NAT;
+dom(qtd_max_r$1) = ((1) .. (3));
+((qtd_max_r$1) : (((((1) .. (3))) --> (NAT))));
+((ini_r$1) = (ini));
+((ini_r$1) : (BOOL));
+"Well definedness";
+((1) : (dom(qtd_max_r$1)));
+((qtd_max_r$1) : (((dom(qtd_max_r$1)) +-> (ran(qtd_max_r$1)))));
+(((3|->TIPOS)) : (dom(qtd_max)));
+((qtd_max) : (((dom(qtd_max)) +-> (ran(qtd_max)))));
+((2) : (dom(qtd_max_r$1)));
+(((1|->TIPOS)) : (dom(qtd_max)));
+((3) : (dom(qtd_max_r$1)));
+(((2|->TIPOS)) : (dom(qtd_max)))
+END
+&
+THEORY EnumerateX IS
+CORES == {azul,amarela,verde,vermelha};
+SIM_NAO == {sim,nao};
+STATUS_VAGA == {livre,ocupada};
+TIPOS == {idoso,deficiente,comum}
+END

@@ -1,0 +1,36 @@
+﻿REFINEMENT QtdMax_r
+REFINES QtdMax
+
+SEES TiposComuns
+
+
+ABSTRACT_VARIABLES
+    qtd_max_r ,
+    ini_r
+
+INVARIANT
+    ini_r : BOOL &
+    ini_r = ini  &
+
+    qtd_max_r : 1 .. 3 --> NAT    &
+    qtd_max_r ( 1 ) = qtd_max ( comum ) &
+    qtd_max_r ( 2 ) = qtd_max ( idoso ) &
+    qtd_max_r ( 3 ) = qtd_max ( deficiente )
+
+INITIALISATION
+    qtd_max_r ( 1 ) := 0 ;
+    qtd_max_r ( 2 ) := 0 ;
+    qtd_max_r ( 3 ) := 0 ;
+    ini_r := FALSE
+
+
+OPERATIONS
+    init ( max_idosos , max_deficientes , max_comuns ) =
+    BEGIN
+        qtd_max_r ( 1 ) := max_comuns ;
+        qtd_max_r ( 2 ) := max_idosos ;
+        qtd_max_r ( 3 ) := max_deficientes ;
+        ini_r := TRUE
+    END
+
+ END

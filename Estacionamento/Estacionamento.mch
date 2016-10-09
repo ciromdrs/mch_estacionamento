@@ -4,6 +4,8 @@ MACHINE
 SEES TiposComuns
 
 INCLUDES QtdMax
+    
+PROMOTES init
 
 VARIABLES
     status, // status da vaga
@@ -51,14 +53,14 @@ OPERATIONS
     
     // Ocupação e liberação de vagas
     ocupar(vv) =
-        PRE vv : VAGAS         &
+        PRE vv : dom(status) &
             status(vv) = livre
         THEN status(vv) := ocupada ||
              cor(vv)    := vermelha
         END;
         
     liberar(vv) = 
-        PRE vv : VAGAS
+        PRE vv : dom(status)
         THEN status(vv) := livre ||
             CASE tipo(vv) OF EITHER idoso THEN
                 cor(vv) := azul
@@ -72,13 +74,15 @@ OPERATIONS
     
     // Consultas
     cc <-- get_cor_lampada(vv) =
-        PRE vv : dom(cor)
+        PRE vv : dom(cor) &
+            cc : CORES
         THEN
             cc := cor(vv)
         END;
     
-    cc <-- get_tipo_lampada(vv) =
-        PRE vv : dom(tipo)
+    cc <-- get_tipo_vaga(vv) =
+        PRE vv : dom(tipo) &
+            cc : TIPOS
         THEN
             cc := tipo(vv)
         END;

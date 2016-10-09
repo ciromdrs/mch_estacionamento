@@ -6,8 +6,10 @@
 </Sees>
 <Abstract_Variables>
 <Id value='qtd_max' typref='3857687249'/>
+<Id value='ini' typref='2043437594'/>
 </Abstract_Variables>
 <Invariant>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
 <Id value='qtd_max' typref='3857687249'/>
 <Binary_Exp op='--&gt;' typref='3434258930'>
@@ -15,19 +17,39 @@
 <Id value='NAT' typref='3603043417'/>
 </Binary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='ini' typref='2043437594'/>
+<Id value='BOOL' typref='4282494527'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Invariant>
 <Initialisation>
+<Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
 <Id value='qtd_max' typref='3857687249'/>
 </Variables>
 <Values>
-<EmptySet typref='3817003670'/>
+<Binary_Exp op='*' typref='3857687249'>
+<Id value='TIPOS' typref='1761623770'/>
+<Nary_Exp op='{' typref='3603043417'>
+<Integer_Literal value='0' typref='2701647786'/>
+</Nary_Exp>
+</Binary_Exp>
 </Values>
 </Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='ini' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
 </Initialisation>
 <Operations>
-<Operation name='set_qtd_max'>
+<Operation name='init'>
 <Input_Parameters>
 <Id value='max_idosos' typref='2701647786'/>
 <Id value='max_deficientes' typref='2701647786'/>
@@ -36,10 +58,8 @@
 <Precondition>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op='='>
-<Unary_Exp op='dom' typref='1761623770'>
-<Id value='qtd_max' typref='3857687249'/>
-</Unary_Exp>
-<EmptySet typref='3817003670'/>
+<Id value='ini' typref='2043437594'/>
+<Boolean_Literal value='FALSE' typref='2043437594'/>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='max_idosos' typref='2701647786'/>
@@ -56,6 +76,7 @@
 </Nary_Pred>
 </Precondition>
 <Body>
+<Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
 <Id value='qtd_max' typref='3857687249'/>
@@ -77,6 +98,15 @@
 </Nary_Exp>
 </Values>
 </Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='ini' typref='2043437594'/>
+</Variables>
+<Values>
+<Boolean_Literal value='TRUE' typref='2043437594'/>
+</Values>
+</Assignement_Sub>
+</Nary_Sub>
 </Body>
 </Operation>
 </Operations>
@@ -88,6 +118,9 @@
 <Id value='INTEGER'/>
 </Binary_Exp>
 </Unary_Exp>
+</Type>
+<Type id='2043437594'>
+<Id value='BOOL'/>
 </Type>
 <Type id='3434258930'>
 <Unary_Exp op='POW'>
@@ -109,9 +142,9 @@
 <Id value='INTEGER'/>
 </Unary_Exp>
 </Type>
-<Type id='3817003670'>
+<Type id='4282494527'>
 <Unary_Exp op='POW'>
-<Generic_Type/>
+<Id value='BOOL'/>
 </Unary_Exp>
 </Type>
 <Type id='2701647786'>
