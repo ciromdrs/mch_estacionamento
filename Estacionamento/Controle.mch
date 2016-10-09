@@ -5,30 +5,30 @@ MACHINE
 SEES TiposComuns
 
 EXTENDS Estacionamento
-
-CONSTANTS
-    preco, lim
     
-PROPERTIES
-    preco           : NAT &
-    lim             : NAT
 SETS
     TICKET
 
 VARIABLES
     pagou,   // relação de pagamento de tickets
     chegada, // relação de chegada dos veículos
-    hora     // hora atual, medida em minutos
+    hora,    // hora atual, medida em minutos
+    preco,   // preco por minuto
+    lim      // limite gratuito, em minutos
 
 INVARIANT 
     hora    : NAT            &
     chegada : TICKET --> NAT &
-    pagou   : TICKET --> SIM_NAO
+    pagou   : TICKET --> SIM_NAO &
+    preco   : NAT &
+    lim     : NAT
     
 INITIALISATION
     hora    := 0              ||
     pagou   := TICKET * {nao} ||
-    chegada := {}
+    chegada := {}             ||
+    preco   := 1              ||
+    lim     := 10
 
 OPERATIONS
     adiantar(mm) = 
