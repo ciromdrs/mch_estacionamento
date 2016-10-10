@@ -31,18 +31,23 @@ INITIALISATION
 
 OPERATIONS
     // Controle de vagas
-    criar ( vv , tt ) =
+    criar ( tt ) =
         PRE tt : TIPOS         &
-            vv : VAGAS         &
-            vv /: dom ( tipo ) &
             card ( tipo |> { tt } ) < qtd_max ( tt )
         THEN
-            tipo ( vv ) := tt         ||
-            cor ( vv ) := verde       ||
-            status ( vv ) := livre
+            ANY vv WHERE
+                vv : VAGAS      &
+                vv /: dom ( tipo ) &
+                vv /: dom ( cor ) &
+                vv /: dom ( status )
+            THEN
+                tipo ( vv ) := tt         ||
+                cor ( vv ) := verde       ||
+                status ( vv ) := livre
+            END
         END ;
 
-    exluir ( vv ) =
+    excluir ( vv ) =
         PRE vv : VAGAS &
             status ( vv ) = livre
         THEN

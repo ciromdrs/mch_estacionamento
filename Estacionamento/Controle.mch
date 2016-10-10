@@ -40,7 +40,7 @@ OPERATIONS
     tt <-- pegar_ticket =
         ANY uu
         WHERE uu : TICKET & uu /: dom(chegada) THEN
-            tt := uu || chegada(tt) := hora || pagou(tt) := nao
+            tt := uu || chegada(uu) := hora || pagou(uu) := nao
         END;        
     
     troco <-- pagar_ticket(ticket, dinheiro) =

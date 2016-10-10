@@ -97,14 +97,14 @@ THEORY ListConstraintsX IS
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Machine(Estacionamento))==(criar,exluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar,init);
-  List_Operations(Machine(Estacionamento))==(criar,exluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar,init)
+  Internal_List_Operations(Machine(Estacionamento))==(criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar,init);
+  List_Operations(Machine(Estacionamento))==(criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar,init)
 END
 &
 THEORY ListInputX IS
   List_Input(Machine(Estacionamento),init)==(max_idosos,max_deficientes,max_comuns);
-  List_Input(Machine(Estacionamento),criar)==(vv,tt);
-  List_Input(Machine(Estacionamento),exluir)==(vv);
+  List_Input(Machine(Estacionamento),criar)==(tt);
+  List_Input(Machine(Estacionamento),excluir)==(vv);
   List_Input(Machine(Estacionamento),ocupar)==(vv);
   List_Input(Machine(Estacionamento),liberar)==(vv);
   List_Input(Machine(Estacionamento),get_cor_lampada)==(vv);
@@ -116,7 +116,7 @@ END
 THEORY ListOutputX IS
   List_Output(Machine(Estacionamento),init)==(?);
   List_Output(Machine(Estacionamento),criar)==(?);
-  List_Output(Machine(Estacionamento),exluir)==(?);
+  List_Output(Machine(Estacionamento),excluir)==(?);
   List_Output(Machine(Estacionamento),ocupar)==(?);
   List_Output(Machine(Estacionamento),liberar)==(?);
   List_Output(Machine(Estacionamento),get_cor_lampada)==(cc);
@@ -127,8 +127,8 @@ END
 &
 THEORY ListHeaderX IS
   List_Header(Machine(Estacionamento),init)==(init(max_idosos,max_deficientes,max_comuns));
-  List_Header(Machine(Estacionamento),criar)==(criar(vv,tt));
-  List_Header(Machine(Estacionamento),exluir)==(exluir(vv));
+  List_Header(Machine(Estacionamento),criar)==(criar(tt));
+  List_Header(Machine(Estacionamento),excluir)==(excluir(vv));
   List_Header(Machine(Estacionamento),ocupar)==(ocupar(vv));
   List_Header(Machine(Estacionamento),liberar)==(liberar(vv));
   List_Header(Machine(Estacionamento),get_cor_lampada)==(cc <-- get_cor_lampada(vv));
@@ -142,8 +142,8 @@ THEORY ListOperationGuardX END
 THEORY ListPreconditionX IS
   Own_Precondition(Machine(Estacionamento),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT);
   List_Precondition(Machine(Estacionamento),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT);
-  List_Precondition(Machine(Estacionamento),criar)==(tt: TIPOS & vv: VAGAS & vv/:dom(tipo) & card(tipo|>{tt})<qtd_max(tt));
-  List_Precondition(Machine(Estacionamento),exluir)==(vv: VAGAS & status(vv) = livre);
+  List_Precondition(Machine(Estacionamento),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt));
+  List_Precondition(Machine(Estacionamento),excluir)==(vv: VAGAS & status(vv) = livre);
   List_Precondition(Machine(Estacionamento),ocupar)==(vv: dom(status) & status(vv) = livre);
   List_Precondition(Machine(Estacionamento),liberar)==(vv: dom(status));
   List_Precondition(Machine(Estacionamento),get_cor_lampada)==(vv: dom(cor) & cc: CORES);
@@ -159,12 +159,12 @@ THEORY ListSubstitutionX IS
   Expanded_List_Substitution(Machine(Estacionamento),get_cor_lampada)==(vv: dom(cor) & cc: CORES | cc:=cor(vv));
   Expanded_List_Substitution(Machine(Estacionamento),liberar)==(vv: dom(status) | status:=status<+{vv|->livre} || (not(tipo(vv) = comum) & not(tipo(vv) = deficiente) & tipo(vv) = idoso ==> cor:=cor<+{vv|->azul} [] not(tipo(vv) = idoso) & not(tipo(vv) = comum) & tipo(vv) = deficiente ==> cor:=cor<+{vv|->amarela} [] not(tipo(vv) = idoso) & not(tipo(vv) = deficiente) & tipo(vv) = comum ==> cor:=cor<+{vv|->verde} [] not(tipo(vv) = idoso) & not(tipo(vv) = deficiente) & not(tipo(vv) = comum) ==> skip));
   Expanded_List_Substitution(Machine(Estacionamento),ocupar)==(vv: dom(status) & status(vv) = livre | status,cor:=status<+{vv|->ocupada},cor<+{vv|->vermelha});
-  Expanded_List_Substitution(Machine(Estacionamento),exluir)==(vv: VAGAS & status(vv) = livre | tipo,cor,status:={vv}<<|tipo,{vv}<<|cor,{vv}<<|status);
-  Expanded_List_Substitution(Machine(Estacionamento),criar)==(tt: TIPOS & vv: VAGAS & vv/:dom(tipo) & card(tipo|>{tt})<qtd_max(tt) | tipo,cor,status:=tipo<+{vv|->tt},cor<+{vv|->verde},status<+{vv|->livre});
+  Expanded_List_Substitution(Machine(Estacionamento),excluir)==(vv: VAGAS & status(vv) = livre | tipo,cor,status:={vv}<<|tipo,{vv}<<|cor,{vv}<<|status);
+  Expanded_List_Substitution(Machine(Estacionamento),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt) | @vv.(vv: VAGAS & vv/:dom(tipo) & vv/:dom(cor) & vv/:dom(status) ==> tipo,cor,status:=tipo<+{vv|->tt},cor<+{vv|->verde},status<+{vv|->livre}));
   List_Substitution(Machine(Estacionamento),init)==(qtd_max:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes} || ini:=TRUE);
   Expanded_List_Substitution(Machine(Estacionamento),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT | qtd_max,ini:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes},TRUE);
-  List_Substitution(Machine(Estacionamento),criar)==(tipo(vv):=tt || cor(vv):=verde || status(vv):=livre);
-  List_Substitution(Machine(Estacionamento),exluir)==(tipo:={vv}<<|tipo || cor:={vv}<<|cor || status:={vv}<<|status);
+  List_Substitution(Machine(Estacionamento),criar)==(ANY vv WHERE vv: VAGAS & vv/:dom(tipo) & vv/:dom(cor) & vv/:dom(status) THEN tipo(vv):=tt || cor(vv):=verde || status(vv):=livre END);
+  List_Substitution(Machine(Estacionamento),excluir)==(tipo:={vv}<<|tipo || cor:={vv}<<|cor || status:={vv}<<|status);
   List_Substitution(Machine(Estacionamento),ocupar)==(status(vv):=ocupada || cor(vv):=vermelha);
   List_Substitution(Machine(Estacionamento),liberar)==(status(vv):=livre || CASE tipo(vv) OF EITHER idoso THEN cor(vv):=azul OR deficiente THEN cor(vv):=amarela OR comum THEN cor(vv):=verde END END);
   List_Substitution(Machine(Estacionamento),get_cor_lampada)==(cc:=cor(vv));
@@ -223,8 +223,8 @@ END
 &
 THEORY ListANYVarX IS
   List_ANY_Var(Machine(Estacionamento),init)==(?);
-  List_ANY_Var(Machine(Estacionamento),criar)==(?);
-  List_ANY_Var(Machine(Estacionamento),exluir)==(?);
+  List_ANY_Var(Machine(Estacionamento),criar)==(Var(vv) == atype(VAGAS,?,?));
+  List_ANY_Var(Machine(Estacionamento),excluir)==(?);
   List_ANY_Var(Machine(Estacionamento),ocupar)==(?);
   List_ANY_Var(Machine(Estacionamento),liberar)==(?);
   List_ANY_Var(Machine(Estacionamento),get_cor_lampada)==(?);
@@ -234,7 +234,7 @@ THEORY ListANYVarX IS
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Estacionamento)) == (? | ? | tipo,cor,status | V,ini,qtd_max | criar,exluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar | init | seen(Machine(TiposComuns)),included(Machine(QtdMax)) | ? | Estacionamento);
+  List_Of_Ids(Machine(Estacionamento)) == (? | ? | tipo,cor,status | V,ini,qtd_max | criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar | init | seen(Machine(TiposComuns)),included(Machine(QtdMax)) | ? | Estacionamento);
   List_Of_HiddenCst_Ids(Machine(Estacionamento)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Estacionamento)) == (?);
   List_Of_VisibleVar_Ids(Machine(Estacionamento)) == (? | ?);
@@ -256,7 +256,7 @@ THEORY VariablesEnvX IS
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Estacionamento)) == (Type(init) == Cst(No_type,btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?));Type(indicar) == Cst(atype(VAGAS,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGAS,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGAS,?,?));Type(liberar) == Cst(No_type,atype(VAGAS,?,?));Type(ocupar) == Cst(No_type,atype(VAGAS,?,?));Type(exluir) == Cst(No_type,atype(VAGAS,?,?));Type(criar) == Cst(No_type,atype(VAGAS,?,?)*etype(TIPOS,?,?)));
+  Operations(Machine(Estacionamento)) == (Type(init) == Cst(No_type,btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?));Type(indicar) == Cst(atype(VAGAS,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGAS,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGAS,?,?));Type(liberar) == Cst(No_type,atype(VAGAS,?,?));Type(ocupar) == Cst(No_type,atype(VAGAS,?,?));Type(excluir) == Cst(No_type,atype(VAGAS,?,?));Type(criar) == Cst(No_type,etype(TIPOS,?,?)));
   Observers(Machine(Estacionamento)) == (Type(indicar) == Cst(atype(VAGAS,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGAS,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGAS,?,?)))
 END
 &

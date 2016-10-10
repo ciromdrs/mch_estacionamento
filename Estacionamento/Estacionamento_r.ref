@@ -20,7 +20,7 @@ INVARIANT
     tipo2   : 1..MAX_INT --> TIPOS       &
     cor2    : 1..MAX_INT --> CORES       &
     status2 : 1..MAX_INT --> STATUS_VAGA &
-    ids     : 1..MAX_INT --> NAT
+    indice  : 1..MAX_INT --> NAT
 
 INITIALISATION
     cv := 0;
@@ -30,19 +30,22 @@ INITIALISATION
 
 OPERATIONS
     // Controle de vagas
-    criar(vv, tt) =
+    criar(tt) =
         BEGIN
             cv := cv + 1;
-            ids(cv) := max(ids) + 1;
+            indice(cv)  := max(ids) + 1;
             tipo2(cv)   := tt;
             cor2(cv)    := verde;
             status2(cv) := livre;
         END;
     
-    ocupar(vv) =
+    excluir(vv) =
         BEGIN
-            
-        END;
+           tipo   := (1..indice(vv)-1 <| tipo) \/ (tipo);
+           cor    := {vv} <<| cor;
+           status := {vv} <<| status;
+           indice
+        END
     
 
 END
