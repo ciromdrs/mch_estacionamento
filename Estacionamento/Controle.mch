@@ -1,6 +1,5 @@
 MACHINE
-    Controle/*(preco, lim, // preco = preço por minuto, lim = limite gratuito em minutos
-        max_comuns, max_idosos, max_deficientes)*/
+    Controle
 
 SEES TiposComuns
 

@@ -131,8 +131,8 @@ END
 THEORY ListSetsX IS
   Set_Definition(Machine(QtdMax),SIM_NAO)==({sim,nao});
   Context_List_Enumerated(Machine(QtdMax))==(TIPOS,STATUS_VAGA,CORES,SIM_NAO);
-  Context_List_Defered(Machine(QtdMax))==(VAGAS);
-  Context_List_Sets(Machine(QtdMax))==(VAGAS,TIPOS,STATUS_VAGA,CORES,SIM_NAO);
+  Context_List_Defered(Machine(QtdMax))==(?);
+  Context_List_Sets(Machine(QtdMax))==(TIPOS,STATUS_VAGA,CORES,SIM_NAO);
   List_Valuable_Sets(Machine(QtdMax))==(?);
   Inherited_List_Enumerated(Machine(QtdMax))==(?);
   Inherited_List_Defered(Machine(QtdMax))==(?);
@@ -154,7 +154,7 @@ END
 &
 THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(QtdMax))==(btrue);
-  Context_List_Properties(Machine(QtdMax))==(MAX_INT: NAT1 & MAX_INT = 1000000 & VAGAS: FIN(INTEGER) & not(VAGAS = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS_VAGA: FIN(INTEGER) & not(STATUS_VAGA = {}) & CORES: FIN(INTEGER) & not(CORES = {}) & SIM_NAO: FIN(INTEGER) & not(SIM_NAO = {}));
+  Context_List_Properties(Machine(QtdMax))==(MAX_INT: NAT1 & MAX_INT = 1000 & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS_VAGA: FIN(INTEGER) & not(STATUS_VAGA = {}) & CORES: FIN(INTEGER) & not(CORES = {}) & SIM_NAO: FIN(INTEGER) & not(SIM_NAO = {}));
   Inherited_List_Properties(Machine(QtdMax))==(btrue);
   List_Properties(Machine(QtdMax))==(btrue)
 END
@@ -180,7 +180,7 @@ THEORY ListOfIdsX IS
   List_Of_VisibleCst_Ids(Machine(QtdMax)) == (?);
   List_Of_VisibleVar_Ids(Machine(QtdMax)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(QtdMax)) == (?: ?);
-  List_Of_Ids(Machine(TiposComuns)) == (MAX_INT,VAGAS,TIPOS,STATUS_VAGA,CORES,SIM_NAO,idoso,deficiente,comum,livre,ocupada,azul,amarela,verde,vermelha,sim,nao | ? | ? | ? | ? | ? | ? | ? | TiposComuns);
+  List_Of_Ids(Machine(TiposComuns)) == (MAX_INT,TIPOS,STATUS_VAGA,CORES,SIM_NAO,idoso,deficiente,comum,livre,ocupada,azul,amarela,verde,vermelha,sim,nao | ? | ? | ? | ? | ? | ? | ? | TiposComuns);
   List_Of_HiddenCst_Ids(Machine(TiposComuns)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(TiposComuns)) == (MAX_INT);
   List_Of_VisibleVar_Ids(Machine(TiposComuns)) == (? | ?);

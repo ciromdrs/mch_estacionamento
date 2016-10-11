@@ -1,9 +1,6 @@
 <Machine name='TiposComuns' type='abstraction'>
 <Sets>
 <Set>
-<Id value='VAGAS' typref='2839686121'/>
-</Set>
-<Set>
 <Id value='TIPOS' typref='1761623770'/>
 <Enumerated_Values>
 <Id value='idoso' typref='2864770153'/>
@@ -46,7 +43,7 @@
 </Exp_Comparison>
 <Exp_Comparison op='='>
 <Id value='MAX_INT' typref='2701647786'/>
-<Integer_Literal value='1000000' typref='2701647786'/>
+<Integer_Literal value='1000' typref='2701647786'/>
 </Exp_Comparison>
 </Nary_Pred>
 </Properties>
@@ -54,11 +51,6 @@
 <Skip/>
 </Initialisation>
 <TypeInfos>
-<Type id='2839686121'>
-<Unary_Exp op='POW'>
-<Id value='VAGAS'/>
-</Unary_Exp>
-</Type>
 <Type id='1761623770'>
 <Unary_Exp op='POW'>
 <Id value='TIPOS'/>

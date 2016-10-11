@@ -1,27 +1,34 @@
 ﻿THEORY BalanceX IS
-  Estacionamento,53,0,0,41,0,0,0;
-  Initialisation,6,0,0,3,0,0,0;
-  WellDefinednessInvariant,9,0,0,9,0,0,0;
-  WellDefinedness_Precondition_criar,3,0,0,3,0,0,0;
-  WellDefinedness_Precondition_exluir,2,0,0,2,0,0,0;
-  WellDefinedness_Precondition_indicar,1,0,0,1,0,0,0;
-  WellDefinedness_Precondition_ocupar,1,0,0,0,0,0,0;
-  WellDefinedness_get_cor_lampada,1,0,0,0,0,0,0;
-  WellDefinedness_get_info_painel,6,0,0,6,0,0,0;
-  WellDefinedness_get_tipo_lampada,1,0,0,1,0,0,0;
-  WellDefinedness_liberar,2,0,0,2,0,0,0;
-  criar,6,0,0,6,0,0,0;
-  exluir,6,0,0,0,0,0,0;
-  liberar,7,0,0,6,0,0,0;
+  Estacionamento,54,0,0,35,0,0,0;
+  Initialisation,6,0,0,6,0,0,0;
+  WellDefinednessInvariant,9,0,0,6,0,0,0;
+  WellDefinedness_Precondition_criar,3,0,0,2,0,0,0;
+  WellDefinedness_Precondition_excluir,2,0,0,1,0,0,0;
+  WellDefinedness_Precondition_indicar,1,0,0,0,0,0,0;
+  WellDefinedness_Precondition_liberar,1,0,0,1,0,0,0;
+  WellDefinedness_Precondition_ocupar,1,0,0,1,0,0,0;
+  WellDefinedness_get_cor_lampada,1,0,0,1,0,0,0;
+  WellDefinedness_get_info_painel,6,0,0,0,0,0,0;
+  WellDefinedness_get_tipo_vaga,1,0,0,1,0,0,0;
+  WellDefinedness_liberar,2,0,0,1,0,0,0;
+  criar,6,0,0,3,0,0,0;
+  excluir,6,0,0,3,0,0,0;
+  liberar,7,0,0,7,0,0,0;
   ocupar,2,0,0,2,0,0,0
 END
 &
 THEORY ProofState IS
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
+  Unproved;
   Proved(0);
   Proved(0);
   Proved(0);
-  Proved(0);
-  Proved(0);
+  Unproved;
   Proved(0);
   Proved(0);
   Proved(0);
@@ -31,32 +38,12 @@ THEORY ProofState IS
   Unproved;
   Proved(0);
   Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
+  Unproved;
   Proved(0);
   Proved(0);
   Unproved;
   Proved(0);
   Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Unproved;
-  Unproved;
-  Unproved;
-  Unproved;
-  Unproved;
   Unproved;
   Proved(0);
   Proved(0);
@@ -69,28 +56,26 @@ THEORY ProofState IS
   Proved(0);
   Unproved;
   Unproved;
-  Unproved
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Unproved;
+  Unproved;
+  Unproved;
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0);
+  Proved(0)
 END
 &
 THEORY MethodList IS
-  pr;
-  pr;
-  pr;
-  pr;
-  pr;
-  pr;
-  pr;
-  pr;
   ?;
-  pr;
-  pr;
-  ?;
-  pr;
-  pr;
-  pr;
-  pr;
-  pr;
-  pr;
   pr;
   pr;
   pr;
@@ -104,6 +89,24 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  ?;
+  pr;
+  pr;
+  pr;
+  pr;
+  pr;
   pr;
   pr;
   pr;
@@ -111,12 +114,12 @@ THEORY MethodList IS
   ?;
   ?;
   ?;
-  ?;
-  ?;
-  ?;
   pr;
   pr;
   pr;
+  ?;
+  ?;
+  ?;
   pr;
   pr;
   pr;
@@ -129,11 +132,17 @@ THEORY MethodList IS
 END
 &
 THEORY PassList IS
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),?;
-  Force(0),?;
-  Force(0),?;
+  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),?;
@@ -143,32 +152,12 @@ THEORY PassList IS
   Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
+  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),(?;0;1;2;3);
-  Force(0),(?;0;1;2;3);
-  Force(0),(?;0;1;2;3);
-  Force(0),(?;0;1;2;3);
-  Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
@@ -181,7 +170,22 @@ THEORY PassList IS
   Force(0),?;
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
-  Force(0),(?;0;1;2;3)
+  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?;
+  Force(0),?
 END
 &
 THEORY ManForms 

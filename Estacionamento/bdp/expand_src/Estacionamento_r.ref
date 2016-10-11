@@ -5,46 +5,87 @@ SEES TiposComuns
 
 ABSTRACT_VARIABLES
     cv , // Contador de Vagas
-    ids , // Identificadores das vagas
     tipo2 ,
-    cor2 ,
     status2
 
 INVARIANT
-    // Restrições sobre o tamanho dos arrays
-    cv : NAT          &
+    tipo2   : vagas --> TIPOS       &
+    status2 : vagas --> STATUS_VAGA &
+
+    cv : 1 .. MAX_INT &
     cv = card ( tipo ) &
-    cv = card ( cor ) &
     cv = card ( status ) &
+    cv <= qtd_max ( comum ) + qtd_max ( idoso ) + qtd_max ( deficiente ) &
+    vagas = 1 .. cv
 
-    tipo2   : 1 .. MAX_INT --> TIPOS     &
-    cor2    : 1 .. MAX_INT --> CORES     &
-    status2 : 1 .. MAX_INT --> STATUS_VAGA &
-    ids     : 1 .. MAX_INT --> NAT
 
-INITIALISATION
-    cv := 0 ;
-    tipo2   := % tt . ( tt : 1 .. MAX_INT | comum ) ;
-    cor2    := % tt . ( tt : 1 .. MAX_INT | verde ) ;
-    status2 := % tt . ( tt : 1 .. MAX_INT | livre ) ;
+
+INITIALISATION BEGIN
+        cv := 0 ;
+        tipo2   := % tt . ( tt : 1 .. MAX_INT | comum ) ;
+        status2 := % tt . ( tt : 1 .. MAX_INT | livre )
+    END
 
 OPERATIONS
     // Controle de vagas
     criar ( tt ) =
         BEGIN
             cv := cv + 1 ;
-            ids ( cv ) := max ( ids ) + 1 ;
             tipo2 ( cv ) := tt ;
-            cor2 ( cv ) := verde ;
-            status2 ( cv ) := livre ;
+            status2 ( cv ) := livre
         END ;
 
     excluir ( vv ) =
         BEGIN
-           tipo   := { vv } <<| tipo ||
-           cor    := { vv } <<| cor ||
-           status := { vv } <<| status
+            tipo2   := % tt . ( tt : vv + 1 .. MAX_INT | tipo2 ( vv ) ) ;
+            status2 := % ss . ( ss : vv + 1 .. MAX_INT | status2 ( vv ) )
+        END ;
+
+    // Ocupação e liberação de vagas
+    ocupar ( vv ) = status2 ( vv ) := ocupada ;
+
+    liberar ( vv ) = status2 ( vv ) := livre ;
+
+    // Consultas
+    cc <-- get_cor_lampada ( vv ) =
+        BEGIN
+            cc := vermelha ;
+            IF status2 ( vv ) = livre THEN
+                CASE tipo2 ( vv ) OF EITHER idoso THEN
+                    cc := azul
+                OR deficiente THEN
+                    cc := amarela
+                OR comum THEN
+                    cc := verde
+                END
+                END
+            END
+        END ;
+
+    tt <-- get_tipo_vaga ( vv ) = tt := tipo2 ( vv ) ;
+
+    /* qc: Quantidade de vagas Comuns
+       oc: quantidade de vagas Ocupadas Comuns
+       as demais são análogas para deficientes e idosos.
+    */
+    qc , oc , qi , oi , qd , od <-- get_info_painel =
+        BEGIN
+            qc := SIGMA zz . ( zz : dom ( tipo2 ) & tipo2 ( zz ) = comum | 1 ) ;
+            oc := SIGMA zz . ( zz : dom ( tipo2 ) & tipo2 ( zz ) = comum &
+                              zz : dom ( status2 ) & status2 ( zz ) = ocupada | 1 ) ;
+
+            qi := SIGMA zz . ( zz : dom ( tipo2 ) & tipo2 ( zz ) = idoso | 1 ) ;
+            oi := SIGMA zz . ( zz : dom ( tipo2 ) & tipo2 ( zz ) = idoso &
+                              zz : dom ( status2 ) & status2 ( zz ) = ocupada | 1 ) ;
+
+            qd := SIGMA zz . ( zz : dom ( tipo2 ) & tipo2 ( zz ) = deficiente | 1 ) ;
+            od := SIGMA zz . ( zz : dom ( tipo2 ) & tipo2 ( zz ) = deficiente &
+                              zz : dom ( status2 ) & status2 ( zz ) = ocupada | 1 )
+        END ;
+
+    vv <-- indicar ( tt ) =
+        ANY uu
+        WHERE uu : dom ( dom ( tipo2 |> { tt } ) <| status2 |> { livre } ) THEN
+            vv := uu
         END
-
-
 END

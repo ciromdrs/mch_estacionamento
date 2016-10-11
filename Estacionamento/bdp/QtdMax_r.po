@@ -23,7 +23,7 @@ END
 &
 THEORY Formulas IS
 ((NAT) = (((0) .. (2147483647)))) & ((INT) = (((-2147483647) .. (2147483647))));
-VAGAS: FIN(INTEGER) & not(VAGAS = {}) & ((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) & not(((1..3)*{TIPOS}) = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {}) & ((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) & not(((1..2)*{SIM_NAO}) = {}) & ((MAX_INT) : ((NAT-{0}))) & ((MAX_INT) = (1000000));
+((1..3)*{TIPOS}): FIN(NATURAL*{TIPOS}) & not(((1..3)*{TIPOS}) = {}) & ((1..2)*{STATUS_VAGA}): FIN(NATURAL*{STATUS_VAGA}) & not(((1..2)*{STATUS_VAGA}) = {}) & ((1..4)*{CORES}): FIN(NATURAL*{CORES}) & not(((1..4)*{CORES}) = {}) & ((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) & not(((1..2)*{SIM_NAO}) = {}) & ((MAX_INT) : ((NAT-{0}))) & ((MAX_INT) = (1000));
 "Refinement is correct";
 "Check invariant ((qtd_max_r$1) : (((((1) .. (3))) --> (NAT))))";
 ((((((((qtd_max_r$1) <+ ({((1) |-> (0))}))) <+ ({((2) |-> (0))}))) <+ ({((3) |-> (0))}))) : (((((1) .. (3))) --> (NAT))));

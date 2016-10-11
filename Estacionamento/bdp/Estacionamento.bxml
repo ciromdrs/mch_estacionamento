@@ -13,37 +13,37 @@
 <Promoted_Operation>init</Promoted_Operation>
 </Promotes>
 <Abstract_Variables>
-<Id value='status' typref='431152820'/>
-<Id value='cor' typref='1376823510'/>
-<Id value='tipo' typref='2416948321'/>
+<Id value='vagas' typref='3603043417'/>
+<Id value='status' typref='2807671460'/>
+<Id value='tipo' typref='892561489'/>
 </Abstract_Variables>
 <Invariant>
 <Nary_Pred op='&amp;'>
+<Exp_Comparison op='='>
+<Id value='vagas' typref='3603043417'/>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Id value='MAX_INT' typref='2701647786'/>
+</Binary_Exp>
+</Exp_Comparison>
 <Exp_Comparison op=':'>
-<Id value='status' typref='431152820'/>
-<Binary_Exp op='--&gt;' typref='2925023951'>
-<Id value='VAGAS' typref='2839686121'/>
+<Id value='status' typref='2807671460'/>
+<Binary_Exp op='+-&gt;' typref='1415522399'>
+<Id value='vagas' typref='3603043417'/>
 <Id value='STATUS_VAGA' typref='3682769197'/>
 </Binary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
-<Id value='cor' typref='1376823510'/>
-<Binary_Exp op='--&gt;' typref='3063199405'>
-<Id value='VAGAS' typref='2839686121'/>
-<Id value='CORES' typref='2336136399'/>
-</Binary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='tipo' typref='2416948321'/>
-<Binary_Exp op='--&gt;' typref='2188152546'>
-<Id value='VAGAS' typref='2839686121'/>
+<Id value='tipo' typref='892561489'/>
+<Binary_Exp op='+-&gt;' typref='1382071410'>
+<Id value='vagas' typref='3603043417'/>
 <Id value='TIPOS' typref='1761623770'/>
 </Binary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op='&lt;='>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='comum' typref='2864770153'/>
 </Nary_Exp>
@@ -56,8 +56,8 @@
 </Exp_Comparison>
 <Exp_Comparison op='&lt;='>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='idoso' typref='2864770153'/>
 </Nary_Exp>
@@ -70,8 +70,8 @@
 </Exp_Comparison>
 <Exp_Comparison op='&lt;='>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='deficiente' typref='2864770153'/>
 </Nary_Exp>
@@ -88,7 +88,18 @@
 <Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
-<Id value='status' typref='431152820'/>
+<Id value='vagas' typref='3603043417'/>
+</Variables>
+<Values>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='1' typref='2701647786'/>
+<Id value='MAX_INT' typref='2701647786'/>
+</Binary_Exp>
+</Values>
+</Assignement_Sub>
+<Assignement_Sub>
+<Variables>
+<Id value='status' typref='2807671460'/>
 </Variables>
 <Values>
 <EmptySet typref='3817003670'/>
@@ -96,15 +107,7 @@
 </Assignement_Sub>
 <Assignement_Sub>
 <Variables>
-<Id value='cor' typref='1376823510'/>
-</Variables>
-<Values>
-<EmptySet typref='3817003670'/>
-</Values>
-</Assignement_Sub>
-<Assignement_Sub>
-<Variables>
-<Id value='tipo' typref='2416948321'/>
+<Id value='tipo' typref='892561489'/>
 </Variables>
 <Values>
 <EmptySet typref='3817003670'/>
@@ -115,7 +118,6 @@
 <Operations>
 <Operation name='criar'>
 <Input_Parameters>
-<Id value='vv' typref='3239067290'/>
 <Id value='tt' typref='2864770153'/>
 </Input_Parameters>
 <Precondition>
@@ -124,20 +126,10 @@
 <Id value='tt' typref='2864770153'/>
 <Id value='TIPOS' typref='1761623770'/>
 </Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Id value='VAGAS' typref='2839686121'/>
-</Exp_Comparison>
-<Exp_Comparison op='/:'>
-<Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='tipo' typref='2416948321'/>
-</Unary_Exp>
-</Exp_Comparison>
 <Exp_Comparison op='&lt;'>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='tt' typref='2864770153'/>
 </Nary_Exp>
@@ -151,12 +143,37 @@
 </Nary_Pred>
 </Precondition>
 <Body>
+<ANY_Sub>
+<Variables>
+<Id value='vv' typref='2701647786'/>
+</Variables>
+<Pred>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='vv' typref='2701647786'/>
+<Id value='vagas' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='tipo' typref='892561489'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='/:'>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='status' typref='2807671460'/>
+</Unary_Exp>
+</Exp_Comparison>
+</Nary_Pred>
+</Pred>
+<Then>
 <Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
 <Binary_Exp op='(' typref='2864770153'>
-<Id value='tipo' typref='2416948321'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='tipo' typref='892561489'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
@@ -165,20 +182,9 @@
 </Assignement_Sub>
 <Assignement_Sub>
 <Variables>
-<Binary_Exp op='(' typref='1622327860'>
-<Id value='cor' typref='1376823510'/>
-<Id value='vv' typref='3239067290'/>
-</Binary_Exp>
-</Variables>
-<Values>
-<Id value='verde' typref='1622327860'/>
-</Values>
-</Assignement_Sub>
-<Assignement_Sub>
-<Variables>
 <Binary_Exp op='(' typref='936744150'>
-<Id value='status' typref='431152820'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
@@ -186,22 +192,36 @@
 </Values>
 </Assignement_Sub>
 </Nary_Sub>
+</Then>
+</ANY_Sub>
 </Body>
 </Operation>
-<Operation name='exluir'>
+<Operation name='excluir'>
 <Input_Parameters>
-<Id value='vv' typref='3239067290'/>
+<Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Precondition>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Id value='VAGAS' typref='2839686121'/>
+<Id value='vv' typref='2701647786'/>
+<Id value='vagas' typref='3603043417'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='tipo' typref='892561489'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='status' typref='2807671460'/>
+</Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op='='>
 <Binary_Exp op='(' typref='936744150'>
-<Id value='status' typref='431152820'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 <Id value='livre' typref='936744150'/>
 </Exp_Comparison>
@@ -211,40 +231,27 @@
 <Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
-<Id value='tipo' typref='2416948321'/>
+<Id value='tipo' typref='892561489'/>
 </Variables>
 <Values>
-<Binary_Exp op='&lt;&lt;|' typref='2416948321'>
-<Nary_Exp op='{' typref='2839686121'>
-<Id value='vv' typref='3239067290'/>
+<Binary_Exp op='&lt;&lt;|' typref='892561489'>
+<Nary_Exp op='{' typref='3603043417'>
+<Id value='vv' typref='2701647786'/>
 </Nary_Exp>
-<Id value='tipo' typref='2416948321'/>
+<Id value='tipo' typref='892561489'/>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
 <Assignement_Sub>
 <Variables>
-<Id value='cor' typref='1376823510'/>
+<Id value='status' typref='2807671460'/>
 </Variables>
 <Values>
-<Binary_Exp op='&lt;&lt;|' typref='1376823510'>
-<Nary_Exp op='{' typref='2839686121'>
-<Id value='vv' typref='3239067290'/>
+<Binary_Exp op='&lt;&lt;|' typref='2807671460'>
+<Nary_Exp op='{' typref='3603043417'>
+<Id value='vv' typref='2701647786'/>
 </Nary_Exp>
-<Id value='cor' typref='1376823510'/>
-</Binary_Exp>
-</Values>
-</Assignement_Sub>
-<Assignement_Sub>
-<Variables>
-<Id value='status' typref='431152820'/>
-</Variables>
-<Values>
-<Binary_Exp op='&lt;&lt;|' typref='431152820'>
-<Nary_Exp op='{' typref='2839686121'>
-<Id value='vv' typref='3239067290'/>
-</Nary_Exp>
-<Id value='status' typref='431152820'/>
+<Id value='status' typref='2807671460'/>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
@@ -253,82 +260,112 @@
 </Operation>
 <Operation name='ocupar'>
 <Input_Parameters>
-<Id value='vv' typref='3239067290'/>
+<Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Precondition>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='status' typref='431152820'/>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='status' typref='2807671460'/>
 </Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op='='>
 <Binary_Exp op='(' typref='936744150'>
-<Id value='status' typref='431152820'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 <Id value='livre' typref='936744150'/>
 </Exp_Comparison>
 </Nary_Pred>
 </Precondition>
 <Body>
-<Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
 <Binary_Exp op='(' typref='936744150'>
-<Id value='status' typref='431152820'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
 <Id value='ocupada' typref='936744150'/>
 </Values>
 </Assignement_Sub>
-<Assignement_Sub>
-<Variables>
-<Binary_Exp op='(' typref='1622327860'>
-<Id value='cor' typref='1376823510'/>
-<Id value='vv' typref='3239067290'/>
-</Binary_Exp>
-</Variables>
-<Values>
-<Id value='vermelha' typref='1622327860'/>
-</Values>
-</Assignement_Sub>
-</Nary_Sub>
 </Body>
 </Operation>
 <Operation name='liberar'>
 <Input_Parameters>
-<Id value='vv' typref='3239067290'/>
+<Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Precondition>
+<Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='status' typref='431152820'/>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='status' typref='2807671460'/>
 </Unary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op='='>
+<Binary_Exp op='(' typref='936744150'>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
+</Binary_Exp>
+<Id value='ocupada' typref='936744150'/>
+</Exp_Comparison>
+</Nary_Pred>
 </Precondition>
 <Body>
-<Nary_Sub op='||'>
 <Assignement_Sub>
 <Variables>
 <Binary_Exp op='(' typref='936744150'>
-<Id value='status' typref='431152820'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
 <Id value='livre' typref='936744150'/>
 </Values>
 </Assignement_Sub>
+</Body>
+</Operation>
+<Operation name='get_cor_lampada'>
+<Output_Parameters>
+<Id value='cc' typref='1622327860'/>
+</Output_Parameters>
+<Input_Parameters>
+<Id value='vv' typref='2701647786'/>
+</Input_Parameters>
+<Precondition>
+<Nary_Pred op='&amp;'>
+<Exp_Comparison op=':'>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='status' typref='2807671460'/>
+</Unary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='cc' typref='1622327860'/>
+<Id value='CORES' typref='2336136399'/>
+</Exp_Comparison>
+</Nary_Pred>
+</Precondition>
+<Body>
+<If_Sub elseif='no'>
+<Condition>
+<Exp_Comparison op='='>
+<Binary_Exp op='(' typref='936744150'>
+<Id value='status' typref='2807671460'/>
+<Id value='vv' typref='2701647786'/>
+</Binary_Exp>
+<Id value='livre' typref='936744150'/>
+</Exp_Comparison>
+</Condition>
+<Then>
 <Case_Sub>
 <Value>
 <Binary_Exp op='(' typref='2864770153'>
-<Id value='tipo' typref='2416948321'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='tipo' typref='892561489'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 </Value>
 <Choices>
@@ -339,10 +376,7 @@
 <Then>
 <Assignement_Sub>
 <Variables>
-<Binary_Exp op='(' typref='1622327860'>
-<Id value='cor' typref='1376823510'/>
-<Id value='vv' typref='3239067290'/>
-</Binary_Exp>
+<Id value='cc' typref='1622327860'/>
 </Variables>
 <Values>
 <Id value='azul' typref='1622327860'/>
@@ -357,10 +391,7 @@
 <Then>
 <Assignement_Sub>
 <Variables>
-<Binary_Exp op='(' typref='1622327860'>
-<Id value='cor' typref='1376823510'/>
-<Id value='vv' typref='3239067290'/>
-</Binary_Exp>
+<Id value='cc' typref='1622327860'/>
 </Variables>
 <Values>
 <Id value='amarela' typref='1622327860'/>
@@ -375,10 +406,7 @@
 <Then>
 <Assignement_Sub>
 <Variables>
-<Binary_Exp op='(' typref='1622327860'>
-<Id value='cor' typref='1376823510'/>
-<Id value='vv' typref='3239067290'/>
-</Binary_Exp>
+<Id value='cc' typref='1622327860'/>
 </Variables>
 <Values>
 <Id value='verde' typref='1622327860'/>
@@ -388,61 +416,37 @@
 </Choice>
 </Choices>
 </Case_Sub>
-</Nary_Sub>
-</Body>
-</Operation>
-<Operation name='get_cor_lampada'>
-<Output_Parameters>
-<Id value='cc' typref='1622327860'/>
-</Output_Parameters>
-<Input_Parameters>
-<Id value='vv' typref='3239067290'/>
-</Input_Parameters>
-<Precondition>
-<Nary_Pred op='&amp;'>
-<Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='cor' typref='1376823510'/>
-</Unary_Exp>
-</Exp_Comparison>
-<Exp_Comparison op=':'>
-<Id value='cc' typref='1622327860'/>
-<Id value='CORES' typref='2336136399'/>
-</Exp_Comparison>
-</Nary_Pred>
-</Precondition>
-<Body>
+</Then>
+<Else>
 <Assignement_Sub>
 <Variables>
 <Id value='cc' typref='1622327860'/>
 </Variables>
 <Values>
-<Binary_Exp op='(' typref='1622327860'>
-<Id value='cor' typref='1376823510'/>
-<Id value='vv' typref='3239067290'/>
-</Binary_Exp>
+<Id value='vermelha' typref='1622327860'/>
 </Values>
 </Assignement_Sub>
+</Else>
+</If_Sub>
 </Body>
 </Operation>
 <Operation name='get_tipo_vaga'>
 <Output_Parameters>
-<Id value='cc' typref='2864770153'/>
+<Id value='tt' typref='2864770153'/>
 </Output_Parameters>
 <Input_Parameters>
-<Id value='vv' typref='3239067290'/>
+<Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Precondition>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Id value='tipo' typref='2416948321'/>
+<Id value='vv' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Id value='tipo' typref='892561489'/>
 </Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
-<Id value='cc' typref='2864770153'/>
+<Id value='tt' typref='2864770153'/>
 <Id value='TIPOS' typref='1761623770'/>
 </Exp_Comparison>
 </Nary_Pred>
@@ -450,12 +454,12 @@
 <Body>
 <Assignement_Sub>
 <Variables>
-<Id value='cc' typref='2864770153'/>
+<Id value='tt' typref='2864770153'/>
 </Variables>
 <Values>
 <Binary_Exp op='(' typref='2864770153'>
-<Id value='tipo' typref='2416948321'/>
-<Id value='vv' typref='3239067290'/>
+<Id value='tipo' typref='892561489'/>
+<Id value='vv' typref='2701647786'/>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
@@ -506,8 +510,8 @@
 </Variables>
 <Values>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='comum' typref='2864770153'/>
 </Nary_Exp>
@@ -521,17 +525,17 @@
 </Variables>
 <Values>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='431152820'>
-<Binary_Exp op='&lt;|' typref='431152820'>
-<Unary_Exp op='dom' typref='2839686121'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='2807671460'>
+<Binary_Exp op='&lt;|' typref='2807671460'>
+<Unary_Exp op='dom' typref='3603043417'>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='comum' typref='2864770153'/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id value='status' typref='431152820'/>
+<Id value='status' typref='2807671460'/>
 </Binary_Exp>
 <Nary_Exp op='{' typref='3682769197'>
 <Id value='ocupada' typref='936744150'/>
@@ -546,8 +550,8 @@
 </Variables>
 <Values>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='idoso' typref='2864770153'/>
 </Nary_Exp>
@@ -561,17 +565,17 @@
 </Variables>
 <Values>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='431152820'>
-<Binary_Exp op='&lt;|' typref='431152820'>
-<Unary_Exp op='dom' typref='2839686121'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='2807671460'>
+<Binary_Exp op='&lt;|' typref='2807671460'>
+<Unary_Exp op='dom' typref='3603043417'>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='idoso' typref='2864770153'/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id value='status' typref='431152820'/>
+<Id value='status' typref='2807671460'/>
 </Binary_Exp>
 <Nary_Exp op='{' typref='3682769197'>
 <Id value='ocupada' typref='936744150'/>
@@ -586,8 +590,8 @@
 </Variables>
 <Values>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='deficiente' typref='2864770153'/>
 </Nary_Exp>
@@ -601,17 +605,17 @@
 </Variables>
 <Values>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='431152820'>
-<Binary_Exp op='&lt;|' typref='431152820'>
-<Unary_Exp op='dom' typref='2839686121'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='2807671460'>
+<Binary_Exp op='&lt;|' typref='2807671460'>
+<Unary_Exp op='dom' typref='3603043417'>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='deficiente' typref='2864770153'/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id value='status' typref='431152820'/>
+<Id value='status' typref='2807671460'/>
 </Binary_Exp>
 <Nary_Exp op='{' typref='3682769197'>
 <Id value='ocupada' typref='936744150'/>
@@ -625,7 +629,7 @@
 </Operation>
 <Operation name='indicar'>
 <Output_Parameters>
-<Id value='vv' typref='3239067290'/>
+<Id value='vv' typref='2701647786'/>
 </Output_Parameters>
 <Input_Parameters>
 <Id value='tt' typref='2864770153'/>
@@ -633,8 +637,8 @@
 <Precondition>
 <Nary_Pred op='&amp;'>
 <Exp_Comparison op=':'>
-<Id value='vv' typref='3239067290'/>
-<Id value='VAGAS' typref='2839686121'/>
+<Id value='vv' typref='2701647786'/>
+<Id value='vagas' typref='3603043417'/>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='tt' typref='2864770153'/>
@@ -642,17 +646,17 @@
 </Exp_Comparison>
 <Exp_Comparison op='&gt;'>
 <Unary_Exp op='card' typref='2701647786'>
-<Binary_Exp op='|&gt;' typref='431152820'>
-<Binary_Exp op='&lt;|' typref='431152820'>
-<Unary_Exp op='dom' typref='2839686121'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Binary_Exp op='|&gt;' typref='2807671460'>
+<Binary_Exp op='&lt;|' typref='2807671460'>
+<Unary_Exp op='dom' typref='3603043417'>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='tt' typref='2864770153'/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id value='status' typref='431152820'/>
+<Id value='status' typref='2807671460'/>
 </Binary_Exp>
 <Nary_Exp op='{' typref='3682769197'>
 <Id value='livre' typref='936744150'/>
@@ -666,23 +670,23 @@
 <Body>
 <ANY_Sub>
 <Variables>
-<Id value='uu' typref='3239067290'/>
+<Id value='uu' typref='2701647786'/>
 </Variables>
 <Pred>
 <Exp_Comparison op=':'>
-<Id value='uu' typref='3239067290'/>
-<Unary_Exp op='dom' typref='2839686121'>
-<Binary_Exp op='|&gt;' typref='431152820'>
-<Binary_Exp op='&lt;|' typref='431152820'>
-<Unary_Exp op='dom' typref='2839686121'>
-<Binary_Exp op='|&gt;' typref='2416948321'>
-<Id value='tipo' typref='2416948321'/>
+<Id value='uu' typref='2701647786'/>
+<Unary_Exp op='dom' typref='3603043417'>
+<Binary_Exp op='|&gt;' typref='2807671460'>
+<Binary_Exp op='&lt;|' typref='2807671460'>
+<Unary_Exp op='dom' typref='3603043417'>
+<Binary_Exp op='|&gt;' typref='892561489'>
+<Id value='tipo' typref='892561489'/>
 <Nary_Exp op='{' typref='1761623770'>
 <Id value='tt' typref='2864770153'/>
 </Nary_Exp>
 </Binary_Exp>
 </Unary_Exp>
-<Id value='status' typref='431152820'/>
+<Id value='status' typref='2807671460'/>
 </Binary_Exp>
 <Nary_Exp op='{' typref='3682769197'>
 <Id value='livre' typref='936744150'/>
@@ -694,10 +698,10 @@
 <Then>
 <Assignement_Sub>
 <Variables>
-<Id value='vv' typref='3239067290'/>
+<Id value='vv' typref='2701647786'/>
 </Variables>
 <Values>
-<Id value='uu' typref='3239067290'/>
+<Id value='uu' typref='2701647786'/>
 </Values>
 </Assignement_Sub>
 </Then>
@@ -706,43 +710,38 @@
 </Operation>
 </Operations>
 <TypeInfos>
-<Type id='431152820'>
+<Type id='3603043417'>
+<Unary_Exp op='POW'>
+<Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='2807671460'>
 <Unary_Exp op='POW'>
 <Binary_Exp op='*'>
-<Id value='VAGAS'/>
+<Id value='INTEGER'/>
 <Id value='STATUS_VAGA'/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
-<Type id='1376823510'>
+<Type id='892561489'>
 <Unary_Exp op='POW'>
 <Binary_Exp op='*'>
-<Id value='VAGAS'/>
-<Id value='CORES'/>
-</Binary_Exp>
-</Unary_Exp>
-</Type>
-<Type id='2416948321'>
-<Unary_Exp op='POW'>
-<Binary_Exp op='*'>
-<Id value='VAGAS'/>
+<Id value='INTEGER'/>
 <Id value='TIPOS'/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
-<Type id='2925023951'>
+<Type id='2701647786'>
+<Id value='INTEGER'/>
+</Type>
+<Type id='1415522399'>
 <Unary_Exp op='POW'>
 <Unary_Exp op='POW'>
 <Binary_Exp op='*'>
-<Id value='VAGAS'/>
+<Id value='INTEGER'/>
 <Id value='STATUS_VAGA'/>
 </Binary_Exp>
 </Unary_Exp>
-</Unary_Exp>
-</Type>
-<Type id='2839686121'>
-<Unary_Exp op='POW'>
-<Id value='VAGAS'/>
 </Unary_Exp>
 </Type>
 <Type id='3682769197'>
@@ -750,26 +749,11 @@
 <Id value='STATUS_VAGA'/>
 </Unary_Exp>
 </Type>
-<Type id='3063199405'>
+<Type id='1382071410'>
 <Unary_Exp op='POW'>
 <Unary_Exp op='POW'>
 <Binary_Exp op='*'>
-<Id value='VAGAS'/>
-<Id value='CORES'/>
-</Binary_Exp>
-</Unary_Exp>
-</Unary_Exp>
-</Type>
-<Type id='2336136399'>
-<Unary_Exp op='POW'>
-<Id value='CORES'/>
-</Unary_Exp>
-</Type>
-<Type id='2188152546'>
-<Unary_Exp op='POW'>
-<Unary_Exp op='POW'>
-<Binary_Exp op='*'>
-<Id value='VAGAS'/>
+<Id value='INTEGER'/>
 <Id value='TIPOS'/>
 </Binary_Exp>
 </Unary_Exp>
@@ -779,9 +763,6 @@
 <Unary_Exp op='POW'>
 <Id value='TIPOS'/>
 </Unary_Exp>
-</Type>
-<Type id='2701647786'>
-<Id value='INTEGER'/>
 </Type>
 <Type id='2864770153'>
 <Id value='TIPOS'/>
@@ -799,18 +780,15 @@
 <Generic_Type/>
 </Unary_Exp>
 </Type>
-<Type id='3239067290'>
-<Id value='VAGAS'/>
+<Type id='936744150'>
+<Id value='STATUS_VAGA'/>
 </Type>
 <Type id='1622327860'>
 <Id value='CORES'/>
 </Type>
-<Type id='936744150'>
-<Id value='STATUS_VAGA'/>
-</Type>
-<Type id='3603043417'>
+<Type id='2336136399'>
 <Unary_Exp op='POW'>
-<Id value='INTEGER'/>
+<Id value='CORES'/>
 </Unary_Exp>
 </Type>
 </TypeInfos>
