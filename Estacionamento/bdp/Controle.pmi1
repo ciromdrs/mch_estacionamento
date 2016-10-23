@@ -1,6 +1,6 @@
 ﻿THEORY BalanceX IS
-  Controle,12,0,0,12,0,0,0;
-  Initialisation,3,0,0,3,0,0,0;
+  Controle,14,0,0,13,0,0,0;
+  Initialisation,5,0,0,4,0,0,0;
   WellDefinedness_Precondition_abrir_cancela,1,0,0,1,0,0,0;
   WellDefinedness_pagar_ticket,3,0,0,3,0,0,0;
   adiantar,1,0,0,1,0,0,0;
@@ -20,10 +20,14 @@ THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
+  Unproved;
+  Proved(0);
   Proved(0)
 END
 &
 THEORY MethodList IS
+  pr;
+  pr;
   pr;
   pr;
   pr;
@@ -49,6 +53,8 @@ THEORY PassList IS
   Force(0),?;
   Force(0),?;
   Force(0),?;
+  Force(0),?;
+  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?
 END

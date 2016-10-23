@@ -1,0 +1,84 @@
+/* Estacionamento_i
+ * Author: Saul
+ * Creation date: 23/10/2016
+ */
+
+IMPLEMENTATION Estacionamento_i
+REFINES Estacionamento_r1
+
+SEES TiposComuns
+
+
+VALUES
+    VAGAS = 1..MAX_INT
+
+CONCRETE_VARIABLES
+    cv,
+    tipo,
+    status
+    
+
+INITIALISATION
+    cv  := 0;
+    tipo   := VAGAS * {comum};
+    status := VAGAS * {livre}
+
+
+OPERATIONS
+    criar(tt) =
+        BEGIN
+            cv := cv + 1;
+            tipo(cv)   := tt;
+            status(cv) := livre;
+        END;
+
+    
+    excluir(vv) =
+        BEGIN
+            cv := cv-1;
+            tipo   := {vv} <<| tipo;
+            status := {vv} <<| status
+        END;
+        
+    cc <-- get_cor_lampada(vv) =
+        BEGIN
+            cc := vermelha;
+            IF status(vv) = livre THEN
+                CASE tipo(vv) OF EITHER idoso THEN
+                    cc := azul
+                OR deficiente THEN
+                    cc := amarela
+                OR comum THEN
+                    cc := verde
+                END
+                END
+            END
+        END;
+   
+    tt <-- get_tipo_vaga(vv) = tt := tipo(vv);
+    
+    /* qc: Quantidade de VAGAS Comuns
+       oc: quantidade de VAGAS Ocupadas Comuns
+       as demais sÃ£o anÃ¡logas para deficientes e idosos.
+    */
+    qc, oc, qi, oi, qd, od <-- get_info_painel = 
+        BEGIN
+            qc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum     | 1);
+            oc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum &
+                              zz : dom(status) & status(zz) = ocupada | 1);
+                          
+            qi := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = idoso     | 1);
+            oi := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = idoso &
+                              zz : dom(status) & status(zz) = ocupada | 1);
+                          
+            qd := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente | 1);
+            od := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente &
+                              zz : dom(status) & status(zz) = ocupada  | 1)
+        END;
+    
+    vv <-- indicar(tt) = 
+        ANY uu
+        WHERE uu : dom(dom(tipo |> {tt}) <| status |> {livre}) THEN
+            vv := uu
+        END
+END

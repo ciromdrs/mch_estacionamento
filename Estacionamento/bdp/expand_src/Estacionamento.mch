@@ -7,46 +7,47 @@ INCLUDES QtdMax
 
 PROMOTES init
 
+SETS
+    VAGAS  // conjunto das VAGAS
+
 ABSTRACT_VARIABLES
-    vagas , // conjunto das vagas
     status , // status da vaga
     tipo    // tipo da vaga
 
 
 INVARIANT
     // Tipos
-    vagas  = 1 .. MAX_INT          &
-    status : vagas +-> STATUS_VAGA &
-    tipo   : vagas +-> TIPOS       &
+    status : VAGAS +-> STATUS_VAGA &
+    tipo   : VAGAS +-> TIPOS       &
 
     // Restrições    
-    card ( tipo |> { comum } ) <= qtd_max ( comum )   &
-    card ( tipo |> { idoso } ) <= qtd_max ( idoso )   &
+    card ( tipo |> { comum } ) <= qtd_max ( comum ) &
+    card ( tipo |> { idoso } ) <= qtd_max ( idoso ) &
     card ( tipo |> { deficiente } ) <= qtd_max ( deficiente )
 
 INITIALISATION
-    vagas  := 1 .. MAX_INT    ||
     status := {}              ||
     tipo   := {}
 
 OPERATIONS
-    // Controle de vagas
+    // Controle de VAGAS
     criar ( tt ) =
-        PRE tt : TIPOS         &
-            card ( tipo |> { tt } ) < qtd_max ( tt )
+        PRE tt : TIPOS                       &
+            card ( tipo |> { tt } ) < qtd_max ( tt ) &
+            # vv . ( vv : VAGAS & vv /: dom ( tipo ) & vv /: dom ( status ) )
         THEN
             ANY vv WHERE
-                vv : vagas        &
+                vv : VAGAS        &
                 vv /: dom ( tipo ) &
                 vv /: dom ( status )
             THEN
-                tipo ( vv ) := tt           ||
+                tipo ( vv ) := tt ||
                 status ( vv ) := livre
             END
         END ;
 
     excluir ( vv ) =
-        PRE vv : vagas       &
+        PRE vv : VAGAS       &
             vv : dom ( tipo ) &
             vv : dom ( status ) &
             status ( vv ) = livre
@@ -55,7 +56,7 @@ OPERATIONS
             status := { vv } <<| status
         END ;
 
-    // Ocupação e liberação de vagas
+    // Ocupação e liberação de VAGAS
     ocupar ( vv ) =
         PRE vv : dom ( status ) &
             status ( vv ) = livre
@@ -71,6 +72,7 @@ OPERATIONS
     // Consultas
     cc <-- get_cor_lampada ( vv ) =
         PRE vv : dom ( status ) &
+            vv : dom ( tipo ) &
             cc : CORES
         THEN
             IF status ( vv ) = livre THEN
@@ -94,8 +96,8 @@ OPERATIONS
             tt := tipo ( vv )
         END ;
 
-    /* qc: Quantidade de vagas Comuns
-       oc: quantidade de vagas Ocupadas Comuns
+    /* qc: Quantidade de VAGAS Comuns
+       oc: quantidade de VAGAS Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc , oc , qi , oi , qd , od <-- get_info_painel =
@@ -114,8 +116,11 @@ OPERATIONS
         END ;
 
     vv <-- indicar ( tt ) =
-        PRE vv : vagas &
+        PRE vv : VAGAS &
             tt : TIPOS &
+            # ww . ( ww : VAGAS &
+                   ww : dom ( tipo ) & tipo ( ww ) = tt &
+                   ww : dom ( status ) & status ( ww ) = livre ) &
             card ( dom ( tipo |> { tt } ) <| status |> { livre } ) > 0 THEN
             ANY uu
             WHERE uu : dom ( dom ( tipo |> { tt } ) <| status |> { livre } ) THEN

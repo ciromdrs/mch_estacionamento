@@ -154,8 +154,8 @@ THEORY ListOperationGuardX END
 THEORY ListPreconditionX IS
   Own_Precondition(Machine(Controle),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT);
   List_Precondition(Machine(Controle),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT);
-  Own_Precondition(Machine(Controle),indicar)==(vv: vagas & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0);
-  List_Precondition(Machine(Controle),indicar)==(vv: vagas & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0);
+  Own_Precondition(Machine(Controle),indicar)==(vv: vagas & tt: TIPOS & #vv.(vv: vagas & vv: dom(tipo) & tipo(vv) = tt & vv: dom(status) & status(vv) = livre) & card(dom(tipo|>{tt})<|status|>{livre})>0);
+  List_Precondition(Machine(Controle),indicar)==(vv: vagas & tt: TIPOS & #vv.(vv: vagas & vv: dom(tipo) & tipo(vv) = tt & vv: dom(status) & status(vv) = livre) & card(dom(tipo|>{tt})<|status|>{livre})>0);
   Own_Precondition(Machine(Controle),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT);
   List_Precondition(Machine(Controle),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT);
   Own_Precondition(Machine(Controle),get_tipo_vaga)==(vv: dom(tipo) & tt: TIPOS);
@@ -168,8 +168,8 @@ THEORY ListPreconditionX IS
   List_Precondition(Machine(Controle),ocupar)==(vv: dom(status) & status(vv) = livre);
   Own_Precondition(Machine(Controle),excluir)==(vv: vagas & vv: dom(tipo) & vv: dom(status) & status(vv) = livre);
   List_Precondition(Machine(Controle),excluir)==(vv: vagas & vv: dom(tipo) & vv: dom(status) & status(vv) = livre);
-  Own_Precondition(Machine(Controle),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt));
-  List_Precondition(Machine(Controle),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt));
+  Own_Precondition(Machine(Controle),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt) & #vv.(vv: vagas & vv/:dom(tipo) & vv/:dom(status)));
+  List_Precondition(Machine(Controle),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt) & #vv.(vv: vagas & vv/:dom(tipo) & vv/:dom(status)));
   List_Precondition(Machine(Controle),adiantar)==(mm: NAT1 & hora+mm<MAXINT);
   List_Precondition(Machine(Controle),pegar_ticket)==(btrue);
   List_Precondition(Machine(Controle),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: dom(chegada));
@@ -184,7 +184,7 @@ THEORY ListSubstitutionX IS
   List_Substitution(Machine(Controle),init)==(qtd_max:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes} || ini:=TRUE);
   Expanded_List_Substitution(Machine(Controle),init)==(ini = FALSE & max_idosos: NAT & max_comuns: NAT & max_deficientes: NAT | qtd_max,ini:={idoso|->max_idosos,comum|->max_comuns,deficiente|->max_deficientes},TRUE);
   List_Substitution(Machine(Controle),indicar)==(ANY uu WHERE uu: dom(dom(tipo|>{tt})<|status|>{livre}) THEN vv:=uu END);
-  Expanded_List_Substitution(Machine(Controle),indicar)==(vv: vagas & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) ==> vv:=uu));
+  Expanded_List_Substitution(Machine(Controle),indicar)==(vv: vagas & tt: TIPOS & #vv.(vv: vagas & vv: dom(tipo) & tipo(vv) = tt & vv: dom(status) & status(vv) = livre) & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) ==> vv:=uu));
   List_Substitution(Machine(Controle),get_info_painel)==(qc:=card(tipo|>{comum}) || oc:=card(dom(tipo|>{comum})<|status|>{ocupada}) || qi:=card(tipo|>{idoso}) || oi:=card(dom(tipo|>{idoso})<|status|>{ocupada}) || qd:=card(tipo|>{deficiente}) || od:=card(dom(tipo|>{deficiente})<|status|>{ocupada}));
   Expanded_List_Substitution(Machine(Controle),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT | qc,oc,qi,oi,qd,od:=card(tipo|>{comum}),card(dom(tipo|>{comum})<|status|>{ocupada}),card(tipo|>{idoso}),card(dom(tipo|>{idoso})<|status|>{ocupada}),card(tipo|>{deficiente}),card(dom(tipo|>{deficiente})<|status|>{ocupada}));
   List_Substitution(Machine(Controle),get_tipo_vaga)==(tt:=tipo(vv));
@@ -198,7 +198,7 @@ THEORY ListSubstitutionX IS
   List_Substitution(Machine(Controle),excluir)==(tipo:={vv}<<|tipo || status:={vv}<<|status);
   Expanded_List_Substitution(Machine(Controle),excluir)==(vv: vagas & vv: dom(tipo) & vv: dom(status) & status(vv) = livre | tipo,status:={vv}<<|tipo,{vv}<<|status);
   List_Substitution(Machine(Controle),criar)==(ANY vv WHERE vv: vagas & vv/:dom(tipo) & vv/:dom(status) THEN tipo(vv):=tt || status(vv):=livre END);
-  Expanded_List_Substitution(Machine(Controle),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt) | @vv.(vv: vagas & vv/:dom(tipo) & vv/:dom(status) ==> tipo,status:=tipo<+{vv|->tt},status<+{vv|->livre}));
+  Expanded_List_Substitution(Machine(Controle),criar)==(tt: TIPOS & card(tipo|>{tt})<qtd_max(tt) & #vv.(vv: vagas & vv/:dom(tipo) & vv/:dom(status)) | @vv.(vv: vagas & vv/:dom(tipo) & vv/:dom(status) ==> tipo,status:=tipo<+{vv|->tt},status<+{vv|->livre}));
   List_Substitution(Machine(Controle),adiantar)==(hora:=hora+mm);
   List_Substitution(Machine(Controle),pegar_ticket)==(ANY uu WHERE uu: TICKET & uu/:dom(chegada) THEN tt:=uu || chegada(uu):=hora || pagou(uu):=nao END);
   List_Substitution(Machine(Controle),pagar_ticket)==(IF hora-chegada(ticket)<=lim THEN troco:=dinheiro || pagou(ticket):=sim ELSE IF (hora-chegada(ticket))*preco-dinheiro>=0 THEN troco:=(hora-chegada(ticket))*preco-dinheiro || pagou(ticket):=sim ELSE troco:=dinheiro END END);

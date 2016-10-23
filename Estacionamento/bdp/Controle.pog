@@ -17,7 +17,7 @@
 </Exp_Comparison>
 </Nary_Pred>
 </Define>
-<Define merge="-" name="ctx">
+<Define merge="=" name="ctx">
 <Set>
 <Id tag="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento/bdp\TiposComuns.bxml:1:1:1:1" typref="1761623770" value="TIPOS"/>
 <Enumerated_Values>
@@ -61,7 +61,7 @@
 </Nary_Pred>
 </Define>
 <Define merge="=" name="seext"/>
-<Define merge="+" name="inv">
+<Define merge="=" name="inv">
 <Nary_Pred op="&amp;" translate="((hora) : (NAT)) &amp; chegada : TICKET +-> NAT &amp; dom(chegada) = TICKET &amp; ((chegada) : (((TICKET) --> (NAT)))) &amp; pagou : TICKET +-> ((1..2)*{SIM_NAO}) &amp; dom(pagou) = TICKET &amp; ((pagou) : (((TICKET) --> (((1..2)*{SIM_NAO}))))) &amp; ((preco) : (NAT)) &amp; ((lim) : (NAT))">
 <Exp_Comparison op=":" initialTag="((hora) : (NAT))">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Controle.bxml:1:5:1:1:1" typref="2701647786" value="hora"/>
@@ -81,11 +81,11 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Controle.bxml:1:5:1:3:2:2" typref="1592569103" value="SIM_NAO"/>
 </Binary_Exp>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((preco) : (NAT))" translate="((preco) : (NAT))">
+<Exp_Comparison op=":" initialTag="((preco) : (NAT))">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Controle.bxml:1:5:1:4:1" typref="2701647786" value="preco"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Controle.bxml:1:5:1:4:2" typref="3603043417" value="NAT"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" initialTag="((lim) : (NAT))" translate="((lim) : (NAT))">
+<Exp_Comparison op=":" initialTag="((lim) : (NAT))">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Controle.bxml:1:5:1:5:1" typref="2701647786" value="lim"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Controle.bxml:1:5:1:5:2" typref="3603043417" value="NAT"/>
 </Exp_Comparison>
@@ -179,7 +179,7 @@
 </Nary_Pred>
 </Define>
 <Define merge="=" name="cst"/>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Inclusion dans une machine abstraite</Comment>
 <Tag>InstanciatedConstraintsLemmas</Tag>
 <Tag>CONSTRAINTS</Tag>
@@ -188,7 +188,7 @@
 <Definition name="cst"/>
 <Definition name="lprp"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Inclusion dans une machine abstraite</Comment>
 <Tag>InstanciatedConstraintsLemmas</Tag>
 <Tag>CONSTRAINTS</Tag>
@@ -197,7 +197,7 @@
 <Definition name="cst"/>
 <Definition name="lprp"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Initialisation dans une machine abstraite</Comment>
 <Tag>Initialisation</Tag>
 <Tag>Invariant</Tag>
@@ -345,7 +345,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="2">
 <Tag>Invariant is preserved</Tag>
@@ -366,7 +366,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
@@ -379,7 +379,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
+<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),(?; 0; 1; 2; 3)"/>
 </Simple_Goal>
 <Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
@@ -392,10 +392,10 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="pr" passList="Force(0),?"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>adiantar</Tag>
 <Tag>INVARIANT</Tag>
@@ -442,7 +442,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>pegar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -498,7 +498,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="">
 <Tag>Invariant is preserved</Tag>
@@ -525,10 +525,10 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Unproved" methodList="?" passList="Force(0),?"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>pagar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -686,7 +686,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>abrir_cancela</Tag>
 <Tag>INVARIANT</Tag>
@@ -751,7 +751,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Tag>WellDefinednessProperties</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -762,7 +762,7 @@
 </Set>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Tag>WellDefinednessInvariant</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -802,7 +802,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Tag>WellDefinednessAssertions</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -813,7 +813,7 @@
 <Definition name="seext"/>
 <Definition name="inv"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Tag>WellDefinednessInitialisation</Tag>
 <Definition name="B definitions"/>
 <Definition name="ctx"/>
@@ -823,7 +823,7 @@
 <Definition name="inext"/>
 <Definition name="seext"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_adiantar</Tag>
 <Tag>INVARIANT</Tag>
@@ -843,7 +843,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_adiantar</Tag>
 <Tag>INVARIANT</Tag>
@@ -872,7 +872,7 @@
 </Nary_Pred>
 </Hypothesis>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_pegar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -886,7 +886,7 @@
 <Definition name="inv"/>
 <Definition name="ass"/>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_pegar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -907,7 +907,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_pagar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -933,7 +933,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_pagar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -1086,7 +1086,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_Precondition_abrir_cancela</Tag>
 <Tag>INVARIANT</Tag>
@@ -1136,7 +1136,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_abrir_cancela</Tag>
 <Tag>INVARIANT</Tag>
