@@ -80,9 +80,9 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Refinement(Estacionamento_r1))==(qtd_max,ini:=TIPOS*{0},FALSE;cv:=0;tipo:=%tt.(tt: VAGAS | comum);status:=%tt.(tt: VAGAS | livre));
+  Expanded_List_Initialisation(Refinement(Estacionamento_r1))==(qtd_max,ini:=TIPOS*{0},FALSE;cv:=0;tipo:={};status:={});
   Context_List_Initialisation(Refinement(Estacionamento_r1))==(skip);
-  List_Initialisation(Refinement(Estacionamento_r1))==(cv:=0;tipo:=%tt.(tt: VAGAS | comum);status:=%tt.(tt: VAGAS | livre))
+  List_Initialisation(Refinement(Estacionamento_r1))==(cv:=0;tipo:={};status:={})
 END
 &
 THEORY ListOperationsX IS

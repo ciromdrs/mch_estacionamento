@@ -75,20 +75,7 @@
 <Id value='tipo' typref='2416948321'/>
 </Variables>
 <Values>
-<Quantified_Exp type='%' typref='2416948321'>
-<Variables>
-<Id value='tt' typref='3239067290'/>
-</Variables>
-<Pred>
-<Exp_Comparison op=':'>
-<Id value='tt' typref='3239067290'/>
-<Id value='VAGAS' typref='2839686121'/>
-</Exp_Comparison>
-</Pred>
-<Body>
-<Id value='comum' typref='2864770153'/>
-</Body>
-</Quantified_Exp>
+<EmptySet typref='3817003670'/>
 </Values>
 </Assignement_Sub>
 <Assignement_Sub>
@@ -96,20 +83,7 @@
 <Id value='status' typref='431152820'/>
 </Variables>
 <Values>
-<Quantified_Exp type='%' typref='431152820'>
-<Variables>
-<Id value='tt' typref='3239067290'/>
-</Variables>
-<Pred>
-<Exp_Comparison op=':'>
-<Id value='tt' typref='3239067290'/>
-<Id value='VAGAS' typref='2839686121'/>
-</Exp_Comparison>
-</Pred>
-<Body>
-<Id value='livre' typref='936744150'/>
-</Body>
-</Quantified_Exp>
+<EmptySet typref='3817003670'/>
 </Values>
 </Assignement_Sub>
 </Nary_Sub>
@@ -702,6 +676,11 @@
 </Type>
 <Type id='2864770153'>
 <Id value='TIPOS'/>
+</Type>
+<Type id='3817003670'>
+<Unary_Exp op='POW'>
+<Generic_Type/>
+</Unary_Exp>
 </Type>
 <Type id='3239067290'>
 <Id value='VAGAS'/>

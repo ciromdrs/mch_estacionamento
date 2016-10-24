@@ -25,8 +25,8 @@ INVARIANT
 
 INITIALISATION
     cv  := 0;
-    tipo   := % tt . (tt : VAGAS | comum);
-    status := % tt . (tt : VAGAS | livre)
+    tipo   := {};
+    status := {}
 
 OPERATIONS
     // Controle de VAGAS
