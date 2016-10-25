@@ -22,6 +22,9 @@
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento_r2" suffix="ref" user="Saul">
             <component name="Estacionamento_r2" type="refinement" />
         </component_file>
+        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento_r3" suffix="ref" user="Saul">
+            <component name="Estacionamento_r3" type="refinement" />
+        </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="TiposComuns" suffix="mch" user="Saul">
             <component name="TiposComuns" type="specification" />
         </component_file>

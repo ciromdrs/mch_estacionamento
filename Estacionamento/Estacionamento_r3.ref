@@ -1,32 +1,35 @@
-/* Estacionamento_r2
+/* Estacionamento_r3
  * Author: Saul
  * Creation date: 25/10/2016
  */
 
-REFINEMENT Estacionamento_r2
-REFINES Estacionamento_r1
+REFINEMENT Estacionamento_r3
+REFINES Estacionamento_r2
 
 SEES TiposComuns
-
 
 VARIABLES
     cv,  // Contador de Vagas
     tipo,
     status,
-    ativo
-    
+    ativo,
+    ids // relação que guarda o identificador de cada vaga
+
 INVARIANT
-    ativo : VAGAS --> BOOL &
-    
-    card(ativo |> {TRUE}) = cv &
-    dom(ativo |> {TRUE}) = dom(tipo) &
-    dom(ativo |> {TRUE}) = dom(status)
+    ids : 1..MAX_INT --> VAGAS &
+    dom(tipo)   = ran(ids |> dom(ativo |> {TRUE})) &
+    dom(status) = ran(ids |> dom(ativo |> {TRUE}))
 
 INITIALISATION
     cv     := 0;
     tipo   := {};
     status := {};
-    ativo  := VAGAS * {FALSE}
+    ativo  := VAGAS * {FALSE};
+    ANY vv WHERE
+        vv:VAGAS
+    THEN
+        ids := (1..MAX_INT) * {vv}
+    END
 
 OPERATIONS
     // Controle de VAGAS
@@ -39,6 +42,7 @@ OPERATIONS
                 vv /: dom(status) &
                 ativo(vv) = FALSE
             THEN
+                ids(cv)    := vv;
                 ativo(vv)  := TRUE;
                 tipo(vv)   := tt;
                 status(vv) := livre
