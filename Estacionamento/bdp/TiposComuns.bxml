@@ -6,13 +6,15 @@
 <Id value='idoso' typref='2864770153'/>
 <Id value='deficiente' typref='2864770153'/>
 <Id value='comum' typref='2864770153'/>
+<Id value='T_NULL' typref='2864770153'/>
 </Enumerated_Values>
 </Set>
 <Set>
-<Id value='STATUS_VAGA' typref='3682769197'/>
+<Id value='STATUS' typref='515940807'/>
 <Enumerated_Values>
-<Id value='livre' typref='936744150'/>
-<Id value='ocupada' typref='936744150'/>
+<Id value='livre' typref='2246778642'/>
+<Id value='ocupada' typref='2246778642'/>
+<Id value='S_NULL' typref='2246778642'/>
 </Enumerated_Values>
 </Set>
 <Set>
@@ -34,6 +36,7 @@
 </Sets>
 <Concrete_Constants>
 <Id value='MAX_INT' typref='2701647786'/>
+<Id value='MAX' typref='3857687249'/>
 </Concrete_Constants>
 <Properties>
 <Nary_Pred op='&amp;'>
@@ -44,6 +47,35 @@
 <Exp_Comparison op='='>
 <Id value='MAX_INT' typref='2701647786'/>
 <Integer_Literal value='1000' typref='2701647786'/>
+</Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='MAX' typref='3857687249'/>
+<Binary_Exp op='--&gt;' typref='3434258930'>
+<Id value='TIPOS' typref='1761623770'/>
+<Binary_Exp op='..' typref='3603043417'>
+<Integer_Literal value='0' typref='2701647786'/>
+<Id value='MAX_INT' typref='2701647786'/>
+</Binary_Exp>
+</Binary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op='&gt;='>
+<Id value='MAX_INT' typref='2701647786'/>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='+' typref='2701647786'>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='MAX' typref='3857687249'/>
+<Id value='comum' typref='2864770153'/>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='MAX' typref='3857687249'/>
+<Id value='idoso' typref='2864770153'/>
+</Binary_Exp>
+</Binary_Exp>
+<Binary_Exp op='(' typref='2701647786'>
+<Id value='MAX' typref='3857687249'/>
+<Id value='deficiente' typref='2864770153'/>
+</Binary_Exp>
+</Binary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
 </Properties>
@@ -59,13 +91,13 @@
 <Type id='2864770153'>
 <Id value='TIPOS'/>
 </Type>
-<Type id='3682769197'>
+<Type id='515940807'>
 <Unary_Exp op='POW'>
-<Id value='STATUS_VAGA'/>
+<Id value='STATUS'/>
 </Unary_Exp>
 </Type>
-<Type id='936744150'>
-<Id value='STATUS_VAGA'/>
+<Type id='2246778642'>
+<Id value='STATUS'/>
 </Type>
 <Type id='2336136399'>
 <Unary_Exp op='POW'>
@@ -86,9 +118,27 @@
 <Type id='2701647786'>
 <Id value='INTEGER'/>
 </Type>
+<Type id='3857687249'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='TIPOS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
+</Type>
 <Type id='3603043417'>
 <Unary_Exp op='POW'>
 <Id value='INTEGER'/>
+</Unary_Exp>
+</Type>
+<Type id='3434258930'>
+<Unary_Exp op='POW'>
+<Unary_Exp op='POW'>
+<Binary_Exp op='*'>
+<Id value='TIPOS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
+</Unary_Exp>
 </Unary_Exp>
 </Type>
 </TypeInfos>

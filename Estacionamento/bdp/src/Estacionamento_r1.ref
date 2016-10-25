@@ -8,10 +8,6 @@ REFINES Estacionamento
 
 SEES TiposComuns
 
-INCLUDES QtdMax
-
-PROMOTES init
-
 ABSTRACT_VARIABLES
     cv , // Contador de Vagas
     tipo ,
@@ -21,27 +17,30 @@ INVARIANT
     cv : 0 .. MAX_INT &
     cv = card ( tipo ) &
     cv = card ( status ) &
-    cv <= qtd_max ( comum ) + qtd_max ( idoso ) + qtd_max ( deficiente )
+    cv <= MAX ( comum ) + MAX ( idoso ) + MAX ( deficiente )
 
 INITIALISATION
-    cv  := 0 ;
+    cv     := 0 ;
     tipo   := {} ;
     status := {}
 
 OPERATIONS
     // Controle de VAGAS
     criar ( tt ) =
-        BEGIN
+        PRE cv < MAX_INT THEN
             cv := cv + 1 ;
-            ANY vv
-            WHERE vv : VAGAS - dom ( tipo ) - dom ( status ) THEN
+            ANY vv WHERE
+                vv : VAGAS        &
+                vv /: dom ( tipo ) &
+                vv /: dom ( status )
+            THEN
                 tipo ( vv ) := tt ;
                 status ( vv ) := livre
             END
         END ;
 
     excluir ( vv ) =
-        BEGIN
+        PRE cv > 0 THEN
             cv := cv - 1 ;
             tipo   := { vv } <<| tipo ;
             status := { vv } <<| status
@@ -55,16 +54,17 @@ OPERATIONS
     // Consultas
     cc <-- get_cor_lampada ( vv ) =
         BEGIN
-            cc := vermelha ;
             IF status ( vv ) = livre THEN
                 CASE tipo ( vv ) OF EITHER idoso THEN
                     cc := azul
                 OR deficiente THEN
                     cc := amarela
-                OR comum THEN
+                ELSE // comum
                     cc := verde
                 END
                 END
+            ELSE // status(vv) = ocupada
+                cc := vermelha
             END
         END ;
 

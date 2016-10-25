@@ -2,15 +2,19 @@
     TiposComuns
 
 CONCRETE_CONSTANTS
-    MAX_INT
+    MAX_INT ,
+    MAX
 
 PROPERTIES
     MAX_INT : NAT1 &
-    MAX_INT = 1000
+    MAX_INT = 1000 &
+
+    MAX : TIPOS --> 0 .. MAX_INT &
+    MAX_INT >= MAX ( comum ) + MAX ( idoso ) + MAX ( deficiente )
 
 SETS
-    TIPOS = { idoso , deficiente , comum } ; // Tipo da vaga
-    STATUS_VAGA = { livre , ocupada } ; // status da vaga
+    TIPOS = { idoso , deficiente , comum , T_NULL } ; // Tipo da vaga
+    STATUS = { livre , ocupada , S_NULL } ;     // status da vaga
     CORES = { azul , amarela , verde , vermelha } ; // Cor da lâmpada que fica na vaga
     SIM_NAO = { sim , nao }
 

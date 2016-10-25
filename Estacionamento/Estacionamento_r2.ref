@@ -1,28 +1,32 @@
-/* Estacionamento_r1
+/* Estacionamento_r2
  * Author: Saul
- * Creation date: 23/10/2016
+ * Creation date: 25/10/2016
  */
 
-REFINEMENT Estacionamento_r1
-REFINES Estacionamento
+REFINEMENT Estacionamento_r2
+REFINES Estacionamento_r1
 
 SEES TiposComuns
+
 
 VARIABLES
     cv,  // Contador de Vagas
     tipo,
-    status
+    status,
+    ativo
     
 INVARIANT
-    cv : 0..MAX_INT   &
-    cv = card(tipo)   &
-    cv = card(status) &
-    cv <= MAX(comum) + MAX(idoso) + MAX(deficiente)
+    ativo : VAGAS --> BOOL &
+    
+    card(ativo |> {TRUE}) = cv &
+    dom(ativo |> {TRUE}) = dom(tipo) &
+    dom(ativo |> {TRUE}) = dom(status)
 
 INITIALISATION
     cv     := 0;
     tipo   := {};
-    status := {}
+    status := {};
+    ativo  := VAGAS * {FALSE}
 
 OPERATIONS
     // Controle de VAGAS
@@ -32,16 +36,21 @@ OPERATIONS
             ANY vv WHERE
                 vv : VAGAS        &
                 vv /: dom(tipo)   &
-                vv /: dom(status)
+                vv /: dom(status) &
+                ativo(vv) = FALSE
             THEN
+                ativo(vv)  := TRUE;
                 tipo(vv)   := tt;
                 status(vv) := livre
             END
         END;
     
     excluir(vv) =
-        PRE cv > 0 THEN
+        PRE cv > 0 &
+            ativo(vv) = TRUE
+        THEN
             cv := cv-1;
+            ativo(vv) := FALSE;
             tipo   := {vv} <<| tipo;
             status := {vv} <<| status
         END;

@@ -110,13 +110,13 @@ THEORY ListPreconditionX END
 THEORY ListSubstitutionX END
 &
 THEORY ListConstantsX IS
-  List_Valuable_Constants(Machine(TiposComuns))==(MAX_INT);
+  List_Valuable_Constants(Machine(TiposComuns))==(MAX_INT,MAX);
   Inherited_List_Constants(Machine(TiposComuns))==(?);
-  List_Constants(Machine(TiposComuns))==(MAX_INT)
+  List_Constants(Machine(TiposComuns))==(MAX_INT,MAX)
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Machine(TiposComuns),TIPOS)==({idoso,deficiente,comum});
+  Set_Definition(Machine(TiposComuns),TIPOS)==({idoso,deficiente,comum,T_NULL});
   Context_List_Enumerated(Machine(TiposComuns))==(?);
   Context_List_Defered(Machine(TiposComuns))==(?);
   Context_List_Sets(Machine(TiposComuns))==(?);
@@ -124,10 +124,10 @@ THEORY ListSetsX IS
   Inherited_List_Enumerated(Machine(TiposComuns))==(?);
   Inherited_List_Defered(Machine(TiposComuns))==(?);
   Inherited_List_Sets(Machine(TiposComuns))==(?);
-  List_Enumerated(Machine(TiposComuns))==(TIPOS,STATUS_VAGA,CORES,SIM_NAO);
+  List_Enumerated(Machine(TiposComuns))==(TIPOS,STATUS,CORES,SIM_NAO);
   List_Defered(Machine(TiposComuns))==(?);
-  List_Sets(Machine(TiposComuns))==(TIPOS,STATUS_VAGA,CORES,SIM_NAO);
-  Set_Definition(Machine(TiposComuns),STATUS_VAGA)==({livre,ocupada});
+  List_Sets(Machine(TiposComuns))==(TIPOS,STATUS,CORES,SIM_NAO);
+  Set_Definition(Machine(TiposComuns),STATUS)==({livre,ocupada,S_NULL});
   Set_Definition(Machine(TiposComuns),CORES)==({azul,amarela,verde,vermelha});
   Set_Definition(Machine(TiposComuns),SIM_NAO)==({sim,nao})
 END
@@ -143,7 +143,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(TiposComuns))==(btrue);
   Context_List_Properties(Machine(TiposComuns))==(btrue);
   Inherited_List_Properties(Machine(TiposComuns))==(btrue);
-  List_Properties(Machine(TiposComuns))==(MAX_INT: NAT1 & MAX_INT = 1000 & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS_VAGA: FIN(INTEGER) & not(STATUS_VAGA = {}) & CORES: FIN(INTEGER) & not(CORES = {}) & SIM_NAO: FIN(INTEGER) & not(SIM_NAO = {}))
+  List_Properties(Machine(TiposComuns))==(MAX_INT: NAT1 & MAX_INT = 1000 & MAX: TIPOS --> 0..MAX_INT & MAX_INT>=MAX(comum)+MAX(idoso)+MAX(deficiente) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS: FIN(INTEGER) & not(STATUS = {}) & CORES: FIN(INTEGER) & not(CORES = {}) & SIM_NAO: FIN(INTEGER) & not(SIM_NAO = {}))
 END
 &
 THEORY ListSeenInfoX END
@@ -151,19 +151,19 @@ THEORY ListSeenInfoX END
 THEORY ListANYVarX END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(TiposComuns)) == (MAX_INT,TIPOS,STATUS_VAGA,CORES,SIM_NAO,idoso,deficiente,comum,livre,ocupada,azul,amarela,verde,vermelha,sim,nao | ? | ? | ? | ? | ? | ? | ? | TiposComuns);
+  List_Of_Ids(Machine(TiposComuns)) == (MAX_INT,MAX,TIPOS,STATUS,CORES,SIM_NAO,idoso,deficiente,comum,T_NULL,livre,ocupada,S_NULL,azul,amarela,verde,vermelha,sim,nao | ? | ? | ? | ? | ? | ? | ? | TiposComuns);
   List_Of_HiddenCst_Ids(Machine(TiposComuns)) == (? | ?);
-  List_Of_VisibleCst_Ids(Machine(TiposComuns)) == (MAX_INT);
+  List_Of_VisibleCst_Ids(Machine(TiposComuns)) == (MAX_INT,MAX);
   List_Of_VisibleVar_Ids(Machine(TiposComuns)) == (? | ?);
   List_Of_Ids_SeenBNU(Machine(TiposComuns)) == (?: ?)
 END
 &
 THEORY SetsEnvX IS
-  Sets(Machine(TiposComuns)) == (Type(TIPOS) == Cst(SetOf(etype(TIPOS,0,2)));Type(STATUS_VAGA) == Cst(SetOf(etype(STATUS_VAGA,0,1)));Type(CORES) == Cst(SetOf(etype(CORES,0,3)));Type(SIM_NAO) == Cst(SetOf(etype(SIM_NAO,0,1))))
+  Sets(Machine(TiposComuns)) == (Type(TIPOS) == Cst(SetOf(etype(TIPOS,0,3)));Type(STATUS) == Cst(SetOf(etype(STATUS,0,2)));Type(CORES) == Cst(SetOf(etype(CORES,0,3)));Type(SIM_NAO) == Cst(SetOf(etype(SIM_NAO,0,1))))
 END
 &
 THEORY ConstantsEnvX IS
-  Constants(Machine(TiposComuns)) == (Type(idoso) == Cst(etype(TIPOS,0,2));Type(deficiente) == Cst(etype(TIPOS,0,2));Type(comum) == Cst(etype(TIPOS,0,2));Type(livre) == Cst(etype(STATUS_VAGA,0,1));Type(ocupada) == Cst(etype(STATUS_VAGA,0,1));Type(azul) == Cst(etype(CORES,0,3));Type(amarela) == Cst(etype(CORES,0,3));Type(verde) == Cst(etype(CORES,0,3));Type(vermelha) == Cst(etype(CORES,0,3));Type(sim) == Cst(etype(SIM_NAO,0,1));Type(nao) == Cst(etype(SIM_NAO,0,1));Type(MAX_INT) == Cst(btype(INTEGER,?,?)))
+  Constants(Machine(TiposComuns)) == (Type(idoso) == Cst(etype(TIPOS,0,3));Type(deficiente) == Cst(etype(TIPOS,0,3));Type(comum) == Cst(etype(TIPOS,0,3));Type(T_NULL) == Cst(etype(TIPOS,0,3));Type(livre) == Cst(etype(STATUS,0,2));Type(ocupada) == Cst(etype(STATUS,0,2));Type(S_NULL) == Cst(etype(STATUS,0,2));Type(azul) == Cst(etype(CORES,0,3));Type(amarela) == Cst(etype(CORES,0,3));Type(verde) == Cst(etype(CORES,0,3));Type(vermelha) == Cst(etype(CORES,0,3));Type(sim) == Cst(etype(SIM_NAO,0,1));Type(nao) == Cst(etype(SIM_NAO,0,1));Type(MAX_INT) == Cst(btype(INTEGER,?,?));Type(MAX) == Cst(SetOf(etype(TIPOS,0,3)*btype(INTEGER,0,MAX_INT))))
 END
 &
 THEORY TCIntRdX IS

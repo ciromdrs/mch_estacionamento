@@ -3,10 +3,6 @@
 
 SEES TiposComuns
 
-INCLUDES QtdMax
-
-PROMOTES init
-
 SETS
     VAGAS  // conjunto das VAGAS
 
@@ -14,27 +10,27 @@ ABSTRACT_VARIABLES
     status , // status da vaga
     tipo    // tipo da vaga
 
-
 INVARIANT
     // Tipos
-    status : VAGAS +-> STATUS_VAGA &
-    tipo   : VAGAS +-> TIPOS       &
+    status : VAGAS +-> STATUS &
+    tipo   : VAGAS +-> TIPOS  &
 
     // Restrições    
-    card ( tipo |> { comum } ) <= qtd_max ( comum ) &
-    card ( tipo |> { idoso } ) <= qtd_max ( idoso ) &
-    card ( tipo |> { deficiente } ) <= qtd_max ( deficiente )
+    dom ( status ) = dom ( tipo ) &
+
+    card ( tipo |> { comum } ) <= MAX ( comum ) &
+    card ( tipo |> { idoso } ) <= MAX ( idoso ) &
+    card ( tipo |> { deficiente } ) <= MAX ( deficiente )
 
 INITIALISATION
-    status := {}              ||
+    status := {} ||
     tipo   := {}
 
 OPERATIONS
     // Controle de VAGAS
     criar ( tt ) =
-        PRE tt : TIPOS                       &
-            card ( tipo |> { tt } ) < qtd_max ( tt ) &
-            # vv . ( vv : VAGAS & vv /: dom ( tipo ) & vv /: dom ( status ) )
+        PRE tt : TIPOS &
+            card ( tipo |> { tt } ) < MAX ( tt )
         THEN
             ANY vv WHERE
                 vv : VAGAS        &
@@ -80,7 +76,7 @@ OPERATIONS
                     cc := azul
                 OR deficiente THEN
                     cc := amarela
-                OR comum THEN
+                ELSE // comum
                     cc := verde
                 END
                 END
@@ -118,9 +114,6 @@ OPERATIONS
     vv <-- indicar ( tt ) =
         PRE vv : VAGAS &
             tt : TIPOS &
-            # ww . ( ww : VAGAS &
-                   ww : dom ( tipo ) & tipo ( ww ) = tt &
-                   ww : dom ( status ) & status ( ww ) = livre ) &
             card ( dom ( tipo |> { tt } ) <| status |> { livre } ) > 0 THEN
             ANY uu
             WHERE uu : dom ( dom ( tipo |> { tt } ) <| status |> { livre } ) THEN

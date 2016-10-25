@@ -8,36 +8,41 @@ REFINES Estacionamento_r1
 
 SEES TiposComuns
 
-
 VALUES
     VAGAS = 1..MAX_INT
 
 CONCRETE_VARIABLES
     cv,
-    tipo,
-    status
+    tipoR,
+    statusR
     
+INVARIANT
+    tipoR   : VAGAS --> TIPOS &
+    statusR : VAGAS --> STATUS
 
 INITIALISATION
     cv  := 0;
-    tipo   := VAGAS * {comum};
-    status := VAGAS * {livre}
+    tipoR   := VAGAS * {comum};
+    statusR := VAGAS * {livre}
 
 
 OPERATIONS
     criar(tt) =
         BEGIN
             cv := cv + 1;
-            tipo(cv)   := tt;
-            status(cv) := livre;
+            tipoR(cv)   := tt;
+            statusR(cv) := livre
         END;
-
     
     excluir(vv) =
-        BEGIN
-            cv := cv-1;
-            tipo   := {vv} <<| tipo;
-            status := {vv} <<| status
+        BEGIN // exclui substituindo pelo último
+            tipoR(vv)   := tipoR(cv);
+            statusR(vv) := statusR(cv);
+            
+            tipoR(cv)   := T_NULL;
+            statusR(cv) := S_NULL;
+            
+            cv := cv-1
         END;
         
     cc <-- get_cor_lampada(vv) =
@@ -77,8 +82,16 @@ OPERATIONS
         END;
     
     vv <-- indicar(tt) = 
-        ANY uu
-        WHERE uu : dom(dom(tipo |> {tt}) <| status |> {livre}) THEN
-            vv := uu
+        VAR ii IN
+            ii := 1;
+            WHILE ii <= MAX_INT DO
+            INVARIANT
+            VARIANT
+            END
+                
+                ANY uu
+            WHERE uu : dom(dom(tipo |> {tt}) <| status |> {livre}) THEN
+                vv := uu
+            END
         END
 END

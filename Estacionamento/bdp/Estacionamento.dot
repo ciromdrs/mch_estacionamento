@@ -1,11 +1,12 @@
 digraph {
 Controle_r [ label=" Controle\nControle_r " shape= box ]
 Estacionamento_i [ label=" Estacionamento\nEstacionamento_r1\nEstacionamento_i " shape= box ]
-QtdMax_r [ label=" QtdMax\nQtdMax_r " shape= box ]
+Estacionamento_r2 [ label=" Estacionamento\nEstacionamento_r1\nEstacionamento_r2 " shape= box ]
 TiposComuns [ label=" TiposComuns " shape= box ]
 
 "Controle_r" -> "TiposComuns" [style= dotted ]
 "Controle_r" -> "Estacionamento_i" []
+"Controle_r" -> "Estacionamento_r2" []
 "Estacionamento_i" -> "TiposComuns" [style= dotted ]
-"QtdMax_r" -> "TiposComuns" [style= dotted ]
+"Estacionamento_r2" -> "TiposComuns" [style= dotted ]
 }

@@ -1,19 +1,19 @@
 ﻿THEORY BalanceX IS
-  Estacionamento,45,0,0,38,0,0,0;
+  Estacionamento,46,0,0,40,0,0,0;
   Initialisation,5,0,0,5,0,0,0;
   WellDefinednessInvariant,9,0,0,9,0,0,0;
   WellDefinedness_Precondition_criar,3,0,0,3,0,0,0;
   WellDefinedness_Precondition_excluir,1,0,0,1,0,0,0;
-  WellDefinedness_Precondition_indicar,3,0,0,3,0,0,0;
+  WellDefinedness_Precondition_indicar,1,0,0,1,0,0,0;
   WellDefinedness_Precondition_liberar,1,0,0,1,0,0,0;
   WellDefinedness_Precondition_ocupar,1,0,0,1,0,0,0;
-  WellDefinedness_get_cor_lampada,3,0,0,2,0,0,0;
+  WellDefinedness_get_cor_lampada,2,0,0,2,0,0,0;
   WellDefinedness_get_info_painel,6,0,0,6,0,0,0;
   WellDefinedness_get_tipo_vaga,1,0,0,1,0,0,0;
-  criar,5,0,0,2,0,0,0;
-  excluir,5,0,0,2,0,0,0;
-  liberar,1,0,0,1,0,0,0;
-  ocupar,1,0,0,1,0,0,0
+  criar,6,0,0,3,0,0,0;
+  excluir,6,0,0,3,0,0,0;
+  liberar,2,0,0,2,0,0,0;
+  ocupar,2,0,0,2,0,0,0
 END
 &
 THEORY ProofState IS
@@ -28,7 +28,6 @@ THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
-  Unproved;
   Proved(0);
   Proved(0);
   Proved(0);
@@ -52,9 +51,11 @@ THEORY ProofState IS
   Unproved;
   Proved(0);
   Proved(0);
+  Proved(0);
   Unproved;
   Unproved;
   Unproved;
+  Proved(0);
   Proved(0);
   Proved(0);
   Proved(0);
@@ -94,7 +95,6 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
-  pr;
   ?;
   ?;
   ?;
@@ -102,7 +102,9 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
+  pr;
   ?;
+  pr;
   pr;
   pr;
   pr;
@@ -124,7 +126,6 @@ THEORY PassList IS
   Force(0),?;
   Force(0),?;
   Force(0),?;
-  Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
   Force(0),?;
@@ -148,9 +149,11 @@ THEORY PassList IS
   Force(0),(?;0;1;2;3);
   Force(0),?;
   Force(0),?;
+  Force(0),?;
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
+  Force(0),?;
   Force(0),?;
   Force(0),?;
   Force(0),?;
