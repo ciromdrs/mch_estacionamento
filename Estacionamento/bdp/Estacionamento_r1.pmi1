@@ -1,18 +1,18 @@
 ﻿THEORY BalanceX IS
-  Estacionamento_r1,57,0,0,32,0,1,1;
+  Estacionamento_r1,57,0,0,28,0,0,2;
   Initialisation,3,0,0,3,0,0,0;
   WellDefinednessInvariant,6,0,0,4,0,0,0;
   WellDefinedness_get_cor_lampada,4,0,0,4,0,0,0;
   WellDefinedness_get_info_painel,10,0,0,4,0,0,0;
   WellDefinedness_get_tipo_vaga,2,0,0,2,0,0,0;
   criar,6,0,0,1,0,0,1;
-  excluir,7,0,0,3,0,1,0;
+  excluir,7,0,0,2,0,0,1;
   get_cor_lampada,7,0,0,6,0,0,0;
   get_info_painel,6,0,0,0,0,0,0;
   get_tipo_vaga,1,0,0,1,0,0,0;
   indicar,1,0,0,0,0,0,0;
-  liberar,2,0,0,2,0,0,0;
-  ocupar,2,0,0,2,0,0,0
+  liberar,2,0,0,1,0,0,0;
+  ocupar,2,0,0,0,0,0,0
 END
 &
 THEORY ProofState IS
@@ -53,14 +53,14 @@ THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
+  Unproved;
+  Proved(0);
+  Unproved;
+  Unproved;
+  Proved(3);
   Proved(0);
   Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(0);
-  Proved(2);
+  Unproved;
   Unproved;
   Unproved;
   Unproved;
@@ -96,17 +96,15 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
-  ?;
-  ?;
-  ?;
-  ?;
-  ?;
-  ?;
-  ?;
-  ?;
+  pr;
   ?;
   pr;
   pr;
+  ?;
+  pr;
+  ?;
+  pr;
+  ?;
   pr;
   pr;
   pr;
@@ -115,12 +113,14 @@ THEORY MethodList IS
   pr;
   pr;
   pr;
+  ?;
+  pr;
+  ?;
+  ?;
   pr;
   pr;
   pr;
-  pr;
-  pr;
-  pr;
+  ?;
   ?;
   ?;
   ?;
@@ -173,14 +173,14 @@ THEORY PassList IS
   Force(0),?;
   Force(0),?;
   Force(0),?;
+  Force(0),(?;0;1;2;3);
+  Force(0),?;
+  Force(0),(?;0;1;2;3);
+  Force(0),(?;0;1;2;3);
+  Force(3),(?;0;1;2);
   Force(0),?;
   Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(0),?;
-  Force(2),(?;0;1);
+  Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);
   Force(0),(?;0;1;2;3);

@@ -1,8 +1,3 @@
-/* Estacionamento_r3
- * Author: Saul
- * Creation date: 25/10/2016
- */
-
 REFINEMENT Estacionamento_r3
 REFINES Estacionamento_r2
 
@@ -16,7 +11,7 @@ VARIABLES
     ids // relação que guarda o identificador de cada vaga
 
 INVARIANT
-    ids : 1..MAX_INT --> VAGAS &
+    ids : 1..MAX_INT --> VAGA &
     dom(tipo)   = ran(ids |> dom(ativo |> {TRUE})) &
     dom(status) = ran(ids |> dom(ativo |> {TRUE}))
 
@@ -24,20 +19,20 @@ INITIALISATION
     cv     := 0;
     tipo   := {};
     status := {};
-    ativo  := VAGAS * {FALSE};
+    ativo  := VAGA * {FALSE};
     ANY vv WHERE
-        vv:VAGAS
+        vv:VAGA
     THEN
         ids := (1..MAX_INT) * {vv}
     END
 
 OPERATIONS
-    // Controle de VAGAS
+    // Controle de vagas
     criar(tt) =
         PRE cv < MAX_INT THEN
             cv := cv + 1;
             ANY vv WHERE
-                vv : VAGAS        &
+                vv : VAGA        &
                 vv /: dom(tipo)   &
                 vv /: dom(status) &
                 ativo(vv) = FALSE
@@ -59,7 +54,7 @@ OPERATIONS
             status := {vv} <<| status
         END;
     
-    // Ocupação e liberação de VAGAS
+    // Ocupação e liberação de vagas
     ocupar(vv) =
         PRE ativo(vv) = TRUE
         THEN
@@ -96,8 +91,8 @@ OPERATIONS
             tt := tipo(vv)
         END;
     
-    /* qc: Quantidade de VAGAS Comuns
-       oc: quantidade de VAGAS Ocupadas Comuns
+    /* qc: Quantidade de vagas Comuns
+       oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 

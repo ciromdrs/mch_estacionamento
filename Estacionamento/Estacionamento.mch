@@ -4,7 +4,7 @@ MACHINE
 SEES TiposComuns
     
 SETS
-    VAGAS  // conjunto das VAGAS
+    VAGA  // conjunto das vagas
 
 VARIABLES
     status, // status da vaga
@@ -12,8 +12,8 @@ VARIABLES
 
 INVARIANT
     // Tipos
-    status : VAGAS +-> STATUS &
-    tipo   : VAGAS +-> TIPOS  &
+    status : VAGA +-> STATUS &
+    tipo   : VAGA +-> TIPOS  &
 
     // Restrições    
     dom(status) = dom(tipo) &
@@ -27,13 +27,13 @@ INITIALISATION
     tipo   := {}
     
 OPERATIONS
-    // Controle de VAGAS
+    // Controle de vagas
     criar(tt) =
         PRE tt : TIPOS &
             card(tipo |> {tt}) < MAX(tt)
         THEN            
             ANY vv WHERE
-                vv : VAGAS        &
+                vv : VAGA        &
                 vv /: dom(tipo)   &
                 vv /: dom(status)
             THEN
@@ -43,7 +43,7 @@ OPERATIONS
         END;
     
     excluir(vv) =
-        PRE vv : VAGAS       &
+        PRE vv : VAGA       &
             vv : dom(tipo)   &
             vv : dom(status) &
             status(vv) = livre
@@ -52,7 +52,7 @@ OPERATIONS
             status := {vv} <<| status
         END;
     
-    // Ocupação e liberação de VAGAS
+    // Ocupação e liberação de vagas
     ocupar(vv) =
         PRE vv : dom(status) &
             status(vv) = livre
@@ -92,8 +92,8 @@ OPERATIONS
             tt := tipo(vv)
         END;
     
-    /* qc: Quantidade de VAGAS Comuns
-       oc: quantidade de VAGAS Ocupadas Comuns
+    /* qc: Quantidade de vagas Comuns
+       oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 
@@ -112,7 +112,7 @@ OPERATIONS
         END;
     
     vv <-- indicar(tt) = 
-        PRE vv : VAGAS &
+        PRE vv : VAGA &
             tt : TIPOS &
             card(dom(tipo |> {tt}) <| status |> {livre}) > 0 THEN
             ANY uu

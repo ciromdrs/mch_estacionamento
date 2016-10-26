@@ -1,42 +1,37 @@
-/* Estacionamento_i
- * Author: Saul
- * Creation date: 23/10/2016
- */
-
 IMPLEMENTATION Estacionamento_i
 REFINES Estacionamento_r1
 
 SEES TiposComuns
 
 VALUES
-    VAGAS = 1..MAX_INT
-
+    VAGA = 1..MAX_INT
+    
 CONCRETE_VARIABLES
     cv,
-    tipoI,
+    tipoI, // implementação das relações
     statusI,
-    ativoI
+    ativoI,
+    ids
     
 INVARIANT
-    ativo : VAGAS --> BOOL &
+    tipoI   : 1..MAX_INT --> TIPOS  &
+    statusI : 1..MAX_INT --> STATUS &
+    ativoI  : 1..MAX_INT --> BOOL   
     
-    card(ativo |> {TRUE}) = cv &
-    dom(ativo |> {TRUE}) = dom(tipo) &
-    dom(ativo |> {TRUE}) = dom(status)
-
 INITIALISATION
-    cv     := 0;
-    tipo   := {};
-    status := {};
-    ativo  := VAGAS * {FALSE}
+    cv := 0;
+    tipoI   := {};
+    statusI := {};
+    ativoI  := VAGA * {FALSE};
+    ids     := 1..MAX_INT * {1}
 
 OPERATIONS
-    // Controle de VAGAS
+    // Controle de VAGA
     criar(tt) =
-        PRE cv < MAX_INT THEN
+        BEGIN
             cv := cv + 1;
             ANY vv WHERE
-                vv : VAGAS        &
+                vv : VAGA        &
                 vv /: dom(tipo)   &
                 vv /: dom(status) &
                 ativo(vv) = FALSE
@@ -57,7 +52,7 @@ OPERATIONS
             status := {vv} <<| status
         END;
     
-    // Ocupação e liberação de VAGAS
+    // Ocupação e liberação de VAGA
     ocupar(vv) =
         PRE ativo(vv) = TRUE
         THEN
@@ -94,8 +89,8 @@ OPERATIONS
             tt := tipo(vv)
         END;
     
-    /* qc: Quantidade de VAGAS Comuns
-       oc: quantidade de VAGAS Ocupadas Comuns
+    /* qc: Quantidade de VAGA Comuns
+       oc: quantidade de VAGA Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 

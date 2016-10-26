@@ -25,12 +25,12 @@ INITIALISATION
     status := {}
 
 OPERATIONS
-    // Controle de VAGAS
+    // Controle de vagas
     criar(tt) =
         PRE cv < MAX_INT THEN
             cv := cv + 1;
             ANY vv WHERE
-                vv : VAGAS        &
+                vv : VAGA        &
                 vv /: dom(tipo)   &
                 vv /: dom(status)
             THEN
@@ -46,7 +46,7 @@ OPERATIONS
             status := {vv} <<| status
         END;
     
-    // Ocupação e liberação de VAGAS
+    // Ocupação e liberação de vagas
     ocupar(vv) = status(vv) := ocupada;
         
     liberar(vv) = status(vv) := livre;
@@ -70,8 +70,8 @@ OPERATIONS
     
     tt <-- get_tipo_vaga(vv) = tt := tipo(vv);
     
-    /* qc: Quantidade de VAGAS Comuns
-       oc: quantidade de VAGAS Ocupadas Comuns
+    /* qc: Quantidade de vagas Comuns
+       oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
     qc, oc, qi, oi, qd, od <-- get_info_painel = 

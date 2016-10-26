@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Machine(Estacionamento))==(btrue);
   Abstract_List_Invariant(Machine(Estacionamento))==(btrue);
   Context_List_Invariant(Machine(Estacionamento))==(btrue);
-  List_Invariant(Machine(Estacionamento))==(status: VAGAS +-> STATUS & tipo: VAGAS +-> TIPOS & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente))
+  List_Invariant(Machine(Estacionamento))==(status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente))
 END
 &
 THEORY ListAssertionsX IS
@@ -136,25 +136,25 @@ THEORY ListOperationGuardX END
 &
 THEORY ListPreconditionX IS
   List_Precondition(Machine(Estacionamento),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt));
-  List_Precondition(Machine(Estacionamento),excluir)==(vv: VAGAS & vv: dom(tipo) & vv: dom(status) & status(vv) = livre);
+  List_Precondition(Machine(Estacionamento),excluir)==(vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre);
   List_Precondition(Machine(Estacionamento),ocupar)==(vv: dom(status) & status(vv) = livre);
   List_Precondition(Machine(Estacionamento),liberar)==(vv: dom(status) & status(vv) = ocupada);
   List_Precondition(Machine(Estacionamento),get_cor_lampada)==(vv: dom(status) & vv: dom(tipo) & cc: CORES);
   List_Precondition(Machine(Estacionamento),get_tipo_vaga)==(vv: dom(tipo) & tt: TIPOS);
   List_Precondition(Machine(Estacionamento),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT);
-  List_Precondition(Machine(Estacionamento),indicar)==(vv: VAGAS & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0)
+  List_Precondition(Machine(Estacionamento),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Estacionamento),indicar)==(vv: VAGAS & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) ==> vv:=uu));
+  Expanded_List_Substitution(Machine(Estacionamento),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) ==> vv:=uu));
   Expanded_List_Substitution(Machine(Estacionamento),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT | qc,oc,qi,oi,qd,od:=card(tipo|>{comum}),card(dom(tipo|>{comum})<|status|>{ocupada}),card(tipo|>{idoso}),card(dom(tipo|>{idoso})<|status|>{ocupada}),card(tipo|>{deficiente}),card(dom(tipo|>{deficiente})<|status|>{ocupada}));
   Expanded_List_Substitution(Machine(Estacionamento),get_tipo_vaga)==(vv: dom(tipo) & tt: TIPOS | tt:=tipo(vv));
   Expanded_List_Substitution(Machine(Estacionamento),get_cor_lampada)==(vv: dom(status) & vv: dom(tipo) & cc: CORES | status(vv) = livre ==> (not(tipo(vv) = deficiente) & tipo(vv) = idoso ==> cc:=azul [] not(tipo(vv) = idoso) & tipo(vv) = deficiente ==> cc:=amarela [] not(tipo(vv) = idoso) & not(tipo(vv) = deficiente) ==> cc:=verde) [] not(status(vv) = livre) ==> cc:=vermelha);
   Expanded_List_Substitution(Machine(Estacionamento),liberar)==(vv: dom(status) & status(vv) = ocupada | status:=status<+{vv|->livre});
   Expanded_List_Substitution(Machine(Estacionamento),ocupar)==(vv: dom(status) & status(vv) = livre | status:=status<+{vv|->ocupada});
-  Expanded_List_Substitution(Machine(Estacionamento),excluir)==(vv: VAGAS & vv: dom(tipo) & vv: dom(status) & status(vv) = livre | tipo,status:={vv}<<|tipo,{vv}<<|status);
-  Expanded_List_Substitution(Machine(Estacionamento),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt) | @vv.(vv: VAGAS & vv/:dom(tipo) & vv/:dom(status) ==> tipo,status:=tipo<+{vv|->tt},status<+{vv|->livre}));
-  List_Substitution(Machine(Estacionamento),criar)==(ANY vv WHERE vv: VAGAS & vv/:dom(tipo) & vv/:dom(status) THEN tipo(vv):=tt || status(vv):=livre END);
+  Expanded_List_Substitution(Machine(Estacionamento),excluir)==(vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre | tipo,status:={vv}<<|tipo,{vv}<<|status);
+  Expanded_List_Substitution(Machine(Estacionamento),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt) | @vv.(vv: VAGA & vv/:dom(tipo) & vv/:dom(status) ==> tipo,status:=tipo<+{vv|->tt},status<+{vv|->livre}));
+  List_Substitution(Machine(Estacionamento),criar)==(ANY vv WHERE vv: VAGA & vv/:dom(tipo) & vv/:dom(status) THEN tipo(vv):=tt || status(vv):=livre END);
   List_Substitution(Machine(Estacionamento),excluir)==(tipo:={vv}<<|tipo || status:={vv}<<|status);
   List_Substitution(Machine(Estacionamento),ocupar)==(status(vv):=ocupada);
   List_Substitution(Machine(Estacionamento),liberar)==(status(vv):=livre);
@@ -175,17 +175,17 @@ THEORY ListSetsX IS
   Context_List_Enumerated(Machine(Estacionamento))==(TIPOS,STATUS,CORES,SIM_NAO);
   Context_List_Defered(Machine(Estacionamento))==(?);
   Context_List_Sets(Machine(Estacionamento))==(TIPOS,STATUS,CORES,SIM_NAO);
-  List_Valuable_Sets(Machine(Estacionamento))==(VAGAS);
+  List_Valuable_Sets(Machine(Estacionamento))==(VAGA);
   Inherited_List_Enumerated(Machine(Estacionamento))==(?);
   Inherited_List_Defered(Machine(Estacionamento))==(?);
   Inherited_List_Sets(Machine(Estacionamento))==(?);
   List_Enumerated(Machine(Estacionamento))==(?);
-  List_Defered(Machine(Estacionamento))==(VAGAS);
-  List_Sets(Machine(Estacionamento))==(VAGAS);
+  List_Defered(Machine(Estacionamento))==(VAGA);
+  List_Sets(Machine(Estacionamento))==(VAGA);
   Set_Definition(Machine(Estacionamento),CORES)==({azul,amarela,verde,vermelha});
   Set_Definition(Machine(Estacionamento),STATUS)==({livre,ocupada,S_NULL});
   Set_Definition(Machine(Estacionamento),TIPOS)==({idoso,deficiente,comum,T_NULL});
-  Set_Definition(Machine(Estacionamento),VAGAS)==(?)
+  Set_Definition(Machine(Estacionamento),VAGA)==(?)
 END
 &
 THEORY ListHiddenConstantsX IS
@@ -199,7 +199,7 @@ THEORY ListPropertiesX IS
   Abstract_List_Properties(Machine(Estacionamento))==(btrue);
   Context_List_Properties(Machine(Estacionamento))==(MAX_INT: NAT1 & MAX_INT = 1000 & MAX: TIPOS --> 0..MAX_INT & MAX_INT>=MAX(comum)+MAX(idoso)+MAX(deficiente) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS: FIN(INTEGER) & not(STATUS = {}) & CORES: FIN(INTEGER) & not(CORES = {}) & SIM_NAO: FIN(INTEGER) & not(SIM_NAO = {}));
   Inherited_List_Properties(Machine(Estacionamento))==(btrue);
-  List_Properties(Machine(Estacionamento))==(VAGAS: FIN(INTEGER) & not(VAGAS = {}))
+  List_Properties(Machine(Estacionamento))==(VAGA: FIN(INTEGER) & not(VAGA = {}))
 END
 &
 THEORY ListSeenInfoX IS
@@ -214,18 +214,18 @@ THEORY ListSeenInfoX IS
 END
 &
 THEORY ListANYVarX IS
-  List_ANY_Var(Machine(Estacionamento),criar)==(Var(vv) == atype(VAGAS,?,?));
+  List_ANY_Var(Machine(Estacionamento),criar)==(Var(vv) == atype(VAGA,?,?));
   List_ANY_Var(Machine(Estacionamento),excluir)==(?);
   List_ANY_Var(Machine(Estacionamento),ocupar)==(?);
   List_ANY_Var(Machine(Estacionamento),liberar)==(?);
   List_ANY_Var(Machine(Estacionamento),get_cor_lampada)==(?);
   List_ANY_Var(Machine(Estacionamento),get_tipo_vaga)==(?);
   List_ANY_Var(Machine(Estacionamento),get_info_painel)==(?);
-  List_ANY_Var(Machine(Estacionamento),indicar)==(Var(uu) == atype(VAGAS,?,?))
+  List_ANY_Var(Machine(Estacionamento),indicar)==(Var(uu) == atype(VAGA,?,?))
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Machine(Estacionamento)) == (VAGAS | ? | tipo,status | ? | criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar | ? | seen(Machine(TiposComuns)) | ? | Estacionamento);
+  List_Of_Ids(Machine(Estacionamento)) == (VAGA | ? | tipo,status | ? | criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,get_info_painel,indicar | ? | seen(Machine(TiposComuns)) | ? | Estacionamento);
   List_Of_HiddenCst_Ids(Machine(Estacionamento)) == (? | ?);
   List_Of_VisibleCst_Ids(Machine(Estacionamento)) == (?);
   List_Of_VisibleVar_Ids(Machine(Estacionamento)) == (? | ?);
@@ -238,16 +238,16 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Machine(Estacionamento)) == (Type(VAGAS) == Cst(SetOf(atype(VAGAS,"[VAGAS","]VAGAS"))))
+  Sets(Machine(Estacionamento)) == (Type(VAGA) == Cst(SetOf(atype(VAGA,"[VAGA","]VAGA"))))
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Machine(Estacionamento)) == (Type(tipo) == Mvl(SetOf(atype(VAGAS,?,?)*etype(TIPOS,?,?)));Type(status) == Mvl(SetOf(atype(VAGAS,?,?)*etype(STATUS,?,?))))
+  Variables(Machine(Estacionamento)) == (Type(tipo) == Mvl(SetOf(atype(VAGA,?,?)*etype(TIPOS,?,?)));Type(status) == Mvl(SetOf(atype(VAGA,?,?)*etype(STATUS,?,?))))
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Machine(Estacionamento)) == (Type(indicar) == Cst(atype(VAGAS,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGAS,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGAS,?,?));Type(liberar) == Cst(No_type,atype(VAGAS,?,?));Type(ocupar) == Cst(No_type,atype(VAGAS,?,?));Type(excluir) == Cst(No_type,atype(VAGAS,?,?));Type(criar) == Cst(No_type,etype(TIPOS,?,?)));
-  Observers(Machine(Estacionamento)) == (Type(indicar) == Cst(atype(VAGAS,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGAS,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGAS,?,?)))
+  Operations(Machine(Estacionamento)) == (Type(indicar) == Cst(atype(VAGA,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGA,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGA,?,?));Type(liberar) == Cst(No_type,atype(VAGA,?,?));Type(ocupar) == Cst(No_type,atype(VAGA,?,?));Type(excluir) == Cst(No_type,atype(VAGA,?,?));Type(criar) == Cst(No_type,etype(TIPOS,?,?)));
+  Observers(Machine(Estacionamento)) == (Type(indicar) == Cst(atype(VAGA,?,?),etype(TIPOS,?,?));Type(get_info_painel) == Cst(btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?)*btype(INTEGER,?,?),No_type);Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGA,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGA,?,?)))
 END
 &
 THEORY TCIntRdX IS
