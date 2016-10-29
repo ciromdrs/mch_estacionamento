@@ -3,8 +3,11 @@ MACHINE
 
 SEES TiposComuns
     
-SETS
-    VAGA  // conjunto das vagas
+    
+CONSTANTS
+    VAGA
+    
+PROPERTIES VAGA = 1..MAX_INT
 
 VARIABLES
     status, // status da vaga

@@ -26,13 +26,6 @@
 <Id value='vermelha' typref='1622327860'/>
 </Enumerated_Values>
 </Set>
-<Set>
-<Id value='SIM_NAO' typref='1592569103'/>
-<Enumerated_Values>
-<Id value='sim' typref='3116095348'/>
-<Id value='nao' typref='3116095348'/>
-</Enumerated_Values>
-</Set>
 </Sets>
 <Concrete_Constants>
 <Id value='MAX_INT' typref='2701647786'/>
@@ -47,6 +40,27 @@
 <Exp_Comparison op='='>
 <Id value='MAX_INT' typref='2701647786'/>
 <Integer_Literal value='1000' typref='2701647786'/>
+</Exp_Comparison>
+<Exp_Comparison op='='>
+<Id value='MAX' typref='3857687249'/>
+<Nary_Exp op='{' typref='3857687249'>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='comum' typref='2864770153'/>
+<Integer_Literal value='10' typref='2701647786'/>
+</Binary_Exp>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='idoso' typref='2864770153'/>
+<Integer_Literal value='5' typref='2701647786'/>
+</Binary_Exp>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='deficiente' typref='2864770153'/>
+<Integer_Literal value='5' typref='2701647786'/>
+</Binary_Exp>
+<Binary_Exp op='|-&gt;' typref='2382376882'>
+<Id value='T_NULL' typref='2864770153'/>
+<Integer_Literal value='0' typref='2701647786'/>
+</Binary_Exp>
+</Nary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=':'>
 <Id value='MAX' typref='3857687249'/>
@@ -107,14 +121,6 @@
 <Type id='1622327860'>
 <Id value='CORES'/>
 </Type>
-<Type id='1592569103'>
-<Unary_Exp op='POW'>
-<Id value='SIM_NAO'/>
-</Unary_Exp>
-</Type>
-<Type id='3116095348'>
-<Id value='SIM_NAO'/>
-</Type>
 <Type id='2701647786'>
 <Id value='INTEGER'/>
 </Type>
@@ -130,6 +136,12 @@
 <Unary_Exp op='POW'>
 <Id value='INTEGER'/>
 </Unary_Exp>
+</Type>
+<Type id='2382376882'>
+<Binary_Exp op='*'>
+<Id value='TIPOS'/>
+<Id value='INTEGER'/>
+</Binary_Exp>
 </Type>
 <Type id='3434258930'>
 <Unary_Exp op='POW'>
