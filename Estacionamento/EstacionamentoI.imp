@@ -94,8 +94,9 @@ OPERATIONS
         BEGIN
             qc, oc, qi, oi, qd, od := 0, 0, 0, 0, 0, 0;
             VAR ii IN
-                ii := 1;
-                WHILE ii <= MAX_INT DO
+                ii := 0;
+                WHILE ii < MAX_INT DO
+                    ii := ii+1;
                     IF ativo(ii) = TRUE THEN
                             CASE tipoI(ii) OF EITHER idoso THEN
                                 qi := qi + 1;
@@ -115,23 +116,38 @@ OPERATIONS
                            END
                     END
                     END
-                INVARIANT ii <= MAX_INT //esse invariant tá certo?
+                // esse invariant gigante nada mais faz do que garantir que a soma esteja correta
+                INVARIANT (qc = SIGMA zz .(zz : (1..ii) & tipoI(zz) = comum & ativo(zz) = TRUE | 1)) &
+                    (oc = SIGMA zz . (zz : (1..ii)   & tipoI(zz) = comum & ativo(zz) = TRUE &
+                                     zz : (1..ii) & statusI(zz) = ocupada | 1)) &
+                    (qi = SIGMA zz . (zz : (1..ii)   & tipoI(zz) = idoso & ativo(zz) = TRUE | 1)) &
+                    (oi = SIGMA zz . (zz : (1..ii)   & tipoI(zz) = idoso & ativo(zz) = TRUE &
+                                     zz : (1..ii) & statusI(zz) = ocupada | 1)) &                          
+                    (qd = SIGMA zz . (zz : (1..ii)   & tipoI(zz) = deficiente & ativo(zz) = TRUE | 1)) &
+                    (od = SIGMA zz . (zz : (1..ii)   & tipoI(zz) = deficiente & ativo(zz) = TRUE &
+                                     zz : (1..ii) & statusI(zz) = ocupada  | 1))
                 VARIANT MAX_INT - ii
                 END
             END
         END;
     
     vv <-- indicar(tt) = 
-        VAR ii IN
-            ii := 1;
+        VAR ii, continuar IN
+            ii := 0;
             vv := 0;
-            WHILE ii <= MAX_INT DO
+            continuar := TRUE;
+            WHILE ii < MAX_INT & continuar = TRUE DO
+                ii := ii + 1;
                 IF ativo(ii) = TRUE & statusI(ii) = livre & tipoI(ii) = tt THEN
-                    vv := ii
-                END;
-                ii := ii + 1
-            INVARIANT ii <= MAX_INT //esse invariant tá certo?
+                    continuar := FALSE
+                END
+            INVARIANT !ww . (ww : 1..ii-1 => not(ativo(ii) = TRUE  // Este predicado quer dizer que
+                          & statusI(ii) = livre & tipoI(ii) = tt)) // todos os que foram testados até 
+                                                                   // agora deram errado
             VARIANT MAX_INT - ii
+            END;
+            IF ativo(ii) = TRUE & statusI(ii) = livre & tipoI(ii) = tt THEN
+                vv := ii
             END
         END
 END
