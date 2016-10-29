@@ -1,13 +1,13 @@
+/* Estacionamento
+ */
 MACHINE
     Estacionamento
 
 SEES TiposComuns
     
     
-CONSTANTS
+SETS
     VAGA
-    
-PROPERTIES VAGA = 1..MAX_INT
 
 VARIABLES
     status, // status da vaga

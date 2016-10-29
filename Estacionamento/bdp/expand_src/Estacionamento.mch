@@ -4,10 +4,8 @@
 SEES TiposComuns
 
 
-CONCRETE_CONSTANTS
+SETS
     VAGA
-
-PROPERTIES VAGA = 1 .. MAX_INT
 
 ABSTRACT_VARIABLES
     status , // status da vaga

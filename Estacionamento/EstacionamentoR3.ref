@@ -1,0 +1,29 @@
+/* EstacionamentoR3
+ * Criação da relação
+ *
+ */
+
+REFINEMENT EstacionamentoR3
+REFINES EstacionamentoR2
+
+SEES TiposComuns
+
+
+VARIABLES
+    status, // status da vaga
+    tipo,   // tipo da vaga
+    ativo,  // conjunto das vagas ativas, que foram criadas
+    ids     // relação que guarda o identificador de cada vaga
+
+
+INITIALISATION
+    status := {};
+    tipo   := {};
+    ativo  := {};
+    ANY vv WHERE vv : VAGA THEN
+        ids := (1..MAX_INT) * {vv}
+    END
+    
+
+
+ END

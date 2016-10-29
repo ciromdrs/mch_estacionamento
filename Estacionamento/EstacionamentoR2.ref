@@ -1,0 +1,117 @@
+/* EstacionamentoR2
+ * Criação da relação de ids
+ */
+
+REFINEMENT EstacionamentoR2
+REFINES EstacionamentoR1
+
+SEES TiposComuns
+
+VARIABLES
+    status, // status da vaga
+    tipo,   // tipo da vaga
+    ativo,  // conjunto das vagas ativas, que foram criadas
+    ids     // relação que guarda o identificador de cada vaga
+
+INVARIANT
+    ids : 1..MAX_INT --> VAGA       &
+    ran(ids |> ativo) = dom(status) &
+    ran(ids |> ativo) = dom(tipo)
+
+INITIALISATION
+    status := {};
+    tipo   := {};
+    ativo  := {};
+    ANY vv WHERE vv : VAGA THEN
+        ids := (1..MAX_INT) * {vv}
+    END
+    
+OPERATIONS
+    // Controle de vagas
+    criar(tt) =
+        BEGIN
+            ANY vv, ii WHERE
+                vv : VAGA   &
+                vv /: ativo &
+                ii : dom(ids |>> ativo)
+            THEN
+                ids(ii)    := vv;
+                ativo      := ativo \/ {vv};
+                tipo(vv)   := tt;
+                status(vv) := livre
+            END
+        END;
+    
+    excluir(vv) =
+        PRE vv : ativo
+        THEN
+            // não é necessário alterar ids
+            ativo  := ativo - {vv};
+            tipo   := {vv} <<| tipo;
+            status := {vv} <<| status
+        END;
+    
+    // Ocupação e liberação de vagas
+    ocupar(vv) =
+        PRE vv : ativo
+        THEN
+            status(vv) := ocupada
+        END;
+        
+    liberar(vv) =
+        PRE vv : ativo
+        THEN
+            status(vv) := livre
+        END;
+    
+    // Consultas
+    cc <-- get_cor_lampada(vv) =
+        PRE vv : ativo
+        THEN
+            IF status(vv) = livre THEN
+                CASE tipo(vv) OF EITHER idoso THEN
+                    cc := azul
+                OR deficiente THEN
+                    cc := amarela
+                ELSE // comum
+                    cc := verde
+                END
+                END
+            ELSE // status(vv) = ocupada
+                cc := vermelha
+            END
+        END;
+    
+    tt <-- get_tipo_vaga(vv) =
+        PRE vv : ativo
+        THEN
+            tt := tipo(vv)
+        END;
+    
+    /* qc: Quantidade de vagsa Comuns
+       oc: quantidade de vagas Ocupadas Comuns
+       as demais são análogas para deficientes e idosos.
+    */
+    qc, oc, qi, oi, qd, od <-- get_info_painel = 
+        BEGIN
+            qc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum & (zz : ativo) | 1);
+            oc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum & (zz : ativo) &
+                              zz : dom(status) & status(zz) = ocupada | 1);
+                          
+            qi := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = idoso & (zz : ativo) | 1);
+            oi := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = idoso & (zz : ativo) &
+                              zz : dom(status) & status(zz) = ocupada | 1);
+                          
+            qd := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente & (zz : ativo) | 1);
+            od := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente & (zz : ativo) &
+                              zz : dom(status) & status(zz) = ocupada  | 1)
+        END;
+    
+    vv <-- indicar(tt) = 
+        ANY uu
+        WHERE uu : dom(dom(tipo |> {tt}) <| status |> {livre}) &
+            uu : ativo
+        THEN
+            vv := uu
+        END
+END

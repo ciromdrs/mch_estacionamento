@@ -1,0 +1,8 @@
+/* EstacionamentoR2
+ * Author: Saul
+ * Creation date: 29/10/2016
+ */
+
+THEORY todoT IS
+     btrue
+END
