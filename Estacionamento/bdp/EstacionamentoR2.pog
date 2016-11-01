@@ -1546,7 +1546,7 @@
 </Nary_Pred>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Proved(2)" methodList="pr" passList="Force(2),(?; 0; 1)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Refinement is correct</Tag>
@@ -1704,7 +1704,7 @@
 </Nary_Pred>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="3">
 <Tag>Refinement is correct</Tag>

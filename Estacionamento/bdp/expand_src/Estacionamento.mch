@@ -1,4 +1,6 @@
-﻿MACHINE
+﻿/* Estacionamento
+ */
+MACHINE
     Estacionamento
 
 SEES TiposComuns

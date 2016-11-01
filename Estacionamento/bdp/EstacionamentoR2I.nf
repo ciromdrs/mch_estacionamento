@@ -53,7 +53,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Implementation(EstacionamentoR2I))==(btrue);
   Abstract_List_Invariant(Implementation(EstacionamentoR2I))==(ids: 1..MAX_INT --> VAGA & ran(ids|>ativo) = dom(status) & ran(ids|>ativo) = dom(tipo) & ativo <: VAGA & ativo = dom(tipo) & ativo = dom(status) & status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente));
   Context_List_Invariant(Implementation(EstacionamentoR2I))==(btrue);
-  List_Invariant(Implementation(EstacionamentoR2I))==(statusI: 1..MAX_INT --> STATUS & tipoI: 1..MAX_INT --> TIPOS & ativoI: 1..MAX_INT --> BOOL & !ii.(ii: 1..MAX_INT => statusI(ii) = status(ii) & tipoI(ii) = tipo(ii) & ativoI(ii) = TRUE <=> (ii: ativo)))
+  List_Invariant(Implementation(EstacionamentoR2I))==(statusI: 1..MAX_INT --> STATUS & tipoI: 1..MAX_INT --> TIPOS & ativoI: 1..MAX_INT --> BOOL & !ii.(ii: ativo & ativo = dom(status) & ativo = dom(tipo) => statusI(ii) = status(ii) & tipoI(ii) = tipo(ii) & ativoI(ii) = TRUE))
 END
 &
 THEORY ListAssertionsX IS
@@ -148,22 +148,22 @@ THEORY ListPreconditionX IS
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Implementation(EstacionamentoR2I),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 & 0: INT | vv:=0);
-  Expanded_List_Substitution(Implementation(EstacionamentoR2I),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT | qc,oc,qi,oi,qd,od:=0,0,0,0,0,0);
+  Expanded_List_Substitution(Implementation(EstacionamentoR2I),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | (0: INT | vv:=0);@(ii,aa,ss,uu,continuar).(uu:=T_NULL;ss:=S_NULL;aa:=TRUE;continuar:=TRUE;ii:=0;WHILE ii<MAX_INT DO (ii+1: INT & ii: INT & 1: INT | ii:=ii+1);(ii: dom(ativoI) | aa:=ativoI(ii));(ii: dom(statusI) | ss:=statusI(ii));(ii: dom(tipoI) | uu:=tipoI(ii));(aa = TRUE & ss = livre & uu = tt ==> continuar:=FALSE [] not(aa = TRUE & ss = livre & uu = tt) ==> skip) INVARIANT !jj.(jj: 1..ii => not(aa = TRUE & ss = livre & uu = tt)) VARIANT MAX_INT-ii END));
+  Expanded_List_Substitution(Implementation(EstacionamentoR2I),get_info_painel)==(qc: NAT & oc: NAT & qi: NAT & oi: NAT & qd: NAT & od: NAT | (0: INT | qc:=0);(0: INT | oc:=0);(0: INT | qi:=0);(0: INT | oi:=0);(0: INT | qd:=0);(0: INT | od:=0);@(ii,aa,tt,ss).(ii:=0;aa:=FALSE;tt:=T_NULL;ss:=S_NULL;WHILE ii<MAX_INT DO (ii+1: INT & ii: INT & 1: INT | ii:=ii+1);(ii: dom(ativoI) | aa:=ativoI(ii));(ii: dom(tipoI) | tt:=tipoI(ii));(ii: dom(statusI) | ss:=statusI(ii)) INVARIANT qc = SIGMA(zz).(zz: 1..ii & tipoI(zz) = comum & ativoI(zz) = TRUE | 1) & oc = SIGMA(zz).(zz: 1..ii & tipoI(zz) = comum & ativoI(zz) = TRUE & statusI(zz) = ocupada | 1) & qi = SIGMA(zz).(zz: 1..ii & tipoI(zz) = idoso & ativoI(zz) = TRUE | 1) & oi = SIGMA(zz).(zz: 1..ii & tipoI(zz) = idoso & ativoI(zz) = TRUE & statusI(zz) = ocupada | 1) & qd = SIGMA(zz).(zz: 1..ii & tipoI(zz) = deficiente & ativoI(zz) = TRUE | 1) & od = SIGMA(zz).(zz: 1..ii & tipoI(zz) = deficiente & ativoI(zz) = TRUE & statusI(zz) = ocupada | 1) VARIANT MAX_INT-ii END));
   Expanded_List_Substitution(Implementation(EstacionamentoR2I),get_tipo_vaga)==(vv: ativo & vv: ativo & vv: dom(tipo) & tt: TIPOS & vv: dom(tipoI) | tt:=tipoI(vv));
-  Expanded_List_Substitution(Implementation(EstacionamentoR2I),get_cor_lampada)==(vv: ativo & vv: ativo & vv: dom(status) & vv: dom(tipo) & cc: CORES | statusI(vv) = livre ==> (not(tipoI(vv) = deficiente) & tipoI(vv) = idoso ==> cc:=azul [] not(tipoI(vv) = idoso) & tipoI(vv) = deficiente ==> cc:=amarela [] not(tipoI(vv) = idoso) & not(tipoI(vv) = deficiente) ==> cc:=verde) [] not(statusI(vv) = livre) ==> cc:=vermelha);
+  Expanded_List_Substitution(Implementation(EstacionamentoR2I),get_cor_lampada)==(vv: ativo & vv: ativo & vv: dom(status) & vv: dom(tipo) & cc: CORES | @(ss,tt).((vv: dom(statusI) | ss:=statusI(vv));(vv: dom(tipoI) | tt:=tipoI(vv));(ss = livre ==> (not(tt = deficiente) & tt = idoso ==> cc:=azul [] not(tt = idoso) & tt = deficiente ==> cc:=amarela [] not(tt = idoso) & not(tt = deficiente) ==> cc:=verde) [] not(ss = livre) ==> cc:=vermelha)));
   Expanded_List_Substitution(Implementation(EstacionamentoR2I),liberar)==(vv: ativo & vv: ativo & vv: dom(status) & status(vv) = ocupada & vv: dom(statusI) | statusI:=statusI<+{vv|->livre});
   Expanded_List_Substitution(Implementation(EstacionamentoR2I),ocupar)==(vv: ativo & vv: ativo & vv: dom(status) & status(vv) = livre & vv: dom(statusI) | statusI:=statusI<+{vv|->ocupada});
   Expanded_List_Substitution(Implementation(EstacionamentoR2I),excluir)==(vv: ativo & vv: ativo & vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre & vv: dom(ativoI) | ativoI:=ativoI<+{vv|->FALSE});
-  Expanded_List_Substitution(Implementation(EstacionamentoR2I),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt) | @ii.(ii:=0;WHILE ii<MAX_INT DO (ii+1: INT & ii: INT & 1: INT | ii:=ii+1);(ativoI(ii) = FALSE ==> ((ii: dom(ativoI) | ativoI:=ativoI<+{ii|->TRUE});(ii: dom(statusI) | statusI:=statusI<+{ii|->livre});(ii: dom(tipoI) | tipoI:=tipoI<+{ii|->tt})) [] not(ativoI(ii) = FALSE) ==> skip) INVARIANT !jj.(jj: 1..ii => ativoI(jj) = FALSE) VARIANT MAX_INT-ii END));
-  List_Substitution(Implementation(EstacionamentoR2I),criar)==(VAR ii IN ii:=0;WHILE ii<MAX_INT DO ii:=ii+1;IF ativoI(ii) = FALSE THEN ativoI(ii):=TRUE;statusI(ii):=livre;tipoI(ii):=tt END INVARIANT !jj.(jj: 1..ii => ativoI(jj) = FALSE) VARIANT MAX_INT-ii END END);
+  Expanded_List_Substitution(Implementation(EstacionamentoR2I),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt) | @(ii,aa).(aa:=TRUE;ii:=0;WHILE ii<MAX_INT DO (ii+1: INT & ii: INT & 1: INT | ii:=ii+1);(ii: dom(ativoI) | aa:=ativoI(ii));(aa = FALSE ==> ((ii: dom(ativoI) | ativoI:=ativoI<+{ii|->TRUE});(ii: dom(statusI) | statusI:=statusI<+{ii|->livre});(ii: dom(tipoI) | tipoI:=tipoI<+{ii|->tt})) [] not(aa = FALSE) ==> skip) INVARIANT !jj.(jj: 1..ii => ativoI(jj) = FALSE) VARIANT MAX_INT-ii END));
+  List_Substitution(Implementation(EstacionamentoR2I),criar)==(VAR ii,aa IN aa:=TRUE;ii:=0;WHILE ii<MAX_INT DO ii:=ii+1;aa:=ativoI(ii);IF aa = FALSE THEN ativoI(ii):=TRUE;statusI(ii):=livre;tipoI(ii):=tt END INVARIANT !jj.(jj: 1..ii => ativoI(jj) = FALSE) VARIANT MAX_INT-ii END END);
   List_Substitution(Implementation(EstacionamentoR2I),excluir)==(ativoI(vv):=FALSE);
   List_Substitution(Implementation(EstacionamentoR2I),ocupar)==(statusI(vv):=ocupada);
   List_Substitution(Implementation(EstacionamentoR2I),liberar)==(statusI(vv):=livre);
-  List_Substitution(Implementation(EstacionamentoR2I),get_cor_lampada)==(IF statusI(vv) = livre THEN CASE tipoI(vv) OF EITHER idoso THEN cc:=azul OR deficiente THEN cc:=amarela ELSE cc:=verde END END ELSE cc:=vermelha END);
+  List_Substitution(Implementation(EstacionamentoR2I),get_cor_lampada)==(VAR ss,tt IN ss:=statusI(vv);tt:=tipoI(vv);IF ss = livre THEN CASE tt OF EITHER idoso THEN cc:=azul OR deficiente THEN cc:=amarela ELSE cc:=verde END END ELSE cc:=vermelha END END);
   List_Substitution(Implementation(EstacionamentoR2I),get_tipo_vaga)==(tt:=tipoI(vv));
-  List_Substitution(Implementation(EstacionamentoR2I),get_info_painel)==(qc,oc,qi,oi,qd,od:=0,0,0,0,0,0);
-  List_Substitution(Implementation(EstacionamentoR2I),indicar)==(vv:=0)
+  List_Substitution(Implementation(EstacionamentoR2I),get_info_painel)==(qc:=0;oc:=0;qi:=0;oi:=0;qd:=0;od:=0;VAR ii,aa,tt,ss IN ii:=0;aa:=FALSE;tt:=T_NULL;ss:=S_NULL;WHILE ii<MAX_INT DO ii:=ii+1;aa:=ativoI(ii);tt:=tipoI(ii);ss:=statusI(ii) INVARIANT qc = SIGMA(zz).(zz: 1..ii & tipoI(zz) = comum & ativoI(zz) = TRUE | 1) & oc = SIGMA(zz).(zz: 1..ii & tipoI(zz) = comum & ativoI(zz) = TRUE & statusI(zz) = ocupada | 1) & qi = SIGMA(zz).(zz: 1..ii & tipoI(zz) = idoso & ativoI(zz) = TRUE | 1) & oi = SIGMA(zz).(zz: 1..ii & tipoI(zz) = idoso & ativoI(zz) = TRUE & statusI(zz) = ocupada | 1) & qd = SIGMA(zz).(zz: 1..ii & tipoI(zz) = deficiente & ativoI(zz) = TRUE | 1) & od = SIGMA(zz).(zz: 1..ii & tipoI(zz) = deficiente & ativoI(zz) = TRUE & statusI(zz) = ocupada | 1) VARIANT MAX_INT-ii END END);
+  List_Substitution(Implementation(EstacionamentoR2I),indicar)==(vv:=0;VAR ii,aa,ss,uu,continuar IN uu:=T_NULL;ss:=S_NULL;aa:=TRUE;continuar:=TRUE;ii:=0;WHILE ii<MAX_INT DO ii:=ii+1;aa:=ativoI(ii);ss:=statusI(ii);uu:=tipoI(ii);IF aa = TRUE & ss = livre & uu = tt THEN continuar:=FALSE END INVARIANT !jj.(jj: 1..ii => not(aa = TRUE & ss = livre & uu = tt)) VARIANT MAX_INT-ii END END)
 END
 &
 THEORY ListConstantsX IS
@@ -259,7 +259,10 @@ END
 &
 THEORY VariablesLocEnvX IS
   Variables_Loc(Implementation(EstacionamentoR2I),?, 1) == (Type(ii) == Lvl(btype(INTEGER,?,?)));
-  Variables_Loc(Implementation(EstacionamentoR2I),criar, 1) == (Type(ii) == Lvl(btype(INTEGER,?,?)))
+  Variables_Loc(Implementation(EstacionamentoR2I),criar, 1) == (Type(ii) == Lvl(btype(INTEGER,?,?));Type(aa) == Lvl(btype(BOOL,?,?)));
+  Variables_Loc(Implementation(EstacionamentoR2I),get_cor_lampada, 1) == (Type(ss) == Lvl(etype(STATUS,?,?));Type(tt) == Lvl(etype(TIPOS,?,?)));
+  Variables_Loc(Implementation(EstacionamentoR2I),get_info_painel, 1) == (Type(ii) == Lvl(btype(INTEGER,?,?));Type(aa) == Lvl(btype(BOOL,?,?));Type(tt) == Lvl(etype(TIPOS,?,?));Type(ss) == Lvl(etype(STATUS,?,?)));
+  Variables_Loc(Implementation(EstacionamentoR2I),indicar, 1) == (Type(ii) == Lvl(btype(INTEGER,?,?));Type(aa) == Lvl(btype(BOOL,?,?));Type(ss) == Lvl(etype(STATUS,?,?));Type(uu) == Lvl(etype(TIPOS,?,?));Type(continuar) == Lvl(btype(BOOL,?,?)))
 END
 &
 THEORY TCIntRdX IS

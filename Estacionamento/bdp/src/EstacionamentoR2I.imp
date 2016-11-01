@@ -21,9 +21,10 @@ INVARIANT
     tipoI   : 1 .. MAX_INT --> TIPOS &
     ativoI  : 1 .. MAX_INT --> BOOL &
 
-    ! ii . ( ii : 1 .. MAX_INT => statusI ( ii ) = status ( ii )
-                            & tipoI ( ii ) = tipo ( ii )
-                            & ( ativoI ( ii ) = TRUE ) <=> ( ii : ativo ) )
+    ! ii . ( ii : ativo & ativo = dom ( status ) & ativo = dom ( tipo ) =>
+        ( ( statusI ( ii ) = status ( ii ) )
+        & ( tipoI ( ii ) = tipo ( ii ) )
+        & ( ativoI ( ii ) = TRUE ) ) )
 
 INITIALISATION
     VAR ii IN
@@ -45,11 +46,13 @@ OPERATIONS
     // Controle de vagas
     criar ( tt ) =
         BEGIN
-            VAR ii IN
+            VAR ii , aa IN
+                aa := TRUE ;
                 ii := 0 ;
                 WHILE ii < MAX_INT DO
                     ii := ii + 1 ;
-                    IF ativoI ( ii ) = FALSE THEN
+                    aa := ativoI ( ii ) ;
+                    IF aa = FALSE THEN
                         ativoI ( ii ) := TRUE ;
                         statusI ( ii ) := livre ;
                         tipoI ( ii ) := tt
@@ -63,30 +66,31 @@ OPERATIONS
             END
         END ;
 
-    excluir ( vv ) =
-        ativoI ( vv ) := FALSE ;
+    excluir ( vv ) = ativoI ( vv ) := FALSE ;
 
     // Ocupação e liberação de vagas
-    ocupar ( vv ) =
-        statusI ( vv ) := ocupada ;
+    ocupar ( vv ) = statusI ( vv ) := ocupada ;
 
-    liberar ( vv ) =
-            statusI ( vv ) := livre ;
+    liberar ( vv ) = statusI ( vv ) := livre ;
 
     // Consultas
     cc <-- get_cor_lampada ( vv ) =
         BEGIN
-            IF statusI ( vv ) = livre THEN
-                CASE tipoI ( vv ) OF EITHER idoso THEN
-                    cc := azul
-                OR deficiente THEN
-                    cc := amarela
-                ELSE // comum
-                    cc := verde
+            VAR ss , tt IN
+                ss := statusI ( vv ) ;
+                tt := tipoI ( vv ) ;
+                IF ss = livre THEN
+                    CASE tt OF EITHER idoso THEN
+                        cc := azul
+                    OR deficiente THEN
+                        cc := amarela
+                    ELSE // comum
+                        cc := verde
+                    END
+                    END
+                ELSE // statusI(vv) = ocupada
+                    cc := vermelha
                 END
-                END
-            ELSE // statusI(vv) = ocupada
-                cc := vermelha
             END
         END ;
 
@@ -96,29 +100,64 @@ OPERATIONS
        oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
-    qc , oc , qi , oi , qd , od <-- get_info_painel = qc , oc , qi , oi , qd , od := 0 , 0 , 0 , 0 , 0 , 0 ;
-        /*BEGIN
-            
-            
-            qc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum & (zz : ativo) | 1);
-            oc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum & (zz : ativo) &
-                              zz : dom(status) & status(zz) = ocupada | 1);
-                          
-            qi := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = idoso & (zz : ativo) | 1);
-            oi := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = idoso & (zz : ativo) &
-                              zz : dom(status) & status(zz) = ocupada | 1);
-                          
-            qd := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente & (zz : ativo) | 1);
-            od := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente & (zz : ativo) &
-                              zz : dom(status) & status(zz) = ocupada  | 1)
-        END;*/
+    qc , oc , qi , oi , qd , od <-- get_info_painel =
+        BEGIN
+            qc := 0 ;
+            oc := 0 ;
+            qi := 0 ;
+            oi := 0 ;
+            qd := 0 ;
+            od := 0 ;
+            VAR ii , aa , tt , ss IN
+                ii := 0 ;
+                aa := FALSE ;
+                tt := T_NULL ;
+                ss := S_NULL ;
+                WHILE ii < MAX_INT DO
+                    ii := ii + 1 ;
+                    aa := ativoI ( ii ) ;
+                    tt := tipoI ( ii ) ;
+                    ss := statusI ( ii )
 
-    vv <-- indicar ( tt ) = vv := 0
-        /*ANY uu
-        WHERE uu : dom(dom(tipo |> {tt}) <| status |> {livre}) &
-            uu : ativo
-        THEN
-            vv := uu
-        END*/
+                    INVARIANT
+                        ( qc = SIGMA zz . ( zz : 1 .. ii & ( tipoI ( zz ) = comum ) & ( ativoI ( zz ) = TRUE ) | 1 ) ) &
+                        ( oc = SIGMA zz . ( zz : 1 .. ii & ( tipoI ( zz ) = comum ) & ( ativoI ( zz ) = TRUE ) &
+                                          statusI ( zz ) = ocupada | 1 ) ) &
 
+                        ( qi = SIGMA zz . ( zz : 1 .. ii & ( tipoI ( zz ) = idoso ) & ( ativoI ( zz ) = TRUE ) | 1 ) ) &
+                        ( oi = SIGMA zz . ( zz : 1 .. ii & ( tipoI ( zz ) = idoso ) & ( ativoI ( zz ) = TRUE ) &
+                                          statusI ( zz ) = ocupada | 1 ) ) &
+
+                        ( qd = SIGMA zz . ( zz : 1 .. ii & ( tipoI ( zz ) = deficiente ) & ( ativoI ( zz ) = TRUE ) | 1 ) ) &
+                        ( od = SIGMA zz . ( zz : 1 .. ii & ( tipoI ( zz ) = deficiente ) & ( ativoI ( zz ) = TRUE ) &
+                                          statusI ( zz ) = ocupada | 1 ) )
+                    VARIANT MAX_INT - ii
+                END
+            END
+        END ;
+
+    vv <-- indicar ( tt ) =
+        BEGIN
+            vv := 0 ;
+            VAR ii , aa , ss , uu , continuar IN
+                uu := T_NULL ;
+                ss := S_NULL ;
+                aa := TRUE ;
+                continuar := TRUE ;
+                ii := 0 ;
+                WHILE ii < MAX_INT DO
+                    ii := ii + 1 ;
+                    aa := ativoI ( ii ) ;
+                    ss := statusI ( ii ) ;
+                    uu := tipoI ( ii ) ;
+                    IF aa = TRUE & ss = livre & uu = tt THEN
+                        continuar := FALSE
+                    END
+                INVARIANT
+                    ! jj . ( jj : 1 .. ii => not ( aa = TRUE & ss = livre & uu = tt ) )
+                VARIANT
+                    MAX_INT - ii
+                END
+            END
+        END
 END

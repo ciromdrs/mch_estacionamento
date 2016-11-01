@@ -48,14 +48,7 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:3:2:4" typref="1622327860" value="vermelha"/>
 </Enumerated_Values>
 </Set>
-<Set translate="((1..2)*{SIM_NAO}): FIN(NATURAL*{SIM_NAO}) &amp; not(((1..2)*{SIM_NAO}) = {})">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:1" typref="1592569103" value="SIM_NAO"/>
-<Enumerated_Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:1" typref="3116095348" value="sim"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:2" typref="3116095348" value="nao"/>
-</Enumerated_Values>
-</Set>
-<Nary_Pred op="&amp;" translate="((MAX_INT) : ((NAT-{0}))) &amp; ((MAX_INT) = (1000)) &amp; MAX : ((1..4)*{TIPOS}) +-> ((0) .. (MAX_INT)) &amp; dom(MAX) = ((1..4)*{TIPOS}) &amp; ((MAX) : (((((1..4)*{TIPOS})) --> (((0) .. (MAX_INT)))))) &amp; ((((MAX )((3|->TIPOS)) + (MAX )((1|->TIPOS))) + (MAX )((2|->TIPOS))) &lt;= MAX_INT)">
+<Nary_Pred op="&amp;" translate="((MAX_INT) : ((NAT-{0}))) &amp; ((MAX_INT) = (1000)) &amp; ((MAX) = ({(((3|->TIPOS)) |-> (10))}\/{(((1|->TIPOS)) |-> (5))}\/{(((2|->TIPOS)) |-> (5))}\/{(((4|->TIPOS)) |-> (0))})) &amp; MAX : ((1..4)*{TIPOS}) +-> ((0) .. (MAX_INT)) &amp; dom(MAX) = ((1..4)*{TIPOS}) &amp; ((MAX) : (((((1..4)*{TIPOS})) --> (((0) .. (MAX_INT)))))) &amp; ((((MAX )((3|->TIPOS)) + (MAX )((1|->TIPOS))) + (MAX )((2|->TIPOS))) &lt;= MAX_INT)">
 <Exp_Comparison op=":" translate="((MAX_INT) : ((NAT-{0})))">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:1:1" typref="2701647786" value="MAX_INT"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:1:2" typref="3603043417" value="NAT1"/>
@@ -64,32 +57,53 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:2:1" typref="2701647786" value="MAX_INT"/>
 <Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:2:2" typref="2701647786" value="1000"/>
 </Exp_Comparison>
-<Exp_Comparison op=":" translate="MAX : ((1..4)*{TIPOS}) +-> ((0) .. (MAX_INT)) &amp; dom(MAX) = ((1..4)*{TIPOS}) &amp; ((MAX) : (((((1..4)*{TIPOS})) --> (((0) .. (MAX_INT))))))">
+<Exp_Comparison op="=" translate="((MAX) = ({(((3|->TIPOS)) |-> (10))}\/{(((1|->TIPOS)) |-> (5))}\/{(((2|->TIPOS)) |-> (5))}\/{(((4|->TIPOS)) |-> (0))}))">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:1" typref="3857687249" value="MAX"/>
+<Nary_Exp op="{" typref="3857687249">
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:1:1" typref="2864770153" value="comum"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:1:2" typref="2701647786" value="10"/>
+</Binary_Exp>
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:1" typref="2864770153" value="idoso"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:2" typref="2701647786" value="5"/>
+</Binary_Exp>
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:3:1" typref="2864770153" value="deficiente"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:3:2" typref="2701647786" value="5"/>
+</Binary_Exp>
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:4:1" typref="2864770153" value="T_NULL"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:4:2" typref="2701647786" value="0"/>
+</Binary_Exp>
+</Nary_Exp>
+</Exp_Comparison>
+<Exp_Comparison op=":" translate="MAX : ((1..4)*{TIPOS}) +-> ((0) .. (MAX_INT)) &amp; dom(MAX) = ((1..4)*{TIPOS}) &amp; ((MAX) : (((((1..4)*{TIPOS})) --> (((0) .. (MAX_INT))))))">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:1" typref="3857687249" value="MAX"/>
 <Binary_Exp op="-->" typref="3434258930">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:1" typref="1761623770" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1" typref="1761623770" value="TIPOS"/>
 <Binary_Exp op=".." typref="3603043417">
-<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:1" typref="2701647786" value="0"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:2" typref="2701647786" value="MAX_INT"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:1" typref="2701647786" value="0"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:2" typref="2701647786" value="MAX_INT"/>
 </Binary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=">=" translate="((((MAX )((3|->TIPOS)) + (MAX )((1|->TIPOS))) + (MAX )((2|->TIPOS))) &lt;= MAX_INT)">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:1" typref="2701647786" value="MAX_INT"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:1" typref="2701647786" value="MAX_INT"/>
 <Binary_Exp op="+" typref="2701647786">
 <Binary_Exp op="+" typref="2701647786">
 <Binary_Exp op="(" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:1" typref="3857687249" value="MAX"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:2" typref="2864770153" value="comum"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:2" typref="2864770153" value="comum"/>
 </Binary_Exp>
 <Binary_Exp op="(" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:2:1" typref="3857687249" value="MAX"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:2:2" typref="2864770153" value="idoso"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:2:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:2:2" typref="2864770153" value="idoso"/>
 </Binary_Exp>
 </Binary_Exp>
 <Binary_Exp op="(" typref="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:1" typref="3857687249" value="MAX"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:2" typref="2864770153" value="deficiente"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:2:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:2:2" typref="2864770153" value="deficiente"/>
 </Binary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -148,33 +162,49 @@
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:3:2:4" typref="1622327860" value="vermelha"/>
 </Enumerated_Values>
 </Set>
-<Set>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:1" typref="1592569103" value="SIM_NAO"/>
-<Enumerated_Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:1" typref="3116095348" value="sim"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:1:4:2:2" typref="3116095348" value="nao"/>
-</Enumerated_Values>
-</Set>
 </Hypothesis>
 <Local_Hyp num="1">
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:1" typref="3857687249" value="MAX"/>
 <Binary_Exp op="-->" typref="3434258930">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:1" typref="1761623770" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1" typref="1761623770" value="TIPOS"/>
 <Binary_Exp op=".." typref="3603043417">
-<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:1" typref="2701647786" value="0"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:2" typref="2701647786" value="MAX_INT"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:1" typref="2701647786" value="0"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:2" typref="2701647786" value="MAX_INT"/>
 </Binary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
 </Local_Hyp>
 <Local_Hyp num="2">
 <Exp_Comparison op="=">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:1" typref="3857687249" value="MAX"/>
+<Nary_Exp op="{" typref="3857687249">
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:1:1" typref="2864770153" value="comum"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:1:2" typref="2701647786" value="10"/>
+</Binary_Exp>
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:1" typref="2864770153" value="idoso"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:2:2" typref="2701647786" value="5"/>
+</Binary_Exp>
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:3:1" typref="2864770153" value="deficiente"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:3:2" typref="2701647786" value="5"/>
+</Binary_Exp>
+<Binary_Exp op="|->" typref="2382376882">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:4:1" typref="2864770153" value="T_NULL"/>
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:3:2:4:2" typref="2701647786" value="0"/>
+</Binary_Exp>
+</Nary_Exp>
+</Exp_Comparison>
+</Local_Hyp>
+<Local_Hyp num="3">
+<Exp_Comparison op="=">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:2:1" typref="2701647786" value="MAX_INT"/>
 <Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:2:2" typref="2701647786" value="1000"/>
 </Exp_Comparison>
 </Local_Hyp>
-<Local_Hyp num="3">
+<Local_Hyp num="4">
 <Exp_Comparison op=":">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:1:1" typref="2701647786" value="MAX_INT"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:1:2" typref="3603043417" value="NAT1"/>
@@ -185,14 +215,15 @@
 <Goal>
 <Binary_Pred op="=>">
 <Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
 <Ref_Hyp num="3"/>
 <Ref_Hyp num="2"/>
 <Ref_Hyp num="1"/>
 </Nary_Pred>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:2" typref="2864770153" value="comum"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:2" typref="2864770153" value="comum"/>
 <Unary_Exp op="dom">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:1" typref="3857687249" value="MAX"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
@@ -203,18 +234,19 @@
 <Goal>
 <Binary_Pred op="=>">
 <Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
 <Ref_Hyp num="3"/>
 <Ref_Hyp num="2"/>
 <Ref_Hyp num="1"/>
 </Nary_Pred>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:1" typref="3857687249" value="MAX"/>
 <Binary_Exp op="+->">
 <Unary_Exp op="dom">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:1" typref="3857687249" value="MAX"/>
 </Unary_Exp>
 <Unary_Exp op="ran">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:1:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:1:1" typref="3857687249" value="MAX"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -226,14 +258,15 @@
 <Goal>
 <Binary_Pred op="=>">
 <Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
 <Ref_Hyp num="3"/>
 <Ref_Hyp num="2"/>
 <Ref_Hyp num="1"/>
 </Nary_Pred>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:2:2" typref="2864770153" value="idoso"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:2:2" typref="2864770153" value="idoso"/>
 <Unary_Exp op="dom">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:1:2:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:1:2:1" typref="3857687249" value="MAX"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
@@ -244,14 +277,15 @@
 <Goal>
 <Binary_Pred op="=>">
 <Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
 <Ref_Hyp num="3"/>
 <Ref_Hyp num="2"/>
 <Ref_Hyp num="1"/>
 </Nary_Pred>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:2" typref="2864770153" value="deficiente"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:2:2" typref="2864770153" value="deficiente"/>
 <Unary_Exp op="dom">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:4:2:2:1" typref="3857687249" value="MAX"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:3:1:5:2:2:1" typref="3857687249" value="MAX"/>
 </Unary_Exp>
 </Exp_Comparison>
 </Binary_Pred>
@@ -314,36 +348,34 @@
 <Type id="1622327860">
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:6:1" value="CORES"/>
 </Type>
-<Type id="1592569103">
-<Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:7:1:1" value="SIM_NAO"/>
-</Unary_Exp>
-</Type>
-<Type id="3116095348">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1" value="SIM_NAO"/>
-</Type>
 <Type id="2701647786">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:9:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:7:1" value="INTEGER"/>
 </Type>
 <Type id="3857687249">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:10:1:1:1" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:10:1:1:2" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1:1:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:8:1:1:2" value="INTEGER"/>
 </Binary_Exp>
 </Unary_Exp>
 </Type>
 <Type id="3603043417">
 <Unary_Exp op="POW">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:11:1:1" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:9:1:1" value="INTEGER"/>
 </Unary_Exp>
+</Type>
+<Type id="2382376882">
+<Binary_Exp op="*">
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:10:1:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:10:1:2" value="INTEGER"/>
+</Binary_Exp>
 </Type>
 <Type id="3434258930">
 <Unary_Exp op="POW">
 <Unary_Exp op="POW">
 <Binary_Exp op="*">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:12:1:1:1:1" value="TIPOS"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:12:1:1:1:2" value="INTEGER"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:11:1:1:1:1" value="TIPOS"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\TiposComuns.bxml:1:5:11:1:1:1:2" value="INTEGER"/>
 </Binary_Exp>
 </Unary_Exp>
 </Unary_Exp>

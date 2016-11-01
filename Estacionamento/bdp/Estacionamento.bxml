@@ -256,6 +256,10 @@
 <Id value='status' typref='3831892605'/>
 </Unary_Exp>
 </Exp_Comparison>
+<Exp_Comparison op=':'>
+<Id value='vv' typref='3750478463'/>
+<Id value='VAGA' typref='1611150874'/>
+</Exp_Comparison>
 <Exp_Comparison op='='>
 <Binary_Exp op='(' typref='2246778642'>
 <Id value='status' typref='3831892605'/>
