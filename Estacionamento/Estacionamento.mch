@@ -3,11 +3,23 @@
 MACHINE
     Estacionamento
 
-SEES TiposComuns
+CONSTANTS
+    MAX_INT,
+    MAX
+
+PROPERTIES
+    MAX_INT : NAT1 &
+    MAX_INT = 1000 &
     
-    
+    MAX={comum |-> 10, idoso |-> 5, deficiente |-> 5, T_NULL |-> 0} &
+    MAX : TIPOS --> 0..MAX_INT &    
+    MAX_INT >= MAX(comum) + MAX(idoso) + MAX(deficiente)
+
 SETS
-    VAGA
+    VAGA;
+    TIPOS = {idoso, deficiente, comum, T_NULL}; // Tipo da vaga
+    STATUS = {livre, ocupada, S_NULL};          // status da vaga
+    CORES = {azul, amarela, verde, vermelha} // Cor da lâmpada que fica na vaga
 
 VARIABLES
     status, // status da vaga
@@ -57,20 +69,23 @@ OPERATIONS
     
     // Ocupação e liberação de vagas
     ocupar(vv) =
-        PRE vv : dom(status) &
+        PRE vv : VAGA &
+            vv : dom(status) &
             status(vv) = livre
         THEN status(vv) := ocupada
         END;
         
     liberar(vv) = 
-        PRE vv : dom(status) &
+        PRE vv : VAGA &
+            vv : dom(status) &
             status(vv) = ocupada
         THEN status(vv) := livre
         END;
     
     // Consultas
     cc <-- get_cor_lampada(vv) =
-        PRE vv : dom(status) &
+        PRE vv : VAGA &
+            vv : dom(status) &
             vv : dom(tipo)   &
             cc : CORES
         THEN
@@ -89,7 +104,8 @@ OPERATIONS
         END;
     
     tt <-- get_tipo_vaga(vv) =
-        PRE vv : dom(tipo) &
+        PRE vv : VAGA &
+            vv : dom(tipo) &
             tt : TIPOS
         THEN
             tt := tipo(vv)
@@ -99,6 +115,7 @@ OPERATIONS
        oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
+    /* comentei porque estava estourando a memoria do compilador
     qc, oc, qi, oi, qd, od <-- get_info_painel = 
         PRE qc : NAT & oc : NAT &
             qi : NAT & oi : NAT &
@@ -112,7 +129,7 @@ OPERATIONS
             
             qd := card(tipo |> {deficiente})                        ||
             od := card(dom(tipo |> {deficiente}) <| status |> {ocupada})
-        END;
+        END;*/
     
     vv <-- indicar(tt) = 
         PRE vv : VAGA &

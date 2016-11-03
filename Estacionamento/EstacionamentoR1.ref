@@ -6,8 +6,6 @@
 REFINEMENT EstacionamentoR1
 REFINES Estacionamento
 
-SEES TiposComuns
-
 VARIABLES
     status, // status da vaga
     tipo,   // tipo da vaga
@@ -89,7 +87,7 @@ OPERATIONS
        oc: quantidade de vagas Ocupadas Comuns
        as demais são análogas para deficientes e idosos.
     */
-    qc, oc, qi, oi, qd, od <-- get_info_painel = 
+    /*qc, oc, qi, oi, qd, od <-- get_info_painel = 
         BEGIN
             qc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum & (zz : ativo) | 1);
             oc := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = comum & (zz : ativo) &
@@ -102,7 +100,7 @@ OPERATIONS
             qd := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente & (zz : ativo) | 1);
             od := SIGMA zz . (zz : dom(tipo)   & tipo(zz) = deficiente & (zz : ativo) &
                               zz : dom(status) & status(zz) = ocupada  | 1)
-        END;
+        END;*/
     
     vv <-- indicar(tt) = 
         ANY uu

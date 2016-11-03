@@ -363,17 +363,34 @@
 <Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Body>
+<VAR_IN>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Body>
+<Nary_Sub op=';'>
+<Assignement_Sub>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='vv' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
 <Assignement_Sub>
 <Variables>
 <Binary_Exp op='(' typref='2043437594'>
 <Id value='ativoI' typref='1127519748'/>
-<Id value='vv' typref='2701647786'/>
+<Id value='ii' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
 <Boolean_Literal value='FALSE' typref='2043437594'/>
 </Values>
 </Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Body>
 </Operation>
 <Operation name='ocupar'>
@@ -381,17 +398,34 @@
 <Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Body>
+<VAR_IN>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Body>
+<Nary_Sub op=';'>
+<Assignement_Sub>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='vv' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
 <Assignement_Sub>
 <Variables>
 <Binary_Exp op='(' typref='2246778642'>
 <Id value='statusI' typref='3781868044'/>
-<Id value='vv' typref='2701647786'/>
+<Id value='ii' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
 <Id value='ocupada' typref='2246778642'/>
 </Values>
 </Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Body>
 </Operation>
 <Operation name='liberar'>
@@ -399,17 +433,34 @@
 <Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Body>
+<VAR_IN>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Body>
+<Nary_Sub op=';'>
+<Assignement_Sub>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='vv' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
 <Assignement_Sub>
 <Variables>
 <Binary_Exp op='(' typref='2246778642'>
 <Id value='statusI' typref='3781868044'/>
-<Id value='vv' typref='2701647786'/>
+<Id value='ii' typref='2701647786'/>
 </Binary_Exp>
 </Variables>
 <Values>
 <Id value='livre' typref='2246778642'/>
 </Values>
 </Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Body>
 </Operation>
 <Operation name='get_cor_lampada'>
@@ -424,9 +475,18 @@
 <Variables>
 <Id value='ss' typref='2246778642'/>
 <Id value='tt' typref='2864770153'/>
+<Id value='ii' typref='2701647786'/>
 </Variables>
 <Body>
 <Nary_Sub op=';'>
+<Assignement_Sub>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='vv' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
 <Assignement_Sub>
 <Variables>
 <Id value='ss' typref='2246778642'/>
@@ -434,7 +494,7 @@
 <Values>
 <Binary_Exp op='(' typref='2246778642'>
 <Id value='statusI' typref='3781868044'/>
-<Id value='vv' typref='2701647786'/>
+<Id value='ii' typref='2701647786'/>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
@@ -445,7 +505,7 @@
 <Values>
 <Binary_Exp op='(' typref='2864770153'>
 <Id value='tipoI' typref='892561489'/>
-<Id value='vv' typref='2701647786'/>
+<Id value='ii' typref='2701647786'/>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
@@ -533,6 +593,20 @@
 <Id value='vv' typref='2701647786'/>
 </Input_Parameters>
 <Body>
+<VAR_IN>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Body>
+<Nary_Sub op=';'>
+<Assignement_Sub>
+<Variables>
+<Id value='ii' typref='2701647786'/>
+</Variables>
+<Values>
+<Id value='vv' typref='2701647786'/>
+</Values>
+</Assignement_Sub>
 <Assignement_Sub>
 <Variables>
 <Id value='tt' typref='2864770153'/>
@@ -540,10 +614,13 @@
 <Values>
 <Binary_Exp op='(' typref='2864770153'>
 <Id value='tipoI' typref='892561489'/>
-<Id value='vv' typref='2701647786'/>
+<Id value='ii' typref='2701647786'/>
 </Binary_Exp>
 </Values>
 </Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Body>
 </Operation>
 <Operation name='get_info_painel'>

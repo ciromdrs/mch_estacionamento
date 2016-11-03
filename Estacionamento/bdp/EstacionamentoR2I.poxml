@@ -1232,22 +1232,39 @@
 </Nary_Pred>
 <Sub_Calculus overflow="true">
 <Nary_Sub op=";">
+<VAR_IN>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Sub op=";">
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:3,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:1:1:1," typref="1127519748" value="ativoI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:3,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:2:1:1:1," typref="1127519748" value="ativoI"/>
 </Variables>
 <Values>
 <Binary_Exp op="&lt;+">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:3,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:1:1:1," typref="1127519748" value="ativoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:3,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:2:1:1:1," typref="1127519748" value="ativoI"/>
 <Nary_Exp op="{">
 <Binary_Exp op="|-&gt;">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:1:1:2" typref="2701647786" value="vv"/>
-<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1" typref="2043437594" value="FALSE"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:2:1:1:2" typref="2701647786" value="ii"/>
+<Boolean_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:2:2:1" typref="2043437594" value="FALSE"/>
 </Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
@@ -1496,22 +1513,39 @@
 </Nary_Pred>
 <Sub_Calculus overflow="true">
 <Nary_Sub op=";">
+<VAR_IN>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Sub op=";">
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:1:1:1," typref="3781868044" value="statusI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:2:1:1:1," typref="3781868044" value="statusI"/>
 </Variables>
 <Values>
 <Binary_Exp op="&lt;+">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:1:1:1," typref="3781868044" value="statusI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:2:1:1:1," typref="3781868044" value="statusI"/>
 <Nary_Exp op="{">
 <Binary_Exp op="|-&gt;">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:1:1:2" typref="2701647786" value="vv"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1" typref="2246778642" value="ocupada"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:2:1:1:2" typref="2701647786" value="ii"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:2:2:1" typref="2246778642" value="ocupada"/>
 </Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
@@ -1735,22 +1769,39 @@
 </Nary_Pred>
 <Sub_Calculus overflow="true">
 <Nary_Sub op=";">
+<VAR_IN>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Sub op=";">
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:1:1:1," typref="3781868044" value="statusI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:2:1:1:1," typref="3781868044" value="statusI"/>
 </Variables>
 <Values>
 <Binary_Exp op="&lt;+">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:1:1:1," typref="3781868044" value="statusI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:2:1:1:1," typref="3781868044" value="statusI"/>
 <Nary_Exp op="{">
 <Binary_Exp op="|-&gt;">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:1:1:2" typref="2701647786" value="vv"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1" typref="2246778642" value="livre"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:2:1:1:2" typref="2701647786" value="ii"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:2:2:1" typref="2246778642" value="livre"/>
 </Binary_Exp>
 </Nary_Exp>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
@@ -1989,70 +2040,79 @@
 <Variables>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:1:1" typref="2246778642" value="ss"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:1:2" typref="2864770153" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:1:3" typref="2701647786" value="ii"/>
 </Variables>
 <Body>
 <Nary_Sub op=";">
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:1:1" typref="2246778642" value="ss"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:1:1" typref="2246778642" value="ss"/>
 </Variables>
 <Values>
 <Binary_Exp op="(" typref="2246778642">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:1," typref="3781868044" value="statusI"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:2" typref="2701647786" value="vv"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="3781868044" value="statusI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:2" typref="2701647786" value="ii"/>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:1:1" typref="2864770153" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1" typref="2864770153" value="tt"/>
 </Variables>
 <Values>
 <Binary_Exp op="(" typref="2864770153">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:2" typref="2701647786" value="vv"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1," typref="892561489" value="tipoI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2" typref="2701647786" value="ii"/>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
 <If_Sub elseif="no">
 <Condition>
 <Exp_Comparison op="=">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="2246778642" value="ss"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1:2" typref="2246778642" value="livre"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:1:1:1" typref="2246778642" value="ss"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:1:1:2" typref="2246778642" value="livre"/>
 </Exp_Comparison>
 </Condition>
 <Then>
 <Case_Sub>
 <Value>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1:1" typref="2864770153" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:1:1" typref="2864770153" value="tt"/>
 </Value>
 <Choices>
 <Choice>
 <Value>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2:1:1:1" typref="2864770153" value="idoso"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:2:1:1:1" typref="2864770153" value="idoso"/>
 </Value>
 <Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2:1:2:1:1:1," typref="1622327860" value="cc"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:2:1:2:1:1:1," typref="1622327860" value="cc"/>
 </Variables>
 <Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2:1:2:1:2:1" typref="1622327860" value="azul"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:2:1:2:1:2:1" typref="1622327860" value="azul"/>
 </Values>
 </Simple_Assignement_Sub>
 </Then>
 </Choice>
 <Choice>
 <Value>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2:2:1:1" typref="2864770153" value="deficiente"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:2:2:1:1" typref="2864770153" value="deficiente"/>
 </Value>
 <Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2:2:2:1:1:1," typref="1622327860" value="cc"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:2:2:2:1:1:1," typref="1622327860" value="cc"/>
 </Variables>
 <Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2:2:2:1:2:1" typref="1622327860" value="amarela"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:2:2:2:1:2:1" typref="1622327860" value="amarela"/>
 </Values>
 </Simple_Assignement_Sub>
 </Then>
@@ -2063,10 +2123,10 @@
 <Then>
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:3:1:1:1:1:1," typref="1622327860" value="cc"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:3:1:1:1:1:1," typref="1622327860" value="cc"/>
 </Variables>
 <Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:3:1:1:1:2:1" typref="1622327860" value="verde"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:2:1:3:1:1:1:2:1" typref="1622327860" value="verde"/>
 </Values>
 </Simple_Assignement_Sub>
 </Then>
@@ -2077,10 +2137,10 @@
 <Else>
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:3:1:1:1," typref="1622327860" value="cc"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:3:1:1:1," typref="1622327860" value="cc"/>
 </Variables>
 <Values>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:3:1:2:1" typref="1622327860" value="vermelha"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:3:1:2:1" typref="1622327860" value="vermelha"/>
 </Values>
 </Simple_Assignement_Sub>
 </Else>
@@ -2375,17 +2435,34 @@
 </Nary_Pred>
 <Sub_Calculus overflow="true">
 <Nary_Sub op=";">
+<VAR_IN>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Sub op=";">
 <Simple_Assignement_Sub>
 <Variables>
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:1:1," typref="2864770153" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Simple_Assignement_Sub>
+<Variables>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:1:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:1:1," typref="2864770153" value="tt"/>
 </Variables>
 <Values>
 <Binary_Exp op="(" typref="2864770153">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1," typref="892561489" value="tipoI"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2" typref="2701647786" value="vv"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:2" typref="2701647786" value="ii"/>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
+</Nary_Sub>
+</Body>
+</VAR_IN>
 </Nary_Sub>
 <Binary_Pred op="=&gt;">
 <Nary_Pred op="&amp;"/>
@@ -4848,6 +4925,24 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:2:2:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
@@ -4856,6 +4951,11 @@
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 </Binary_Pred>
+</Nary_Pred>
+</Sub_Calculus>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -4905,6 +5005,24 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:3:2:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
@@ -4913,6 +5031,11 @@
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 </Binary_Pred>
+</Nary_Pred>
+</Sub_Calculus>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -4962,6 +5085,24 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:4:2:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Binary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
@@ -4970,6 +5111,11 @@
 <Nary_Pred op="&amp;"/>
 </Binary_Pred>
 </Binary_Pred>
+</Nary_Pred>
+</Sub_Calculus>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>
@@ -5026,27 +5172,40 @@
 <Variables>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:1:1" typref="2246778642" value="ss"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:1:2" typref="2864770153" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:1:3" typref="2701647786" value="ii"/>
 </Variables>
 <Body>
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:2" typref="2701647786" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:2" typref="2701647786" value="ii"/>
 <Unary_Exp op="dom">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:1," typref="3781868044" value="statusI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="3781868044" value="statusI"/>
 </Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=":">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:1," typref="3781868044" value="statusI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="3781868044" value="statusI"/>
 <Binary_Exp op="+-&gt;">
 <Unary_Exp op="dom">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:1," typref="3781868044" value="statusI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="3781868044" value="statusI"/>
 </Unary_Exp>
 <Unary_Exp op="ran">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:1," typref="3781868044" value="statusI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="3781868044" value="statusI"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -5054,12 +5213,12 @@
 <Sub_Calculus>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:1:1" typref="2246778642" value="ss"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:1:1" typref="2246778642" value="ss"/>
 </Variables>
 <Values>
 <Binary_Exp op="(" typref="2246778642">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:1," typref="3781868044" value="statusI"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:1:2:1:2" typref="2701647786" value="vv"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:1,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="3781868044" value="statusI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:2" typref="2701647786" value="ii"/>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
@@ -5069,19 +5228,19 @@
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:2" typref="2701647786" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2" typref="2701647786" value="ii"/>
 <Unary_Exp op="dom">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1," typref="892561489" value="tipoI"/>
 </Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=":">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1," typref="892561489" value="tipoI"/>
 <Binary_Exp op="+-&gt;">
 <Unary_Exp op="dom">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1," typref="892561489" value="tipoI"/>
 </Unary_Exp>
 <Unary_Exp op="ran">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1," typref="892561489" value="tipoI"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
@@ -5089,12 +5248,12 @@
 <Sub_Calculus>
 <Simple_Assignement_Sub>
 <Variables>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:1:1" typref="2864770153" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1" typref="2864770153" value="tt"/>
 </Variables>
 <Values>
 <Binary_Exp op="(" typref="2864770153">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:2:2:1:2" typref="2701647786" value="vv"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:1," typref="892561489" value="tipoI"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:2:1:2" typref="2701647786" value="ii"/>
 </Binary_Exp>
 </Values>
 </Simple_Assignement_Sub>
@@ -5106,8 +5265,8 @@
 </Binary_Pred>
 <Binary_Pred op="=&gt;">
 <Exp_Comparison op="=">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="2246778642" value="ss"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1:2" typref="2246778642" value="livre"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:1:1:1" typref="2246778642" value="ss"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:1:1:2" typref="2246778642" value="livre"/>
 </Exp_Comparison>
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
@@ -5116,8 +5275,8 @@
 <Binary_Pred op="=&gt;">
 <Unary_Pred op="not">
 <Exp_Comparison op="=">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1:1" typref="2246778642" value="ss"/>
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:3:1:1:2" typref="2246778642" value="livre"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:1:1:1" typref="2246778642" value="ss"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:5:3:1:2:1:4:1:1:2" typref="2246778642" value="livre"/>
 </Exp_Comparison>
 </Unary_Pred>
 <Nary_Pred op="&amp;">
@@ -5126,6 +5285,8 @@
 </Nary_Pred>
 </Binary_Pred>
 </Nary_Pred>
+</Nary_Pred>
+</Sub_Calculus>
 </Nary_Pred>
 </Sub_Calculus>
 </Nary_Pred>
@@ -5179,28 +5340,51 @@
 <Goal>
 <Tag goalTag="Well definedness">
 <Nary_Pred op="&amp;">
+<Quantified_Pred type="!">
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Body>
+<Nary_Pred op="&amp;">
+<Nary_Pred op="&amp;"/>
+<Nary_Pred op="&amp;"/>
+<Sub_Calculus>
+<Simple_Assignement_Sub>
+<Variables>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1:1:1" typref="2701647786" value="ii"/>
+</Variables>
+<Values>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1:2:1" typref="2701647786" value="vv"/>
+</Values>
+</Simple_Assignement_Sub>
+<Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;">
 <Nary_Pred op="&amp;"/>
 <Nary_Pred op="&amp;"/>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2" typref="2701647786" value="vv"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:2" typref="2701647786" value="ii"/>
 <Unary_Exp op="dom">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
 </Unary_Exp>
 </Exp_Comparison>
 <Exp_Comparison op=":">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
 <Binary_Exp op="+-&gt;">
 <Unary_Exp op="dom">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
 </Unary_Exp>
 <Unary_Exp op="ran">
-<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:1," typref="892561489" value="tipoI"/>
+<Id suffix="1" tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:4:2,C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\EstacionamentoR2I.bxml:1:7:6:3:1:2:1:2:2:1:1," typref="892561489" value="tipoI"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
 </Nary_Pred>
+</Nary_Pred>
+</Sub_Calculus>
+</Nary_Pred>
+</Body>
+</Quantified_Pred>
 </Nary_Pred>
 </Tag>
 </Goal>

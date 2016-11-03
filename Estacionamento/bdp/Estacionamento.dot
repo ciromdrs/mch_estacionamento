@@ -1,9 +1,8 @@
 digraph {
 Controle_r [ label=" Controle\nControle_r " shape= box ]
-EstacionamentoR2I [ label=" Estacionamento\nEstacionamentoR1\nEstacionamentoR2\nEstacionamentoR2I " shape= box ]
+EstacionamentoR1I [ label=" Estacionamento\nEstacionamentoR1\nEstacionamentoR1I " shape= box ]
 TiposComuns [ label=" TiposComuns " shape= box ]
 
 "Controle_r" -> "TiposComuns" [style= dotted ]
-"Controle_r" -> "EstacionamentoR2I" []
-"EstacionamentoR2I" -> "TiposComuns" [style= dotted ]
+"Controle_r" -> "EstacionamentoR1I" []
 }
