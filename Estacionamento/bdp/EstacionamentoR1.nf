@@ -33,7 +33,7 @@ END
 THEORY ListVariablesX IS
   External_Context_List_Variables(Refinement(EstacionamentoR1))==(?);
   Context_List_Variables(Refinement(EstacionamentoR1))==(?);
-  Abstract_List_Variables(Refinement(EstacionamentoR1))==(tipo,status);
+  Abstract_List_Variables(Refinement(EstacionamentoR1))==(tipo,status,lim,preco,hora,chegada,pagos);
   Local_List_Variables(Refinement(EstacionamentoR1))==(ativo,tipo,status);
   List_Variables(Refinement(EstacionamentoR1))==(ativo,tipo,status);
   External_List_Variables(Refinement(EstacionamentoR1))==(ativo,tipo,status)
@@ -55,7 +55,7 @@ END
 THEORY ListInvariantX IS
   Gluing_Seen_List_Invariant(Refinement(EstacionamentoR1))==(btrue);
   Expanded_List_Invariant(Refinement(EstacionamentoR1))==(btrue);
-  Abstract_List_Invariant(Refinement(EstacionamentoR1))==(status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente));
+  Abstract_List_Invariant(Refinement(EstacionamentoR1))==(hora: NAT & preco: NAT & lim: NAT & status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & chegada: TICKET +-> NAT & pagos <: dom(chegada) & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente));
   Context_List_Invariant(Refinement(EstacionamentoR1))==(btrue);
   List_Invariant(Refinement(EstacionamentoR1))==(ativo <: VAGA & ativo = dom(tipo) & ativo = dom(status))
 END
@@ -174,17 +174,18 @@ THEORY ListConstantsX IS
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Refinement(EstacionamentoR1),CORES)==({azul,amarela,verde,vermelha});
+  Set_Definition(Refinement(EstacionamentoR1),TICKET)==(?);
   Context_List_Enumerated(Refinement(EstacionamentoR1))==(?);
   Context_List_Defered(Refinement(EstacionamentoR1))==(?);
   Context_List_Sets(Refinement(EstacionamentoR1))==(?);
-  List_Valuable_Sets(Refinement(EstacionamentoR1))==(VAGA);
+  List_Valuable_Sets(Refinement(EstacionamentoR1))==(VAGA,TICKET);
   Inherited_List_Enumerated(Refinement(EstacionamentoR1))==(TIPOS,STATUS,CORES);
-  Inherited_List_Defered(Refinement(EstacionamentoR1))==(VAGA);
-  Inherited_List_Sets(Refinement(EstacionamentoR1))==(VAGA,TIPOS,STATUS,CORES);
+  Inherited_List_Defered(Refinement(EstacionamentoR1))==(VAGA,TICKET);
+  Inherited_List_Sets(Refinement(EstacionamentoR1))==(VAGA,TIPOS,STATUS,CORES,TICKET);
   List_Enumerated(Refinement(EstacionamentoR1))==(?);
   List_Defered(Refinement(EstacionamentoR1))==(?);
   List_Sets(Refinement(EstacionamentoR1))==(?);
+  Set_Definition(Refinement(EstacionamentoR1),CORES)==({azul,amarela,verde,vermelha});
   Set_Definition(Refinement(EstacionamentoR1),STATUS)==({livre,ocupada,S_NULL});
   Set_Definition(Refinement(EstacionamentoR1),TIPOS)==({idoso,deficiente,comum,T_NULL});
   Set_Definition(Refinement(EstacionamentoR1),VAGA)==(?)
@@ -198,7 +199,7 @@ THEORY ListHiddenConstantsX IS
 END
 &
 THEORY ListPropertiesX IS
-  Abstract_List_Properties(Refinement(EstacionamentoR1))==(MAX_INT: NAT1 & MAX_INT = 1000 & MAX = {comum|->10,idoso|->5,deficiente|->5,T_NULL|->0} & MAX: TIPOS --> 0..MAX_INT & MAX_INT>=MAX(comum)+MAX(idoso)+MAX(deficiente) & VAGA: FIN(INTEGER) & not(VAGA = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS: FIN(INTEGER) & not(STATUS = {}) & CORES: FIN(INTEGER) & not(CORES = {}));
+  Abstract_List_Properties(Refinement(EstacionamentoR1))==(MAX_INT: NAT1 & MAX_INT = 1000 & MAX = {comum|->10,idoso|->5,deficiente|->5,T_NULL|->0} & MAX: TIPOS --> 0..MAX_INT & MAX_INT>=MAX(comum)+MAX(idoso)+MAX(deficiente) & VAGA: FIN(INTEGER) & not(VAGA = {}) & TICKET: FIN(INTEGER) & not(TICKET = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS: FIN(INTEGER) & not(STATUS = {}) & CORES: FIN(INTEGER) & not(CORES = {}));
   Context_List_Properties(Refinement(EstacionamentoR1))==(btrue);
   Inherited_List_Properties(Refinement(EstacionamentoR1))==(btrue);
   List_Properties(Refinement(EstacionamentoR1))==(btrue)
@@ -225,7 +226,7 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Refinement(EstacionamentoR1)) == (Type(CORES) == Cst(SetOf(etype(CORES,0,3)));Type(STATUS) == Cst(SetOf(etype(STATUS,0,2)));Type(TIPOS) == Cst(SetOf(etype(TIPOS,0,3)));Type(VAGA) == Cst(SetOf(atype(VAGA,"[VAGA","]VAGA"))))
+  Sets(Refinement(EstacionamentoR1)) == (Type(TICKET) == Cst(SetOf(atype(TICKET,"[TICKET","]TICKET")));Type(CORES) == Cst(SetOf(etype(CORES,0,3)));Type(STATUS) == Cst(SetOf(etype(STATUS,0,2)));Type(TIPOS) == Cst(SetOf(etype(TIPOS,0,3)));Type(VAGA) == Cst(SetOf(atype(VAGA,"[VAGA","]VAGA"))))
 END
 &
 THEORY ConstantsEnvX IS

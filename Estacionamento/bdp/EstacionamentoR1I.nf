@@ -33,7 +33,7 @@ END
 THEORY ListVariablesX IS
   External_Context_List_Variables(Implementation(EstacionamentoR1I))==(?);
   Context_List_Variables(Implementation(EstacionamentoR1I))==(?);
-  Abstract_List_Variables(Implementation(EstacionamentoR1I))==(ativo,tipo,status,tipo,status);
+  Abstract_List_Variables(Implementation(EstacionamentoR1I))==(ativo,tipo,status,tipo,status,lim,preco,hora,chegada,pagos);
   Local_List_Variables(Implementation(EstacionamentoR1I))==(?);
   List_Variables(Implementation(EstacionamentoR1I))==(?);
   External_List_Variables(Implementation(EstacionamentoR1I))==(?)
@@ -51,7 +51,7 @@ END
 THEORY ListInvariantX IS
   Gluing_Seen_List_Invariant(Implementation(EstacionamentoR1I))==(btrue);
   Expanded_List_Invariant(Implementation(EstacionamentoR1I))==(btrue);
-  Abstract_List_Invariant(Implementation(EstacionamentoR1I))==(ativo <: VAGA & ativo = dom(tipo) & ativo = dom(status) & status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente));
+  Abstract_List_Invariant(Implementation(EstacionamentoR1I))==(ativo <: VAGA & ativo = dom(tipo) & ativo = dom(status) & hora: NAT & preco: NAT & lim: NAT & status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & chegada: TICKET +-> NAT & pagos <: dom(chegada) & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente));
   Context_List_Invariant(Implementation(EstacionamentoR1I))==(btrue);
   List_Invariant(Implementation(EstacionamentoR1I))==(statusI: 1..MAX_INT --> STATUS & tipoI: 1..MAX_INT --> TIPOS & ativoI: 1..MAX_INT --> BOOL & !ii.(ii: ativo & ativo = dom(status) & ativo = dom(tipo) => statusI(ii) = status(ii) & tipoI(ii) = tipo(ii) & ativoI(ii) = TRUE))
 END
@@ -164,18 +164,19 @@ THEORY ListConstantsX IS
 END
 &
 THEORY ListSetsX IS
-  Set_Definition(Implementation(EstacionamentoR1I),CORES)==({azul,amarela,verde,vermelha});
+  Set_Definition(Implementation(EstacionamentoR1I),TICKET)==(?);
   Context_List_Enumerated(Implementation(EstacionamentoR1I))==(?);
   Context_List_Defered(Implementation(EstacionamentoR1I))==(?);
   Context_List_Sets(Implementation(EstacionamentoR1I))==(?);
   List_Own_Enumerated(Implementation(EstacionamentoR1I))==(TIPOS,STATUS,CORES);
-  List_Valuable_Sets(Implementation(EstacionamentoR1I))==(VAGA);
+  List_Valuable_Sets(Implementation(EstacionamentoR1I))==(VAGA,TICKET);
   Inherited_List_Enumerated(Implementation(EstacionamentoR1I))==(TIPOS,STATUS,CORES);
-  Inherited_List_Defered(Implementation(EstacionamentoR1I))==(VAGA);
-  Inherited_List_Sets(Implementation(EstacionamentoR1I))==(VAGA,TIPOS,STATUS,CORES);
+  Inherited_List_Defered(Implementation(EstacionamentoR1I))==(VAGA,TICKET);
+  Inherited_List_Sets(Implementation(EstacionamentoR1I))==(VAGA,TIPOS,STATUS,CORES,TICKET);
   List_Enumerated(Implementation(EstacionamentoR1I))==(?);
   List_Defered(Implementation(EstacionamentoR1I))==(?);
   List_Sets(Implementation(EstacionamentoR1I))==(?);
+  Set_Definition(Implementation(EstacionamentoR1I),CORES)==({azul,amarela,verde,vermelha});
   Set_Definition(Implementation(EstacionamentoR1I),STATUS)==({livre,ocupada,S_NULL});
   Set_Definition(Implementation(EstacionamentoR1I),TIPOS)==({idoso,deficiente,comum,T_NULL});
   Set_Definition(Implementation(EstacionamentoR1I),VAGA)==(?)
@@ -189,16 +190,18 @@ THEORY ListHiddenConstantsX IS
 END
 &
 THEORY ListPropertiesX IS
-  Abstract_List_Properties(Implementation(EstacionamentoR1I))==(MAX_INT: NAT1 & MAX_INT = 1000 & MAX = {comum|->10,idoso|->5,deficiente|->5,T_NULL|->0} & MAX: TIPOS --> 0..MAX_INT & MAX_INT>=MAX(comum)+MAX(idoso)+MAX(deficiente) & VAGA: FIN(INTEGER) & not(VAGA = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS: FIN(INTEGER) & not(STATUS = {}) & CORES: FIN(INTEGER) & not(CORES = {}));
+  Abstract_List_Properties(Implementation(EstacionamentoR1I))==(MAX_INT: NAT1 & MAX_INT = 1000 & MAX = {comum|->10,idoso|->5,deficiente|->5,T_NULL|->0} & MAX: TIPOS --> 0..MAX_INT & MAX_INT>=MAX(comum)+MAX(idoso)+MAX(deficiente) & VAGA: FIN(INTEGER) & not(VAGA = {}) & TICKET: FIN(INTEGER) & not(TICKET = {}) & TIPOS: FIN(INTEGER) & not(TIPOS = {}) & STATUS: FIN(INTEGER) & not(STATUS = {}) & CORES: FIN(INTEGER) & not(CORES = {}));
   Context_List_Properties(Implementation(EstacionamentoR1I))==(btrue);
   Inherited_List_Properties(Implementation(EstacionamentoR1I))==(btrue);
   List_Properties(Implementation(EstacionamentoR1I))==(btrue)
 END
 &
 THEORY ListValuesX IS
+  Constants_not_Valued(Implementation(EstacionamentoR1I))==(MAX);
+  Sets_not_Valued(Implementation(EstacionamentoR1I))==(TICKET);
   Precond_Valued_Objects(Implementation(EstacionamentoR1I))==(btrue);
-  Values_Subs(Implementation(EstacionamentoR1I))==(MAX,MAX_INT,VAGA: {comum|->10,idoso|->5,deficiente|->5,T_NULL|->0},1000,1..1000);
-  List_Values(Implementation(EstacionamentoR1I))==(MAX = {comum|->10,idoso|->5,deficiente|->5,T_NULL|->0};MAX_INT = 1000;VAGA = 1..1000)
+  Values_Subs(Implementation(EstacionamentoR1I))==(MAX_INT,VAGA: 1000,1..1000);
+  List_Values(Implementation(EstacionamentoR1I))==(MAX_INT = 1000;VAGA = 1..1000)
 END
 &
 THEORY ListSeenInfoX END
@@ -222,7 +225,7 @@ THEORY ListOfIdsX IS
 END
 &
 THEORY SetsEnvX IS
-  Sets(Implementation(EstacionamentoR1I)) == (Type(VAGA) == Cst(SetOf(btype(INTEGER,"[VAGA","]VAGA")));Type(TIPOS) == Cst(SetOf(etype(TIPOS,0,3)));Type(STATUS) == Cst(SetOf(etype(STATUS,0,2)));Type(CORES) == Cst(SetOf(etype(CORES,0,3))))
+  Sets(Implementation(EstacionamentoR1I)) == (Type(VAGA) == Cst(SetOf(btype(INTEGER,"[VAGA","]VAGA")));Type(TIPOS) == Cst(SetOf(etype(TIPOS,0,3)));Type(STATUS) == Cst(SetOf(etype(STATUS,0,2)));Type(CORES) == Cst(SetOf(etype(CORES,0,3)));Type(TICKET) == Cst(SetOf(atype(TICKET,"[TICKET","]TICKET"))))
 END
 &
 THEORY ConstantsEnvX IS

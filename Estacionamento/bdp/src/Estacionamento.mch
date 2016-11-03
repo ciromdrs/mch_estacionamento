@@ -19,16 +19,27 @@ SETS
     VAGA ;
     TIPOS = { idoso , deficiente , comum , T_NULL } ; // Tipo da vaga
     STATUS = { livre , ocupada , S_NULL } ;     // status da vaga
-    CORES = { azul , amarela , verde , vermelha } // Cor da lâmpada que fica na vaga
+    CORES = { azul , amarela , verde , vermelha } ; // Cor da lâmpada que fica na vaga
+    TICKET
 
 ABSTRACT_VARIABLES
+    pagos ,  // conjunto dos tickets pagos
+    chegada , // relação de chegada dos veículos
+    hora ,   // hora atual, medida em minutos
+    preco ,  // preco por hora, em reais
+    lim ,    // limite gratuito, em minutos
     status , // status da vaga
-    tipo    // tipo da vaga
+    tipo     // tipo da vaga
 
 INVARIANT
     // Tipos
-    status : VAGA +-> STATUS &
-    tipo   : VAGA +-> TIPOS  &
+    hora    : NAT             &
+    preco   : NAT             &
+    lim     : NAT             &
+    status  : VAGA +-> STATUS &
+    tipo    : VAGA +-> TIPOS  &
+    chegada : TICKET +-> NAT  &
+    pagos  <: dom ( chegada ) &
 
     // Restrições    
     dom ( status ) = dom ( tipo ) &
@@ -38,8 +49,13 @@ INVARIANT
     card ( tipo |> { deficiente } ) <= MAX ( deficiente )
 
 INITIALISATION
-    status := {} ||
-    tipo   := {}
+    status  := {} ||
+    tipo    := {} ||
+    chegada := {} ||
+    pagos   := {} ||
+    hora    := 0  ||
+    preco   := 3  ||
+    lim     := 15
 
 OPERATIONS
     // Controle de vagas
@@ -139,5 +155,50 @@ OPERATIONS
             WHERE uu : dom ( dom ( tipo |> { tt } ) <| status |> { livre } ) THEN
                 vv := uu
             END
+        END ;
+
+    adiantar ( horas , minutos ) =
+        PRE horas   : NAT &
+            minutos : NAT &
+            ( horas * 60 ) + minutos + hora < MAXINT THEN
+                hora := ( horas * 60 ) + minutos + hora
+        END ;
+
+    tt <-- pegar_ticket =
+        ANY uu
+        WHERE uu : TICKET & uu /: dom ( chegada ) THEN
+            tt := uu || chegada ( uu ) := hora
+        END ;
+
+    troco <-- pagar_ticket ( ticket , dinheiro ) =
+        PRE troco    : NAT    &
+            dinheiro : NAT    &
+            ticket   : TICKET &
+            ticket   : dom ( chegada )
+        THEN
+            // Se estiver dentro do limite gratuito
+            IF hora - chegada ( ticket ) <= lim THEN
+                // Devolve o dinheiro e marca como pago
+                troco := dinheiro || pagos := pagos \/ { ticket }
+            // Senão
+            ELSE
+                // Se o dinheiro dá pra pagar
+                IF ( ( hora - chegada ( ticket ) / 60 ) + 1 ) * preco - dinheiro >= 0 THEN
+                    // Marca como pago e devolve o troco
+                    troco := ( hora - chegada ( ticket ) ) * preco - dinheiro ||
+                    pagos := pagos \/ { ticket }
+                // Senão
+                ELSE
+                    // Devolve o dinheiro
+                    troco := dinheiro
+                END
+            END
+        END ;
+
+    abrir_cancela ( tt ) =
+        PRE tt : TICKET &
+            tt : pagos THEN
+            skip // Abre a cancela física
         END
+
 END

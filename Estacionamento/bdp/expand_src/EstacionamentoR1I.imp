@@ -5,7 +5,6 @@ IMPLEMENTATION EstacionamentoR1I
 REFINES EstacionamentoR1
 
 VALUES
-    MAX = { comum |-> 10 , idoso |-> 5 , deficiente |-> 5 , T_NULL |-> 0 } ;
     MAX_INT = 1000 ;
     VAGA = 1 .. MAX_INT
 
