@@ -20,8 +20,8 @@ THEORY ProofState IS
   Proved(0);
   Proved(0);
   Proved(0);
-  Proved(0);
   Unproved;
+  Proved(0);
   Proved(0)
 END
 &
@@ -54,8 +54,8 @@ THEORY PassList IS
   Force(0),?;
   Force(0),?;
   Force(0),?;
-  Force(0),?;
   Force(0),(?;0;1;2;3);
+  Force(0),?;
   Force(0),?
 END
 &

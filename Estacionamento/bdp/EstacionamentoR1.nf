@@ -34,9 +34,9 @@ THEORY ListVariablesX IS
   External_Context_List_Variables(Refinement(EstacionamentoR1))==(?);
   Context_List_Variables(Refinement(EstacionamentoR1))==(?);
   Abstract_List_Variables(Refinement(EstacionamentoR1))==(tipo,status,lim,preco,hora,chegada,pagos);
-  Local_List_Variables(Refinement(EstacionamentoR1))==(ativo,tipo,status);
-  List_Variables(Refinement(EstacionamentoR1))==(ativo,tipo,status);
-  External_List_Variables(Refinement(EstacionamentoR1))==(ativo,tipo,status)
+  Local_List_Variables(Refinement(EstacionamentoR1))==(tickets_ativos,vagas_ativas,tipo,status,lim,preco,hora,chegada,pagos);
+  List_Variables(Refinement(EstacionamentoR1))==(tickets_ativos,vagas_ativas,tipo,status,lim,preco,hora,chegada,pagos);
+  External_List_Variables(Refinement(EstacionamentoR1))==(tickets_ativos,vagas_ativas,tipo,status,lim,preco,hora,chegada,pagos)
 END
 &
 THEORY ListVisibleVariablesX IS
@@ -49,7 +49,7 @@ THEORY ListVisibleVariablesX IS
 END
 &
 THEORY ListOfNewVariablesX IS
-  List_Of_New_Variables(Refinement(EstacionamentoR1))==(ativo)
+  List_Of_New_Variables(Refinement(EstacionamentoR1))==(tickets_ativos,vagas_ativas)
 END
 &
 THEORY ListInvariantX IS
@@ -57,7 +57,7 @@ THEORY ListInvariantX IS
   Expanded_List_Invariant(Refinement(EstacionamentoR1))==(btrue);
   Abstract_List_Invariant(Refinement(EstacionamentoR1))==(hora: NAT & preco: NAT & lim: NAT & status: VAGA +-> STATUS & tipo: VAGA +-> TIPOS & chegada: TICKET +-> NAT & pagos <: dom(chegada) & dom(status) = dom(tipo) & card(tipo|>{comum})<=MAX(comum) & card(tipo|>{idoso})<=MAX(idoso) & card(tipo|>{deficiente})<=MAX(deficiente));
   Context_List_Invariant(Refinement(EstacionamentoR1))==(btrue);
-  List_Invariant(Refinement(EstacionamentoR1))==(ativo <: VAGA & ativo = dom(tipo) & ativo = dom(status))
+  List_Invariant(Refinement(EstacionamentoR1))==(tickets_ativos <: TICKET & vagas_ativas <: VAGA & vagas_ativas = dom(tipo) & vagas_ativas = dom(status))
 END
 &
 THEORY ListVariantX IS
@@ -80,14 +80,14 @@ THEORY ListExclusivityX IS
 END
 &
 THEORY ListInitialisationX IS
-  Expanded_List_Initialisation(Refinement(EstacionamentoR1))==(status:={};tipo:={};ativo:={});
+  Expanded_List_Initialisation(Refinement(EstacionamentoR1))==(status:={};tipo:={};chegada:={};pagos:={};hora:=0;preco:=3;lim:=15;vagas_ativas:={};tickets_ativos:={});
   Context_List_Initialisation(Refinement(EstacionamentoR1))==(skip);
-  List_Initialisation(Refinement(EstacionamentoR1))==(status:={};tipo:={};ativo:={})
+  List_Initialisation(Refinement(EstacionamentoR1))==(status:={};tipo:={};chegada:={};pagos:={};hora:=0;preco:=3;lim:=15;vagas_ativas:={};tickets_ativos:={})
 END
 &
 THEORY ListOperationsX IS
-  Internal_List_Operations(Refinement(EstacionamentoR1))==(criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,indicar);
-  List_Operations(Refinement(EstacionamentoR1))==(criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,indicar)
+  Internal_List_Operations(Refinement(EstacionamentoR1))==(criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,indicar,adiantar,pegar_ticket,pagar_ticket,abrir_cancela);
+  List_Operations(Refinement(EstacionamentoR1))==(criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,indicar,adiantar,pegar_ticket,pagar_ticket,abrir_cancela)
 END
 &
 THEORY ListInputX IS
@@ -97,7 +97,11 @@ THEORY ListInputX IS
   List_Input(Refinement(EstacionamentoR1),liberar)==(vv);
   List_Input(Refinement(EstacionamentoR1),get_cor_lampada)==(vv);
   List_Input(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv);
-  List_Input(Refinement(EstacionamentoR1),indicar)==(tt)
+  List_Input(Refinement(EstacionamentoR1),indicar)==(tt);
+  List_Input(Refinement(EstacionamentoR1),adiantar)==(horas,minutos);
+  List_Input(Refinement(EstacionamentoR1),pegar_ticket)==(?);
+  List_Input(Refinement(EstacionamentoR1),pagar_ticket)==(ticket,dinheiro);
+  List_Input(Refinement(EstacionamentoR1),abrir_cancela)==(ticket)
 END
 &
 THEORY ListOutputX IS
@@ -107,7 +111,11 @@ THEORY ListOutputX IS
   List_Output(Refinement(EstacionamentoR1),liberar)==(?);
   List_Output(Refinement(EstacionamentoR1),get_cor_lampada)==(cc);
   List_Output(Refinement(EstacionamentoR1),get_tipo_vaga)==(tt);
-  List_Output(Refinement(EstacionamentoR1),indicar)==(vv)
+  List_Output(Refinement(EstacionamentoR1),indicar)==(vv);
+  List_Output(Refinement(EstacionamentoR1),adiantar)==(?);
+  List_Output(Refinement(EstacionamentoR1),pegar_ticket)==(tt);
+  List_Output(Refinement(EstacionamentoR1),pagar_ticket)==(troco);
+  List_Output(Refinement(EstacionamentoR1),abrir_cancela)==(?)
 END
 &
 THEORY ListHeaderX IS
@@ -117,7 +125,11 @@ THEORY ListHeaderX IS
   List_Header(Refinement(EstacionamentoR1),liberar)==(liberar(vv));
   List_Header(Refinement(EstacionamentoR1),get_cor_lampada)==(cc <-- get_cor_lampada(vv));
   List_Header(Refinement(EstacionamentoR1),get_tipo_vaga)==(tt <-- get_tipo_vaga(vv));
-  List_Header(Refinement(EstacionamentoR1),indicar)==(vv <-- indicar(tt))
+  List_Header(Refinement(EstacionamentoR1),indicar)==(vv <-- indicar(tt));
+  List_Header(Refinement(EstacionamentoR1),adiantar)==(adiantar(horas,minutos));
+  List_Header(Refinement(EstacionamentoR1),pegar_ticket)==(tt <-- pegar_ticket);
+  List_Header(Refinement(EstacionamentoR1),pagar_ticket)==(troco <-- pagar_ticket(ticket,dinheiro));
+  List_Header(Refinement(EstacionamentoR1),abrir_cancela)==(abrir_cancela(ticket))
 END
 &
 THEORY ListOperationGuardX END
@@ -125,35 +137,51 @@ THEORY ListOperationGuardX END
 THEORY ListPreconditionX IS
   Own_Precondition(Refinement(EstacionamentoR1),criar)==(btrue);
   List_Precondition(Refinement(EstacionamentoR1),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt));
-  Own_Precondition(Refinement(EstacionamentoR1),excluir)==(vv: ativo);
-  List_Precondition(Refinement(EstacionamentoR1),excluir)==(vv: ativo & vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre);
-  Own_Precondition(Refinement(EstacionamentoR1),ocupar)==(vv: ativo);
-  List_Precondition(Refinement(EstacionamentoR1),ocupar)==(vv: ativo & vv: VAGA & vv: dom(status) & status(vv) = livre);
-  Own_Precondition(Refinement(EstacionamentoR1),liberar)==(vv: ativo);
-  List_Precondition(Refinement(EstacionamentoR1),liberar)==(vv: ativo & vv: VAGA & vv: dom(status) & status(vv) = ocupada);
-  Own_Precondition(Refinement(EstacionamentoR1),get_cor_lampada)==(vv: ativo);
-  List_Precondition(Refinement(EstacionamentoR1),get_cor_lampada)==(vv: ativo & vv: VAGA & vv: dom(status) & vv: dom(tipo) & cc: CORES);
-  Own_Precondition(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv: ativo);
-  List_Precondition(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv: ativo & vv: VAGA & vv: dom(tipo) & tt: TIPOS);
+  Own_Precondition(Refinement(EstacionamentoR1),excluir)==(vv: vagas_ativas);
+  List_Precondition(Refinement(EstacionamentoR1),excluir)==(vv: vagas_ativas & vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre);
+  Own_Precondition(Refinement(EstacionamentoR1),ocupar)==(vv: vagas_ativas);
+  List_Precondition(Refinement(EstacionamentoR1),ocupar)==(vv: vagas_ativas & vv: VAGA & vv: dom(status) & status(vv) = livre);
+  Own_Precondition(Refinement(EstacionamentoR1),liberar)==(vv: vagas_ativas);
+  List_Precondition(Refinement(EstacionamentoR1),liberar)==(vv: vagas_ativas & vv: VAGA & vv: dom(status) & status(vv) = ocupada);
+  Own_Precondition(Refinement(EstacionamentoR1),get_cor_lampada)==(vv: vagas_ativas);
+  List_Precondition(Refinement(EstacionamentoR1),get_cor_lampada)==(vv: vagas_ativas & vv: VAGA & vv: dom(status) & vv: dom(tipo) & cc: CORES);
+  Own_Precondition(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv: vagas_ativas);
+  List_Precondition(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv: vagas_ativas & vv: VAGA & vv: dom(tipo) & tt: TIPOS);
   Own_Precondition(Refinement(EstacionamentoR1),indicar)==(btrue);
-  List_Precondition(Refinement(EstacionamentoR1),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0)
+  List_Precondition(Refinement(EstacionamentoR1),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0);
+  Own_Precondition(Refinement(EstacionamentoR1),adiantar)==(horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT);
+  List_Precondition(Refinement(EstacionamentoR1),adiantar)==(horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT & horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT);
+  Own_Precondition(Refinement(EstacionamentoR1),pegar_ticket)==(btrue);
+  List_Precondition(Refinement(EstacionamentoR1),pegar_ticket)==(btrue);
+  Own_Precondition(Refinement(EstacionamentoR1),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada));
+  List_Precondition(Refinement(EstacionamentoR1),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada) & troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada));
+  Own_Precondition(Refinement(EstacionamentoR1),abrir_cancela)==(ticket: TICKET & ticket: tickets_ativos);
+  List_Precondition(Refinement(EstacionamentoR1),abrir_cancela)==(ticket: TICKET & ticket: tickets_ativos & ticket: TICKET & ticket: pagos)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) & uu: ativo ==> vv:=uu));
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv: ativo & vv: VAGA & vv: dom(tipo) & tt: TIPOS | tt:=tipo(vv));
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),get_cor_lampada)==(vv: ativo & vv: VAGA & vv: dom(status) & vv: dom(tipo) & cc: CORES | status(vv) = livre ==> (not(tipo(vv) = deficiente) & tipo(vv) = idoso ==> cc:=azul [] not(tipo(vv) = idoso) & tipo(vv) = deficiente ==> cc:=amarela [] not(tipo(vv) = idoso) & not(tipo(vv) = deficiente) ==> cc:=verde) [] not(status(vv) = livre) ==> cc:=vermelha);
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),liberar)==(vv: ativo & vv: VAGA & vv: dom(status) & status(vv) = ocupada | status:=status<+{vv|->livre});
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),ocupar)==(vv: ativo & vv: VAGA & vv: dom(status) & status(vv) = livre | status:=status<+{vv|->ocupada});
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),excluir)==(vv: ativo & vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre | ativo:=ativo-{vv};tipo:={vv}<<|tipo;status:={vv}<<|status);
-  Expanded_List_Substitution(Refinement(EstacionamentoR1),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt) | @vv.(vv: VAGA & vv/:ativo ==> (ativo:=ativo\/{vv};tipo:=tipo<+{vv|->tt};status:=status<+{vv|->livre})));
-  List_Substitution(Refinement(EstacionamentoR1),criar)==(ANY vv WHERE vv: VAGA & vv/:ativo THEN ativo:=ativo\/{vv};tipo(vv):=tt;status(vv):=livre END);
-  List_Substitution(Refinement(EstacionamentoR1),excluir)==(ativo:=ativo-{vv};tipo:={vv}<<|tipo;status:={vv}<<|status);
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),abrir_cancela)==(ticket: TICKET & ticket: tickets_ativos & ticket: TICKET & ticket: pagos | tickets_ativos:=tickets_ativos-{ticket};chegada:={ticket}<<|chegada;skip);
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada) & troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada) | hora-chegada(ticket)<=lim ==> (troco:=dinheiro;pagos:=pagos\/{ticket}) [] not(hora-chegada(ticket)<=lim) ==> ((hora-chegada(ticket)/60+1)*preco-dinheiro>=0 ==> (troco:=(hora-chegada(ticket)/60+1)*preco-dinheiro;pagos:=pagos\/{ticket}) [] not((hora-chegada(ticket)/60+1)*preco-dinheiro>=0) ==> troco:=dinheiro));
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),pegar_ticket)==(btrue | @uu.(uu: TICKET & uu/:dom(chegada) ==> (tt:=uu;chegada:=chegada<+{uu|->hora};tickets_ativos:=tickets_ativos\/{uu})));
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),adiantar)==(horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT & horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT | hora:=horas*60+minutos+hora);
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) & uu: vagas_ativas ==> vv:=uu));
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),get_tipo_vaga)==(vv: vagas_ativas & vv: VAGA & vv: dom(tipo) & tt: TIPOS | tt:=tipo(vv));
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),get_cor_lampada)==(vv: vagas_ativas & vv: VAGA & vv: dom(status) & vv: dom(tipo) & cc: CORES | status(vv) = livre ==> (not(tipo(vv) = deficiente) & tipo(vv) = idoso ==> cc:=azul [] not(tipo(vv) = idoso) & tipo(vv) = deficiente ==> cc:=amarela [] not(tipo(vv) = idoso) & not(tipo(vv) = deficiente) ==> cc:=verde) [] not(status(vv) = livre) ==> cc:=vermelha);
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),liberar)==(vv: vagas_ativas & vv: VAGA & vv: dom(status) & status(vv) = ocupada | status:=status<+{vv|->livre});
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),ocupar)==(vv: vagas_ativas & vv: VAGA & vv: dom(status) & status(vv) = livre | status:=status<+{vv|->ocupada});
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),excluir)==(vv: vagas_ativas & vv: VAGA & vv: dom(tipo) & vv: dom(status) & status(vv) = livre | vagas_ativas:=vagas_ativas-{vv};tipo:={vv}<<|tipo;status:={vv}<<|status);
+  Expanded_List_Substitution(Refinement(EstacionamentoR1),criar)==(tt: TIPOS & card(tipo|>{tt})<MAX(tt) | @vv.(vv: VAGA & vv/:vagas_ativas ==> (vagas_ativas:=vagas_ativas\/{vv};tipo:=tipo<+{vv|->tt};status:=status<+{vv|->livre})));
+  List_Substitution(Refinement(EstacionamentoR1),criar)==(ANY vv WHERE vv: VAGA & vv/:vagas_ativas THEN vagas_ativas:=vagas_ativas\/{vv};tipo(vv):=tt;status(vv):=livre END);
+  List_Substitution(Refinement(EstacionamentoR1),excluir)==(vagas_ativas:=vagas_ativas-{vv};tipo:={vv}<<|tipo;status:={vv}<<|status);
   List_Substitution(Refinement(EstacionamentoR1),ocupar)==(status(vv):=ocupada);
   List_Substitution(Refinement(EstacionamentoR1),liberar)==(status(vv):=livre);
   List_Substitution(Refinement(EstacionamentoR1),get_cor_lampada)==(IF status(vv) = livre THEN CASE tipo(vv) OF EITHER idoso THEN cc:=azul OR deficiente THEN cc:=amarela ELSE cc:=verde END END ELSE cc:=vermelha END);
   List_Substitution(Refinement(EstacionamentoR1),get_tipo_vaga)==(tt:=tipo(vv));
-  List_Substitution(Refinement(EstacionamentoR1),indicar)==(ANY uu WHERE uu: dom(dom(tipo|>{tt})<|status|>{livre}) & uu: ativo THEN vv:=uu END)
+  List_Substitution(Refinement(EstacionamentoR1),indicar)==(ANY uu WHERE uu: dom(dom(tipo|>{tt})<|status|>{livre}) & uu: vagas_ativas THEN vv:=uu END);
+  List_Substitution(Refinement(EstacionamentoR1),adiantar)==(hora:=horas*60+minutos+hora);
+  List_Substitution(Refinement(EstacionamentoR1),pegar_ticket)==(ANY uu WHERE uu: TICKET & uu/:dom(chegada) THEN tt:=uu;chegada(uu):=hora;tickets_ativos:=tickets_ativos\/{uu} END);
+  List_Substitution(Refinement(EstacionamentoR1),pagar_ticket)==(IF hora-chegada(ticket)<=lim THEN troco:=dinheiro;pagos:=pagos\/{ticket} ELSE IF (hora-chegada(ticket)/60+1)*preco-dinheiro>=0 THEN troco:=(hora-chegada(ticket)/60+1)*preco-dinheiro;pagos:=pagos\/{ticket} ELSE troco:=dinheiro END END);
+  List_Substitution(Refinement(EstacionamentoR1),abrir_cancela)==(tickets_ativos:=tickets_ativos-{ticket};chegada:={ticket}<<|chegada;skip)
 END
 &
 THEORY ListParametersX IS
@@ -214,11 +242,15 @@ THEORY ListANYVarX IS
   List_ANY_Var(Refinement(EstacionamentoR1),liberar)==(?);
   List_ANY_Var(Refinement(EstacionamentoR1),get_cor_lampada)==(?);
   List_ANY_Var(Refinement(EstacionamentoR1),get_tipo_vaga)==(?);
-  List_ANY_Var(Refinement(EstacionamentoR1),indicar)==(Var(uu) == atype(VAGA,?,?))
+  List_ANY_Var(Refinement(EstacionamentoR1),indicar)==(Var(uu) == atype(VAGA,?,?));
+  List_ANY_Var(Refinement(EstacionamentoR1),adiantar)==(?);
+  List_ANY_Var(Refinement(EstacionamentoR1),pegar_ticket)==(Var(uu) == atype(TICKET,?,?));
+  List_ANY_Var(Refinement(EstacionamentoR1),pagar_ticket)==(?);
+  List_ANY_Var(Refinement(EstacionamentoR1),abrir_cancela)==(?)
 END
 &
 THEORY ListOfIdsX IS
-  List_Of_Ids(Refinement(EstacionamentoR1)) == (? | ? | ativo,tipo,status | ? | criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,indicar | ? | ? | ? | EstacionamentoR1);
+  List_Of_Ids(Refinement(EstacionamentoR1)) == (? | ? | tickets_ativos,vagas_ativas,tipo,status,lim,preco,hora,chegada,pagos | ? | criar,excluir,ocupar,liberar,get_cor_lampada,get_tipo_vaga,indicar,adiantar,pegar_ticket,pagar_ticket,abrir_cancela | ? | ? | ? | EstacionamentoR1);
   List_Of_HiddenCst_Ids(Refinement(EstacionamentoR1)) == (? | ?);
   List_Of_VisibleCst_Ids(Refinement(EstacionamentoR1)) == (?);
   List_Of_VisibleVar_Ids(Refinement(EstacionamentoR1)) == (? | ?);
@@ -234,11 +266,11 @@ THEORY ConstantsEnvX IS
 END
 &
 THEORY VariablesEnvX IS
-  Variables(Refinement(EstacionamentoR1)) == (Type(ativo) == Mvl(SetOf(atype(VAGA,?,?)));Type(tipo) == Mvl(SetOf(atype(VAGA,?,?)*etype(TIPOS,?,?)));Type(status) == Mvl(SetOf(atype(VAGA,?,?)*etype(STATUS,?,?))))
+  Variables(Refinement(EstacionamentoR1)) == (Type(tickets_ativos) == Mvl(SetOf(atype(TICKET,?,?)));Type(vagas_ativas) == Mvl(SetOf(atype(VAGA,?,?)));Type(tipo) == Mvl(SetOf(atype(VAGA,?,?)*etype(TIPOS,?,?)));Type(status) == Mvl(SetOf(atype(VAGA,?,?)*etype(STATUS,?,?)));Type(lim) == Mvl(btype(INTEGER,?,?));Type(preco) == Mvl(btype(INTEGER,?,?));Type(hora) == Mvl(btype(INTEGER,?,?));Type(chegada) == Mvl(SetOf(atype(TICKET,?,?)*btype(INTEGER,?,?)));Type(pagos) == Mvl(SetOf(atype(TICKET,?,?))))
 END
 &
 THEORY OperationsEnvX IS
-  Operations(Refinement(EstacionamentoR1)) == (Type(indicar) == Cst(atype(VAGA,?,?),etype(TIPOS,?,?));Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGA,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGA,?,?));Type(liberar) == Cst(No_type,atype(VAGA,?,?));Type(ocupar) == Cst(No_type,atype(VAGA,?,?));Type(excluir) == Cst(No_type,atype(VAGA,?,?));Type(criar) == Cst(No_type,etype(TIPOS,?,?)))
+  Operations(Refinement(EstacionamentoR1)) == (Type(abrir_cancela) == Cst(No_type,atype(TICKET,?,?));Type(pagar_ticket) == Cst(btype(INTEGER,?,?),atype(TICKET,?,?)*btype(INTEGER,?,?));Type(pegar_ticket) == Cst(atype(TICKET,?,?),No_type);Type(adiantar) == Cst(No_type,btype(INTEGER,?,?)*btype(INTEGER,?,?));Type(indicar) == Cst(atype(VAGA,?,?),etype(TIPOS,?,?));Type(get_tipo_vaga) == Cst(etype(TIPOS,?,?),atype(VAGA,?,?));Type(get_cor_lampada) == Cst(etype(CORES,?,?),atype(VAGA,?,?));Type(liberar) == Cst(No_type,atype(VAGA,?,?));Type(ocupar) == Cst(No_type,atype(VAGA,?,?));Type(excluir) == Cst(No_type,atype(VAGA,?,?));Type(criar) == Cst(No_type,etype(TIPOS,?,?)))
 END
 &
 THEORY TCIntRdX IS

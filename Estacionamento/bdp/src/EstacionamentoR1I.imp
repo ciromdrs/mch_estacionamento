@@ -5,35 +5,57 @@ IMPLEMENTATION EstacionamentoR1I
 REFINES EstacionamentoR1
 
 VALUES
+    MAX = { comum |-> 10 , idoso |-> 5 , deficiente |-> 5 , T_NULL |-> 0 } ;
     MAX_INT = 1000 ;
-    VAGA = 1 .. MAX_INT
+    VAGA = 1 .. MAX_INT ;
+    TICKET = 1 .. MAX_INT
 
 CONCRETE_VARIABLES
+    hora ,
+    lim ,
+    preco ,
     statusI , // status da vaga
     tipoI ,  // tipo da vaga
-    ativoI
+    vagas_ativasI ,
+    tickets_ativosI ,
+    pagosI ,
+    chegadaI
 
 INVARIANT
-    statusI : 1 .. MAX_INT --> STATUS &
-    tipoI   : 1 .. MAX_INT --> TIPOS &
-    ativoI  : 1 .. MAX_INT --> BOOL &
+    pagosI   : 1 .. MAX_INT --> BOOL      &
+    chegadaI : 1 .. MAX_INT --> 1 .. MAX_INT &
+    statusI  : 1 .. MAX_INT --> STATUS    &
+    tipoI    : 1 .. MAX_INT --> TIPOS     &
+    vagas_ativasI   : 1 .. MAX_INT --> BOOL &
+    tickets_ativosI : 1 .. MAX_INT --> BOOL &
 
-    ! ii . ( ii : ativo & ativo = dom ( status ) & ativo = dom ( tipo ) =>
-        ( ( statusI ( ii ) = status ( ii ) )
+    ! ii . ( ii : vagas_ativas => (
+        ( statusI ( ii ) = status ( ii ) )
         & ( tipoI ( ii ) = tipo ( ii ) )
-        & ( ativoI ( ii ) = TRUE ) ) )
+        & ( vagas_ativasI ( ii ) = TRUE ) )
+    ) &
+
+    ! jj . ( jj : tickets_ativos => (
+        ( chegadaI ( jj ) = chegada ( jj ) )
+        & ( tickets_ativosI ( jj ) = TRUE ) )
+    )
 
 INITIALISATION
+    hora  := 0 ;
+    lim   := 15 ;
+    preco := 3 ;
     VAR ii IN
         ii := 0 ;
         WHILE ii < MAX_INT DO
             ii := ii + 1 ;
-            ativoI ( ii ) := FALSE ; // É necessário iniciar com FALSE
+            vagas_ativasI ( ii ) := FALSE ; // É necessário iniciar com FALSE
             statusI ( ii ) := S_NULL ;
-            tipoI ( ii ) := T_NULL
+            tipoI ( ii ) := T_NULL ;
+            tickets_ativosI ( ii ) := FALSE ; // É necessário iniciar com FALSE
+            pagosI ( ii ) := FALSE ;
+            chegadaI ( ii ) := 0
         INVARIANT
-            // A única condição necessária é que ativoI seja inicializado com FALSE
-            ! jj . ( jj : 1 .. ii => ativoI ( jj ) = FALSE )
+            ! jj . ( jj : 1 .. ii => vagas_ativasI ( jj ) = FALSE & tickets_ativosI ( jj ) = FALSE )
         VARIANT
             MAX_INT - ii
         END
@@ -49,26 +71,25 @@ OPERATIONS
                 continuar := TRUE ;
                 WHILE ii < MAX_INT & continuar = TRUE DO
                     ii := ii + 1 ;
-                    aa := ativoI ( ii ) ;
+                    aa := vagas_ativasI ( ii ) ;
                     IF aa = FALSE THEN
-                        continuar := FALSE
+                        continuar := FALSE ;
+                        vagas_ativasI ( ii ) := TRUE ;
+                        statusI ( ii ) := livre ;
+                        tipoI ( ii ) := tt
                     END
                 INVARIANT
-                    // A única condição necessária é que ativoI seja inicializado com FALSE
-                    ! jj . ( jj : 1 .. ii => ativoI ( jj ) = FALSE )
+                    ! jj . ( jj : 1 .. ii => vagas_ativasI ( jj ) = TRUE )
                 VARIANT
                     MAX_INT - ii
-                END ;
-                ativoI ( ii ) := TRUE ;
-                statusI ( ii ) := livre ;
-                tipoI ( ii ) := tt
+                END
             END
         END ;
 
-    excluir ( vv ) = VAR ii IN ii := vv ; ativoI ( ii ) := FALSE END ;
+    excluir ( vv ) = VAR ii IN ii := vv ; vagas_ativasI ( ii ) := FALSE END ;
 
     // Ocupação e liberação de vagas
-    ocupar ( vv ) = VAR ii IN ii := vv ; statusI ( ii ) := ocupada END ;
+    ocupar ( vv ) = statusI ( vv ) := ocupada ;
 
     liberar ( vv ) = VAR ii IN ii := vv ; statusI ( ii ) := livre END ;
 
@@ -115,7 +136,7 @@ OPERATIONS
                 ss := S_NULL;
                 WHILE ii < MAX_INT DO
                     ii := ii + 1;
-                    aa := ativoI(ii);
+                    aa := vagas_ativasI(ii);
                     tt := tipoI(ii);
                     ss := statusI(ii);
                     IF aa = TRUE THEN
@@ -138,16 +159,16 @@ OPERATIONS
                         END
                     END    
                     INVARIANT
-                        (qc = SIGMA zz . (zz : 1..ii & (tipoI(zz) = comum) & (ativoI(zz) = TRUE) | 1)) &
-                        (oc = SIGMA zz . (zz : 1..ii & (tipoI(zz) = comum) & (ativoI(zz) = TRUE) &
+                        (qc = SIGMA zz . (zz : 1..ii & (tipoI(zz) = comum) & (vagas_ativasI(zz) = TRUE) | 1)) &
+                        (oc = SIGMA zz . (zz : 1..ii & (tipoI(zz) = comum) & (vagas_ativasI(zz) = TRUE) &
                                           statusI(zz) = ocupada | 1)) &
                                       
-                        (qi = SIGMA zz . (zz : 1..ii & (tipoI(zz) = idoso) & (ativoI(zz) = TRUE) | 1)) &
-                        (oi = SIGMA zz . (zz : 1..ii & (tipoI(zz) = idoso) & (ativoI(zz) = TRUE) &
+                        (qi = SIGMA zz . (zz : 1..ii & (tipoI(zz) = idoso) & (vagas_ativasI(zz) = TRUE) | 1)) &
+                        (oi = SIGMA zz . (zz : 1..ii & (tipoI(zz) = idoso) & (vagas_ativasI(zz) = TRUE) &
                                           statusI(zz) = ocupada | 1)) &
                                       
-                        (qd = SIGMA zz . (zz : 1..ii & (tipoI(zz) = deficiente) & (ativoI(zz) = TRUE) | 1)) &
-                        (od = SIGMA zz . (zz : 1..ii & (tipoI(zz) = deficiente) & (ativoI(zz) = TRUE) &
+                        (qd = SIGMA zz . (zz : 1..ii & (tipoI(zz) = deficiente) & (vagas_ativasI(zz) = TRUE) | 1)) &
+                        (od = SIGMA zz . (zz : 1..ii & (tipoI(zz) = deficiente) & (vagas_ativasI(zz) = TRUE) &
                                           statusI(zz) = ocupada | 1))
                     VARIANT MAX_INT - ii
                 END
@@ -165,7 +186,7 @@ OPERATIONS
                 ii := 0 ;
                 WHILE ii < MAX_INT DO
                     ii := ii + 1 ;
-                    aa := ativoI ( ii ) ;
+                    aa := vagas_ativasI ( ii ) ;
                     ss := statusI ( ii ) ;
                     uu := tipoI ( ii ) ;
                     IF aa = TRUE & ss = livre & uu = tt THEN
@@ -178,5 +199,62 @@ OPERATIONS
                 END ;
                 vv := ii
             END
-        END
+        END ;
+
+    adiantar ( horas , minutos ) = hora := ( horas * 60 ) + minutos + hora ;
+
+    tt <-- pegar_ticket =
+        BEGIN
+            VAR ii , aa , continuar IN
+                tt := 1 ;
+                aa := TRUE ;
+                ii := 0 ;
+                continuar := TRUE ;
+                WHILE ii < MAX_INT & continuar = TRUE DO
+                    ii := ii + 1 ;
+                    aa := tickets_ativosI ( ii ) ;
+                    IF aa = FALSE THEN
+                        continuar := FALSE ;
+                        tickets_ativosI ( ii ) := TRUE ;
+                        chegadaI ( ii ) := hora ;
+                        pagosI ( ii ) := FALSE ;
+                        tt := ii
+                    END
+                INVARIANT
+                    ! jj . ( jj : 1 .. ii => vagas_ativasI ( jj ) = FALSE )
+                VARIANT
+                    MAX_INT - ii
+                END
+            END
+        END ;
+
+    troco <-- pagar_ticket ( ticket , dinheiro ) =
+        //troco := 0;
+        // Se estiver dentro do limite gratuito
+        VAR tempo_gasto IN
+            tempo_gasto := hora - chegadaI ( ticket ) ;
+            IF tempo_gasto <= lim THEN
+                // Devolve o dinheiro e marca como pago
+                troco := dinheiro ;
+                pagosI ( ticket ) := TRUE
+            // Senão
+            ELSE
+                // Se o dinheiro dá pra pagar
+                VAR resto IN
+                    resto := ( ( tempo_gasto / 60 ) + 1 ) * preco - dinheiro ;
+                    IF resto >= 0 THEN
+                        // Marca como pago e devolve o troco
+                        troco := resto ;
+                        pagosI ( ticket ) := TRUE
+                    // Senão
+                    ELSE
+                        // Devolve o dinheiro
+                        troco := dinheiro
+                    END
+                END
+            END
+        END ;
+
+    abrir_cancela ( ticket ) =
+        tickets_ativosI ( ticket ) := FALSE // Abre a cancela física
 END

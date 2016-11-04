@@ -9,6 +9,7 @@ extern "C" {
 
 
 #define Estacionamento__VAGA__max Estacionamento__MAX_INT
+#define Estacionamento__TICKET__max Estacionamento__MAX_INT
 /* Clause SETS */
 typedef int Estacionamento__VAGA;
 typedef enum
@@ -34,6 +35,7 @@ typedef enum
     Estacionamento__vermelha
     
 } Estacionamento__CORES;
+typedef int Estacionamento__TICKET;
 
 /* Clause CONCRETE_VARIABLES */
 
@@ -56,6 +58,10 @@ extern void Estacionamento__liberar(Estacionamento__VAGA vv);
 extern void Estacionamento__get_cor_lampada(Estacionamento__VAGA vv, Estacionamento__CORES *cc);
 extern void Estacionamento__get_tipo_vaga(Estacionamento__VAGA vv, Estacionamento__TIPOS *tt);
 extern void Estacionamento__indicar(Estacionamento__TIPOS tt, Estacionamento__VAGA *vv);
+extern void Estacionamento__adiantar(int32_t horas, int32_t minutos);
+extern void Estacionamento__pegar_ticket(Estacionamento__TICKET *tt);
+extern void Estacionamento__pagar_ticket(Estacionamento__TICKET ticket, int32_t dinheiro, int32_t *troco);
+extern void Estacionamento__abrir_cancela(Estacionamento__TICKET ticket);
 
 #ifdef __cplusplus
 }

@@ -185,7 +185,7 @@ OPERATIONS
                 // Se o dinheiro dá pra pagar
                 IF ( ( hora - chegada ( ticket ) / 60 ) + 1 ) * preco - dinheiro >= 0 THEN
                     // Marca como pago e devolve o troco
-                    troco := ( hora - chegada ( ticket ) ) * preco - dinheiro ||
+                    troco := ( ( hora - chegada ( ticket ) / 60 ) + 1 ) * preco - dinheiro ||
                     pagos := pagos \/ { ticket }
                 // Senão
                 ELSE
@@ -195,9 +195,9 @@ OPERATIONS
             END
         END ;
 
-    abrir_cancela ( tt ) =
-        PRE tt : TICKET &
-            tt : pagos THEN
+    abrir_cancela ( ticket ) =
+        PRE ticket : TICKET &
+            ticket : pagos THEN
             skip // Abre a cancela física
         END
 

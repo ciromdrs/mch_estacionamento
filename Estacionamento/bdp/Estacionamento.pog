@@ -1382,7 +1382,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>pagar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -1548,7 +1548,7 @@
 </Goal>
 </Simple_Goal>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>abrir_cancela</Tag>
 <Tag>INVARIANT</Tag>
@@ -1564,11 +1564,11 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:1" typref="734628952" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:1" typref="734628952" value="ticket"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:2" typref="678303745" value="TICKET"/>
 </Exp_Comparison>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:2:1" typref="734628952" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:2:1" typref="734628952" value="ticket"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:2:2" typref="678303745" value="pagos"/>
 </Exp_Comparison>
 </Nary_Pred>
@@ -2134,7 +2134,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 <Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 <Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
@@ -2217,7 +2217,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="2">
 <Tag>Well definedness</Tag>
@@ -2347,7 +2347,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="=">
@@ -2671,7 +2671,7 @@
 </Binary_Exp>
 </Exp_Comparison>
 </Goal>
-<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 <Simple_Goal merge="1">
 <Tag>Well definedness</Tag>
@@ -2768,7 +2768,7 @@
 </Binary_Exp>
 </Exp_Comparison>
 </Goal>
-<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
+<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="=">
@@ -2842,7 +2842,7 @@
 </Exp_Comparison>
 </Binary_Pred>
 </Goal>
-<Proof_State proofState="Proved(0)" methodList="pr" passList="Force(0),?"/>
+<Proof_State proofState="Proved(1)" methodList="pr" passList="Force(1),(?; 0)"/>
 </Simple_Goal>
 </Proof_Obligation>
 <Proof_Obligation merge="=">
@@ -3024,7 +3024,7 @@
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="-">
+<Proof_Obligation merge="=">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_pagar_ticket</Tag>
 <Tag>INVARIANT</Tag>
@@ -3193,16 +3193,33 @@
 <Ref_Hyp num="2"/>
 </Nary_Pred>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:2:1" typref="3994939398" value="chegada"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:1:2:1:1" typref="3994939398" value="chegada"/>
 <Binary_Exp op="+->">
 <Unary_Exp op="dom">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:2:1" typref="3994939398" value="chegada"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:1:2:1:1" typref="3994939398" value="chegada"/>
 </Unary_Exp>
 <Unary_Exp op="ran">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:2:1" typref="3994939398" value="chegada"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:1:2:1:1" typref="3994939398" value="chegada"/>
 </Unary_Exp>
 </Binary_Exp>
 </Exp_Comparison>
+</Binary_Pred>
+</Goal>
+</Simple_Goal>
+<Simple_Goal merge="2">
+<Tag>Well definedness</Tag>
+<Goal>
+<Binary_Pred op="=>">
+<Nary_Pred op="&amp;">
+<Ref_Hyp num="4"/>
+<Ref_Hyp num="2"/>
+</Nary_Pred>
+<Unary_Pred op="not">
+<Exp_Comparison op="=">
+<Integer_Literal tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:10:4:1:3:1:2:1:1:2:1:1:1:1:2:2" typref="2701647786" value="60"/>
+<Integer_Literal value="0"/>
+</Exp_Comparison>
+</Unary_Pred>
 </Binary_Pred>
 </Goal>
 </Simple_Goal>
@@ -3222,12 +3239,12 @@
 <Definition name="ass"/>
 <Local_Hyp num="1">
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:1" typref="734628952" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:1" typref="734628952" value="ticket"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:2" typref="678303745" value="TICKET"/>
 </Exp_Comparison>
 </Local_Hyp>
 </Proof_Obligation>
-<Proof_Obligation merge="=">
+<Proof_Obligation merge="-">
 <Comment>Operations dans une machine abstraite</Comment>
 <Tag>WellDefinedness_abrir_cancela</Tag>
 <Tag>INVARIANT</Tag>
@@ -3243,11 +3260,11 @@
 <Hypothesis>
 <Nary_Pred op="&amp;">
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:1" typref="734628952" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:1" typref="734628952" value="ticket"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:1:2" typref="678303745" value="TICKET"/>
 </Exp_Comparison>
 <Exp_Comparison op=":">
-<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:2:1" typref="734628952" value="tt"/>
+<Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:2:1" typref="734628952" value="ticket"/>
 <Id tag="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\Estacionamento.bxml:1:7:11:2:1:2:2" typref="678303745" value="pagos"/>
 </Exp_Comparison>
 </Nary_Pred>

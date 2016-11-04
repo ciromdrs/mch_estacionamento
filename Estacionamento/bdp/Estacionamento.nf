@@ -108,7 +108,7 @@ THEORY ListInputX IS
   List_Input(Machine(Estacionamento),adiantar)==(horas,minutos);
   List_Input(Machine(Estacionamento),pegar_ticket)==(?);
   List_Input(Machine(Estacionamento),pagar_ticket)==(ticket,dinheiro);
-  List_Input(Machine(Estacionamento),abrir_cancela)==(tt)
+  List_Input(Machine(Estacionamento),abrir_cancela)==(ticket)
 END
 &
 THEORY ListOutputX IS
@@ -136,7 +136,7 @@ THEORY ListHeaderX IS
   List_Header(Machine(Estacionamento),adiantar)==(adiantar(horas,minutos));
   List_Header(Machine(Estacionamento),pegar_ticket)==(tt <-- pegar_ticket);
   List_Header(Machine(Estacionamento),pagar_ticket)==(troco <-- pagar_ticket(ticket,dinheiro));
-  List_Header(Machine(Estacionamento),abrir_cancela)==(abrir_cancela(tt))
+  List_Header(Machine(Estacionamento),abrir_cancela)==(abrir_cancela(ticket))
 END
 &
 THEORY ListOperationGuardX END
@@ -152,12 +152,12 @@ THEORY ListPreconditionX IS
   List_Precondition(Machine(Estacionamento),adiantar)==(horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT);
   List_Precondition(Machine(Estacionamento),pegar_ticket)==(btrue);
   List_Precondition(Machine(Estacionamento),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada));
-  List_Precondition(Machine(Estacionamento),abrir_cancela)==(tt: TICKET & tt: pagos)
+  List_Precondition(Machine(Estacionamento),abrir_cancela)==(ticket: TICKET & ticket: pagos)
 END
 &
 THEORY ListSubstitutionX IS
-  Expanded_List_Substitution(Machine(Estacionamento),abrir_cancela)==(tt: TICKET & tt: pagos | skip);
-  Expanded_List_Substitution(Machine(Estacionamento),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada) | hora-chegada(ticket)<=lim ==> troco,pagos:=dinheiro,pagos\/{ticket} [] not(hora-chegada(ticket)<=lim) ==> ((hora-chegada(ticket)/60+1)*preco-dinheiro>=0 ==> troco,pagos:=(hora-chegada(ticket))*preco-dinheiro,pagos\/{ticket} [] not((hora-chegada(ticket)/60+1)*preco-dinheiro>=0) ==> troco:=dinheiro));
+  Expanded_List_Substitution(Machine(Estacionamento),abrir_cancela)==(ticket: TICKET & ticket: pagos | skip);
+  Expanded_List_Substitution(Machine(Estacionamento),pagar_ticket)==(troco: NAT & dinheiro: NAT & ticket: TICKET & ticket: dom(chegada) | hora-chegada(ticket)<=lim ==> troco,pagos:=dinheiro,pagos\/{ticket} [] not(hora-chegada(ticket)<=lim) ==> ((hora-chegada(ticket)/60+1)*preco-dinheiro>=0 ==> troco,pagos:=(hora-chegada(ticket)/60+1)*preco-dinheiro,pagos\/{ticket} [] not((hora-chegada(ticket)/60+1)*preco-dinheiro>=0) ==> troco:=dinheiro));
   Expanded_List_Substitution(Machine(Estacionamento),pegar_ticket)==(btrue | @uu.(uu: TICKET & uu/:dom(chegada) ==> tt,chegada:=uu,chegada<+{uu|->hora}));
   Expanded_List_Substitution(Machine(Estacionamento),adiantar)==(horas: NAT & minutos: NAT & horas*60+minutos+hora<MAXINT | hora:=horas*60+minutos+hora);
   Expanded_List_Substitution(Machine(Estacionamento),indicar)==(vv: VAGA & tt: TIPOS & card(dom(tipo|>{tt})<|status|>{livre})>0 | @uu.(uu: dom(dom(tipo|>{tt})<|status|>{livre}) ==> vv:=uu));
@@ -176,7 +176,7 @@ THEORY ListSubstitutionX IS
   List_Substitution(Machine(Estacionamento),indicar)==(ANY uu WHERE uu: dom(dom(tipo|>{tt})<|status|>{livre}) THEN vv:=uu END);
   List_Substitution(Machine(Estacionamento),adiantar)==(hora:=horas*60+minutos+hora);
   List_Substitution(Machine(Estacionamento),pegar_ticket)==(ANY uu WHERE uu: TICKET & uu/:dom(chegada) THEN tt:=uu || chegada(uu):=hora END);
-  List_Substitution(Machine(Estacionamento),pagar_ticket)==(IF hora-chegada(ticket)<=lim THEN troco:=dinheiro || pagos:=pagos\/{ticket} ELSE IF (hora-chegada(ticket)/60+1)*preco-dinheiro>=0 THEN troco:=(hora-chegada(ticket))*preco-dinheiro || pagos:=pagos\/{ticket} ELSE troco:=dinheiro END END);
+  List_Substitution(Machine(Estacionamento),pagar_ticket)==(IF hora-chegada(ticket)<=lim THEN troco:=dinheiro || pagos:=pagos\/{ticket} ELSE IF (hora-chegada(ticket)/60+1)*preco-dinheiro>=0 THEN troco:=(hora-chegada(ticket)/60+1)*preco-dinheiro || pagos:=pagos\/{ticket} ELSE troco:=dinheiro END END);
   List_Substitution(Machine(Estacionamento),abrir_cancela)==(skip)
 END
 &

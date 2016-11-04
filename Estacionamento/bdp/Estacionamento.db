@@ -4,12 +4,6 @@
     <project decomp_dir="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\expand_src" old_decomp_dir="C:\Users\Saul\Programas\GitKraken\mch_estacionamento\Estacionamento\bdp\src">
         <!-- Definition directory list -->
         <!-- Component file list -->
-        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Controle" suffix="mch" user="Saul">
-            <component name="Controle" type="specification" />
-        </component_file>
-        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Controle_r" suffix="ref" user="Saul">
-            <component name="Controle_r" type="refinement" />
-        </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="Estacionamento" suffix="mch" user="Saul">
             <component name="Estacionamento" type="specification" />
         </component_file>
@@ -18,9 +12,6 @@
         </component_file>
         <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="EstacionamentoR1I" suffix="imp" user="Saul">
             <component name="EstacionamentoR1I" type="implementation" />
-        </component_file>
-        <component_file path="C:/Users/Saul/Programas/GitKraken/mch_estacionamento/Estacionamento" name="TiposComuns" suffix="mch" user="Saul">
-            <component name="TiposComuns" type="specification" />
         </component_file>
     </project>
 </db_xml>
