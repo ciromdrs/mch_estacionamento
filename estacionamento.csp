@@ -1,0 +1,19 @@
+channel pegar_ticket, ticket, espaco_livre, espaco_ocupado
+
+
+
+-- Controle da vaga
+VAGA_LIVRE   = espaco_ocupado -> VAGA_OCUPADA
+VAGA_OCUPADA = espaco_livre -> VAGA_LIVRE
+
+
+-- Cancela de entrada
+CANCELA_ENTRADA_FECHADA = pegar_ticket -> CANCELA_ENTRADA_ABERTA
+CANCELA_ENTRADA_ABERTA = espaco_livre -> CANCELA_ENTRADA_FECHADA
+
+
+-- Cancela de saída
+CANCELA_SAIDA_FECHADA = ticket -> CANCELA_SAIDA_ABERTA
+CANCELA_SAIDA_ABERTA = espaco_livre -> CANCELA_SAIDA_FECHADA
+
+
