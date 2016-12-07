@@ -1,19 +1,23 @@
-channel pegar_ticket, ticket, espaco_livre, espaco_ocupado
+-- Constantes
+n = 1000
+
+datatype aCANCELA = abrir | fechar
+channel cancela:aCANCELA
+
+datatype aCARRO = aproximar | passar | pegar_ticket | pagar
+channel carro:{1..n}.aCARRO
+
+datatype aMAQ_TICKETS = imprimir
+channel maq_tickets:aMAQ_TICKETS
+
+datatype aMAQ_PAGTO = ler_ticket
+channel maq_pagto:aMAQ_PAGTO
+
+aENTRADA =  {| carro, cancela, maq_tickets |}
+ENTRADA(i) = carro.i.aproximar -> maq_tickets.imprimir -> carro.i.pegar_ticket -> cancela.abrir -> carro.i.passar -> cancela.fechar -> SISTEMA
 
 
+aSAIDA = {| carro, cancela, maq_pagto |}
+SAIDA(i) = carro.i.aproximar -> maq_pagto.ler_ticket -> carro.i.pagar -> cancela.abrir -> carro.i.passar -> cancela.fechar -> SISTEMA
 
--- Controle da vaga
-VAGA_LIVRE   = espaco_ocupado -> VAGA_OCUPADA
-VAGA_OCUPADA = espaco_livre -> VAGA_LIVRE
-
-
--- Cancela de entrada
-CANCELA_ENTRADA_FECHADA = pegar_ticket -> CANCELA_ENTRADA_ABERTA
-CANCELA_ENTRADA_ABERTA = espaco_livre -> CANCELA_ENTRADA_FECHADA
-
-
--- Cancela de saída
-CANCELA_SAIDA_FECHADA = ticket -> CANCELA_SAIDA_ABERTA
-CANCELA_SAIDA_ABERTA = espaco_livre -> CANCELA_SAIDA_FECHADA
-
-
+SISTEMA = STOP
