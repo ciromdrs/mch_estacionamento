@@ -16,6 +16,7 @@ channel maq_pagto:aMAQ_PAGTO
 aENTRADA =  {| carro, cancela, maq_tickets |}
 ENTRADA(i) = carro.i.aproximar -> maq_tickets.imprimir -> carro.i.pegar_ticket -> cancela.abrir -> carro.i.passar -> cancela.fechar -> SISTEMA
 
+
 aSAIDA = {| carro, cancela, maq_pagto |}
 SAIDA(i) = carro.i.aproximar -> maq_pagto.ler_ticket -> carro.i.pagar -> cancela.abrir -> carro.i.passar -> cancela.fechar -> SISTEMA
 
