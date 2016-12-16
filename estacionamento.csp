@@ -1,23 +1,71 @@
 -- Constantes
-n = 1000
+QTD_VAGAS = 10
 
-datatype aCANCELA = abrir | fechar
-channel cancela:aCANCELA
+-- Define RUN(A)
+RUN(A) = [] x:A @ x -> RUN(A)
 
-datatype aCARRO = aproximar | passar | pegar_ticket | pagar
-channel carro:{1..n}.aCARRO
+--SA = {| carro.entrar, carro.sair, trem.entrar, trem.sair |}
 
-datatype aMAQ_TICKETS = imprimir
+--RSA = {| carro.aproximar, trem.aproximar, barreira |}
+
+
+
+channel abrir, fechar, aproximar, passar, pegar_ticket, pagar_ticket, ocupar, liberar
+
+-- Componentes
+CARRO = aproximar -> pegar_ticket -> passar -> ocupar -> liberar -> pagar_ticket
+    -> passar -> CARRO
+    
+VAGA = ocupar -> liberar -> VAGA
+
+CANCELA = abrir -> fechar -> CANCELA
+
+MAQ_PAGAMENTO = pagar_ticket -> MAQ_PAGAMENTO
+
+-- Especificações
+ENTRADA = aproximar -> pegar_ticket -> abrir -> passar -> fechar -> ENTRADA
+
+SAIDA = aproximar -> pagar_ticket -> abrir -> passar -> fechar -> SAIDA
+
+-- CA_PAR_EN = CAncela em PARalelo com ENtrada
+CA_PAR_EN = CANCELA [| {abrir, fechar} |] ENTRADA
+CA_PAR_SA = CANCELA [| {abrir, fechar} |] SAIDA
+
+CARROS = RUN({aproximar, pegar_ticket, passar, ocupar, liberar, pagar_ticket})
+
+OCUPACAO = CARROS [| {ocupar, liberar} |] VAGA
+
+SISTEMA = ((CA_PAR_EN ||| CA_PAR_SA) ) [| {aproximar, pegar_ticket, pagar_ticket, passar} |] OCUPACAO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{-datatype aMAQ_TICKETS = imprimir
+MAQ_PAGAMENTO -> ticket -> pagar -> MAQ_PAGAMENTO
+
 channel maq_tickets:aMAQ_TICKETS
 
 datatype aMAQ_PAGTO = ler_ticket
 channel maq_pagto:aMAQ_PAGTO
 
 aENTRADA =  {| carro, cancela, maq_tickets |}
-ENTRADA(i) = carro.i.aproximar -> maq_tickets.imprimir -> carro.i.pegar_ticket -> cancela.abrir -> carro.i.passar -> cancela.fechar -> SISTEMA
+ENTRADA = carro.aproximar -> maq_tickets.imprimir -> carro.ticket -> cancela.abrir -> carro.passar -> cancela.fechar -> SISTEMA
 
 
 aSAIDA = {| carro, cancela, maq_pagto |}
-SAIDA(i) = carro.i.aproximar -> maq_pagto.ler_ticket -> carro.i.pagar -> cancela.abrir -> carro.i.passar -> cancela.fechar -> SISTEMA
-
-SISTEMA = STOP
+SAIDA = carro.aproximar -> maq_pagto.ler_ticket -> carro.pagar -> cancela.abrir -> carro.passar -> cancela.fechar -> SISTEMA
+-}
