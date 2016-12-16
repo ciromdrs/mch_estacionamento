@@ -1,35 +1,67 @@
--- Funções úteis
+-- Constantes -------------------------
+MAX_INT		= 50
+MAX_HORAS   = MAX_INT
+MAX_CARROS	= 10
+QTD_VAGAS 	= 10	-- quantidade máxima de vagas
+INC_TICK	= 10	-- tempo em minutos incrementado a cada tick
+
+-- Canais -----------------------------
+channel abrir, fechar, tick
+channel entrar:{1..MAX_CARROS}
+channel sair:{1..MAX_CARROS}
+channel passar:{1..MAX_CARROS}
+channel pegar_ticket:{1..MAX_HORAS}
+channel pagar_ticket:{1..MAX_HORAS}
+channel ocupar:{1..QTD_VAGAS}
+channel liberar:{1..QTD_VAGAS}
+channel hora:{0..MAX_HORAS}
+
+-- Funções úteis ----------------------
 RUN(A) = [] x:A @ x -> RUN(A)
 
--- Canais
-channel abrir, fechar, entrar, sair, passar, pegar_ticket, pagar_ticket, ocupar, liberar
+-- Componentes ------------------------
 
--- Componentes
-CARRO = entrar -> pegar_ticket -> passar -> ocupar -> liberar -> sair -> 
-    pagar_ticket -> passar -> CARRO
-    
-VAGA = ocupar -> VAGA [] liberar -> VAGA
+CLOCK(n) = tick -> CLOCK(n + INC_TICK) -- Passa o tempo
+           []                          -- ou
+           hora!n -> CLOCK(n)          -- Exibe
 
+aCANCELA = {abrir, fechar}
 CANCELA = abrir -> fechar -> CANCELA
 
-MAQ_PAGAMENTO = pagar_ticket -> MAQ_PAGAMENTO
+CARRO = RUN({|entrar, pegar_ticket, passar, ocupar, liberar, sair, pagar_ticket|})
 
--- Especificações
+ORDEM_CARRO = entrar?c -> pegar_ticket?t -> passar.c -> ocupar?v -> liberar.v ->
+	sair.c -> pagar_ticket.t -> passar.c -> ORDEM_CARRO
+
+
+CARROS(n) = if (n>0) then CARRO ||| CARROS(n-1) else SKIP
+
+VAGA = ocupar?v -> liberar.v -> VAGA
+
+VAGAS(n)  = if (n>0) then VAGA ||| VAGAS(n-1) else SKIP
+
+{--OCUPACAO(n) = CARROS(n) ||| VAGA
+
+--MAQ_PAGAMENTO = pagar_ticket?t -> MAQ_PAGAMENTO
+
+-- Especificações ---------------------
 ENTRADA = entrar -> pegar_ticket -> abrir -> passar -> fechar -> ENTRADA
 
 SAIDA = sair -> pagar_ticket -> abrir -> passar -> fechar -> SAIDA
 
 -- CA_PAR_EN = CAncela em PARalelo com ENtrada
-CA_PAR_EN = CANCELA [| {abrir, fechar} |] ENTRADA
-CA_PAR_SA = CANCELA [| {abrir, fechar} |] SAIDA
+CA_PAR_EN = CANCELA [| aCANCELA |] ENTRADA
+CA_PAR_SA = CANCELA [| aCANCELA |] SAIDA
 
-CARROS = RUN({entrar, pegar_ticket, passar, ocupar, liberar, pagar_ticket, sair})
+OCUPACAO = CARROS [| aVAGA |] VAGA -- Só pode sincronizar se VAGA oferecer a escolha
 
-OCUPACAO = CARROS [| {ocupar, liberar} |] VAGA -- Só pode sincronizar se VAGA oferecer a escolha
-
+-- Sistema ----------------------------
 SISTEMA = ((CA_PAR_EN ||| CA_PAR_SA) ) [| {entrar, passar, pegar_ticket, pagar_ticket, sair} |] OCUPACAO
 
+-}
 
+-- Asserções --------------------------
+--assert SISTEMA:[deadlock free]
 
 
 
