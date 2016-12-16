@@ -1,43 +1,33 @@
--- Constantes
-QTD_VAGAS = 10
-
--- Define RUN(A)
+-- Funções úteis
 RUN(A) = [] x:A @ x -> RUN(A)
 
---SA = {| carro.entrar, carro.sair, trem.entrar, trem.sair |}
-
---RSA = {| carro.aproximar, trem.aproximar, barreira |}
-
-
-
-channel abrir, fechar, aproximar, passar, pegar_ticket, pagar_ticket, ocupar, liberar
+-- Canais
+channel abrir, fechar, entrar, sair, passar, pegar_ticket, pagar_ticket, ocupar, liberar
 
 -- Componentes
-CARRO = aproximar -> pegar_ticket -> passar -> ocupar -> liberar -> pagar_ticket
-    -> passar -> CARRO
+CARRO = entrar -> pegar_ticket -> passar -> ocupar -> liberar -> sair -> 
+    pagar_ticket -> passar -> CARRO
     
-VAGA = ocupar -> liberar -> VAGA
+VAGA = ocupar -> VAGA [] liberar -> VAGA
 
 CANCELA = abrir -> fechar -> CANCELA
 
 MAQ_PAGAMENTO = pagar_ticket -> MAQ_PAGAMENTO
 
 -- Especificações
-ENTRADA = aproximar -> pegar_ticket -> abrir -> passar -> fechar -> ENTRADA
+ENTRADA = entrar -> pegar_ticket -> abrir -> passar -> fechar -> ENTRADA
 
-SAIDA = aproximar -> pagar_ticket -> abrir -> passar -> fechar -> SAIDA
+SAIDA = sair -> pagar_ticket -> abrir -> passar -> fechar -> SAIDA
 
 -- CA_PAR_EN = CAncela em PARalelo com ENtrada
 CA_PAR_EN = CANCELA [| {abrir, fechar} |] ENTRADA
 CA_PAR_SA = CANCELA [| {abrir, fechar} |] SAIDA
 
-CARROS = RUN({aproximar, pegar_ticket, passar, ocupar, liberar, pagar_ticket})
+CARROS = RUN({entrar, pegar_ticket, passar, ocupar, liberar, pagar_ticket, sair})
 
-OCUPACAO = CARROS [| {ocupar, liberar} |] VAGA
+OCUPACAO = CARROS [| {ocupar, liberar} |] VAGA -- Só pode sincronizar se VAGA oferecer a escolha
 
-SISTEMA = ((CA_PAR_EN ||| CA_PAR_SA) ) [| {aproximar, pegar_ticket, pagar_ticket, passar} |] OCUPACAO
-
-
+SISTEMA = ((CA_PAR_EN ||| CA_PAR_SA) ) [| {entrar, passar, pegar_ticket, pagar_ticket, sair} |] OCUPACAO
 
 
 
@@ -45,27 +35,3 @@ SISTEMA = ((CA_PAR_EN ||| CA_PAR_SA) ) [| {aproximar, pegar_ticket, pagar_ticket
 
 
 
-
-
-
-
-
-
-
-
-
-{-datatype aMAQ_TICKETS = imprimir
-MAQ_PAGAMENTO -> ticket -> pagar -> MAQ_PAGAMENTO
-
-channel maq_tickets:aMAQ_TICKETS
-
-datatype aMAQ_PAGTO = ler_ticket
-channel maq_pagto:aMAQ_PAGTO
-
-aENTRADA =  {| carro, cancela, maq_tickets |}
-ENTRADA = carro.aproximar -> maq_tickets.imprimir -> carro.ticket -> cancela.abrir -> carro.passar -> cancela.fechar -> SISTEMA
-
-
-aSAIDA = {| carro, cancela, maq_pagto |}
-SAIDA = carro.aproximar -> maq_pagto.ler_ticket -> carro.pagar -> cancela.abrir -> carro.passar -> cancela.fechar -> SISTEMA
--}
