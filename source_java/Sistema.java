@@ -1,32 +1,32 @@
 import org.jcsp.lang.*;
 
 public class Sistema implements CSProcess{
-	// channel abrir, fechar, tick
-	private One2OneChannel abrir		= Channel.one2one();	
-	private One2OneChannel fechar		= Channel.one2one();	
-	private One2OneChannel entrar		= Channel.one2one();	
-	private One2OneChannel sair			= Channel.one2one();	
-	private One2OneChannel passar		= Channel.one2one();	
-	private One2OneChannel pegar_ticket	= Channel.one2one();	
-	private One2OneChannel pagar_ticket	= Channel.one2one();	
-	private One2OneChannel ocupar		= Channel.one2one();	
-	private One2OneChannel liberar		= Channel.one2one();	
+	private One2OneChannel abrir		 = Channel.one2one();	
+	private One2OneChannel fechar		 = Channel.one2one();	
+	private AltingBarrier[] sair		 = AltingBarrier.create(2);	
+	private AltingBarrier[] entrar		 = AltingBarrier.create(2);	
+	private AltingBarrier[] passar		 = AltingBarrier.create(2);	
+	private AltingBarrier[] pegar_ticket = AltingBarrier.create(2);	
+	private AltingBarrier[] pagar_ticket = AltingBarrier.create(2);	
+	private AltingBarrier[] ocupar		 = AltingBarrier.create(2);	
+	private AltingBarrier[] liberar		 = AltingBarrier.create(2);	
 	
 	public static void main (String args[]) {
 		(new Sistema()).run();
 	}
 	
 	public void run(){
-		Cancela c = new Cancela(abrir.in(), fechar.in());
+		Cancela cancela = new Cancela(abrir.in(), fechar.in());
 		
-		CSProcess teste = new CSProcess() {
-			public void run(){
-				abrir.out().write(null);
-				fechar.out().write(null);
-			}
-		};
+		CSProcess carros = new Carros(entrar[0], pegar_ticket[0],
+			passar[0], ocupar[0], liberar[0], pagar_ticket[0],
+			sair[0]);
 		
-		(new Parallel(new CSProcess[]{c, teste})).run();
+		CSProcess entrada = new Entrada(abrir.out(), fechar.out(),
+			entrar[1], pegar_ticket[1], passar[1],
+			ocupar[1], liberar[1], pagar_ticket[1], sair[1]);
+		
+		(new Parallel(new CSProcess[]{cancela, carros, entrada})).run();
 		
 		System.out.println("terminou");
 	}
