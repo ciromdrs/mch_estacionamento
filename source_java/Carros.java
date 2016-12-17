@@ -38,6 +38,8 @@ public class Carros implements CSProcess {
 		final int C_PAGAR_TICKET = 5;
 		final int C_SAIR = 6;
 		
+		System.out.println("Carros.run()");
+		
 		while(true){
 			switch(alt.select()) {
 				case C_ENTRAR :
