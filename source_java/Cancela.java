@@ -10,11 +10,13 @@ public class Cancela implements CSProcess {
 	}
 	
 	public void run(){
-		this.abrir.read();
-		System.out.println("Cancela.abrir");
-		
-		this.fechar.read();
-		System.out.println("Cancela.fechar");
+		while(true){
+			this.abrir.read();
+			System.out.println("Cancela.abrir");
+			
+			this.fechar.read();
+			System.out.println("Cancela.fechar");
+		}
 	}
 	
 }
