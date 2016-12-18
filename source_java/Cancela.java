@@ -4,7 +4,10 @@ public class Cancela implements CSProcess {
 	private final ChannelInput abrir;
 	private final ChannelInput fechar;	
 	
-	public Cancela(ChannelInput abrir, ChannelInput fechar) {
+	private String id;
+	
+	public Cancela(String id, ChannelInput abrir, ChannelInput fechar) {
+		this.id = id;
 		this.abrir  = abrir;
 		this.fechar = fechar;
 	}
@@ -12,10 +15,10 @@ public class Cancela implements CSProcess {
 	public void run(){
 		while(true){
 			this.abrir.read();
-			System.out.println("Cancela.abrir");
+			System.out.println("Cancela" + id + ".abrir");
 			
 			this.fechar.read();
-			System.out.println("Cancela.fechar");
+			System.out.println("Cancela"+ id +".fechar");
 		}
 	}
 	
