@@ -1,20 +1,27 @@
--- Funções úteis
+-- Constantes --------------------------
+QTD_CARROS = 4
+QTD_VAGAS  = 2
+
+-- Funções úteis -----------------------
 RUN(A) = [] x:A @ x -> RUN(A)
 
--- Canais
+-- Canais ------------------------------
 channel abrir, fechar, entrar, sair, passar, pegar_ticket, pagar_ticket, ocupar, liberar
 
 -- Componentes
 CARRO = entrar -> pegar_ticket -> passar -> ocupar -> liberar -> sair -> 
     pagar_ticket -> passar -> CARRO
-    
-VAGA = ocupar -> VAGA [] liberar -> VAGA
+
+VAGAS(n) = if n < QTD_VAGAS then
+				(ocupar -> VAGAS(n+1) [] liberar -> VAGAS(n-1))
+		   else
+				liberar -> VAGAS(n-1)
 
 CANCELA = abrir -> fechar -> CANCELA
 
 MAQ_PAGAMENTO = pagar_ticket -> MAQ_PAGAMENTO
 
--- Especificações
+-- Especificações ----------------------
 ENTRADA = entrar -> pegar_ticket -> abrir -> passar -> fechar -> ENTRADA
 
 SAIDA = sair -> pagar_ticket -> abrir -> passar -> fechar -> SAIDA
@@ -23,15 +30,21 @@ SAIDA = sair -> pagar_ticket -> abrir -> passar -> fechar -> SAIDA
 CA_PAR_EN = CANCELA [| {abrir, fechar} |] ENTRADA
 CA_PAR_SA = CANCELA [| {abrir, fechar} |] SAIDA
 
-CARROS = RUN({entrar, pegar_ticket, passar, ocupar, liberar, pagar_ticket, sair})
+CARROS(n) = if n > 0 then CARROS(n-1) ||| CARRO else SKIP
 
-OCUPACAO = CARROS [| {ocupar, liberar} |] VAGA -- Só pode sincronizar se VAGA oferecer a escolha
+OCUPACAO = CARROS(QTD_CARROS) [| {ocupar, liberar} |] VAGAS(0) -- Só pode sincronizar se VAGA oferecer a escolha
 
 SISTEMA = ((CA_PAR_EN ||| CA_PAR_SA) ) [| {entrar, passar, pegar_ticket, pagar_ticket, sair} |] OCUPACAO
 
+assert SISTEMA:[deadlock free]
+
+assert SISTEMA:[livelock free]
 
 
 
 
 
-
+-- Avulso ------------------------------
+--CARROS = RUN({entrar, pegar_ticket, passar, ocupar, liberar, pagar_ticket, sair})
+--VAGA = ocupar -> VAGA [] liberar -> VAGA
+--VAGAS(n) = if n > 0 then VAGAS(n-1) ||| VAGA else SKIP
