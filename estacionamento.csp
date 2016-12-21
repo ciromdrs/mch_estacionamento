@@ -1,12 +1,16 @@
 -- Constantes --------------------------
-QTD_CARROS = 4    -- Quantidade de carros disputando recursos em paralelo
-QTD_VAGAS  = 2    -- Quantidade de vagas disponíveis
-MAX_HORA   = 24   -- Quantidade de horas num dia
-INC 	   = 1    -- Incremento a cada tick (em horas)
-PRECO	   = 2    -- Preço por hora do estacionamento (em reais)
-LIM        = 0    -- Limite gratuito do estacionamento (em horas)
+QTD_CARROS = 4  -- Quantidade de carros disputando recursos em paralelo
+QTD_VAGAS  = 2  -- Quantidade de vagas disponíveis
+MAX_HORA   = 24 -- Quantidade de horas num dia
+INC 	   = 1  -- Incremento a cada tick (em horas)
+PRECO	   = 2  -- Preço por hora do estacionamento (em reais)
+LIM        = 0  -- Limite gratuito do estacionamento (em horas)
+MAX_INT    = MAX_HORA * PRECO -- Valor máximo a pagar
 
--- Funções úteis -----------------------
+-- Datatypes ---------------------------
+datatype t_entrada_saida = entrada | saida
+
+-- Funções -----------------------------
 RUN(A) = [] x:A @ x -> RUN(A)
 
 -- Calcular preço
@@ -17,14 +21,19 @@ calc(chegada, atual, lim, preco) = if (atual - chegada) > LIM then
 
 
 -- Canais ------------------------------
-channel abrir, fechar, entrar, passar, ocupar, liberar, tick, sair
+channel entrar, ocupar, liberar, tick, sair
+channel passar:t_entrada_saida
+channel abrir:t_entrada_saida
+channel fechar:t_entrada_saida
 channel ticket:{0..MAX_HORA}
-channel pagar:{0..MAX_HORA}
-channel hora:{0..MAX_HORA}
+channel pagar:{0..MAX_INT}
+channel hora_en:{0..MAX_HORA}
+channel hora_sa:{0..MAX_HORA}
+channel hora_ext:{0..MAX_HORA}
 
--- Componentes
-CARRO = entrar -> ticket?chegada -> passar -> ocupar -> liberar ->
-	sair -> ticket!chegada -> pagar?preco -> passar -> CARRO
+-- Componentes -------------------------
+CARRO = entrar -> ticket?chegada -> passar.entrada -> ocupar -> liberar ->
+	sair -> ticket!chegada -> pagar?preco -> passar.saida -> CARRO
 
 -- n é a quantidade de vagas ocupadas
 VAGAS(n) = if n < QTD_VAGAS then
@@ -32,37 +41,36 @@ VAGAS(n) = if n < QTD_VAGAS then
 		   else
 				liberar -> VAGAS(n-1)
 
-CANCELA = abrir -> fechar -> CANCELA
+CANCELA(id) = abrir.id -> fechar.id -> CANCELA(id)
 
-CLOCK(n) = tick -> CLOCK((n + INC) % MAX_HORA ) [] hora!n -> CLOCK(n)
+CLOCK(n) = tick -> CLOCK((n + INC) % MAX_HORA )
+	[]
+	hora_en!n -> CLOCK(n)
+	[]
+	hora_sa!n -> CLOCK(n)
+	[]
+	hora_ext!n -> CLOCK(n)
 
 -- Especificações ----------------------
-ENTRADA = entrar -> hora?atual -> ticket!atual -> abrir -> passar -> fechar -> ENTRADA
+ENTRADA = entrar -> hora_en?chegada -> ticket!chegada -> abrir.entrada 
+	-> passar.entrada -> fechar.entrada -> ENTRADA
 
-SAIDA = sair -> ticket?chegada -> hora?atual -> pagar!calc(chegada, atual, LIM, PRECO) -> abrir -> passar -> fechar -> SAIDA
+SAIDA = sair -> ticket?chegada -> hora_sa?agora ->
+	pagar!calc(chegada, agora, LIM, PRECO) -> abrir.saida -> 
+	passar.saida -> fechar.saida -> SAIDA
 
 -- CA_PAR_EN = CAncela em PARalelo com ENtrada
-CA_PAR_EN = CANCELA [| {abrir, fechar} |] ENTRADA
-CA_PAR_SA = CANCELA [| {abrir, fechar} |] SAIDA
+CA_PAR_EN = CANCELA(entrada) [| union({|abrir|}, {|fechar|}) |] ENTRADA
+CA_PAR_SA = CANCELA(saida) [| union({|abrir|}, {|fechar|}) |] SAIDA
 
 CARROS(n) = if n > 0 then CARROS(n-1) ||| CARRO else SKIP
 
-OCUPACAO = CARROS(QTD_CARROS) [| {ocupar, liberar} |] VAGAS(0) -- Só pode sincronizar se VAGA oferecer a escolha
+--OCUPACAO = CARROS(QTD_CARROS) [| {ocupar, liberar} |] VAGAS(0)
 
-SISTEMA = (((CA_PAR_EN ||| CA_PAR_SA)) [| union(union({entrar, passar, sair}, {|ticket|}), {|pagar|}) |] OCUPACAO) [| {|hora|} |] CLOCK(0)
+SISTEMA = (((CA_PAR_EN ||| CA_PAR_SA)) [| 
+		union(union(union({entrar, sair}, {|passar|}), {|ticket|}), {|pagar|}) 
+	|] (CARROS(QTD_CARROS) [| {ocupar, liberar} |] VAGAS(0))) [| union({|hora_sa|}, {|hora_en|}) |] CLOCK(0)
 
 assert SISTEMA:[deadlock free]
 
 assert SISTEMA:[livelock free]
-
-
---SS = (MAQ_PAGTO ||| CARRO ||| CLOCK(0))  [| union(union(union({|pagar|}, {|sair|}), {|hora|}), {passar})|] SAIDA
-
-
--- Avulso ------------------------------
---CARROS = RUN({entrar, ticket, passar, ocupar, liberar, pagar, sair})
---VAGA = ocupar -> VAGA [] liberar -> VAGA
---VAGAS(n) = if n > 0 then VAGAS(n-1) ||| VAGA else SKIP
---MAQ_PAGTO = pagar?preco -> MAQ_PAGTO
---MAQ_TICKETS = hora?h -> ticket!h -> MAQ_TICKETS
---MAQS = (MAQ_PAGTO ||| MAQ_TICKETS) [| {|hora|} |] CLOCK(0)
