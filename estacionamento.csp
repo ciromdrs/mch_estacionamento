@@ -1,10 +1,10 @@
 -- Constantes --------------------------
 QTD_CARROS = 4    -- Quantidade de carros disputando recursos em paralelo
 QTD_VAGAS  = 2    -- Quantidade de vagas disponíveis
-MAX_HORA   = 30 --1440 -- Quantidade de minutos num dia
-INC 	   = 10   -- Incremento a cada tick (em minutos)
-PRECO	   = 1    -- Preço por hora do estacionamento (em reais)
-LIM        = 15   -- Limite gratuito do estacionamento (em minutos)
+MAX_HORA   = 24   -- Quantidade de horas num dia
+INC 	   = 1    -- Incremento a cada tick (em horas)
+PRECO	   = 2    -- Preço por hora do estacionamento (em reais)
+LIM        = 0    -- Limite gratuito do estacionamento (em horas)
 
 -- Funções úteis -----------------------
 RUN(A) = [] x:A @ x -> RUN(A)
